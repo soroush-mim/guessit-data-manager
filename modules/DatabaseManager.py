@@ -244,6 +244,7 @@ def update_db_partial(db, updated_items, begin=0, end=None):
 	return db, changes
 
 
+
 def update_db(db_name, begin=0, end=None, timeout=10**4):
 
 	db = load_db(db_name)
@@ -434,11 +435,11 @@ resources	=   {
 					'director': 'https://www.imdb.com/name/{data_id}'
 				},
 				'sofifa': {
-					'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 500)]
+					'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
 					,
 					'footballPlayer': 'https://sofifa.com/player/{data_id}'
 					,
-					'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 2000, 500)]
+					'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 2000, 60)]
 					,
 					'footballTeam': 'https://sofifa.com/team/{data_id}'
 				},
