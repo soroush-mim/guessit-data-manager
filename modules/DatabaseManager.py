@@ -545,6 +545,6 @@ if __name__ == '__main__':
 	for dataset in ['footballTeam']:
 		init_db(dataset)
 		find_db(dataset)
-		update_db(dataset)
+		#update_db(dataset)
 
 #test_getter('footballTeam', 'sofifa')
