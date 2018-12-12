@@ -116,6 +116,7 @@ def get_footballTeam_data_from_sofifa(attribute):
 
 	def country(page):
 		return page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')})['title']
+	
 	def league(page):
 		t = page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')}).findNext().findNext().text
 		return re.sub(r' \([0-9]*\)','',t)
