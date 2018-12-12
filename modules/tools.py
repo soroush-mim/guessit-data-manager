@@ -28,7 +28,7 @@ download_page_dir 	= f'{project_dir}/download/page'
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
-					level=logging.CRITICAL,
+					level=logging.INFO,
 					handlers=[
 						logging.FileHandler(f'{project_dir}/data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
