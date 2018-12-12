@@ -288,7 +288,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 	changes = 0
 
-	with mp.Pool() as pool:
+	with mp.Pool(process_count) as pool:
 
 		for resource in get_resources(db_name) if resources is None else resources:
 
