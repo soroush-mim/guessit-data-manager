@@ -37,7 +37,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 logger = logging.getLogger('DatabaseManager')
 
 
-def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_count=10, data_check_module=None, timeout=10**3, debug=False, checked_id=[], checked_pages=[]):
+def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_count=10, data_check_module=None, timeout=10**3, debug=False, checked_id=[], checked_pages=[], recursive=True):
 	start_time 		= time.time()
 
 	#print(pages, checked_id, data_count, checked_pages)
@@ -88,7 +88,8 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 			else:
 				#print('---')
 				pass
-			if re.search(f'{base}{pattern}', new_page) and new_page not in pages: pages += [new_page]
+			if recursive and re.search(f'{base}{pattern}', new_page) and new_page not in pages:
+				pages += [new_page]
 
 
 		if time.time() - start_time > timeout:

@@ -181,7 +181,6 @@ def get_footballPlayer_data_from_sofifa(attribute):
 	return locals()[attribute] # return partial_function with page
 
 
-
 def get_actor_data_from_imdb(attribute):
 	def name(page):
 		return str(page.find('div',  {'id': 'name-overview-widget'}).find('h1').find('span', {'class': 'itemprop'}).decode_contents(formatter="html")).strip()
@@ -941,6 +940,7 @@ def get_country_data_from_cia(attribute, page):
 
 	return
 
+
 def get_people_data_from_biography(attribute):
 	def people_list(page):
 		page = make_soup(page)
@@ -980,8 +980,8 @@ def get_anime_data_from_myanimelist(attribute, page):
 		return page.find('img', {'itemprop': 'image'})['src']
 
 
-def collect_footballTeam_id_from_sofifa(pages, data_count=10, timeout=10**3 , checked_id=[], checked_pages=[]):
-	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/team/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages)
+def collect_footballTeam_id_from_sofifa(pages, data_count=10, timeout=10 ** 3, checked_id=[], checked_pages=[]):
+	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/team/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages, recursive=False)
 
 
 def collect_footballPlayer_id_from_sofifa(pages, data_count=10, timeout=10**3 , checked_id=[], checked_pages=[]):
