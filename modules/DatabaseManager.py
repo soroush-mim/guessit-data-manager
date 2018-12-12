@@ -320,6 +320,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 				#print(new_datas)
 
+
 				new_datas = set(list(itertools.chain.from_iterable(list(new_datas))))
 
 				logger.info(new_datas)
