@@ -244,7 +244,6 @@ def update_db_partial(db, updated_items, begin=0, end=None):
 	return db, changes
 
 
-
 def update_db(db_name, begin=0, end=None, timeout=10**4):
 
 	db = load_db(db_name)
