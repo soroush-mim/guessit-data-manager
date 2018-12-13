@@ -1,4 +1,8 @@
-### 18:47:31 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=0 
+### 18:48:34 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=0 
 
-### 18:47:32 - INFO     : ***** 
+### 18:48:34 - INFO     : ***** 
+
+### 18:48:34 - INFO     : {'https://sofifa.com/teams?offset=0'} 
+
+### 18:48:34 - INFO     : set() 
 
