@@ -302,9 +302,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 			logger.critical(f"resource links : {resource_links if len(resource_links) < 3 else str(resource_links[:3]) + '...'} ")
 
-			new_datas, new_datas_all = [], []
-
-			checked_pages = []
+			new_datas, new_datas_all, checked_pages = [], [], []
 
 			if f'collect_{db_name}_id_from_{resource}' not in globals(): break
 
@@ -319,7 +317,6 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 				resource_links = list(itertools.chain.from_iterable(list(resource_links)))
 
 				#print(new_datas)
-
 
 				new_datas = set(list(itertools.chain.from_iterable(list(new_datas))))
 
