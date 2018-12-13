@@ -79,7 +79,7 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 				#yield new_id_re.group(1)
 
 				checked_id += [new_id_re.group(1)]
-
+				
 				if data_count <= len(checked_id):
 					print('*****')
 					return checked_id, pages, checked_pages
