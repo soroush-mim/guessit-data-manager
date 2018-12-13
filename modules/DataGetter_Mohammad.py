@@ -1052,9 +1052,7 @@ def collect_director_id_from_imdb(pages, data_count=10, timeout=10**3, checked_i
 
 
 
-"""
+
 if __name__ == '__main__(page):
 	g = collect_footballPlayer_id_from_sofifa(['https://sofifa.com/players?offset=500'])
 	print([next(g) for i in range(10**2)][-10:])
-
-"""
