@@ -1,8 +1,10 @@
-### 18:48:34 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=0 
+### 18:50:05 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=0 
 
-### 18:48:34 - INFO     : ***** 
+### 18:50:06 - INFO     : ***** 
 
-### 18:48:34 - INFO     : {'https://sofifa.com/teams?offset=0'} 
+### 18:50:06 - INFO     : {'https://sofifa.com/teams?offset=0'} 
 
-### 18:48:34 - INFO     : set() 
+### 18:50:06 - INFO     : set() 
+
+### 18:50:06 - INFO     : {'219', '461', '48', '449', '450', '95', '241', '22', '175', '110', '39', '457', '448', '36', '467', '1795', '44', '1796', '38', '69', '1819', '7', '54', '1799', '240', '9', '236', '1808', '13', '243', '1', '325', '34', '483', '326', '32', '112172', '5', '52', '144'} 
 
