@@ -86,6 +86,7 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 					logger.info(set(pages))
 					logger.info(set(checked_pages))
 					logger.info(set(checked_id))
+					logger.info(set(data_count))
 					return checked_id, pages, checked_pages
 
 
