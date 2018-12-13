@@ -99,7 +99,7 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 
 		checked_pages += [page]
 	
-	print(list(set(pages) - set(checked_pages)))
+	print(set(pages), set(checked_pages)))
 	return checked_id, pages, checked_pages
 
 
