@@ -378,7 +378,7 @@ def check_get_function(data_name, resource, page_link):
 	getter_module = globals()[f'get_{data_name}_data_from_{resource}']
 
 	modules = []
-
+	new_data = {}
 	for local_var in getter_module('get_locals'):
 		if callable(getter_module(local_var)):
 			modules += [getter_module(local_var)]
