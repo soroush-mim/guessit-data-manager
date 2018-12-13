@@ -82,8 +82,8 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 
 				
 				if data_count <= len(checked_id):
-					logging.('*****')
-					print(set(pages), set(checked_pages))
+					logging.CRITICAL('*****')
+					logging.CRITICAL(set(pages), set(checked_pages))
 					return checked_id, pages, checked_pages
 
 
