@@ -180,3 +180,15 @@
 
 ### 13:45:37 - INFO     : 1.172s - downloding page source ... https://sofifa.com/players?offset=2100 
 
+### 13:45:38 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=300 
+
+### 13:45:40 - INFO     : 1.349s - downloding page source ... https://sofifa.com/players?offset=4020 
+
+### 13:45:41 - INFO     : 0.006s - reading page source from file ... https://sofifa.com/players?offset=4500 
+
+### 13:45:42 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=0 
+
+### 13:45:44 - INFO     : 1.244s - downloding page source ... https://sofifa.com/players?offset=720 
+
+### 13:45:46 - INFO     : 1.230s - downloding page source ... https://sofifa.com/players?offset=3780 
+
