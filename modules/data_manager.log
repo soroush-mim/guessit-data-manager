@@ -23976,3 +23976,75 @@
 
 ### 14:10:42 - CRITICAL : Retrieving data is done. 
 
+### 14:10:42 - CRITICAL : Writing to file ... 
+
+### 14:10:43 - CRITICAL : Writing to file is done. 
+
+### 14:10:43 - INFO     : memory usage : all = 21.6 %  -  me = 85 MB 
+
+### 14:10:43 - INFO     : cpu	usage : all = 72.4 %  -  me = 0.0 %  
+
+### 14:10:43 - CRITICAL : Updating footballPlayer dataset from 2090 to 2100 ... 
+
+### 14:10:43 - CRITICAL : Retrieving data ... 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/215251 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/206653 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/225423 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/244305 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/219133 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/220489 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/200962 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/198104 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/201132 
+
+### 14:10:43 - INFO     : trying to get info from link : https://sofifa.com/player/216531 
+
+### 14:11:03 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/206653 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859b692438>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:03 - INFO     : could not get the page. trying again for 0th time... 
+
+### 14:11:03 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/225423 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859bc30470>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:03 - INFO     : could not get the page. trying again for 0th time... 
+
+### 14:11:08 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/200962 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f85a0fb8d68>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:08 - INFO     : could not get the page. trying again for 0th time... 
+
+### 14:11:08 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/201132 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859c0fccf8>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:08 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/244305 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859bca8160>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:08 - INFO     : could not get the page. trying again for 0th time... 
+
+### 14:11:08 - INFO     : could not get the page. trying again for 0th time... 
+
+### 14:11:23 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/206653 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859b692400>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:23 - INFO     : could not get the page. trying again for 1th time... 
+
+### 14:11:23 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/225423 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859bc30438>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:23 - INFO     : could not get the page. trying again for 1th time... 
+
+### 14:11:28 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/200962 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f85a0fb8438>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:28 - INFO     : could not get the page. trying again for 1th time... 
+
+### 14:11:28 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/201132 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859c0fccc0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:28 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/244305 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859bca80b8>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:28 - INFO     : could not get the page. trying again for 1th time... 
+
+### 14:11:28 - INFO     : could not get the page. trying again for 1th time... 
+
