@@ -24048,3 +24048,51 @@
 
 ### 14:11:28 - INFO     : could not get the page. trying again for 1th time... 
 
+### 14:11:43 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/206653 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859b692240>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:43 - INFO     : could not get the page. trying again for 2th time... 
+
+### 14:11:43 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/225423 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859bc30278>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:43 - INFO     : could not get the page. trying again for 2th time... 
+
+### 14:11:48 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/200962 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f85a0fb8d68>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:48 - INFO     : could not get the page. trying again for 2th time... 
+
+### 14:11:48 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/244305 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859bca8390>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:48 - INFO     : could not get the page. trying again for 2th time... 
+
+### 14:11:48 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /player/201132 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859c0fcb00>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 14:11:48 - INFO     : could not get the page. trying again for 2th time... 
+
+### 14:11:51 - INFO     : 68.507s - downloding page source ... https://sofifa.com/player/206653 
+
+### 14:11:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/206653" becuase list index out of range 
+
+### 14:11:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/206653" becuase list index out of range 
+
+### 14:11:52 - INFO     : 69.336s - downloding page source ... https://sofifa.com/player/201132 
+
+### 14:11:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/201132" becuase list index out of range 
+
+### 14:11:54 - INFO     : 71.439s - downloding page source ... https://sofifa.com/player/244305 
+
+### 14:11:54 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/244305" becuase list index out of range 
+
+### 14:11:55 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/244305" becuase list index out of range 
+
+### 14:11:55 - INFO     : 72.210s - downloding page source ... https://sofifa.com/player/200962 
+
+### 14:11:55 - INFO     : 72.319s - downloding page source ... https://sofifa.com/player/215251 
+
+### 14:11:55 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/200962" becuase list index out of range 
+
+### 14:11:55 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/200962" becuase list index out of range 
+
+### 14:11:55 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/215251" becuase list index out of range 
+
+### 14:11:55 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/215251" becuase list index out of range 
+
