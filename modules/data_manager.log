@@ -1,14 +1,18 @@
-### 11:24:41 - INFO     : 1.048s - downloding page source ... https://sofifa.com/teams?offset=300 
+### 11:28:39 - INFO     : 1.184s - downloding page source ... https://sofifa.com/teams?offset=180 
 
-### 11:24:42 - INFO     : 1.059s - downloding page source ... https://sofifa.com/teams?offset=240 
+### 11:28:40 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/teams?offset=300 
 
-### 11:24:43 - INFO     : ***** 
+### 11:28:42 - INFO     : 1.109s - downloding page source ... https://sofifa.com/teams?offset=360 
 
-### 11:24:43 - INFO     : {'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=480'} 
+### 11:28:43 - INFO     : 1.060s - downloding page source ... https://sofifa.com/teams?offset=420 
 
-### 11:24:43 - INFO     : {'https://sofifa.com/teams?offset=300'} 
+### 11:28:44 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=240 
 
-### 11:24:43 - INFO     : {'433', '80', '749', '112408', '190', '477', '110502', '702', '682', '111724', '479', '111434', '101114', '110929', '1917', '110745', '15005', '614', '77', '698', '224', '101084', '111138', '695', '199', '110396', '650', '160', '607', '670', '200', '2007', '111065', '110854', '694', '110152', '110395', '2013', '1925', '666', '111235', '4', '112534', '1952', '506', '1793', '741', '269', '576', '693', '112134', '260', '111708', '217', '111715', '680', '983', '15', '110734', '1438', '112606', '1913', '691', '209', '244', '254', '110832', '110770', '110911', '110178', '1919', '873', '101121', '110373', '111706', '543', '3', '111140', '101088', '101099', '294', '112670', '101106', '298', '110581', '320', '111048', '101147', '205', '111707', '256', '111057', '503', '10019', '113259', '687', '68', '110145', '111722', '919'} 
+### 11:28:45 - INFO     : 1.036s - downloding page source ... https://sofifa.com/teams?offset=120 
 
-### 11:24:43 - INFO     : 100 
+### 11:28:47 - INFO     : 1.159s - downloding page source ... https://sofifa.com/teams?offset=480 
+
+### 11:28:47 - INFO     : 0.005s - reading page source from file ... https://sofifa.com/teams?offset=0 
+
+### 11:28:49 - INFO     : 1.136s - downloding page source ... https://sofifa.com/teams?offset=60 
 
