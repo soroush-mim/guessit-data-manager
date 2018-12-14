@@ -1,0 +1,472 @@
+### 12:06:24 - CRITICAL : trying to load footballTeam dataset from hard disk... 
+
+### 12:06:24 - CRITICAL : loading footballTeam dataset from hard disk is done. 
+
+### 12:06:24 - CRITICAL : trying to find new data... 
+
+### 12:06:24 - CRITICAL : trying to find footballTeam data from sofifa. 
+
+### 12:06:24 - CRITICAL : resource links : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120']...  
+
+### 12:06:24 - INFO     : 0.003s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.004s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.007s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.004s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.008s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.002s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 1 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 6 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 1 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 2 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 8 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 6 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.001s - reading page source from file ... 3 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 4 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 4 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 3 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 2 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 2 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 5 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 4 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 4 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... : 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... s 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 6 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 6 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... h 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... e 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 8 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... a 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... = 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... c 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... / 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... f 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... m 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... . 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... i 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... o 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... 0 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... p 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... t 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : 0.000s - reading page source from file ... ? 
+
+### 12:06:24 - INFO     : set() 
+
+### 12:06:24 - INFO     : set() 
+
+### 12:06:24 - CRITICAL : finding footballTeam data is done. 
+
+### 12:06:24 - INFO     : set() 
+
+### 12:06:24 - INFO     : set() 
+
+### 12:06:24 - CRITICAL : finding footballTeam data is done. 
+
+### 12:06:25 - INFO     : set() 
+
+### 12:06:25 - INFO     : set() 
+
+### 12:06:25 - CRITICAL : finding footballTeam data is done. 
+
