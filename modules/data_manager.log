@@ -4356,3 +4356,49 @@
 
 ### 13:15:17 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110581" becuase 'NoneType' object has no attribute 'parent' 
 
+### 13:15:17 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110955" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:15:17 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/209" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:15:17 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/70" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:15:17 - CRITICAL : Retrieving data is done. 
+
+### 13:15:17 - CRITICAL : Writing to file ... 
+
+### 13:15:17 - CRITICAL : Writing to file is done. 
+
+### 13:15:17 - INFO     : memory usage : all = 18.6 %  -  me = 76 MB 
+
+### 13:15:17 - INFO     : cpu	usage : all = 79.9 %  -  me = 0.0 %  
+
+### 13:15:17 - CRITICAL : Updating footballTeam dataset from 570 to 580 ... 
+
+### 13:15:17 - CRITICAL : Retrieving data ... 
+
+### 13:15:17 - INFO     : trying to get info from link : https://sofifa.com/team/10019 
+
+### 13:15:17 - INFO     : trying to get info from link : https://sofifa.com/team/1035 
+
+### 13:15:17 - INFO     : trying to get info from link : https://sofifa.com/team/1844 
+
+### 13:15:18 - INFO     : 1.008s - downloding page source ... https://sofifa.com/team/10019 
+
+### 13:15:18 - INFO     : 1.035s - downloding page source ... https://sofifa.com/team/1844 
+
+### 13:15:18 - INFO     : 1.064s - downloding page source ... https://sofifa.com/team/1035 
+
+### 13:15:19 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/10019" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:15:19 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1035" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:15:19 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1844" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:15:19 - CRITICAL : Retrieving data is done. 
+
+### 13:15:19 - CRITICAL : Writing to file ... 
+
+### 13:15:20 - CRITICAL : Writing to file is done. 
+
+### 13:15:20 - CRITICAL : footballTeam dataset updated successfully :) 
+
