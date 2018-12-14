@@ -310,7 +310,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 				#print([x[f'{resource}ID'] for x in new_datas_all])
 
-				new_datas, resource_links, checked_pages = zip(*pool.map(functools.partial(globals()[f'collect_{db_name}_id_from_{resource}'], checked_id=[x[f'{resource}ID'] for x in db], checked_pages=checked_pages, timeout=start_time - time.time() + timeout, data_count=finding_step), resource_links))
+				new_datas, resource_links, checked_pages = zip(*pool.map(functools.partial(globals()[f'collect_{db_name}_id_from_{resource}'], checked_id=[x[f'{resource}ID'] for x in db], checked_pages=checked_pages, timeout=start_time - time.time() + timeout, data_count=finding_step), [resource_links]))
 
 				checked_pages = list(itertools.chain.from_iterable(list(checked_pages)))
 
