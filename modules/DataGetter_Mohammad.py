@@ -981,7 +981,6 @@ def get_anime_data_from_myanimelist(attribute, page):
 
 
 def collect_footballTeam_id_from_sofifa(pages, data_count=700, timeout=10 ** 3, checked_id=[], checked_pages=[]):
-	logger.info(pages)
 	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/team/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages, recursive=False)
 
 
