@@ -28400,3 +28400,333 @@
 
 ### 14:18:42 - INFO     : trying to get info from link : https://sofifa.com/player/202533 
 
+### 14:18:43 - INFO     : 0.860s - downloding page source ... https://sofifa.com/player/202533 
+
+### 14:18:43 - INFO     : 0.869s - downloding page source ... https://sofifa.com/player/231866 
+
+### 14:18:43 - INFO     : 0.901s - downloding page source ... https://sofifa.com/player/231493 
+
+### 14:18:43 - INFO     : 0.904s - downloding page source ... https://sofifa.com/player/245156 
+
+### 14:18:43 - INFO     : 0.911s - downloding page source ... https://sofifa.com/player/208457 
+
+### 14:18:43 - INFO     : 0.918s - downloding page source ... https://sofifa.com/player/172283 
+
+### 14:18:43 - INFO     : 0.956s - downloding page source ... https://sofifa.com/player/214682 
+
+### 14:18:43 - INFO     : 0.977s - downloding page source ... https://sofifa.com/player/244829 
+
+### 14:18:43 - INFO     : 0.980s - downloding page source ... https://sofifa.com/player/202316 
+
+### 14:18:44 - INFO     : 1.081s - downloding page source ... https://sofifa.com/player/180409 
+
+### 14:18:44 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/208457" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/208457" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/244829" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/245156" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/244829" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/245156" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/180409" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/180409" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/202533" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/202533" becuase list index out of range 
+
+### 14:18:44 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/214682" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/202316" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/214682" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/172283" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/231493" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/202316" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/231493" becuase list index out of range 
+
+### 14:18:45 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/172283" becuase list index out of range 
+
+### 14:18:45 - CRITICAL : Retrieving data is done. 
+
+### 14:18:45 - CRITICAL : Writing to file ... 
+
+### 14:18:45 - CRITICAL : Writing to file is done. 
+
+### 14:18:45 - INFO     : memory usage : all = 19.1 %  -  me = 86 MB 
+
+### 14:18:45 - INFO     : cpu	usage : all = 57.6 %  -  me = 0.0 %  
+
+### 14:18:45 - CRITICAL : Updating footballPlayer dataset from 2570 to 2580 ... 
+
+### 14:18:45 - CRITICAL : Retrieving data ... 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/243928 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/157528 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/153275 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/245446 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/202238 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/236239 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/216047 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/210366 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/204762 
+
+### 14:18:45 - INFO     : trying to get info from link : https://sofifa.com/player/199470 
+
+### 14:18:46 - INFO     : 0.811s - downloding page source ... https://sofifa.com/player/236239 
+
+### 14:18:46 - INFO     : 0.842s - downloding page source ... https://sofifa.com/player/199470 
+
+### 14:18:46 - INFO     : 0.863s - downloding page source ... https://sofifa.com/player/216047 
+
+### 14:18:46 - INFO     : 0.871s - downloding page source ... https://sofifa.com/player/157528 
+
+### 14:18:46 - INFO     : 0.882s - downloding page source ... https://sofifa.com/player/243928 
+
+### 14:18:46 - INFO     : 0.883s - downloding page source ... https://sofifa.com/player/245446 
+
+### 14:18:46 - INFO     : 0.894s - downloding page source ... https://sofifa.com/player/153275 
+
+### 14:18:46 - INFO     : 0.908s - downloding page source ... https://sofifa.com/player/202238 
+
+### 14:18:46 - INFO     : 0.920s - downloding page source ... https://sofifa.com/player/204762 
+
+### 14:18:46 - INFO     : 0.931s - downloding page source ... https://sofifa.com/player/210366 
+
+### 14:18:46 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/199470" becuase list index out of range 
+
+### 14:18:46 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/199470" becuase list index out of range 
+
+### 14:18:46 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/236239" becuase list index out of range 
+
+### 14:18:46 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/236239" becuase list index out of range 
+
+### 14:18:46 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/216047" becuase list index out of range 
+
+### 14:18:46 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/210366" becuase list index out of range 
+
+### 14:18:46 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/243928" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/216047" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/243928" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/245446" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/245446" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/157528" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/204762" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/153275" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/157528" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/202238" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/204762" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/153275" becuase list index out of range 
+
+### 14:18:47 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/202238" becuase list index out of range 
+
+### 14:18:47 - CRITICAL : Retrieving data is done. 
+
+### 14:18:47 - CRITICAL : Writing to file ... 
+
+### 14:18:47 - CRITICAL : Writing to file is done. 
+
+### 14:18:47 - INFO     : memory usage : all = 19.1 %  -  me = 86 MB 
+
+### 14:18:47 - INFO     : cpu	usage : all = 55.7 %  -  me = 0.0 %  
+
+### 14:18:47 - CRITICAL : Updating footballPlayer dataset from 2580 to 2590 ... 
+
+### 14:18:47 - CRITICAL : Retrieving data ... 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/224428 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/193312 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/220720 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/239997 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/223568 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/219733 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/204639 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/188943 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/234465 
+
+### 14:18:47 - INFO     : trying to get info from link : https://sofifa.com/player/233506 
+
+### 14:18:48 - INFO     : 0.857s - downloding page source ... https://sofifa.com/player/193312 
+
+### 14:18:48 - INFO     : 0.863s - downloding page source ... https://sofifa.com/player/223568 
+
+### 14:18:48 - INFO     : 0.866s - downloding page source ... https://sofifa.com/player/188943 
+
+### 14:18:48 - INFO     : 0.881s - downloding page source ... https://sofifa.com/player/204639 
+
+### 14:18:48 - INFO     : 0.885s - downloding page source ... https://sofifa.com/player/220720 
+
+### 14:18:48 - INFO     : 0.907s - downloding page source ... https://sofifa.com/player/239997 
+
+### 14:18:48 - INFO     : 0.916s - downloding page source ... https://sofifa.com/player/234465 
+
+### 14:18:48 - INFO     : 0.922s - downloding page source ... https://sofifa.com/player/233506 
+
+### 14:18:48 - INFO     : 0.934s - downloding page source ... https://sofifa.com/player/219733 
+
+### 14:18:48 - INFO     : 0.951s - downloding page source ... https://sofifa.com/player/224428 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/223568" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/188943" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/234465" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/234465" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/223568" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/204639" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/233506" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/204639" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/233506" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/224428" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/224428" becuase list index out of range 
+
+### 14:18:49 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/219733" becuase list index out of range 
+
+### 14:18:50 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/239997" becuase list index out of range 
+
+### 14:18:50 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/219733" becuase list index out of range 
+
+### 14:18:50 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/193312" becuase list index out of range 
+
+### 14:18:50 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/193312" becuase list index out of range 
+
+### 14:18:50 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/220720" becuase list index out of range 
+
+### 14:18:50 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/220720" becuase list index out of range 
+
+### 14:18:50 - CRITICAL : Retrieving data is done. 
+
+### 14:18:50 - CRITICAL : Writing to file ... 
+
+### 14:18:50 - CRITICAL : Writing to file is done. 
+
+### 14:18:50 - INFO     : memory usage : all = 19.1 %  -  me = 86 MB 
+
+### 14:18:50 - INFO     : cpu	usage : all = 54.5 %  -  me = 0.0 %  
+
+### 14:18:50 - CRITICAL : Updating footballPlayer dataset from 2590 to 2600 ... 
+
+### 14:18:50 - CRITICAL : Retrieving data ... 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/199897 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/188959 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/219527 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/244749 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/173165 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/210548 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/178090 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/181095 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/202103 
+
+### 14:18:50 - INFO     : trying to get info from link : https://sofifa.com/player/231993 
+
+### 14:18:50 - INFO     : 0.007s - reading page source from file ... https://sofifa.com/player/210548 
+
+### 14:18:50 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/210548" becuase list index out of range 
+
+### 14:18:51 - INFO     : 0.799s - downloding page source ... https://sofifa.com/player/188959 
+
+### 14:18:51 - INFO     : 0.808s - downloding page source ... https://sofifa.com/player/202103 
+
+### 14:18:51 - INFO     : 0.861s - downloding page source ... https://sofifa.com/player/173165 
+
+### 14:18:51 - INFO     : 0.909s - downloding page source ... https://sofifa.com/player/231993 
+
+### 14:18:51 - INFO     : 0.917s - downloding page source ... https://sofifa.com/player/244749 
+
+### 14:18:51 - INFO     : 0.919s - downloding page source ... https://sofifa.com/player/199897 
+
+### 14:18:51 - INFO     : 0.924s - downloding page source ... https://sofifa.com/player/219527 
+
+### 14:18:51 - INFO     : 0.928s - downloding page source ... https://sofifa.com/player/181095 
+
+### 14:18:51 - INFO     : 0.932s - downloding page source ... https://sofifa.com/player/178090 
+
+### 14:18:51 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/173165" becuase list index out of range 
+
+### 14:18:51 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/173165" becuase list index out of range 
+
+### 14:18:51 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/199897" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/199897" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/219527" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/244749" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/219527" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/244749" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/178090" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/188959" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/178090" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/181095" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/202103" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/181095" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/188959" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "jerseyNumberNational" from "https://sofifa.com/player/231993" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/202103" becuase list index out of range 
+
+### 14:18:52 - WARNING  : no "natioalTeam" from "https://sofifa.com/player/231993" becuase list index out of range 
+
