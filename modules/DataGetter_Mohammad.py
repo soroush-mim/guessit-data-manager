@@ -980,7 +980,7 @@ def get_anime_data_from_myanimelist(attribute, page):
 		return page.find('img', {'itemprop': 'image'})['src']
 
 
-def collect_footballTeam_id_from_sofifa(pages, data_count=10, timeout=10 ** 3, checked_id=[], checked_pages=[]):
+def collect_footballTeam_id_from_sofifa(pages, data_count=700, timeout=10 ** 3, checked_id=[], checked_pages=[]):
 	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/team/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages, recursive=False)
 
 
@@ -1054,4 +1054,4 @@ def collect_director_id_from_imdb(pages, data_count=10, timeout=10**3, checked_i
 
 
 if __name__ == '__main__':
-	print(collect_footballTeam_id_from_sofifa([f'https://sofifa.com/teams?offset={i}' for i in range(0, 5500, 60)], data_count=10**3))
+	print(collect_footballTeam_id_from_sofifa([f'https://sofifa.com/teams?offset={i}' for i in range(0, 600, 60)]))
