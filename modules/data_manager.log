@@ -4906,3 +4906,11 @@
 
 ### 13:57:52 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/players?offset=2100 
 
+### 13:57:59 - INFO     : 6.562s - downloding page source ... https://sofifa.com/players?offset=10200 
+
+### 13:58:00 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=4260 
+
+### 13:58:01 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=120 
+
+### 13:58:03 - INFO     : 1.417s - downloding page source ... https://sofifa.com/players?offset=8160 
+
