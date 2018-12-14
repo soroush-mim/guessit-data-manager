@@ -1,483 +1,59 @@
 [
     {
-        "id": "GEYTEOBTGY======",
-        "sofifaID": "112836"
-    },
-    {
-        "id": "GEYTANJZG4======",
-        "sofifaID": "110597"
-    },
-    {
-        "id": "GIYDKNI=",
-        "sofifaID": "2055"
-    },
-    {
-        "id": "GE3TCNI=",
-        "sofifaID": "1715"
-    },
-    {
-        "id": "GEYTCNZXHE======",
-        "sofifaID": "111779"
-    },
-    {
-        "id": "GIYDINI=",
-        "sofifaID": "2045"
-    },
-    {
-        "id": "GE4TINI=",
-        "sofifaID": "1945"
-    },
-    {
-        "id": "GEYTEOJYGM======",
-        "sofifaID": "112983"
-    },
-    {
-        "id": "GQZDA===",
-        "sofifaID": "420"
-    },
-    {
-        "id": "GE4TGNI=",
-        "sofifaID": "1935"
-    },
-    {
-        "id": "HAZDE===",
-        "sofifaID": "822"
-    },
-    {
-        "id": "G4YDK===",
-        "sofifaID": "705"
-    },
-    {
-        "id": "GE4DA===",
-        "sofifaID": "180"
-    },
-    {
-        "id": "GE2DINY=",
-        "sofifaID": "1447"
-    },
-    {
-        "id": "GYZDC===",
-        "sofifaID": "621"
-    },
-    {
-        "id": "GEYTGOJUHA======",
-        "sofifaID": "113948"
-    },
-    {
-        "id": "GE3TQNQ=",
-        "sofifaID": "1786"
-    },
-    {
-        "id": "GEZDO===",
-        "sofifaID": "127"
-    },
-    {
-        "id": "GIYDKNQ=",
-        "sofifaID": "2056"
-    },
-    {
-        "id": "GE3TQNI=",
-        "sofifaID": "1785"
-    },
-    {
-        "id": "GEYTAMJWHE======",
-        "sofifaID": "110169"
-    },
-    {
-        "id": "HAZTO===",
-        "sofifaID": "837"
-    },
-    {
-        "id": "GEYTEMBXGU======",
-        "sofifaID": "112075"
-    },
-    {
-        "id": "GEYTGNBVHE======",
-        "sofifaID": "113459"
-    },
-    {
-        "id": "GEYTANBYGI======",
-        "sofifaID": "110482"
-    },
-    {
-        "id": "GE2DINQ=",
-        "sofifaID": "1446"
-    },
-    {
-        "id": "GE2TSNQ=",
-        "sofifaID": "1596"
-    },
-    {
-        "id": "GI4TS===",
-        "sofifaID": "299"
-    },
-    {
-        "id": "GE4TENQ=",
-        "sofifaID": "1926"
-    },
-    {
-        "id": "GEYTENJQGU======",
-        "sofifaID": "112505"
-    },
-    {
-        "id": "GIYTE===",
-        "sofifaID": "212"
-    },
-    {
-        "id": "GEYTGMRSGI======",
-        "sofifaID": "113222"
-    },
-    {
-        "id": "GE4TIMA=",
-        "sofifaID": "1940"
-    },
-    {
-        "id": "GEYTCMBYGM======",
-        "sofifaID": "111083"
-    },
-    {
-        "id": "GE4TKNI=",
-        "sofifaID": "1955"
-    },
-    {
-        "id": "GE4TGNY=",
-        "sofifaID": "1937"
-    },
-    {
-        "id": "GEYTANJZGE======",
-        "sofifaID": "110591"
-    },
-    {
-        "id": "HEYTO===",
-        "sofifaID": "917"
-    },
-    {
-        "id": "GUZTC===",
-        "sofifaID": "531"
-    },
-    {
-        "id": "GQYTQ===",
-        "sofifaID": "418"
-    },
-    {
-        "id": "GE4DAMA=",
-        "sofifaID": "1800"
-    },
-    {
-        "id": "GEYDAOBQGU======",
-        "sofifaID": "100805"
-    },
-    {
-        "id": "GE2DMMY=",
-        "sofifaID": "1463"
-    },
-    {
-        "id": "GMZQ====",
-        "sofifaID": "33"
-    },
-    {
-        "id": "GEYTEMZXHA======",
-        "sofifaID": "112378"
-    },
-    {
-        "id": "GEYTENBUGQ======",
-        "sofifaID": "112444"
-    },
-    {
-        "id": "GE2DG===",
-        "sofifaID": "143"
-    },
-    {
-        "id": "GEYTANZQGA======",
-        "sofifaID": "110700"
-    },
-    {
-        "id": "GEYTCOBSGE======",
-        "sofifaID": "111821"
-    },
-    {
-        "id": "GEYDAMZSGU======",
-        "sofifaID": "100325"
-    },
-    {
-        "id": "GE2DE===",
-        "sofifaID": "142"
-    },
-    {
-        "id": "GE2DS===",
-        "sofifaID": "149"
-    },
-    {
-        "id": "GEYTCMZZGY======",
-        "sofifaID": "111396"
-    },
-    {
-        "id": "GEYTGMJWGE======",
-        "sofifaID": "113161"
-    },
-    {
-        "id": "GEYTAMZRGM======",
-        "sofifaID": "110313"
-    },
-    {
-        "id": "GEYTGNBVHA======",
-        "sofifaID": "113458"
-    },
-    {
-        "id": "GEYTCNZWGY======",
-        "sofifaID": "111766"
-    },
-    {
-        "id": "GEYTANJZGI======",
-        "sofifaID": "110592"
-    },
-    {
-        "id": "GEYTEMZZGA======",
-        "sofifaID": "112390"
-    },
-    {
-        "id": "GE2TMOI=",
-        "sofifaID": "1569"
-    },
-    {
-        "id": "GEYTENJSGY======",
-        "sofifaID": "112526"
-    },
-    {
-        "id": "G42DC===",
-        "sofifaID": "741"
-    },
-    {
-        "id": "GE2TSOA=",
-        "sofifaID": "1598"
-    },
-    {
-        "id": "GYYDO===",
-        "sofifaID": "607"
-    },
-    {
-        "id": "GY4DO===",
-        "sofifaID": "687"
-    },
-    {
-        "id": "GI2DI===",
-        "sofifaID": "244"
-    },
-    {
-        "id": "GEYTANJQGI======",
-        "sofifaID": "110502"
-    },
-    {
-        "id": "GEYTCMZTHE======",
-        "sofifaID": "111339"
-    },
-    {
-        "id": "GY3DK===",
-        "sofifaID": "665"
-    },
-    {
-        "id": "GY4TO===",
-        "sofifaID": "697"
-    },
-    {
-        "id": "GEYDKMY=",
-        "sofifaID": "1053"
-    },
-    {
-        "id": "GE4TAMA=",
-        "sofifaID": "1900"
-    },
-    {
-        "id": "GY4A====",
-        "sofifaID": "68"
-    },
-    {
-        "id": "GY3TA===",
-        "sofifaID": "670"
-    },
-    {
-        "id": "GEYTEOBYGU======",
-        "sofifaID": "112885"
-    },
-    {
-        "id": "GEYDCMBTGM======",
-        "sofifaID": "101033"
+        "id": "GE2TAMRZ",
+        "sofifaID": "15029"
     },
     {
         "id": "GEYTCMZUGA======",
         "sofifaID": "111340"
     },
     {
-        "id": "GEYDCMBUGE======",
-        "sofifaID": "101041"
-    },
-    {
         "id": "GE2Q====",
         "sofifaID": "15"
     },
     {
-        "id": "GEYTCMJUGQ======",
-        "sofifaID": "111144"
-    },
-    {
-        "id": "GY4DA===",
-        "sofifaID": "680"
-    },
-    {
-        "id": "GI3DA===",
-        "sofifaID": "260"
-    },
-    {
-        "id": "GEYTAOBSG4======",
-        "sofifaID": "110827"
-    },
-    {
-        "id": "GY4DE===",
-        "sofifaID": "682"
-    },
-    {
-        "id": "GY4TM===",
-        "sofifaID": "696"
-    },
-    {
-        "id": "GY4TK===",
-        "sofifaID": "695"
-    },
-    {
-        "id": "GEYTCNRVGE======",
-        "sofifaID": "111651"
-    },
-    {
-        "id": "GE4DSOA=",
-        "sofifaID": "1898"
-    },
-    {
-        "id": "HAYTS===",
-        "sofifaID": "819"
-    },
-    {
-        "id": "GE3TCOI=",
-        "sofifaID": "1719"
-    },
-    {
-        "id": "GEYDCMJQGI======",
-        "sofifaID": "101102"
-    },
-    {
-        "id": "GEYTEMJTHE======",
-        "sofifaID": "112139"
-    },
-    {
-        "id": "GEYDCMBTG4======",
-        "sofifaID": "101037"
-    },
-    {
-        "id": "GEYTANJYGA======",
-        "sofifaID": "110580"
-    },
-    {
-        "id": "GIYDM===",
-        "sofifaID": "206"
-    },
-    {
-        "id": "GI3DO===",
-        "sofifaID": "267"
-    },
-    {
-        "id": "GIZDI===",
-        "sofifaID": "224"
-    },
-    {
-        "id": "GEYTANBQGQ======",
-        "sofifaID": "110404"
-    },
-    {
-        "id": "GY4DS===",
-        "sofifaID": "689"
-    },
-    {
-        "id": "GEYDCMJQGA======",
-        "sofifaID": "101100"
-    },
-    {
-        "id": "GEYTAMZZGU======",
-        "sofifaID": "110395"
+        "id": "GE4TAMA=",
+        "sofifaID": "1900"
     },
     {
         "id": "GEYTEOJZGY======",
         "sofifaID": "112996"
     },
     {
-        "id": "GEYDCMJQGE======",
-        "sofifaID": "101101"
+        "id": "GE3TSNA=",
+        "sofifaID": "1794"
     },
     {
-        "id": "GE4DANY=",
-        "sofifaID": "1807"
+        "id": "GI3DO===",
+        "sofifaID": "267"
     },
     {
-        "id": "GE4DQMA=",
-        "sofifaID": "1880"
+        "id": "GY3TA===",
+        "sofifaID": "670"
     },
     {
-        "id": "GEYTEOBSHA======",
-        "sofifaID": "112828"
-    },
-    {
-        "id": "GY4DQ===",
-        "sofifaID": "688"
-    },
-    {
-        "id": "G42DE===",
-        "sofifaID": "742"
-    },
-    {
-        "id": "GEYTEMBSGY======",
-        "sofifaID": "112026"
-    },
-    {
-        "id": "GEYTENBXGY======",
-        "sofifaID": "112476"
+        "id": "GEYTANJYGA======",
+        "sofifaID": "110580"
     },
     {
         "id": "GEYDAMZR",
         "sofifaID": "10031"
     },
     {
-        "id": "GE2TAMRZ",
-        "sofifaID": "15029"
+        "id": "GEYTAMZZGU======",
+        "sofifaID": "110395"
     },
     {
-        "id": "GEYTAOJXGU======",
-        "sofifaID": "110975"
+        "id": "GEYDKMY=",
+        "sofifaID": "1053"
     },
     {
-        "id": "G42DI===",
-        "sofifaID": "744"
+        "id": "GE4DSOA=",
+        "sofifaID": "1898"
     },
     {
-        "id": "GEYDAMBYGE======",
-        "sofifaID": "100081"
-    },
-    {
-        "id": "GE4DGMI=",
-        "sofifaID": "1831"
-    },
-    {
-        "id": "GE4DIMY=",
-        "sofifaID": "1843"
-    },
-    {
-        "id": "GE4TAMY=",
-        "sofifaID": "1903"
-    },
-    {
-        "id": "GEYTANZYGE======",
-        "sofifaID": "110781"
-    },
-    {
-        "id": "GE3TSNA=",
-        "sofifaID": "1794"
+        "id": "GEYDCMJQGI======",
+        "sofifaID": "101102"
     },
     {
         "id": "HA4A====",
@@ -486,85 +62,5 @@
     {
         "id": "GY3DM===",
         "sofifaID": "666"
-    },
-    {
-        "id": "GEYTENJTGQ======",
-        "sofifaID": "112534"
-    },
-    {
-        "id": "GI3DS===",
-        "sofifaID": "269"
-    },
-    {
-        "id": "GEYTCNZSGI======",
-        "sofifaID": "111722"
-    },
-    {
-        "id": "GEYTAMJUGU======",
-        "sofifaID": "110145"
-    },
-    {
-        "id": "GEYTEMJTGQ======",
-        "sofifaID": "112134"
-    },
-    {
-        "id": "GEYTAOBVGQ======",
-        "sofifaID": "110854"
-    },
-    {
-        "id": "GUYDM===",
-        "sofifaID": "506"
-    },
-    {
-        "id": "HE4DG===",
-        "sofifaID": "983"
-    },
-    {
-        "id": "GEYTAMJXHA======",
-        "sofifaID": "110178"
-    },
-    {
-        "id": "GEYTCNZQGY======",
-        "sofifaID": "111706"
-    },
-    {
-        "id": "G4YDE===",
-        "sofifaID": "702"
-    },
-    {
-        "id": "GI2TM===",
-        "sofifaID": "256"
-    },
-    {
-        "id": "GI4TI===",
-        "sofifaID": "294"
-    },
-    {
-        "id": "GE3TSMY=",
-        "sofifaID": "1793"
-    },
-    {
-        "id": "GE4TA===",
-        "sofifaID": "190"
-    },
-    {
-        "id": "GU3TM===",
-        "sofifaID": "576"
-    },
-    {
-        "id": "GEYTAMJVGI======",
-        "sofifaID": "110152"
-    },
-    {
-        "id": "GEYTANZUGU======",
-        "sofifaID": "110745"
-    },
-    {
-        "id": "GY4TG===",
-        "sofifaID": "693"
-    },
-    {
-        "id": "GE4TS===",
-        "sofifaID": "199"
     }
 ]
