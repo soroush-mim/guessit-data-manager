@@ -1,200 +1,24 @@
-### 13:42:47 - INFO     : 0.004s - reading page source from file ... https://sofifa.com/players?offset=360 
+### 13:46:28 - CRITICAL : trying to load footballTeam dataset from hard disk... 
 
-### 13:42:49 - INFO     : 1.293s - downloding page source ... https://sofifa.com/players?offset=4980 
+### 13:46:28 - CRITICAL : loading footballTeam dataset from hard disk is done. 
 
-### 13:42:52 - INFO     : 1.226s - downloding page source ... https://sofifa.com/players?offset=4680 
+### 13:46:28 - CRITICAL : trying to find new data... 
 
-### 13:42:53 - INFO     : 0.016s - reading page source from file ... https://sofifa.com/players?offset=1500 
+### 13:46:28 - CRITICAL : trying to find footballTeam data from sofifa. 
 
-### 13:42:55 - INFO     : 1.140s - downloding page source ... https://sofifa.com/players?offset=3420 
+### 13:46:28 - CRITICAL : resource links : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120']...  
 
-### 13:42:57 - INFO     : 1.170s - downloding page source ... https://sofifa.com/players?offset=5760 
+### 13:46:28 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/teams?offset=240 
 
-### 13:42:58 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/players?offset=480 
+### 13:46:29 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=360 
 
-### 13:42:59 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/players?offset=240 
+### 13:46:29 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=60 
 
-### 13:43:01 - INFO     : 1.262s - downloding page source ... https://sofifa.com/players?offset=5880 
+### 13:46:30 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/teams?offset=0 
 
-### 13:43:03 - INFO     : 1.187s - downloding page source ... https://sofifa.com/players?offset=780 
+### 13:46:30 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=420 
 
-### 13:43:05 - INFO     : 1.160s - downloding page source ... https://sofifa.com/players?offset=3960 
+### 13:46:31 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=660 
 
-### 13:43:07 - INFO     : 1.236s - downloding page source ... https://sofifa.com/players?offset=2280 
-
-### 13:43:09 - INFO     : 1.185s - downloding page source ... https://sofifa.com/players?offset=5220 
-
-### 13:43:11 - INFO     : 1.142s - downloding page source ... https://sofifa.com/players?offset=2940 
-
-### 13:43:12 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=3000 
-
-### 13:43:14 - INFO     : 1.206s - downloding page source ... https://sofifa.com/players?offset=4140 
-
-### 13:43:16 - INFO     : 1.173s - downloding page source ... https://sofifa.com/players?offset=5520 
-
-### 13:43:18 - INFO     : 1.303s - downloding page source ... https://sofifa.com/players?offset=4920 
-
-### 13:43:20 - INFO     : 1.180s - downloding page source ... https://sofifa.com/players?offset=3360 
-
-### 13:43:22 - INFO     : 1.160s - downloding page source ... https://sofifa.com/players?offset=5820 
-
-### 13:43:24 - INFO     : 1.201s - downloding page source ... https://sofifa.com/players?offset=2520 
-
-### 13:43:26 - INFO     : 1.237s - downloding page source ... https://sofifa.com/players?offset=2040 
-
-### 13:43:28 - INFO     : 1.254s - downloding page source ... https://sofifa.com/players?offset=3540 
-
-### 13:43:29 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/players?offset=180 
-
-### 13:43:31 - INFO     : 1.164s - downloding page source ... https://sofifa.com/players?offset=840 
-
-### 13:43:31 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=60 
-
-### 13:43:33 - INFO     : 1.107s - downloding page source ... https://sofifa.com/players?offset=1860 
-
-### 13:43:35 - INFO     : 1.146s - downloding page source ... https://sofifa.com/players?offset=1140 
-
-### 13:43:37 - INFO     : 1.109s - downloding page source ... https://sofifa.com/players?offset=5460 
-
-### 13:43:39 - INFO     : 1.144s - downloding page source ... https://sofifa.com/players?offset=3120 
-
-### 13:43:41 - INFO     : 1.049s - downloding page source ... https://sofifa.com/players?offset=3060 
-
-### 13:43:43 - INFO     : 1.148s - downloding page source ... https://sofifa.com/players?offset=5640 
-
-### 13:43:45 - INFO     : 1.109s - downloding page source ... https://sofifa.com/players?offset=660 
-
-### 13:43:47 - INFO     : 1.172s - downloding page source ... https://sofifa.com/players?offset=2580 
-
-### 13:43:48 - INFO     : 1.077s - downloding page source ... https://sofifa.com/players?offset=1740 
-
-### 13:43:50 - INFO     : 1.158s - downloding page source ... https://sofifa.com/players?offset=4080 
-
-### 13:43:52 - INFO     : 1.206s - downloding page source ... https://sofifa.com/players?offset=3180 
-
-### 13:43:54 - INFO     : 1.158s - downloding page source ... https://sofifa.com/players?offset=1020 
-
-### 13:43:55 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/players?offset=420 
-
-### 13:43:57 - INFO     : 1.193s - downloding page source ... https://sofifa.com/players?offset=2340 
-
-### 13:43:59 - INFO     : 1.257s - downloding page source ... https://sofifa.com/players?offset=1920 
-
-### 13:44:01 - INFO     : 1.163s - downloding page source ... https://sofifa.com/players?offset=3240 
-
-### 13:44:03 - INFO     : 1.298s - downloding page source ... https://sofifa.com/players?offset=3480 
-
-### 13:44:04 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=540 
-
-### 13:44:06 - INFO     : 1.180s - downloding page source ... https://sofifa.com/players?offset=2220 
-
-### 13:44:08 - INFO     : 1.086s - downloding page source ... https://sofifa.com/players?offset=4260 
-
-### 13:44:10 - INFO     : 1.188s - downloding page source ... https://sofifa.com/players?offset=3600 
-
-### 13:44:12 - INFO     : 1.066s - downloding page source ... https://sofifa.com/players?offset=600 
-
-### 13:44:13 - INFO     : 1.075s - downloding page source ... https://sofifa.com/players?offset=3300 
-
-### 13:44:15 - INFO     : 1.106s - downloding page source ... https://sofifa.com/players?offset=4380 
-
-### 13:44:17 - INFO     : 1.171s - downloding page source ... https://sofifa.com/players?offset=1080 
-
-### 13:44:19 - INFO     : 1.030s - downloding page source ... https://sofifa.com/players?offset=2700 
-
-### 13:44:21 - INFO     : 1.156s - downloding page source ... https://sofifa.com/players?offset=3720 
-
-### 13:44:23 - INFO     : 1.146s - downloding page source ... https://sofifa.com/players?offset=2760 
-
-### 13:44:25 - INFO     : 1.095s - downloding page source ... https://sofifa.com/players?offset=2460 
-
-### 13:44:27 - INFO     : 1.190s - downloding page source ... https://sofifa.com/players?offset=1620 
-
-### 13:44:29 - INFO     : 1.427s - downloding page source ... https://sofifa.com/players?offset=3900 
-
-### 13:44:31 - INFO     : 1.124s - downloding page source ... https://sofifa.com/players?offset=900 
-
-### 13:44:33 - INFO     : 1.180s - downloding page source ... https://sofifa.com/players?offset=5580 
-
-### 13:44:35 - INFO     : 1.153s - downloding page source ... https://sofifa.com/players?offset=3660 
-
-### 13:44:37 - INFO     : 1.119s - downloding page source ... https://sofifa.com/players?offset=1200 
-
-### 13:44:39 - INFO     : 1.370s - downloding page source ... https://sofifa.com/players?offset=5100 
-
-### 13:44:42 - INFO     : 1.213s - downloding page source ... https://sofifa.com/players?offset=1440 
-
-### 13:44:44 - INFO     : 1.215s - downloding page source ... https://sofifa.com/players?offset=5700 
-
-### 13:44:44 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=4320 
-
-### 13:44:47 - INFO     : 1.253s - downloding page source ... https://sofifa.com/players?offset=4440 
-
-### 13:44:48 - INFO     : 1.138s - downloding page source ... https://sofifa.com/players?offset=4560 
-
-### 13:44:50 - INFO     : 1.106s - downloding page source ... https://sofifa.com/players?offset=4860 
-
-### 13:44:52 - INFO     : 1.193s - downloding page source ... https://sofifa.com/players?offset=5040 
-
-### 13:44:54 - INFO     : 1.275s - downloding page source ... https://sofifa.com/players?offset=5280 
-
-### 13:44:56 - INFO     : 1.124s - downloding page source ... https://sofifa.com/players?offset=2160 
-
-### 13:44:58 - INFO     : 1.225s - downloding page source ... https://sofifa.com/players?offset=3840 
-
-### 13:45:00 - INFO     : 1.291s - downloding page source ... https://sofifa.com/players?offset=4620 
-
-### 13:45:02 - INFO     : 1.230s - downloding page source ... https://sofifa.com/players?offset=2880 
-
-### 13:45:03 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=120 
-
-### 13:45:05 - INFO     : 1.288s - downloding page source ... https://sofifa.com/players?offset=1320 
-
-### 13:45:08 - INFO     : 1.511s - downloding page source ... https://sofifa.com/players?offset=1680 
-
-### 13:45:10 - INFO     : 1.143s - downloding page source ... https://sofifa.com/players?offset=5400 
-
-### 13:45:12 - INFO     : 1.288s - downloding page source ... https://sofifa.com/players?offset=1800 
-
-### 13:45:14 - INFO     : 1.225s - downloding page source ... https://sofifa.com/players?offset=5940 
-
-### 13:45:16 - INFO     : 1.373s - downloding page source ... https://sofifa.com/players?offset=960 
-
-### 13:45:18 - INFO     : 1.440s - downloding page source ... https://sofifa.com/players?offset=1980 
-
-### 13:45:20 - INFO     : 1.213s - downloding page source ... https://sofifa.com/players?offset=5160 
-
-### 13:45:22 - INFO     : 1.361s - downloding page source ... https://sofifa.com/players?offset=4800 
-
-### 13:45:24 - INFO     : 1.217s - downloding page source ... https://sofifa.com/players?offset=1260 
-
-### 13:45:26 - INFO     : 1.139s - downloding page source ... https://sofifa.com/players?offset=1560 
-
-### 13:45:28 - INFO     : 1.204s - downloding page source ... https://sofifa.com/players?offset=4740 
-
-### 13:45:31 - INFO     : 1.931s - downloding page source ... https://sofifa.com/players?offset=4200 
-
-### 13:45:33 - INFO     : 1.308s - downloding page source ... https://sofifa.com/players?offset=5340 
-
-### 13:45:35 - INFO     : 1.193s - downloding page source ... https://sofifa.com/players?offset=2400 
-
-### 13:45:37 - INFO     : 1.172s - downloding page source ... https://sofifa.com/players?offset=2100 
-
-### 13:45:38 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=300 
-
-### 13:45:40 - INFO     : 1.349s - downloding page source ... https://sofifa.com/players?offset=4020 
-
-### 13:45:41 - INFO     : 0.006s - reading page source from file ... https://sofifa.com/players?offset=4500 
-
-### 13:45:42 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=0 
-
-### 13:45:44 - INFO     : 1.244s - downloding page source ... https://sofifa.com/players?offset=720 
-
-### 13:45:46 - INFO     : 1.230s - downloding page source ... https://sofifa.com/players?offset=3780 
-
-### 13:45:48 - INFO     : 1.331s - downloding page source ... https://sofifa.com/players?offset=1380 
-
-### 13:45:50 - INFO     : 1.141s - downloding page source ... https://sofifa.com/players?offset=2820 
-
-### 13:45:52 - INFO     : 1.195s - downloding page source ... https://sofifa.com/players?offset=2640 
+### 13:46:31 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=120 
 
