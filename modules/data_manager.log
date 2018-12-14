@@ -1468,3 +1468,153 @@
 
 ### 13:13:04 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112139" becuase 'NoneType' object has no attribute 'parent' 
 
+### 13:13:05 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/111708" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:05 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/346" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:05 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110406" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:05 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/101020" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:05 - CRITICAL : Retrieving data is done. 
+
+### 13:13:05 - CRITICAL : Writing to file ... 
+
+### 13:13:05 - CRITICAL : Writing to file is done. 
+
+### 13:13:05 - INFO     : memory usage : all = 18.4 %  -  me = 74 MB 
+
+### 13:13:05 - INFO     : cpu	usage : all = 80.3 %  -  me = 0.0 %  
+
+### 13:13:05 - CRITICAL : Updating footballTeam dataset from 180 to 190 ... 
+
+### 13:13:05 - CRITICAL : Retrieving data ... 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/28 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/361 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/112828 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/101037 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/112115 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/11 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/110854 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/506 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/111588 
+
+### 13:13:05 - INFO     : trying to get info from link : https://sofifa.com/team/110093 
+
+### 13:13:05 - INFO     : 0.006s - reading page source from file ... https://sofifa.com/team/28 
+
+### 13:13:05 - INFO     : 0.007s - reading page source from file ... https://sofifa.com/team/11 
+
+### 13:13:05 - INFO     : 0.006s - reading page source from file ... https://sofifa.com/team/111588 
+
+### 13:13:05 - INFO     : 0.008s - reading page source from file ... https://sofifa.com/team/112115 
+
+### 13:13:05 - INFO     : 0.016s - reading page source from file ... https://sofifa.com/team/101037 
+
+### 13:13:06 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/28" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:06 - INFO     : 1.087s - downloding page source ... https://sofifa.com/team/110854 
+
+### 13:13:06 - INFO     : 1.103s - downloding page source ... https://sofifa.com/team/112828 
+
+### 13:13:06 - INFO     : 1.110s - downloding page source ... https://sofifa.com/team/506 
+
+### 13:13:06 - INFO     : 1.115s - downloding page source ... https://sofifa.com/team/361 
+
+### 13:13:07 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/111588" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:07 - INFO     : 1.229s - downloding page source ... https://sofifa.com/team/110093 
+
+### 13:13:07 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/11" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:07 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/101037" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:07 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112115" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:08 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/506" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:08 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112828" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:08 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110854" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:08 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/361" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:08 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110093" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:09 - CRITICAL : Retrieving data is done. 
+
+### 13:13:09 - CRITICAL : Writing to file ... 
+
+### 13:13:09 - CRITICAL : Writing to file is done. 
+
+### 13:13:09 - INFO     : memory usage : all = 18.4 %  -  me = 74 MB 
+
+### 13:13:09 - INFO     : cpu	usage : all = 84.3 %  -  me = 0.0 %  
+
+### 13:13:09 - CRITICAL : Updating footballTeam dataset from 190 to 200 ... 
+
+### 13:13:09 - CRITICAL : Retrieving data ... 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/101099 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/205 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/243 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/112836 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/112537 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/112200 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/110734 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/1013 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/298 
+
+### 13:13:09 - INFO     : 0.006s - reading page source from file ... https://sofifa.com/team/243 
+
+### 13:13:09 - INFO     : trying to get info from link : https://sofifa.com/team/111707 
+
+### 13:13:09 - INFO     : 0.009s - reading page source from file ... https://sofifa.com/team/112537 
+
+### 13:13:09 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112537" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:10 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/243" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:10 - INFO     : 1.080s - downloding page source ... https://sofifa.com/team/112200 
+
+### 13:13:10 - INFO     : 1.173s - downloding page source ... https://sofifa.com/team/110734 
+
+### 13:13:10 - INFO     : 1.170s - downloding page source ... https://sofifa.com/team/111707 
+
+### 13:13:10 - INFO     : 1.181s - downloding page source ... https://sofifa.com/team/205 
+
+### 13:13:10 - INFO     : 1.194s - downloding page source ... https://sofifa.com/team/112836 
+
+### 13:13:10 - INFO     : 1.198s - downloding page source ... https://sofifa.com/team/101099 
+
+### 13:13:10 - INFO     : 1.217s - downloding page source ... https://sofifa.com/team/1013 
+
+### 13:13:10 - INFO     : 1.252s - downloding page source ... https://sofifa.com/team/298 
+
+### 13:13:11 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/101099" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:11 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/205" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:11 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/298" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:11 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110734" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:13:12 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1013" becuase 'NoneType' object has no attribute 'parent' 
+
