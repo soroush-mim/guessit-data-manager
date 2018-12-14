@@ -958,3 +958,205 @@
 
 ### 13:25:49 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/46" becuase 'NoneType' object has no attribute 'parent' 
 
+### 13:25:49 - CRITICAL : Retrieving data is done. 
+
+### 13:25:49 - CRITICAL : Writing to file ... 
+
+### 13:25:49 - CRITICAL : Writing to file is done. 
+
+### 13:25:49 - INFO     : memory usage : all = 18.0 %  -  me = 74 MB 
+
+### 13:25:49 - INFO     : cpu	usage : all = 90.7 %  -  me = 0.0 %  
+
+### 13:25:49 - CRITICAL : Updating footballTeam dataset from 110 to 120 ... 
+
+### 13:25:49 - CRITICAL : Retrieving data ... 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/379 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/110770 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/819 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/1944 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/819 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/1944 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/379 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/110770 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/457 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/325 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/306 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/112996 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/327 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/327 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/306 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/112996 
+
+### 13:25:49 - INFO     : 0.005s - reading page source from file ... https://sofifa.com/team/325 
+
+### 13:25:49 - INFO     : trying to get info from link : https://sofifa.com/team/1913 
+
+### 13:25:49 - INFO     : 0.012s - reading page source from file ... https://sofifa.com/team/457 
+
+### 13:25:49 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/1913 
+
+### 13:25:50 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112996" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:50 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/327" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/379" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/306" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1913" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/457" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1944" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/110770" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:51 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/325" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:52 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/819" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:52 - CRITICAL : Retrieving data is done. 
+
+### 13:25:52 - CRITICAL : Writing to file ... 
+
+### 13:25:52 - CRITICAL : Writing to file is done. 
+
+### 13:25:52 - INFO     : memory usage : all = 18.1 %  -  me = 74 MB 
+
+### 13:25:52 - INFO     : cpu	usage : all = 87.1 %  -  me = 0.0 %  
+
+### 13:25:52 - CRITICAL : Updating footballTeam dataset from 120 to 130 ... 
+
+### 13:25:52 - CRITICAL : Retrieving data ... 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/112260 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/112391 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/749 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/112391 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/112260 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/749 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/1920 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/1799 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/900 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/101088 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/900 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/1799 
+
+### 13:25:52 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/team/1920 
+
+### 13:25:52 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/team/101088 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/113160 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/113160 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/92 
+
+### 13:25:52 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/92 
+
+### 13:25:52 - INFO     : trying to get info from link : https://sofifa.com/team/267 
+
+### 13:25:52 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/team/267 
+
+### 13:25:53 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112260" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:53 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/900" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:53 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/92" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:53 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1799" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:54 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/113160" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:54 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/749" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:54 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/112391" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:54 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/267" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:54 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/1920" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:54 - WARNING  : no "mainAverageAge" from "https://sofifa.com/team/101088" becuase 'NoneType' object has no attribute 'parent' 
+
+### 13:25:55 - CRITICAL : Retrieving data is done. 
+
+### 13:25:55 - CRITICAL : Writing to file ... 
+
+### 13:25:55 - CRITICAL : Writing to file is done. 
+
+### 13:25:55 - INFO     : memory usage : all = 18.1 %  -  me = 74 MB 
+
+### 13:25:55 - INFO     : cpu	usage : all = 87.0 %  -  me = 0.0 %  
+
+### 13:25:55 - CRITICAL : Updating footballTeam dataset from 130 to 140 ... 
+
+### 13:25:55 - CRITICAL : Retrieving data ... 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/110854 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/435 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/169 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/111340 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/1951 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/110854 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/435 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/1951 
+
+### 13:25:55 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/team/169 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/111340 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/112578 
+
+### 13:25:55 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/team/112578 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/531 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/110636 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/531 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/110636 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/1456 
+
+### 13:25:55 - INFO     : trying to get info from link : https://sofifa.com/team/1804 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/1456 
+
+### 13:25:55 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/team/1804 
+
