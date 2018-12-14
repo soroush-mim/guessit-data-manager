@@ -84,3 +84,387 @@
 
 ### 12:56:35 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
 
+### 12:56:36 - INFO     : ***** 
+
+### 12:56:36 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:36 - INFO     : set() 
+
+### 12:56:36 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '705', '2045', '822', '1945', '112983', '420', '1935'} 
+
+### 12:56:36 - INFO     : 10 
+
+### 12:56:36 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '705', '2045', '822', '1945', '112983', '420', '1935'} 
+
+### 12:56:36 - INFO     : {'180'} 
+
+### 12:56:36 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:36 - CRITICAL : Writing to file ... 
+
+### 12:56:36 - CRITICAL : Writing to file is done. 
+
+### 12:56:36 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:36 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:36 - INFO     : ***** 
+
+### 12:56:36 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:36 - INFO     : set() 
+
+### 12:56:36 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '420', '1935'} 
+
+### 12:56:36 - INFO     : 10 
+
+### 12:56:36 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '420', '1935'} 
+
+### 12:56:36 - INFO     : {'1447'} 
+
+### 12:56:36 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:36 - CRITICAL : Writing to file ... 
+
+### 12:56:36 - CRITICAL : Writing to file is done. 
+
+### 12:56:36 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:36 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:36 - INFO     : ***** 
+
+### 12:56:36 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:36 - INFO     : set() 
+
+### 12:56:36 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '420', '1935'} 
+
+### 12:56:36 - INFO     : 10 
+
+### 12:56:36 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '420', '1935'} 
+
+### 12:56:36 - INFO     : {'621'} 
+
+### 12:56:36 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:36 - CRITICAL : Writing to file ... 
+
+### 12:56:36 - CRITICAL : Writing to file is done. 
+
+### 12:56:36 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:36 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:37 - INFO     : ***** 
+
+### 12:56:37 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:37 - INFO     : set() 
+
+### 12:56:37 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '420', '1935'} 
+
+### 12:56:37 - INFO     : 10 
+
+### 12:56:37 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '420', '1935'} 
+
+### 12:56:37 - INFO     : {'113948'} 
+
+### 12:56:37 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:37 - CRITICAL : Writing to file ... 
+
+### 12:56:37 - CRITICAL : Writing to file is done. 
+
+### 12:56:37 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:37 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:37 - INFO     : ***** 
+
+### 12:56:37 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:37 - INFO     : set() 
+
+### 12:56:37 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '420', '1786', '1935'} 
+
+### 12:56:37 - INFO     : 10 
+
+### 12:56:37 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '420', '1786', '1935'} 
+
+### 12:56:37 - INFO     : {'1786'} 
+
+### 12:56:37 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:37 - CRITICAL : Writing to file ... 
+
+### 12:56:37 - CRITICAL : Writing to file is done. 
+
+### 12:56:37 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:37 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:38 - INFO     : ***** 
+
+### 12:56:38 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:38 - INFO     : set() 
+
+### 12:56:38 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '127', '420', '1786', '1935'} 
+
+### 12:56:38 - INFO     : 10 
+
+### 12:56:38 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '127', '420', '1786', '1935'} 
+
+### 12:56:38 - INFO     : {'127'} 
+
+### 12:56:38 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:38 - CRITICAL : Writing to file ... 
+
+### 12:56:38 - CRITICAL : Writing to file is done. 
+
+### 12:56:38 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:38 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:38 - INFO     : ***** 
+
+### 12:56:38 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:38 - INFO     : set() 
+
+### 12:56:38 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '127', '420', '1786', '2056', '1935'} 
+
+### 12:56:38 - INFO     : 10 
+
+### 12:56:38 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '127', '420', '1786', '2056', '1935'} 
+
+### 12:56:38 - INFO     : {'2056'} 
+
+### 12:56:38 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:38 - CRITICAL : Writing to file ... 
+
+### 12:56:38 - CRITICAL : Writing to file is done. 
+
+### 12:56:38 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:38 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:39 - INFO     : ***** 
+
+### 12:56:39 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:39 - INFO     : set() 
+
+### 12:56:39 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '127', '420', '1786', '2056', '1785', '1935'} 
+
+### 12:56:39 - INFO     : 10 
+
+### 12:56:39 - INFO     : {'112836', '110597', '2055', '180', '1715', '111779', '1447', '705', '2045', '822', '1945', '112983', '621', '113948', '127', '420', '1786', '2056', '1785', '1935'} 
+
+### 12:56:39 - INFO     : {'1785'} 
+
+### 12:56:39 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:39 - CRITICAL : Writing to file ... 
+
+### 12:56:39 - CRITICAL : Writing to file is done. 
+
+### 12:56:39 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:39 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:39 - INFO     : ***** 
+
+### 12:56:39 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:39 - INFO     : set() 
+
+### 12:56:39 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '1447', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '1945', '1786'} 
+
+### 12:56:39 - INFO     : 10 
+
+### 12:56:39 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '1447', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '1945', '1786'} 
+
+### 12:56:39 - INFO     : {'110169'} 
+
+### 12:56:39 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:39 - CRITICAL : Writing to file ... 
+
+### 12:56:39 - CRITICAL : Writing to file is done. 
+
+### 12:56:39 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:39 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:40 - INFO     : ***** 
+
+### 12:56:40 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:40 - INFO     : set() 
+
+### 12:56:40 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '1945', '1786'} 
+
+### 12:56:40 - INFO     : 10 
+
+### 12:56:40 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '1945', '1786'} 
+
+### 12:56:40 - INFO     : {'837'} 
+
+### 12:56:40 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:40 - CRITICAL : Writing to file ... 
+
+### 12:56:40 - CRITICAL : Writing to file is done. 
+
+### 12:56:40 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:40 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:40 - INFO     : ***** 
+
+### 12:56:40 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:40 - INFO     : set() 
+
+### 12:56:40 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '112075', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '1945', '1786'} 
+
+### 12:56:40 - INFO     : 10 
+
+### 12:56:40 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '112075', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '1945', '1786'} 
+
+### 12:56:40 - INFO     : {'112075'} 
+
+### 12:56:40 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:40 - CRITICAL : Writing to file ... 
+
+### 12:56:40 - CRITICAL : Writing to file is done. 
+
+### 12:56:40 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:40 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:41 - INFO     : ***** 
+
+### 12:56:41 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:41 - INFO     : set() 
+
+### 12:56:41 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '112075', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:41 - INFO     : 10 
+
+### 12:56:41 - INFO     : {'110597', '2055', '1715', '111779', '822', '1785', '112983', '2056', '127', '112075', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:41 - INFO     : {'113459'} 
+
+### 12:56:41 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:41 - CRITICAL : Writing to file ... 
+
+### 12:56:41 - CRITICAL : Writing to file is done. 
+
+### 12:56:41 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:41 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:42 - INFO     : ***** 
+
+### 12:56:42 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:42 - INFO     : set() 
+
+### 12:56:42 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:42 - INFO     : 10 
+
+### 12:56:42 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:42 - INFO     : {'110482'} 
+
+### 12:56:42 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:42 - CRITICAL : Writing to file ... 
+
+### 12:56:42 - CRITICAL : Writing to file is done. 
+
+### 12:56:42 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:42 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:42 - INFO     : ***** 
+
+### 12:56:42 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:42 - INFO     : set() 
+
+### 12:56:42 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '1446', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:42 - INFO     : 10 
+
+### 12:56:42 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '1446', '837', '110169', '705', '2045', '113948', '621', '420', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:42 - INFO     : {'1446'} 
+
+### 12:56:42 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:42 - CRITICAL : Writing to file ... 
+
+### 12:56:42 - CRITICAL : Writing to file is done. 
+
+### 12:56:42 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:42 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:42 - INFO     : ***** 
+
+### 12:56:42 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:42 - INFO     : set() 
+
+### 12:56:42 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '1446', '837', '110169', '705', '2045', '113948', '621', '420', '1596', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:42 - INFO     : 10 
+
+### 12:56:42 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '1446', '837', '110169', '705', '2045', '113948', '621', '420', '1596', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:42 - INFO     : {'1596'} 
+
+### 12:56:42 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:42 - CRITICAL : Writing to file ... 
+
+### 12:56:42 - CRITICAL : Writing to file is done. 
+
+### 12:56:42 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:42 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
+### 12:56:43 - INFO     : ***** 
+
+### 12:56:43 - INFO     : {'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60'} 
+
+### 12:56:43 - INFO     : set() 
+
+### 12:56:43 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '1446', '299', '837', '110169', '705', '2045', '113948', '621', '420', '1596', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:43 - INFO     : 10 
+
+### 12:56:43 - INFO     : {'110597', '2055', '110482', '111779', '1715', '822', '1785', '112983', '2056', '127', '112075', '1447', '1446', '299', '837', '110169', '705', '2045', '113948', '621', '420', '1596', '1935', '112836', '180', '113459', '1945', '1786'} 
+
+### 12:56:43 - INFO     : {'299'} 
+
+### 12:56:43 - CRITICAL : finding footballTeam data is done. 
+
+### 12:56:43 - CRITICAL : Writing to file ... 
+
+### 12:56:43 - CRITICAL : Writing to file is done. 
+
+### 12:56:43 - INFO     : ['https://sofifa.com/teams?offset=0', 'https://sofifa.com/teams?offset=60', 'https://sofifa.com/teams?offset=120', 'https://sofifa.com/teams?offset=180', 'https://sofifa.com/teams?offset=240', 'https://sofifa.com/teams?offset=300', 'https://sofifa.com/teams?offset=360', 'https://sofifa.com/teams?offset=420', 'https://sofifa.com/teams?offset=480', 'https://sofifa.com/teams?offset=540', 'https://sofifa.com/teams?offset=600', 'https://sofifa.com/teams?offset=660'] 
+
+### 12:56:43 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/teams?offset=540 
+
