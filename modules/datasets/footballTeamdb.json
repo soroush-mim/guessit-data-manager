@@ -1,1 +1,3375 @@
-[]
+[
+    {
+        "id": "GEYTA===",
+        "sofifaID": "110",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "English Premier League",
+        "sofifaDefenceRate": "76",
+        "sofifaOverallRate": 76,
+        "sofifaMidfieldRate": 78,
+        "sofifaAttackRate": 76,
+        "country": "England",
+        "picture": "https://cdn.sofifa.org/teams/10/light/110.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_110_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_110_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_110_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_110_0.png",
+        "sofifaLikes": 37,
+        "rightCorner": "H\u00e9lder Wander Sousa Azevedo Costa",
+        "leftCorner": "R\u00faben Diogo da Silva Neves",
+        "penalty": "R\u00faben Diogo da Silva Neves",
+        "longFreeKick": "Jo\u00e3o Filipe Moutinho",
+        "shortFreeKick": "Jo\u00e3o Filipe Moutinho",
+        "captain": "Conor Coady",
+        "allAverageAge": "22.85",
+        "transferBudget": " yoro 60M",
+        "rivalTeam": "West Bromwich Albion",
+        "homeStadium": "Molineux Stadium",
+        "players": [
+            "Rui Pedro dos Santos Patr\u00edcio",
+            "Matt Doherty",
+            "Ryan Bennett",
+            "Conor Coady",
+            "Willy Boly",
+            "Jonathan Castro Otto",
+            "Jo\u00e3o Filipe Moutinho",
+            "R\u00faben Diogo da Silva Neves",
+            "H\u00e9lder Wander Sousa Azevedo Costa",
+            "Ra\u00fal Jim\u00e9nez",
+            "Diogo Jos\u00e9 Teixeira da Silva",
+            "Ivan Ricardo Cavaleiro",
+            "Adama Traor\u00e9 Diarra",
+            "Leonardo B. Lohner Maia",
+            "Romain Sa\u00efss",
+            "Morgan Gibbs-White",
+            "R\u00faben Nascimento Vinagre",
+            "John Ruddy",
+            "Kortney Hause",
+            "Leander Dendoncker",
+            "Will Norris",
+            "Ryan Giles",
+            "Dominic Iorfa",
+            "John Kitolano",
+            "Pedro Ant\u00f3nio Pereira Gon\u00e7alves",
+            "Ethan Ebanks-Landell",
+            "Elliot Watt",
+            "Benny Ashley-Seal",
+            "Niall Ennis",
+            "Oskar Buur Rasmussen",
+            "Cameron John",
+            "Paulo Manuel Neves Alves",
+            "Andreas S\u00f8ndergaard"
+        ],
+        "name": "Wolverhampton Wanderers"
+    },
+    {
+        "id": "GE4TMMA=",
+        "sofifaID": "1960",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "English League Championship",
+        "sofifaDefenceRate": "70",
+        "sofifaOverallRate": 72,
+        "sofifaMidfieldRate": 72,
+        "sofifaAttackRate": 70,
+        "country": "England",
+        "picture": "https://cdn.sofifa.org/teams/10/light/1960.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_1960_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_1960_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_1960_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_1960_0.png",
+        "sofifaLikes": 33,
+        "rightCorner": "Bersant Celina",
+        "leftCorner": "Matt Grimes",
+        "penalty": "Oliver McBurnie",
+        "longFreeKick": "Matt Grimes",
+        "shortFreeKick": "Bersant Celina",
+        "captain": "Leroy Fer",
+        "allAverageAge": "24.10",
+        "transferBudget": " yoro 15.2M",
+        "rivalTeam": "Cardiff City",
+        "homeStadium": "Liberty Stadium",
+        "players": [
+            "Erwin Mulder",
+            "Kyle Naughton",
+            "Mike van der Hoorn",
+            "Joe Rodon",
+            "Matt Grimes",
+            "Leroy Fer",
+            "Jay Fulton",
+            "Bersant Celina",
+            "Connor Roberts",
+            "Oliver McBurnie",
+            "Daniel James",
+            "Barrie McKay",
+            "Joel Asoro",
+            "Courtney Baker-Richardson",
+            "Tom Carroll",
+            "Martin Olsson",
+            "Cameron Carter-Vickers",
+            "Kristoffer Nordfeldt",
+            "Jefferson Montero",
+            "Wilfried Bony",
+            "George Byers",
+            "Wayne Routledge",
+            "Yan Dhanda",
+            "Nathan Dyer",
+            "Luciano Narsingh",
+            "Declan John",
+            "Brandon Cooper",
+            "Aaron Lewis",
+            "Cian Harries",
+            "Gregor Zabret"
+        ],
+        "name": "Swansea City"
+    },
+    {
+        "id": "GQ4A====",
+        "sofifaID": "48",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "Italian Serie A",
+        "sofifaDefenceRate": "82",
+        "sofifaOverallRate": 82,
+        "sofifaMidfieldRate": 83,
+        "sofifaAttackRate": 84,
+        "country": "Italy",
+        "picture": "https://cdn.sofifa.org/teams/10/light/48.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_48_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_48_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_48_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_48_0.png",
+        "sofifaLikes": 69,
+        "rightCorner": "Jos\u00e9 Mar\u00eda Callej\u00f3n Bueno",
+        "leftCorner": "Jos\u00e9 Mar\u00eda Callej\u00f3n Bueno",
+        "penalty": "Dries Mertens",
+        "longFreeKick": "Lorenzo Insigne",
+        "shortFreeKick": "Lorenzo Insigne",
+        "captain": "Marek Ham\u0161\u00edk",
+        "allAverageAge": "25.92",
+        "transferBudget": " yoro 40M",
+        "rivalTeam": "Juventus",
+        "homeStadium": "Stadion Olympik",
+        "players": [
+            "David Ospina",
+            "Elseid Hysaj",
+            "Ra\u00fal Albiol Tortajada",
+            "Kalidou Koulibaly",
+            "M\u00e1rio Rui Silva Duarte",
+            "Jos\u00e9 Mar\u00eda Callej\u00f3n Bueno",
+            "Allan Marques Loureiro",
+            "Marek Ham\u0161\u00edk",
+            "Fabi\u00e1n Ruiz Pe\u00f1a",
+            "Dries Mertens",
+            "Lorenzo Insigne",
+            "Simone Verdi",
+            "Arkadiusz Milik",
+            "Piotr Zieli\u0144ski",
+            "Marko Rog",
+            "Nikola Maksimovi\u0107",
+            "K\u00e9vin Malcuit",
+            "Orestis Karnezis",
+            "Adam Ounas",
+            "Amadou Diawara",
+            "Sebastiano Luperto",
+            "Faouzi Ghoulam",
+            "Alex Meret",
+            "Vlad Chiriche\u015f",
+            "Amin Younes"
+        ],
+        "name": "Napoli"
+    },
+    {
+        "id": "HEYQ====",
+        "sofifaID": "91",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "English League Championship",
+        "sofifaDefenceRate": "69",
+        "sofifaOverallRate": 72,
+        "sofifaMidfieldRate": 72,
+        "sofifaAttackRate": 71,
+        "country": "England",
+        "picture": "https://cdn.sofifa.org/teams/10/light/91.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_91_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_91_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_91_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_91_0.png",
+        "sofifaLikes": 31,
+        "rightCorner": "Harry Wilson",
+        "leftCorner": "Mason Mount",
+        "penalty": "Jack Marriott",
+        "longFreeKick": "Mason Mount",
+        "shortFreeKick": "Harry Wilson",
+        "captain": "Richard Keogh",
+        "allAverageAge": "26.17",
+        "transferBudget": " yoro 14M",
+        "rivalTeam": "Nottingham Forest",
+        "homeStadium": "Molton Road (Sheldon Stadium)",
+        "players": [
+            "Scott Carson",
+            "Jayden Bogle",
+            "Richard Keogh",
+            "Fikayo Tomori",
+            "Craig Forsyth",
+            "Tom Huddlestone",
+            "Craig Bryson",
+            "Mason Mount",
+            "Harry Wilson",
+            "Jack Marriott",
+            "Tom Lawrence",
+            "Martyn Waghorn",
+            "Mason Bennett",
+            "Bradley Johnson",
+            "Duane Holmes",
+            "Curtis Davies",
+            "Scott Malone",
+            "Kelle Roos",
+            "Florian Jozefzoon",
+            "Joe Ledley",
+            "David Nugent",
+            "Andre Wisdom",
+            "George Thorne",
+            "Marcus Olsson",
+            "Alex Pearce",
+            "Ikechi Anya",
+            "Jacob Butterfield",
+            "George Evans",
+            "Max Bird",
+            "Calum MacDonald"
+        ],
+        "name": "Derby County"
+    },
+    {
+        "id": "HAZA====",
+        "sofifaID": "82",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "Scottish Premiership",
+        "sofifaDefenceRate": "67",
+        "sofifaOverallRate": 67,
+        "sofifaMidfieldRate": 67,
+        "sofifaAttackRate": 68,
+        "country": "Scotland",
+        "picture": "https://cdn.sofifa.org/teams/10/light/82.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_82_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_82_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_82_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_82_0.png",
+        "sofifaLikes": 2,
+        "rightCorner": "Jordan Jones",
+        "leftCorner": "Jordan Jones",
+        "penalty": "Kris Boyd",
+        "longFreeKick": "Greg Taylor",
+        "shortFreeKick": "Greg Stewart",
+        "captain": "Kris Boyd",
+        "allAverageAge": "24.25",
+        "transferBudget": " yoro 850K",
+        "rivalTeam": "Hamilton Academical FC",
+        "homeStadium": "Ivy Lane",
+        "players": [
+            "Jamie MacDonald",
+            "Stephen O'Donnell",
+            "Kirk Broadfoot",
+            "Stuart Findlay",
+            "Greg Taylor",
+            "Chris Burke",
+            "Gary Dicker",
+            "Alan Power",
+            "Jordan Jones",
+            "Greg Stewart",
+            "Kris Boyd",
+            "Eamonn Brophy",
+            "Bright Enobakhare",
+            "Mikael Ndjoli",
+            "Rory McKenzie",
+            "Aaron Tshibola",
+            "Scott Boyd",
+            "Daniel Bachmann",
+            "Greg Kiltie",
+            "Iain Wilson",
+            "Dominic Thomas",
+            "Calum Waters",
+            "Daniel Higgins",
+            "William Graham",
+            "Ross Millen",
+            "Taylor Queen",
+            "Innes Cameron",
+            "Devlin Mackay"
+        ],
+        "name": "Kilmarnock"
+    },
+    {
+        "id": "GQ3TS===",
+        "sofifaID": "479",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "Spanish Segunda Divisi\u00f3n",
+        "sofifaDefenceRate": "69",
+        "sofifaOverallRate": 70,
+        "sofifaMidfieldRate": 72,
+        "sofifaAttackRate": 70,
+        "country": "Spain",
+        "picture": "https://cdn.sofifa.org/teams/10/light/479.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_479_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_479_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_479_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_479_0.png",
+        "sofifaLikes": 9,
+        "rightCorner": "Rub\u00e9n Garc\u00eda Santos",
+        "leftCorner": "I\u00f1igo P\u00e9rez Soto",
+        "penalty": "Brandon Thomas Llamas",
+        "longFreeKick": "I\u00f1igo P\u00e9rez Soto",
+        "shortFreeKick": "I\u00f1igo P\u00e9rez Soto",
+        "captain": "Oier Sanjurjo Mat\u00e9",
+        "allAverageAge": "26.20",
+        "transferBudget": " yoro 4.4M",
+        "rivalTeam": "Deportivo Alav\u00e9s",
+        "homeStadium": "Ivy Lane",
+        "players": [
+            "Rub\u00e9n Mart\u00ednez Andrade",
+            "Manuel Castellano Castro",
+            "Unai Garc\u00eda Lugea",
+            "Aridane Hern\u00e1ndez Umpi\u00e9rrez",
+            "Carlos Clerc Mart\u00ednez",
+            "Oier Sanjurjo Mat\u00e9",
+            "I\u00f1igo P\u00e9rez Soto",
+            "Juan Villar V\u00e1zquez",
+            "Rub\u00e9n Garc\u00eda Santos",
+            "Roberto Torres Morales",
+            "Brandon Thomas Llamas",
+            "Francisco Jim\u00e9nez Tejada",
+            "David Rodr\u00edguez S\u00e1nchez",
+            "Francisco M\u00e9rida P\u00e9rez",
+            "Enrique Barja Afonso",
+            "Ignacio Vidal Miralles",
+            "David Garc\u00eda Zubiria",
+            "Sergio Herrera Pir\u00f3n",
+            "Miguel Fla\u00f1o Bezunartea",
+            "Miguel Olavide Montes",
+            "Endika Irigoien Bravo",
+            "Luis Perea Hern\u00e1ndez",
+            "Juan Manuel P\u00e9rez Ruiz",
+            "Borja Domingo Domingo",
+            "Aitor Lorea Vergara"
+        ],
+        "name": "CA Osasuna"
+    },
+    {
+        "id": "GEYDCMBSGA======",
+        "sofifaID": "101020",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "Turkish S\u00fcper Lig",
+        "sofifaDefenceRate": "71",
+        "sofifaOverallRate": 72,
+        "sofifaMidfieldRate": 72,
+        "sofifaAttackRate": 72,
+        "country": "Turkey",
+        "picture": "https://cdn.sofifa.org/teams/10/light/101020.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_101020_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_101020_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_101020_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_101020_0.png",
+        "sofifaLikes": 2,
+        "rightCorner": "Deniz T\u00fcr\u00fc\u00e7",
+        "leftCorner": "Deniz T\u00fcr\u00fc\u00e7",
+        "penalty": "Deniz T\u00fcr\u00fc\u00e7",
+        "longFreeKick": "Deniz T\u00fcr\u00fc\u00e7",
+        "shortFreeKick": "Deniz T\u00fcr\u00fc\u00e7",
+        "captain": "Umut Bulut",
+        "allAverageAge": "27.00",
+        "transferBudget": " yoro 2.5M",
+        "rivalTeam": "Bursaspor",
+        "homeStadium": "Sanderson Park (FIFA 13 NEW generic)",
+        "players": [
+            "Silviu Lung",
+            "Tiago Lopes",
+            "Jean-Armel Kana-Biyik",
+            "Cristian S\u0103punaru",
+            "Atila Turan",
+            "\u015eamil \u00c7inaz",
+            "Bernard Mensah",
+            "Deniz T\u00fcr\u00fc\u00e7",
+            "Bilal Ba\u015fa\u00e7\u0131ko\u011flu",
+            "Tjaronn Chery",
+            "Umut Bulut",
+            "Artem Kravets",
+            "Silvestre Gon\u00e7alves Varela",
+            "Rajko Rotman",
+            "Oleksandr Kucher",
+            "Levent G\u00fclen",
+            "Sak\u0131b Ayta\u00e7",
+            "Muammer Y\u0131ld\u0131r\u0131m",
+            "O\u011fuzhan Berber",
+            "Hasan H\u00fcseyin Acar",
+            "Asamoah Gyan",
+            "Mert \u00d6zy\u0131ld\u0131r\u0131m",
+            "Vedat Karaku\u015f",
+            "Adem Do\u011fan",
+            "Kazim \u00c7elik"
+        ],
+        "name": "Kayserispor"
+    },
+    {
+        "id": "GEYTENBSHE======",
+        "sofifaID": "112429",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "Chinese Super League",
+        "sofifaDefenceRate": "65",
+        "sofifaOverallRate": 66,
+        "sofifaMidfieldRate": 67,
+        "sofifaAttackRate": 73,
+        "country": "China PR",
+        "picture": "https://cdn.sofifa.org/teams/10/light/112429.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_112429_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_112429_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_112429_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_112429_0.png",
+        "sofifaLikes": 0,
+        "rightCorner": "Ocimar Almeida J\u00fanior",
+        "leftCorner": "Eran Zahavi",
+        "penalty": "Eran Zahavi",
+        "longFreeKick": "Eran Zahavi",
+        "shortFreeKick": "Eran Zahavi",
+        "captain": "Yuelei Cheng",
+        "allAverageAge": "25.82",
+        "transferBudget": " yoro 10M",
+        "rivalTeam": "Guangzhou Evergrande Taobao FC",
+        "homeStadium": "Euro Arena",
+        "players": [
+            "Yuelei Cheng",
+            "Miao Tang",
+            "Teng Yi",
+            "Du\u0161ko To\u0161i\u0107",
+            "Haifeng Ding",
+            "Renato Ribeiro Calixto",
+            "Ocimar Almeida J\u00fanior",
+            "Tixiang Li",
+            "Lin Lu",
+            "Zhi Xiao",
+            "Eran Zahavi",
+            "Feiya Chang",
+            "Zhizhao Chen",
+            "Junliang Ma",
+            "ZhengYu Huang",
+            "Jihong Jiang",
+            "Chenlong Zhang",
+            "Feng Han",
+            "Jiajian Mai",
+            "Yajun Chen",
+            "Weiming Chen",
+            "Gong Zhang",
+            "Yuyang Li",
+            "Zhiming Zheng",
+            "Xin Wang",
+            "Jiaqi Zhang",
+            "Shuaishuai Shen",
+            "Haojian Cai"
+        ],
+        "name": "Guangzhou R&F FC"
+    },
+    {
+        "id": "GMZDA===",
+        "sofifaID": "320",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "Swedish Allsvenskan",
+        "sofifaDefenceRate": "69",
+        "sofifaOverallRate": 70,
+        "sofifaMidfieldRate": 71,
+        "sofifaAttackRate": 72,
+        "country": "Sweden",
+        "picture": "https://cdn.sofifa.org/teams/10/light/320.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_320_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_320_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_320_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_320_0.png",
+        "sofifaLikes": 12,
+        "rightCorner": "Behrang Safari",
+        "leftCorner": "S\u00f8ren Rieks",
+        "penalty": "Markus Rosenberg",
+        "longFreeKick": "Anders Christiansen",
+        "shortFreeKick": "Markus Rosenberg",
+        "captain": "Markus Rosenberg",
+        "allAverageAge": "25.41",
+        "transferBudget": " yoro 4.2M",
+        "rivalTeam": "IFK G\u00f6teborg",
+        "homeStadium": "Stade Municipal",
+        "players": [
+            "Johan Dahlin",
+            "Eric Larsson",
+            "Lasse Nielsen",
+            "Rasmus Bengtsson",
+            "Behrang Safari",
+            "S\u00f8ren Rieks",
+            "Anders Christiansen",
+            "Fouad Bachirou",
+            "Oscar Lewicki",
+            "Markus Rosenberg",
+            "Marcus Antonsson",
+            "Arn\u00f3r Ingvi Traustason",
+            "Romain Gall",
+            "Bonke Innocent",
+            "Franz Brorsson",
+            "Andreas Vindheim",
+            "Egzon Binaku",
+            "Walter Viitala",
+            "Samuel Adrian",
+            "Felix Konstandeliasz",
+            "Hugo Andersson",
+            "Laorent Shabani",
+            "Fredrik Andersson",
+            "Guillermo Molins",
+            "Carlos Strandberg",
+            "Sixten Mohlin",
+            "Adi Nalic"
+        ],
+        "name": "Malm\u00f6 FF"
+    },
+    {
+        "id": "GE3TSOA=",
+        "sofifaID": "1798",
+        "lastUpdate": "Fri Dec 14 13:46:37 2018",
+        "league": "English League Two",
+        "sofifaDefenceRate": "65",
+        "sofifaOverallRate": 65,
+        "sofifaMidfieldRate": 63,
+        "sofifaAttackRate": 65,
+        "country": "England",
+        "picture": "https://cdn.sofifa.org/teams/10/light/1798.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_1798_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_1798_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_1798_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_1798_0.png",
+        "sofifaLikes": 14,
+        "rightCorner": "Dean Lewington",
+        "leftCorner": "Jordan Houghton",
+        "penalty": "Chuks Aneke",
+        "longFreeKick": "Dean Lewington",
+        "shortFreeKick": "Dean Lewington",
+        "captain": "Dean Lewington",
+        "allAverageAge": "24.64",
+        "transferBudget": " yoro 1.3M",
+        "rivalTeam": "Peterborough United",
+        "homeStadium": "Molton Road (Sheldon Stadium)",
+        "players": [
+            "Lee Nicholls",
+            "George Williams",
+            "Joe Walsh",
+            "Jordan Moore-Taylor",
+            "Baily Cargill",
+            "Dean Lewington",
+            "Jordan Houghton",
+            "Alex Gilbey",
+            "Kieran Agard",
+            "Chuks Aneke",
+            "Rhys Healey",
+            "Robbie Simpson",
+            "Ousseynou Ciss\u00e9",
+            "Lawson D'Ath",
+            "Ryan Watson",
+            "Callum Brittain",
+            "Oran Jackson",
+            "Stuart Moore",
+            "Wieger Sietsma",
+            "Mathieu Baudry",
+            "Osman Sow",
+            "Dylan Asonganyi",
+            "Brandon Thomas-Asante",
+            "Conor McGrandles",
+            "Aidan Nesbitt",
+            "Mitch Hancox",
+            "Peter Pawlett",
+            "Ryan Harley"
+        ],
+        "name": "Milton Keynes Dons"
+    },
+    {
+        "id": "GEYTEMRWGA======",
+        "sofifaID": "112260",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "English League One",
+        "sofifaDefenceRate": "65",
+        "sofifaOverallRate": 66,
+        "sofifaMidfieldRate": 69,
+        "sofifaAttackRate": 65,
+        "country": "England",
+        "picture": "https://cdn.sofifa.org/teams/10/light/112260.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_112260_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_112260_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_112260_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_112260_0.png",
+        "sofifaLikes": 4,
+        "rightCorner": "Ross Wallace",
+        "leftCorner": "Ross Wallace",
+        "penalty": "Paddy Madden",
+        "longFreeKick": "Ross Wallace",
+        "shortFreeKick": "Ross Wallace",
+        "captain": "Craig Morgan",
+        "allAverageAge": "25.21",
+        "transferBudget": " yoro 950K",
+        "rivalTeam": "Blackpool",
+        "homeStadium": "Crown Lane",
+        "players": [
+            "Alex Cairns",
+            "Lewie Coyle",
+            "Craig Morgan",
+            "Ashley Eastham",
+            "James Husband",
+            "Ryan Taylor",
+            "Ross Wallace",
+            "Jason Holt",
+            "Wes Burns",
+            "Paddy Madden",
+            "Ashley Hunter",
+            "Ched Evans",
+            "Dean Marney",
+            "James Wallace",
+            "Tommy Spurr",
+            "Cian Bolger",
+            "Nathan Sheron",
+            "Paul Jones",
+            "Kyle Dempsey",
+            "Chris Long",
+            "Conor McAleny",
+            "Gethin Jones",
+            "Harrison Biggins",
+            "Billy Crellin",
+            "Michael Donohue",
+            "Eddie Clarke",
+            "Lewis Baines",
+            "Matthew Urwin"
+        ],
+        "name": "Fleetwood Town"
+    },
+    {
+        "id": "GEYTGNBVHA======",
+        "sofifaID": "113458",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "Swedish Allsvenskan",
+        "sofifaDefenceRate": "62",
+        "sofifaOverallRate": 64,
+        "sofifaMidfieldRate": 64,
+        "sofifaAttackRate": 66,
+        "country": "Sweden",
+        "picture": "https://cdn.sofifa.org/teams/10/light/113458.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_113458_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_113458_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_113458_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_113458_0.png",
+        "sofifaLikes": 0,
+        "rightCorner": "Jesper Arvidsson",
+        "leftCorner": "Sam Lundholm",
+        "penalty": "Jesper Arvidsson",
+        "longFreeKick": "Jesper Arvidsson",
+        "shortFreeKick": "Christer Gustafsson",
+        "captain": "Moses Ogbu",
+        "allAverageAge": "26.41",
+        "transferBudget": " yoro 650K",
+        "rivalTeam": "AIK",
+        "homeStadium": "Town Park",
+        "players": [
+            "Lukas Jonsson",
+            "Karl Larson",
+            "Johan Eiswohld",
+            "Oscar Pehrsson",
+            "Jesper Arvidsson",
+            "Christer Gustafsson",
+            "Robert \u00c5hman Persson",
+            "Sam Lundholm",
+            "Ian Sirelius",
+            "Philip Haglund",
+            "Moses Ogbu",
+            "Jonas Lindberg",
+            "Mohammed Saeid",
+            "Abdul Razak",
+            "Mauricio Albornoz",
+            "Charbel Georges",
+            "Tim Bj\u00f6rkstr\u00f6m",
+            "Karim Fegrouche",
+            "Stefano Vecchia",
+            "Niklas Busch Thor",
+            "Axel Bj\u00f6rnstr\u00f6m",
+            "Karvan Ahmadi",
+            "Elias Andersson",
+            "Daniel Jarl",
+            "Gustav Nyberg",
+            "Henry Offia",
+            "Sylvin Kayembe"
+        ],
+        "name": "IK Sirius"
+    },
+    {
+        "id": "GEYTEMZZGM======",
+        "sofifaID": "112393",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "Saudi Abdul L. Jameel League",
+        "sofifaDefenceRate": "63",
+        "sofifaOverallRate": 66,
+        "sofifaMidfieldRate": 68,
+        "sofifaAttackRate": 66,
+        "country": "Saudi Arabia",
+        "picture": "https://cdn.sofifa.org/teams/10/light/112393.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_112393_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_112393_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_112393_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_112393_0.png",
+        "sofifaLikes": 1,
+        "rightCorner": "Sandro Manoel dos Santos",
+        "leftCorner": "Jehad Al Hussien",
+        "penalty": "Jehad Al Hussien",
+        "longFreeKick": "Sandro Manoel dos Santos",
+        "shortFreeKick": "Sandro Manoel dos Santos",
+        "captain": "Talal Al Absi",
+        "allAverageAge": "26.17",
+        "transferBudget": " yoro 2.1M",
+        "rivalTeam": "Al Raed",
+        "homeStadium": "Stade Kokoto (Generic Africa 2)",
+        "players": [
+            "C\u00e1ssio Albuquerque Anjos",
+            "Madallah Al Olayan",
+            "Ricardo Jorge Tavares Machado",
+            "Talal Al Absi",
+            "Ibrahim Al Zubaidi",
+            "Sandro Manoel dos Santos",
+            "Cedric Amissi",
+            "Rabyi Mohammed Sufyani",
+            "H\u00e9ldon Augusto Almeida Ramos",
+            "Jehad Al Hussien",
+            "L\u00e9andre Tawamba",
+            "Abdulfatah Adam",
+            "Abdulmajeed Al Suwat",
+            "Rayan Al Mousa",
+            "Saeed Al Dosari",
+            "Jufain Al Bishi",
+            "Naif Mousa",
+            "Hussain Abdoh Shaian",
+            "Jhonnattann Benites",
+            "Mohammed Mohsen Harzan",
+            "Muteb Al Mufarrij",
+            "Yahya Khormi",
+            "Moataz Al Baqawi",
+            "Ismail Mohammed Al Maghrabi",
+            "Ibrahim Al Otaibi",
+            "Hamdan Al Ruwaili",
+            "Saleh Al Saeed",
+            "Abdulaziz Al Moghir",
+            "Abdullah Al Arraf"
+        ],
+        "name": "Al Taawoun"
+    },
+    {
+        "id": "GEYTAOJSHE======",
+        "sofifaID": "110929",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "Rest of World",
+        "sofifaDefenceRate": "69",
+        "sofifaOverallRate": 70,
+        "sofifaMidfieldRate": 69,
+        "sofifaAttackRate": 71,
+        "country": "South Africa",
+        "picture": "https://cdn.sofifa.org/teams/10/light/110929.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_110929_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_110929_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_110929_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_110929_0.png",
+        "sofifaLikes": 3,
+        "rightCorner": "Hendrick Ekstein",
+        "leftCorner": "Hendrick Ekstein",
+        "penalty": "Bernard Parker",
+        "longFreeKick": "Willard Katsande",
+        "shortFreeKick": "Hendrick Ekstein",
+        "captain": "Itumeleng Khune",
+        "allAverageAge": "26.46",
+        "transferBudget": " yoro 2.2M",
+        "rivalTeam": "Orlando Pirates",
+        "homeStadium": "Estadio Presidente G.Lopes",
+        "players": [
+            "Itumeleng Khune",
+            "Ramahlwe Mphahlele",
+            "Eric Mathoho",
+            "Daniel Cardoso",
+            "Hendrick Ekstein",
+            "Willard Katsande",
+            "Siphelele Ntshangase",
+            "Philani Zulu",
+            "Bernard Parker",
+            "Khama Billiat",
+            "Leonardo Castro",
+            "Dumisani Zuma",
+            "Gustavo P\u00e1ez",
+            "Kabelo Mahlasela",
+            "Siyabonga Ngezana",
+            "Siphosakhe Ntiya-Ntiya",
+            "Letlhogonolo Mirwa",
+            "Virgil Vries",
+            "Bruce Bvuma",
+            "George Maluleka",
+            "Wiseman Meyiwa",
+            "Teenage Hadebe",
+            "Bhongolwethu Jayiya",
+            "Kgotso Moleko",
+            "Andriamirado Andrianarimanana",
+            "Mario Booysen",
+            "Lebogang Manyama",
+            "Godfrey Walusimbi"
+        ],
+        "name": "Kaizer Chiefs"
+    },
+    {
+        "id": "GI3DO===",
+        "sofifaID": "267",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "Rest of World",
+        "sofifaDefenceRate": "70",
+        "sofifaOverallRate": 70,
+        "sofifaMidfieldRate": 70,
+        "sofifaAttackRate": 69,
+        "country": "Czech Republic",
+        "picture": "https://cdn.sofifa.org/teams/10/light/267.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_267_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_267_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_267_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_267_0.png",
+        "sofifaLikes": 3,
+        "rightCorner": "Nicolae Stanciu",
+        "leftCorner": "Nicolae Stanciu",
+        "penalty": "Josef \u0160ural",
+        "longFreeKick": "Kaku Gu\u00e9lor Kanga",
+        "shortFreeKick": "Nicolae Stanciu",
+        "captain": "Josef \u0160ural",
+        "allAverageAge": "25.64",
+        "transferBudget": " yoro 6.5M",
+        "rivalTeam": "Shakhtar Donetsk",
+        "homeStadium": "Waldstadion (Fussballstadion)",
+        "players": [
+            "Florin Nita",
+            "Alexandru Chipciu",
+            "Semih Kaya",
+            "Uro\u0161 Radakovi\u0107",
+            "Costa Nhamoinesu",
+            "Nicolae Stanciu",
+            "Kaku Gu\u00e9lor Kanga",
+            "Martin Fr\u00fddek",
+            "Srdjan Plav\u0161i\u0107",
+            "Josef \u0160ural",
+            "Benjamin Tetteh",
+            "Mat\u011bj Pulkrab",
+            "Michal S\u00e1\u010dek",
+            "Bogdan V\u0103t\u0103jelu",
+            "Luk\u00e1\u0161 V\u00e1cha",
+            "Vukadin Vukadinovi\u0107",
+            "Luk\u00e1\u0161 \u0160tetina",
+            "Milan He\u010da",
+            "David Bi\u010d\u00edk",
+            "Eldar \u0106ivi\u0107",
+            "Mihailo Risti\u0107",
+            "Golgol Mebrahtu",
+            "Ond\u0159ej Zahustel",
+            "Tal Ben Haim",
+            "V\u00e1clav Drchal",
+            "V\u00e1clav Kadlec",
+            "Tomas Wiesner",
+            "N\u00e9stor Albiach Roger"
+        ],
+        "name": "Sparta Praha"
+    },
+    {
+        "id": "GUZTC===",
+        "sofifaID": "531",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "German 3. Bundesliga",
+        "sofifaDefenceRate": "64",
+        "sofifaOverallRate": 64,
+        "sofifaMidfieldRate": 64,
+        "sofifaAttackRate": 65,
+        "country": "Germany",
+        "picture": "https://cdn.sofifa.org/teams/10/light/531.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_531_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_531_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_531_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_531_0.png",
+        "sofifaLikes": 13,
+        "rightCorner": "Kevin Rodrigues Pires",
+        "leftCorner": "Kevin Rodrigues Pires",
+        "penalty": "Rufat Dadashov",
+        "longFreeKick": "Martin Kobyla\u0144ski",
+        "shortFreeKick": "Martin Kobyla\u0144ski",
+        "captain": "Maximilian Schulze Niehues",
+        "allAverageAge": "23.41",
+        "transferBudget": " yoro 550K",
+        "rivalTeam": "DSC Arminia Bielefeld",
+        "homeStadium": "Euro Park",
+        "players": [
+            "Maximilian Schulze Niehues",
+            "Lion Schweers",
+            "Ole Kittner",
+            "Jannik Borgmann",
+            "Kevin Rodrigues Pires",
+            "Fabian Menig",
+            "Martin Kobyla\u0144ski",
+            "Ren\u00e9 Klingenburg",
+            "Moritz Heinrich",
+            "Rufat Dadashov",
+            "Tobias R\u00fchle",
+            "Tobias Warschewski",
+            "Philipp Hoffmann",
+            "Sandrino Braun",
+            "Lucas Cueto",
+            "Simon Scherder",
+            "Niklas Heidemann",
+            "Oliver Schnitzler",
+            "Marian Prinz",
+            "Dominik Lanius",
+            "U\u011fur Tezel",
+            "Philipp M\u00fcller",
+            "Benjamin Schwarz",
+            "Cyrill Akono",
+            "Danilo Wiebe",
+            "Adrian Kn\u00fcver",
+            "Julian Conze"
+        ],
+        "name": "SC Preu\u00dfen M\u00fcnster"
+    },
+    {
+        "id": "GE4DGMQ=",
+        "sofifaID": "1832",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "German 3. Bundesliga",
+        "sofifaDefenceRate": "66",
+        "sofifaOverallRate": 66,
+        "sofifaMidfieldRate": 65,
+        "sofifaAttackRate": 67,
+        "country": "Germany",
+        "picture": "https://cdn.sofifa.org/teams/10/light/1832.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_1832_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_1832_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_1832_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_1832_0.png",
+        "sofifaLikes": 7,
+        "rightCorner": "Marc Lorenz",
+        "leftCorner": "Marc Lorenz",
+        "penalty": "Marvin Pouri\u00e9",
+        "longFreeKick": "Marvin Wanitzek",
+        "shortFreeKick": "Marc Lorenz",
+        "captain": "David Pisot",
+        "allAverageAge": "24.68",
+        "transferBudget": " yoro 800K",
+        "rivalTeam": "VfB Stuttgart",
+        "homeStadium": "Euro Arena",
+        "players": [
+            "Benjamin Uphoff",
+            "Marco Thiede",
+            "Daniel Gordon",
+            "David Pisot",
+            "Damian Ro\u00dfbach",
+            "Burak \u00c7amo\u011flu",
+            "Manuel Stiefler",
+            "Marvin Wanitzek",
+            "Marc Lorenz",
+            "Anton Fink",
+            "Marvin Pouri\u00e9",
+            "Saliou San\u00e9",
+            "Kyoung Rok Choi",
+            "Malik Batmaz",
+            "Martin R\u00f6ser",
+            "Alexander Groi\u00df",
+            "Martin Stoll",
+            "Sven M\u00fcller",
+            "Justin M\u00f6bius",
+            "Janis Hanek",
+            "Sercan Sararer",
+            "Dominik Stroh-Engel",
+            "Marin \u0160verko",
+            "Christoph Kobald",
+            "Mario Schragl",
+            "Tim Kircher",
+            "Nathaniel Amamoo",
+            "Alexander Siebeck"
+        ],
+        "name": "Karlsruher SC"
+    },
+    {
+        "id": "GEYTEOBTGY======",
+        "sofifaID": "112836",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "Japanese J. League Division 1",
+        "sofifaDefenceRate": "63",
+        "sofifaOverallRate": 64,
+        "sofifaMidfieldRate": 62,
+        "sofifaAttackRate": 66,
+        "country": "Japan",
+        "picture": "https://cdn.sofifa.org/teams/10/light/112836.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_112836_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_112836_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_112836_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_112836_0.png",
+        "sofifaLikes": 0,
+        "rightCorner": "Gakuto Notsuda",
+        "leftCorner": "Gakuto Notsuda",
+        "penalty": "Naoki Ishihara",
+        "longFreeKick": "Gakuto Notsuda",
+        "shortFreeKick": "Gakuto Notsuda",
+        "captain": "Kazuki Oiwa",
+        "allAverageAge": "27.15",
+        "transferBudget": " yoro 3.3M",
+        "rivalTeam": "Hokkaido Consadole Sapporo",
+        "homeStadium": "Stadion Neder",
+        "players": [
+            "Daniel Schmidt",
+            "Yasuhiro Hiraoka",
+            "Kazuki Oiwa",
+            "Ko Itakura",
+            "Koji Hachisuka",
+            "Keiya Shiihashi",
+            "Hiroaki Okuno",
+            "Kunimitsu Sekiguchi",
+            "Gakuto Notsuda",
+            "Takuma Abe",
+            "Naoki Ishihara",
+            "Mike Havenaar",
+            "Rafaelson Bezerra Fernandes",
+            "Yoshihiro Nakano",
+            "Shota Kobayashi",
+            "Katsuya Nagato",
+            "Jungya Kim",
+            "Kentaro Seki",
+            "Goro Kawanami",
+            "Shingo Tomita",
+            "Shinya Yajima",
+            "Yong Gi Ryang",
+            "Ramon Lopes de Freitas",
+            "Yun Oh Lee",
+            "Masato Tokida",
+            "Ryo Germain",
+            "Naoki Sugai"
+        ],
+        "name": "Vegalta Sendai"
+    },
+    {
+        "id": "GY4Q====",
+        "sofifaID": "69",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "French Ligue 1",
+        "sofifaDefenceRate": "77",
+        "sofifaOverallRate": 78,
+        "sofifaMidfieldRate": 78,
+        "sofifaAttackRate": 82,
+        "country": "France",
+        "picture": "https://cdn.sofifa.org/teams/10/light/69.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_69_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_69_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_69_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_69_0.png",
+        "sofifaLikes": 88,
+        "rightCorner": "Marcos Paulo Mesquita Lopes",
+        "leftCorner": "Youri Tielemans",
+        "penalty": "Radamel Falcao Garc\u00eda Zarate",
+        "longFreeKick": "Marcos Paulo Mesquita Lopes",
+        "shortFreeKick": "Radamel Falcao Garc\u00eda Zarate",
+        "captain": "Radamel Falcao Garc\u00eda Zarate",
+        "allAverageAge": "23.15",
+        "transferBudget": " yoro 50M",
+        "rivalTeam": "OGC Nice",
+        "homeStadium": "Euro Arena",
+        "players": [
+            "Danijel Suba\u0161i\u0107",
+            "Djibril Sidib\u00e9",
+            "Kamil Glik",
+            "Jemerson de Jesus Nascimento",
+            "Benjamin Henrichs",
+            "Youri Tielemans",
+            "Jean-Eudes Aholou",
+            "Marcos Paulo Mesquita Lopes",
+            "Nacer Chadli",
+            "Alexandr Golovin",
+            "Radamel Falcao Garc\u00eda Zarate",
+            "Stevan Joveti\u0107",
+            "Pietro Pellegri",
+            "Samuel Grandsir",
+            "Jordi Mboula Queralt",
+            "Andrea Raggi",
+            "Antonio Barreca",
+            "Diego Benaglio",
+            "K\u00e9vin N'Doram",
+            "Rona\u00ebl Pierre-Gabriel",
+            "Sofiane Diop",
+            "Moussa Sylla",
+            "Almamy Tour\u00e9",
+            "Youssef A\u00eft Bennasser",
+            "Julien Serrano",
+            "Judilson Mamadu Tuncara Gomes",
+            "Adama Traor\u00e9",
+            "Willem Geubbels",
+            "Lo\u00efc Badiashile",
+            "Jordy Gaspar",
+            "Beno\u00eet Badiashile",
+            "Romain Faivre",
+            "Seydou Sy"
+        ],
+        "name": "AS Monaco"
+    },
+    {
+        "id": "GY2Q====",
+        "sofifaID": "65",
+        "lastUpdate": "Fri Dec 14 13:46:40 2018",
+        "league": "French Ligue 1",
+        "sofifaDefenceRate": "73",
+        "sofifaOverallRate": 74,
+        "sofifaMidfieldRate": 74,
+        "sofifaAttackRate": 78,
+        "country": "France",
+        "picture": "https://cdn.sofifa.org/teams/10/light/65.png",
+        "goalkeeperKit": "https://cdn.sofifa.org/kits/19/2_65_0.png",
+        "thirdKit": "https://cdn.sofifa.org/kits/19/3_65_0.png",
+        "awayKit": "https://cdn.sofifa.org/kits/19/1_65_0.png",
+        "homeKit": "https://cdn.sofifa.org/kits/19/0_65_0.png",
+        "sofifaLikes": 30,
+        "rightCorner": "Thiago Henrique Mendes Ribeiro",
+        "leftCorner": "Thiago Henrique Mendes Ribeiro",
+        "penalty": "Lo\u00efc R\u00e9my",
+        "longFreeKick": "Thiago Henrique Mendes Ribeiro",
+        "shortFreeKick": "Thiago Henrique Mendes Ribeiro",
+        "captain": "Adama Soumaoro",
+        "allAverageAge": "22.78",
+        "transferBudget": " yoro 10.4M",
+        "rivalTeam": "Racing Club de Lens",
+        "homeStadium": "Sanderson Park (FIFA 13 NEW generic)",
+        "players": [
+            "Mike Maignan",
+            "Mehmet Zeki \u00c7elik",
+            "Jos\u00e9 Miguel da Rocha Fonte",
+            "Adama Soumaoro",
+            "Fod\u00e9 Ballo-Tour\u00e9",
+            "Thiago Henrique Mendes Ribeiro",
+            "Miguel \u00c2ngelo da Silva Rocha",
+            "Nicolas P\u00e9p\u00e9",
+            "Jonathan Bamba",
+            "Jonathan Ikon\u00e9",
+            "Lo\u00efc R\u00e9my",
+            "Rui Pedro da Rocha Fonte",
+            "Rafael da Concei\u00e7\u00e3o Le\u00e3o",
+            "Thiago Maia Alencar",
+            "Boubakary Soumar\u00e9",
+            "Edgar Miguel I\u00e9",
+            "J\u00e9r\u00e9my Pied",
+            "Herv\u00e9 Koffi",
+            "Luiz Ara\u00fajo",
+            "Gabriel dos S. Magalh\u00e3es",
+            "Far\u00e8s Bahlouli",
+            "Kouadio-Yves Dabila",
+            "Imad Faraj",
+            "Arton Zekaj",
+            "Fernando Peixoto Costanza",
+            "Adam Jakubech",
+            "Youssouf Kon\u00e9"
+        ],
+        "name": "LOSC Lille"
+    },
+    {
+        "id": "GEYTCNZXHE======",
+        "sofifaID": "111779"
+    },
+    {
+        "id": "GEYTAMZRGM======",
+        "sofifaID": "110313"
+    },
+    {
+        "id": "GI2DC===",
+        "sofifaID": "241"
+    },
+    {
+        "id": "GYZDC===",
+        "sofifaID": "621"
+    },
+    {
+        "id": "GEYDAMZR",
+        "sofifaID": "10031"
+    },
+    {
+        "id": "GEYTEMJRGY======",
+        "sofifaID": "112116"
+    },
+    {
+        "id": "GEYDCMJVGA======",
+        "sofifaID": "101150"
+    },
+    {
+        "id": "GMZDM===",
+        "sofifaID": "326"
+    },
+    {
+        "id": "GE4Q====",
+        "sofifaID": "19"
+    },
+    {
+        "id": "HAYA====",
+        "sofifaID": "80"
+    },
+    {
+        "id": "GU3DQ===",
+        "sofifaID": "568"
+    },
+    {
+        "id": "GEYTCNZRGE======",
+        "sofifaID": "111711"
+    },
+    {
+        "id": "GEYTCNRVGE======",
+        "sofifaID": "111651"
+    },
+    {
+        "id": "GE2DINI=",
+        "sofifaID": "1445"
+    },
+    {
+        "id": "GEYDCMJQGI======",
+        "sofifaID": "101102"
+    },
+    {
+        "id": "GEYTEMZZGA======",
+        "sofifaID": "112390"
+    },
+    {
+        "id": "GE3TK===",
+        "sofifaID": "175"
+    },
+    {
+        "id": "GE3TC===",
+        "sofifaID": "171"
+    },
+    {
+        "id": "GEYDCMJQGQ======",
+        "sofifaID": "101104"
+    },
+    {
+        "id": "GEYTCMZZGY======",
+        "sofifaID": "111396"
+    },
+    {
+        "id": "GI3Q====",
+        "sofifaID": "27"
+    },
+    {
+        "id": "GM2DM===",
+        "sofifaID": "346"
+    },
+    {
+        "id": "GEYTENJSGY======",
+        "sofifaID": "112526"
+    },
+    {
+        "id": "GEYDCMJVGE======",
+        "sofifaID": "101151"
+    },
+    {
+        "id": "HA4A====",
+        "sofifaID": "88"
+    },
+    {
+        "id": "GI2TE===",
+        "sofifaID": "252"
+    },
+    {
+        "id": "GEYDANRSHA======",
+        "sofifaID": "100628"
+    },
+    {
+        "id": "GE3TINQ=",
+        "sofifaID": "1746"
+    },
+    {
+        "id": "GY4A====",
+        "sofifaID": "68"
+    },
+    {
+        "id": "GEYTEMBZGY======",
+        "sofifaID": "112096"
+    },
+    {
+        "id": "GI2DA===",
+        "sofifaID": "240"
+    },
+    {
+        "id": "GQ3DO===",
+        "sofifaID": "467"
+    },
+    {
+        "id": "GEYTANBQGQ======",
+        "sofifaID": "110404"
+    },
+    {
+        "id": "GEYQ====",
+        "sofifaID": "11"
+    },
+    {
+        "id": "GE4TMMI=",
+        "sofifaID": "1961"
+    },
+    {
+        "id": "GEYTENBSGU======",
+        "sofifaID": "112425"
+    },
+    {
+        "id": "GEYTENZZGE======",
+        "sofifaID": "112791"
+    },
+    {
+        "id": "GEYTEOJYGM======",
+        "sofifaID": "112983"
+    },
+    {
+        "id": "GEYTCMZZGM======",
+        "sofifaID": "111393"
+    },
+    {
+        "id": "GEYTCMBYGI======",
+        "sofifaID": "111082"
+    },
+    {
+        "id": "GEYTAOBSG4======",
+        "sofifaID": "110827"
+    },
+    {
+        "id": "HE4DE===",
+        "sofifaID": "982"
+    },
+    {
+        "id": "GEYTAMBWGI======",
+        "sofifaID": "110062"
+    },
+    {
+        "id": "GQ2TO===",
+        "sofifaID": "457"
+    },
+    {
+        "id": "GE2DG===",
+        "sofifaID": "143"
+    },
+    {
+        "id": "GEYTCNZQGY======",
+        "sofifaID": "111706"
+    },
+    {
+        "id": "GY2TA===",
+        "sofifaID": "650"
+    },
+    {
+        "id": "G4YDQ===",
+        "sofifaID": "708"
+    },
+    {
+        "id": "HAZTQ===",
+        "sofifaID": "838"
+    },
+    {
+        "id": "GEYTAMJWHE======",
+        "sofifaID": "110169"
+    },
+    {
+        "id": "GM3A====",
+        "sofifaID": "36"
+    },
+    {
+        "id": "HEYDA===",
+        "sofifaID": "900"
+    },
+    {
+        "id": "G4ZQ====",
+        "sofifaID": "73"
+    },
+    {
+        "id": "GEYTGNBVHE======",
+        "sofifaID": "113459"
+    },
+    {
+        "id": "GQZTM===",
+        "sofifaID": "436"
+    },
+    {
+        "id": "GE4DANI=",
+        "sofifaID": "1805"
+    },
+    {
+        "id": "GQ4DO===",
+        "sofifaID": "487"
+    },
+    {
+        "id": "GE4TGNQ=",
+        "sofifaID": "1936"
+    },
+    {
+        "id": "GQ2Q====",
+        "sofifaID": "45"
+    },
+    {
+        "id": "GY4DS===",
+        "sofifaID": "689"
+    },
+    {
+        "id": "GMZDK===",
+        "sofifaID": "325"
+    },
+    {
+        "id": "GE4TEMY=",
+        "sofifaID": "1923"
+    },
+    {
+        "id": "GE2DGOI=",
+        "sofifaID": "1439"
+    },
+    {
+        "id": "GEYTCNJXGU======",
+        "sofifaID": "111575"
+    },
+    {
+        "id": "GEYTAOBTGI======",
+        "sofifaID": "110832"
+    },
+    {
+        "id": "GQ3A====",
+        "sofifaID": "46"
+    },
+    {
+        "id": "GEYTENRVGU======",
+        "sofifaID": "112655"
+    },
+    {
+        "id": "GEYTCMBUHA======",
+        "sofifaID": "111048"
+    },
+    {
+        "id": "GQZTK===",
+        "sofifaID": "435"
+    },
+    {
+        "id": "GEYDS===",
+        "sofifaID": "109"
+    },
+    {
+        "id": "GQ4DG===",
+        "sofifaID": "483"
+    },
+    {
+        "id": "GE2TSNQ=",
+        "sofifaID": "1596"
+    },
+    {
+        "id": "GEYDANBQHE======",
+        "sofifaID": "100409"
+    },
+    {
+        "id": "GE4DQNY=",
+        "sofifaID": "1887"
+    },
+    {
+        "id": "GEYTENJTGU======",
+        "sofifaID": "112535"
+    },
+    {
+        "id": "GY4TG===",
+        "sofifaID": "693"
+    },
+    {
+        "id": "GEYDCMJUGY======",
+        "sofifaID": "101146"
+    },
+    {
+        "id": "GEYDAOBYHA======",
+        "sofifaID": "100888"
+    },
+    {
+        "id": "GE2TAMBZ",
+        "sofifaID": "15009"
+    },
+    {
+        "id": "GEYTGMRVHE======",
+        "sofifaID": "113259"
+    },
+    {
+        "id": "GI2TM===",
+        "sofifaID": "256"
+    },
+    {
+        "id": "GIZDM===",
+        "sofifaID": "226"
+    },
+    {
+        "id": "GEYTCOBRG4======",
+        "sofifaID": "111817"
+    },
+    {
+        "id": "GEYTENBXGY======",
+        "sofifaID": "112476"
+    },
+    {
+        "id": "GEYTEMZYHE======",
+        "sofifaID": "112389"
+    },
+    {
+        "id": "GEYTANZTGQ======",
+        "sofifaID": "110734"
+    },
+    {
+        "id": "GE3TSNQ=",
+        "sofifaID": "1796"
+    },
+    {
+        "id": "GEYTANJZG4======",
+        "sofifaID": "110597"
+    },
+    {
+        "id": "GE4DSNQ=",
+        "sofifaID": "1896"
+    },
+    {
+        "id": "GEYTENBUHA======",
+        "sofifaID": "112448"
+    },
+    {
+        "id": "GE4TGNY=",
+        "sofifaID": "1937"
+    },
+    {
+        "id": "GEYDCMBUGE======",
+        "sofifaID": "101041"
+    },
+    {
+        "id": "GE4DAOA=",
+        "sofifaID": "1808"
+    },
+    {
+        "id": "GEYTEOJXHA======",
+        "sofifaID": "112978"
+    },
+    {
+        "id": "GEYTEMJWGI======",
+        "sofifaID": "112162"
+    },
+    {
+        "id": "GEYTAMJVGI======",
+        "sofifaID": "110152"
+    },
+    {
+        "id": "GE4TAOI=",
+        "sofifaID": "1909"
+    },
+    {
+        "id": "GEYTANZWGU======",
+        "sofifaID": "110765"
+    },
+    {
+        "id": "GEYTCMBVG4======",
+        "sofifaID": "111057"
+    },
+    {
+        "id": "GUYDM===",
+        "sofifaID": "506"
+    },
+    {
+        "id": "G4YDG===",
+        "sofifaID": "703"
+    },
+    {
+        "id": "GM3TQ===",
+        "sofifaID": "378"
+    },
+    {
+        "id": "GE2TAMJV",
+        "sofifaID": "15015"
+    },
+    {
+        "id": "GM2DO===",
+        "sofifaID": "347"
+    },
+    {
+        "id": "GE4TGMQ=",
+        "sofifaID": "1932"
+    },
+    {
+        "id": "GEYTAOBZGA======",
+        "sofifaID": "110890"
+    },
+    {
+        "id": "GI2DK===",
+        "sofifaID": "245"
+    },
+    {
+        "id": "GEYTCNZSGM======",
+        "sofifaID": "111723"
+    },
+    {
+        "id": "HEZA====",
+        "sofifaID": "92"
+    },
+    {
+        "id": "GE4TINI=",
+        "sofifaID": "1945"
+    },
+    {
+        "id": "GE3DM===",
+        "sofifaID": "166"
+    },
+    {
+        "id": "GE4DANA=",
+        "sofifaID": "1804"
+    },
+    {
+        "id": "GEYTEMRQGA======",
+        "sofifaID": "112200"
+    },
+    {
+        "id": "GQYTO===",
+        "sofifaID": "417"
+    },
+    {
+        "id": "GE4DSOA=",
+        "sofifaID": "1898"
+    },
+    {
+        "id": "GE4DMMA=",
+        "sofifaID": "1860"
+    },
+    {
+        "id": "GE4DCMY=",
+        "sofifaID": "1813"
+    },
+    {
+        "id": "GEYTCMBZGI======",
+        "sofifaID": "111092"
+    },
+    {
+        "id": "GIYDCNY=",
+        "sofifaID": "2017"
+    },
+    {
+        "id": "GEYTENJXHA======",
+        "sofifaID": "112578"
+    },
+    {
+        "id": "GEYTGMJUGI======",
+        "sofifaID": "113142"
+    },
+    {
+        "id": "GIYDS===",
+        "sofifaID": "209"
+    },
+    {
+        "id": "GEYTCOJZGM======",
+        "sofifaID": "111993"
+    },
+    {
+        "id": "GQYTQ===",
+        "sofifaID": "418"
+    },
+    {
+        "id": "GIYDKNQ=",
+        "sofifaID": "2056"
+    },
+    {
+        "id": "GE4DCNI=",
+        "sofifaID": "1815"
+    },
+    {
+        "id": "GEYTCNRWGA======",
+        "sofifaID": "111660"
+    },
+    {
+        "id": "GE4TC===",
+        "sofifaID": "191"
+    },
+    {
+        "id": "GEYDGNI=",
+        "sofifaID": "1035"
+    },
+    {
+        "id": "GEYTANZUGU======",
+        "sofifaID": "110745"
+    },
+    {
+        "id": "GQ2TA===",
+        "sofifaID": "450"
+    },
+    {
+        "id": "GE2Q====",
+        "sofifaID": "15"
+    },
+    {
+        "id": "GEYDCMJQGE======",
+        "sofifaID": "101101"
+    },
+    {
+        "id": "GEYDAMJZ",
+        "sofifaID": "10019"
+    },
+    {
+        "id": "GQ4DC===",
+        "sofifaID": "481"
+    },
+    {
+        "id": "GE4TGNI=",
+        "sofifaID": "1935"
+    },
+    {
+        "id": "GEYTEMZXHA======",
+        "sofifaID": "112378"
+    },
+    {
+        "id": "GEYDCMY=",
+        "sofifaID": "1013"
+    },
+    {
+        "id": "GEYDCMBTG4======",
+        "sofifaID": "101037"
+    },
+    {
+        "id": "GEYTCMBYGM======",
+        "sofifaID": "111083"
+    },
+    {
+        "id": "GEYTANJZGE======",
+        "sofifaID": "110591"
+    },
+    {
+        "id": "GE4TKMQ=",
+        "sofifaID": "1952"
+    },
+    {
+        "id": "GEYTCNZQG4======",
+        "sofifaID": "111707"
+    },
+    {
+        "id": "GEYTCNBQGA======",
+        "sofifaID": "111400"
+    },
+    {
+        "id": "HA4TI===",
+        "sofifaID": "894"
+    },
+    {
+        "id": "GE4TGOI=",
+        "sofifaID": "1939"
+    },
+    {
+        "id": "GE4TIMA=",
+        "sofifaID": "1940"
+    },
+    {
+        "id": "GIZTI===",
+        "sofifaID": "234"
+    },
+    {
+        "id": "GE4TKNA=",
+        "sofifaID": "1954"
+    },
+    {
+        "id": "HAYTS===",
+        "sofifaID": "819"
+    },
+    {
+        "id": "HA4TO===",
+        "sofifaID": "897"
+    },
+    {
+        "id": "GEYTENJQGU======",
+        "sofifaID": "112505"
+    },
+    {
+        "id": "GEYTAOBVGQ======",
+        "sofifaID": "110854"
+    },
+    {
+        "id": "GE4DS===",
+        "sofifaID": "189"
+    },
+    {
+        "id": "GEZA====",
+        "sofifaID": "12"
+    },
+    {
+        "id": "GEYDCMBYGU======",
+        "sofifaID": "101085"
+    },
+    {
+        "id": "G4YDA===",
+        "sofifaID": "700"
+    },
+    {
+        "id": "GEYDCMJRGQ======",
+        "sofifaID": "101114"
+    },
+    {
+        "id": "GY3DK===",
+        "sofifaID": "665"
+    },
+    {
+        "id": "GYZTK===",
+        "sofifaID": "635"
+    },
+    {
+        "id": "GEYDCMJQGM======",
+        "sofifaID": "101103"
+    },
+    {
+        "id": "GE4TMMQ=",
+        "sofifaID": "1962"
+    },
+    {
+        "id": "GEYTENZQHE======",
+        "sofifaID": "112709"
+    },
+    {
+        "id": "GYZA====",
+        "sofifaID": "62"
+    },
+    {
+        "id": "GE3TSNY=",
+        "sofifaID": "1797"
+    },
+    {
+        "id": "GE4DOOA=",
+        "sofifaID": "1878"
+    },
+    {
+        "id": "GEYTAOJXG4======",
+        "sofifaID": "110977"
+    },
+    {
+        "id": "GM3TS===",
+        "sofifaID": "379"
+    },
+    {
+        "id": "GQ3TE===",
+        "sofifaID": "472"
+    },
+    {
+        "id": "GMZDO===",
+        "sofifaID": "327"
+    },
+    {
+        "id": "GEYDKMY=",
+        "sofifaID": "1053"
+    },
+    {
+        "id": "GY4DE===",
+        "sofifaID": "682"
+    },
+    {
+        "id": "GQ2DS===",
+        "sofifaID": "449"
+    },
+    {
+        "id": "GQ======",
+        "sofifaID": "4"
+    },
+    {
+        "id": "GE2TAMRZ",
+        "sofifaID": "15029"
+    },
+    {
+        "id": "GE4TGMY=",
+        "sofifaID": "1933"
+    },
+    {
+        "id": "GIYDM===",
+        "sofifaID": "206"
+    },
+    {
+        "id": "GEYTAMZRGY======",
+        "sofifaID": "110316"
+    },
+    {
+        "id": "GEYTEMRVGQ======",
+        "sofifaID": "112254"
+    },
+    {
+        "id": "GIZTE===",
+        "sofifaID": "232"
+    },
+    {
+        "id": "GEYTCNBTGQ======",
+        "sofifaID": "111434"
+    },
+    {
+        "id": "GEYTAOJRGM======",
+        "sofifaID": "110913"
+    },
+    {
+        "id": "GEYTEMJWGU======",
+        "sofifaID": "112165"
+    },
+    {
+        "id": "GIYTC===",
+        "sofifaID": "211"
+    },
+    {
+        "id": "HE4DG===",
+        "sofifaID": "983"
+    },
+    {
+        "id": "HAZTO===",
+        "sofifaID": "837"
+    },
+    {
+        "id": "GEYTCNZSGI======",
+        "sofifaID": "111722"
+    },
+    {
+        "id": "GEYTEOJZGA======",
+        "sofifaID": "112990"
+    },
+    {
+        "id": "GE3TCNI=",
+        "sofifaID": "1715"
+    },
+    {
+        "id": "GEYDCMJUHA======",
+        "sofifaID": "101148"
+    },
+    {
+        "id": "GEYTAMZZGU======",
+        "sofifaID": "110395"
+    },
+    {
+        "id": "GEYTAMZZGY======",
+        "sofifaID": "110396"
+    },
+    {
+        "id": "GM4TG===",
+        "sofifaID": "393"
+    },
+    {
+        "id": "GEYTCNZQHA======",
+        "sofifaID": "111708"
+    },
+    {
+        "id": "GY3DM===",
+        "sofifaID": "666"
+    },
+    {
+        "id": "GE4TAMA=",
+        "sofifaID": "1900"
+    },
+    {
+        "id": "GE4DENA=",
+        "sofifaID": "1824"
+    },
+    {
+        "id": "GE2DE===",
+        "sofifaID": "142"
+    },
+    {
+        "id": "GEYDAMZSGU======",
+        "sofifaID": "100325"
+    },
+    {
+        "id": "GE2A====",
+        "sofifaID": "14"
+    },
+    {
+        "id": "G4YTC===",
+        "sofifaID": "711"
+    },
+    {
+        "id": "HA======",
+        "sofifaID": "8"
+    },
+    {
+        "id": "GE4TCNA=",
+        "sofifaID": "1914"
+    },
+    {
+        "id": "GE4A====",
+        "sofifaID": "18"
+    },
+    {
+        "id": "GQ2TS===",
+        "sofifaID": "459"
+    },
+    {
+        "id": "GEYTCMBWGU======",
+        "sofifaID": "111065"
+    },
+    {
+        "id": "GE4DONQ=",
+        "sofifaID": "1876"
+    },
+    {
+        "id": "G42DI===",
+        "sofifaID": "744"
+    },
+    {
+        "id": "GE3DS===",
+        "sofifaID": "169"
+    },
+    {
+        "id": "GEYTGMJXGM======",
+        "sofifaID": "113173"
+    },
+    {
+        "id": "GE2TENA=",
+        "sofifaID": "1524"
+    },
+    {
+        "id": "GIYDANY=",
+        "sofifaID": "2007"
+    },
+    {
+        "id": "GEYDCMJUHE======",
+        "sofifaID": "101149"
+    },
+    {
+        "id": "GE3TQOA=",
+        "sofifaID": "1788"
+    },
+    {
+        "id": "GEYTEOBYGU======",
+        "sofifaID": "112885"
+    },
+    {
+        "id": "HEZDA===",
+        "sofifaID": "920"
+    },
+    {
+        "id": "GQZDA===",
+        "sofifaID": "420"
+    },
+    {
+        "id": "GEYTCMBRHE======",
+        "sofifaID": "111019"
+    },
+    {
+        "id": "GEYTANZUG4======",
+        "sofifaID": "110747"
+    },
+    {
+        "id": "GMYDM===",
+        "sofifaID": "306"
+    },
+    {
+        "id": "GEYTCMRTGU======",
+        "sofifaID": "111235"
+    },
+    {
+        "id": "GEYTEMJRGU======",
+        "sofifaID": "112115"
+    },
+    {
+        "id": "GEYTANJZGI======",
+        "sofifaID": "110592"
+    },
+    {
+        "id": "GIYTS===",
+        "sofifaID": "219"
+    },
+    {
+        "id": "GM4Q====",
+        "sofifaID": "39"
+    },
+    {
+        "id": "GQ4DK===",
+        "sofifaID": "485"
+    },
+    {
+        "id": "GU2DG===",
+        "sofifaID": "543"
+    },
+    {
+        "id": "GEYTCMRYGU======",
+        "sofifaID": "111285"
+    },
+    {
+        "id": "GEYTENJTGE======",
+        "sofifaID": "112531"
+    },
+    {
+        "id": "GEYDAMRZ",
+        "sofifaID": "10029"
+    },
+    {
+        "id": "GEYTCMJUGA======",
+        "sofifaID": "111140"
+    },
+    {
+        "id": "GY3A====",
+        "sofifaID": "66"
+    },
+    {
+        "id": "GEYTANRTGY======",
+        "sofifaID": "110636"
+    },
+    {
+        "id": "GEYDAOBQGU======",
+        "sofifaID": "100805"
+    },
+    {
+        "id": "GQ2TE===",
+        "sofifaID": "452"
+    },
+    {
+        "id": "GE3TSOI=",
+        "sofifaID": "1799"
+    },
+    {
+        "id": "GIYDINI=",
+        "sofifaID": "2045"
+    },
+    {
+        "id": "GI2TI===",
+        "sofifaID": "254"
+    },
+    {
+        "id": "GEYTANZUHE======",
+        "sofifaID": "110749"
+    },
+    {
+        "id": "GE4TEMA=",
+        "sofifaID": "1920"
+    },
+    {
+        "id": "GE3DE===",
+        "sofifaID": "162"
+    },
+    {
+        "id": "GEYTEMZYG4======",
+        "sofifaID": "112387"
+    },
+    {
+        "id": "HA4Q====",
+        "sofifaID": "89"
+    },
+    {
+        "id": "GI4TI===",
+        "sofifaID": "294"
+    },
+    {
+        "id": "GEYTAOJVGU======",
+        "sofifaID": "110955"
+    },
+    {
+        "id": "GQ3DC===",
+        "sofifaID": "461"
+    },
+    {
+        "id": "GE4DQMQ=",
+        "sofifaID": "1882"
+    },
+    {
+        "id": "GM2A====",
+        "sofifaID": "34"
+    },
+    {
+        "id": "GE4DOOI=",
+        "sofifaID": "1879"
+    },
+    {
+        "id": "GMYTK===",
+        "sofifaID": "315"
+    },
+    {
+        "id": "GEYTGMRRHE======",
+        "sofifaID": "113219"
+    },
+    {
+        "id": "GI3DA===",
+        "sofifaID": "260"
+    },
+    {
+        "id": "GEYTEMBZGM======",
+        "sofifaID": "112093"
+    },
+    {
+        "id": "GI2Q====",
+        "sofifaID": "25"
+    },
+    {
+        "id": "GY4TK===",
+        "sofifaID": "695"
+    },
+    {
+        "id": "GEYTCMRTHE======",
+        "sofifaID": "111239"
+    },
+    {
+        "id": "GEYTAMJUGQ======",
+        "sofifaID": "110144"
+    },
+    {
+        "id": "GEYTENBQHE======",
+        "sofifaID": "112409"
+    },
+    {
+        "id": "GEYTGMJWGA======",
+        "sofifaID": "113160"
+    },
+    {
+        "id": "GE2DOOA=",
+        "sofifaID": "1478"
+    },
+    {
+        "id": "GE4DAMY=",
+        "sofifaID": "1803"
+    },
+    {
+        "id": "GEYTANBYGI======",
+        "sofifaID": "110482"
+    },
+    {
+        "id": "GE4TS===",
+        "sofifaID": "199"
+    },
+    {
+        "id": "GEYTCMZXHE======",
+        "sofifaID": "111379"
+    },
+    {
+        "id": "GEYDCMBRGQ======",
+        "sofifaID": "101014"
+    },
+    {
+        "id": "GE4TKMI=",
+        "sofifaID": "1951"
+    },
+    {
+        "id": "GI2DG===",
+        "sofifaID": "243"
+    },
+    {
+        "id": "G44A====",
+        "sofifaID": "78"
+    },
+    {
+        "id": "G4YQ====",
+        "sofifaID": "71"
+    },
+    {
+        "id": "GE4DKMY=",
+        "sofifaID": "1853"
+    },
+    {
+        "id": "GYYDK===",
+        "sofifaID": "605"
+    },
+    {
+        "id": "GEYTEMRXGY======",
+        "sofifaID": "112276"
+    },
+    {
+        "id": "GEYTENRQGY======",
+        "sofifaID": "112606"
+    },
+    {
+        "id": "GM4A====",
+        "sofifaID": "38"
+    },
+    {
+        "id": "GEYTEMRVHE======",
+        "sofifaID": "112259"
+    },
+    {
+        "id": "GE4TA===",
+        "sofifaID": "190"
+    },
+    {
+        "id": "GEYDCMBSGY======",
+        "sofifaID": "101026"
+    },
+    {
+        "id": "G4YA====",
+        "sofifaID": "70"
+    },
+    {
+        "id": "GI2DM===",
+        "sofifaID": "246"
+    },
+    {
+        "id": "GY4TC===",
+        "sofifaID": "691"
+    },
+    {
+        "id": "GEYTANJQGI======",
+        "sofifaID": "110502"
+    },
+    {
+        "id": "GE4DGNY=",
+        "sofifaID": "1837"
+    },
+    {
+        "id": "GEYTAOJXGU======",
+        "sofifaID": "110975"
+    },
+    {
+        "id": "GEYDCMBVHE======",
+        "sofifaID": "101059"
+    },
+    {
+        "id": "GEYTCNJWGA======",
+        "sofifaID": "111560"
+    },
+    {
+        "id": "GE2DMMY=",
+        "sofifaID": "1463"
+    },
+    {
+        "id": "GEYTGMRSGI======",
+        "sofifaID": "113222"
+    },
+    {
+        "id": "GE4TGMA=",
+        "sofifaID": "1930"
+    },
+    {
+        "id": "GEYDCMBZG4======",
+        "sofifaID": "101097"
+    },
+    {
+        "id": "GE3Q====",
+        "sofifaID": "17"
+    },
+    {
+        "id": "GUYTO===",
+        "sofifaID": "517"
+    },
+    {
+        "id": "GIYTA===",
+        "sofifaID": "210"
+    },
+    {
+        "id": "G43Q====",
+        "sofifaID": "77"
+    },
+    {
+        "id": "GEYDGMQ=",
+        "sofifaID": "1032"
+    },
+    {
+        "id": "GEYDAMBYGE======",
+        "sofifaID": "100081"
+    },
+    {
+        "id": "GEYDIOA=",
+        "sofifaID": "1048"
+    },
+    {
+        "id": "GEYDAOBQGQ======",
+        "sofifaID": "100804"
+    },
+    {
+        "id": "GEYTCNZXGQ======",
+        "sofifaID": "111774"
+    },
+    {
+        "id": "GE4DI===",
+        "sofifaID": "184"
+    },
+    {
+        "id": "GE4DINA=",
+        "sofifaID": "1844"
+    },
+    {
+        "id": "GEYDCMBTGM======",
+        "sofifaID": "101033"
+    },
+    {
+        "id": "GEYDCMJSGE======",
+        "sofifaID": "101121"
+    },
+    {
+        "id": "GEYTAOBTGE======",
+        "sofifaID": "110831"
+    },
+    {
+        "id": "GEYDCMBYHA======",
+        "sofifaID": "101088"
+    },
+    {
+        "id": "GE2DKNQ=",
+        "sofifaID": "1456"
+    },
+    {
+        "id": "GE2TANBY",
+        "sofifaID": "15048"
+    },
+    {
+        "id": "HE======",
+        "sofifaID": "9"
+    },
+    {
+        "id": "GY4TO===",
+        "sofifaID": "697"
+    },
+    {
+        "id": "GE4TEOI=",
+        "sofifaID": "1929"
+    },
+    {
+        "id": "GE4DONY=",
+        "sofifaID": "1877"
+    },
+    {
+        "id": "GY4TI===",
+        "sofifaID": "694"
+    },
+    {
+        "id": "GU2TA===",
+        "sofifaID": "550"
+    },
+    {
+        "id": "GUYTQ===",
+        "sofifaID": "518"
+    },
+    {
+        "id": "GEYDCMJQGA======",
+        "sofifaID": "101100"
+    },
+    {
+        "id": "GE2TAMBV",
+        "sofifaID": "15005"
+    },
+    {
+        "id": "GQ2TG===",
+        "sofifaID": "453"
+    },
+    {
+        "id": "GQ3TO===",
+        "sofifaID": "477"
+    },
+    {
+        "id": "GEYTANJQGA======",
+        "sofifaID": "110500"
+    },
+    {
+        "id": "GEYTENBQHA======",
+        "sofifaID": "112408"
+    },
+    {
+        "id": "GEYTANZYGE======",
+        "sofifaID": "110781"
+    },
+    {
+        "id": "GE3TSNI=",
+        "sofifaID": "1795"
+    },
+    {
+        "id": "GY3TA===",
+        "sofifaID": "670"
+    },
+    {
+        "id": "GE4DAMQ=",
+        "sofifaID": "1802"
+    },
+    {
+        "id": "GEYDANZWGU======",
+        "sofifaID": "100765"
+    },
+    {
+        "id": "GE4DCOI=",
+        "sofifaID": "1819"
+    },
+    {
+        "id": "GIZTC===",
+        "sofifaID": "231"
+    },
+    {
+        "id": "GEYTGOBXGY======",
+        "sofifaID": "113876"
+    },
+    {
+        "id": "GE4DA===",
+        "sofifaID": "180"
+    },
+    {
+        "id": "GQZTG===",
+        "sofifaID": "433"
+    },
+    {
+        "id": "GEYTENJTGM======",
+        "sofifaID": "112533"
+    },
+    {
+        "id": "GI2DE===",
+        "sofifaID": "242"
+    },
+    {
+        "id": "GIYQ====",
+        "sofifaID": "21"
+    },
+    {
+        "id": "GEYTCNZWHE======",
+        "sofifaID": "111769"
+    },
+    {
+        "id": "GEYTENBSG4======",
+        "sofifaID": "112427"
+    },
+    {
+        "id": "GE3TSMY=",
+        "sofifaID": "1793"
+    },
+    {
+        "id": "G42A====",
+        "sofifaID": "74"
+    },
+    {
+        "id": "GE4DIMQ=",
+        "sofifaID": "1842"
+    },
+    {
+        "id": "GIYTO===",
+        "sofifaID": "217"
+    },
+    {
+        "id": "HA4TQ===",
+        "sofifaID": "898"
+    },
+    {
+        "id": "GEYTANBQGY======",
+        "sofifaID": "110406"
+    },
+    {
+        "id": "GEYTCOJXGQ======",
+        "sofifaID": "111974"
+    },
+    {
+        "id": "GY4DA===",
+        "sofifaID": "680"
+    },
+    {
+        "id": "GEYTEOJXGA======",
+        "sofifaID": "112970"
+    },
+    {
+        "id": "GI4TS===",
+        "sofifaID": "299"
+    },
+    {
+        "id": "GEYDCMBQG4======",
+        "sofifaID": "101007"
+    },
+    {
+        "id": "GU3TG===",
+        "sofifaID": "573"
+    },
+    {
+        "id": "GY4DO===",
+        "sofifaID": "687"
+    },
+    {
+        "id": "GE4TKNI=",
+        "sofifaID": "1955"
+    },
+    {
+        "id": "GEYTEMBRHE======",
+        "sofifaID": "112019"
+    },
+    {
+        "id": "GEZDO===",
+        "sofifaID": "127"
+    },
+    {
+        "id": "G4ZA====",
+        "sofifaID": "72"
+    },
+    {
+        "id": "GY4TM===",
+        "sofifaID": "696"
+    },
+    {
+        "id": "GEYTEOJZGY======",
+        "sofifaID": "112996"
+    },
+    {
+        "id": "GE4TENI=",
+        "sofifaID": "1925"
+    },
+    {
+        "id": "GE2TMOI=",
+        "sofifaID": "1569"
+    },
+    {
+        "id": "GEYTCNZRGU======",
+        "sofifaID": "111715"
+    },
+    {
+        "id": "GQ4TE===",
+        "sofifaID": "492"
+    },
+    {
+        "id": "GI4A====",
+        "sofifaID": "28"
+    },
+    {
+        "id": "GE4TINA=",
+        "sofifaID": "1944"
+    },
+    {
+        "id": "HEYTQ===",
+        "sofifaID": "918"
+    },
+    {
+        "id": "GEYDAMZS",
+        "sofifaID": "10032"
+    },
+    {
+        "id": "GMZQ====",
+        "sofifaID": "33"
+    },
+    {
+        "id": "GE======",
+        "sofifaID": "1"
+    },
+    {
+        "id": "GEYTENJSG4======",
+        "sofifaID": "112527"
+    },
+    {
+        "id": "GQZDE===",
+        "sofifaID": "422"
+    },
+    {
+        "id": "GE2DI===",
+        "sofifaID": "144"
+    },
+    {
+        "id": "GEYTANJYGA======",
+        "sofifaID": "110580"
+    },
+    {
+        "id": "HAYQ====",
+        "sofifaID": "81"
+    },
+    {
+        "id": "GEYTCMBZGE======",
+        "sofifaID": "111091"
+    },
+    {
+        "id": "HE2Q====",
+        "sofifaID": "95"
+    },
+    {
+        "id": "GE3DEOI=",
+        "sofifaID": "1629"
+    },
+    {
+        "id": "HA3TG===",
+        "sofifaID": "873"
+    },
+    {
+        "id": "GE4TCNI=",
+        "sofifaID": "1915"
+    },
+    {
+        "id": "GE4TENQ=",
+        "sofifaID": "1926"
+    },
+    {
+        "id": "GEYDCMJQGY======",
+        "sofifaID": "101106"
+    },
+    {
+        "id": "GQ3DE===",
+        "sofifaID": "462"
+    },
+    {
+        "id": "GEYTENBUGQ======",
+        "sofifaID": "112444"
+    },
+    {
+        "id": "GE2DQMA=",
+        "sofifaID": "1480"
+    },
+    {
+        "id": "G42DS===",
+        "sofifaID": "749"
+    },
+    {
+        "id": "G42DE===",
+        "sofifaID": "742"
+    },
+    {
+        "id": "GEYTEOBSHA======",
+        "sofifaID": "112828"
+    },
+    {
+        "id": "GMYDK===",
+        "sofifaID": "305"
+    },
+    {
+        "id": "GI4Q====",
+        "sofifaID": "29"
+    },
+    {
+        "id": "GEYTCMZUGA======",
+        "sofifaID": "111340"
+    },
+    {
+        "id": "GMYQ====",
+        "sofifaID": "31"
+    },
+    {
+        "id": "G42DC===",
+        "sofifaID": "741"
+    },
+    {
+        "id": "GE4TOMA=",
+        "sofifaID": "1970"
+    },
+    {
+        "id": "HEYTS===",
+        "sofifaID": "919"
+    },
+    {
+        "id": "GE4TCNY=",
+        "sofifaID": "1917"
+    },
+    {
+        "id": "GEYTAMJUGU======",
+        "sofifaID": "110145"
+    },
+    {
+        "id": "GIZDI===",
+        "sofifaID": "224"
+    },
+    {
+        "id": "GE4DIMY=",
+        "sofifaID": "1843"
+    },
+    {
+        "id": "G4======",
+        "sofifaID": "7"
+    },
+    {
+        "id": "GQ3Q====",
+        "sofifaID": "47"
+    },
+    {
+        "id": "GEYTCNRVG4======",
+        "sofifaID": "111657"
+    },
+    {
+        "id": "GE2DINY=",
+        "sofifaID": "1447"
+    },
+    {
+        "id": "GEYTEMJWHA======",
+        "sofifaID": "112168"
+    },
+    {
+        "id": "GEYTCNZRGM======",
+        "sofifaID": "111713"
+    },
+    {
+        "id": "GEYTEMJZHE======",
+        "sofifaID": "112199"
+    },
+    {
+        "id": "GEYTCMZTHE======",
+        "sofifaID": "111339"
+    },
+    {
+        "id": "GEYDCMBUG4======",
+        "sofifaID": "101047"
+    },
+    {
+        "id": "GEYTEMBXGU======",
+        "sofifaID": "112075"
+    },
+    {
+        "id": "GEYTAOJRGI======",
+        "sofifaID": "110912"
+    },
+    {
+        "id": "GEYDCMBYGQ======",
+        "sofifaID": "101084"
+    },
+    {
+        "id": "GE3TKMA=",
+        "sofifaID": "1750"
+    },
+    {
+        "id": "GM======",
+        "sofifaID": "3"
+    },
+    {
+        "id": "GEYDANRVGE======",
+        "sofifaID": "100651"
+    },
+    {
+        "id": "GU2Q====",
+        "sofifaID": "55"
+    },
+    {
+        "id": "G43A====",
+        "sofifaID": "76"
+    },
+    {
+        "id": "GEYTANJVGY======",
+        "sofifaID": "110556"
+    },
+    {
+        "id": "GIYDKNI=",
+        "sofifaID": "2055"
+    },
+    {
+        "id": "GE4TEOA=",
+        "sofifaID": "1928"
+    },
+    {
+        "id": "GEYTCMRXGM======",
+        "sofifaID": "111273"
+    },
+    {
+        "id": "HA3A====",
+        "sofifaID": "86"
+    },
+    {
+        "id": "GEYTAOBTHE======",
+        "sofifaID": "110839"
+    },
+    {
+        "id": "GQ2DQ===",
+        "sofifaID": "448"
+    },
+    {
+        "id": "GE4DANY=",
+        "sofifaID": "1807"
+    },
+    {
+        "id": "GEYTAMBZGM======",
+        "sofifaID": "110093"
+    },
+    {
+        "id": "GI======",
+        "sofifaID": "2"
+    },
+    {
+        "id": "GI4DA===",
+        "sofifaID": "280"
+    },
+    {
+        "id": "GEYTAOJRGE======",
+        "sofifaID": "110911"
+    },
+    {
+        "id": "GIYDA===",
+        "sofifaID": "200"
+    },
+    {
+        "id": "GE3TSNA=",
+        "sofifaID": "1794"
+    },
+    {
+        "id": "GEYTGOJUHA======",
+        "sofifaID": "113948"
+    },
+    {
+        "id": "GE4TAMY=",
+        "sofifaID": "1903"
+    },
+    {
+        "id": "GEYTCMJTHA======",
+        "sofifaID": "111138"
+    },
+    {
+        "id": "GEYTCOBSGE======",
+        "sofifaID": "111821"
+    },
+    {
+        "id": "GE4TE===",
+        "sofifaID": "192"
+    },
+    {
+        "id": "GEYDCMJUGQ======",
+        "sofifaID": "101144"
+    },
+    {
+        "id": "GE4DMMI=",
+        "sofifaID": "1861"
+    },
+    {
+        "id": "GE4TANY=",
+        "sofifaID": "1907"
+    },
+    {
+        "id": "GEYTEMZZGI======",
+        "sofifaID": "112392"
+    },
+    {
+        "id": "GE4DAMA=",
+        "sofifaID": "1800"
+    },
+    {
+        "id": "GEYTAMJZG4======",
+        "sofifaID": "110197"
+    },
+    {
+        "id": "GEYTCNZQGU======",
+        "sofifaID": "111705"
+    },
+    {
+        "id": "GE3TQNQ=",
+        "sofifaID": "1786"
+    },
+    {
+        "id": "GMZA====",
+        "sofifaID": "32"
+    },
+    {
+        "id": "GEYTAMJXHA======",
+        "sofifaID": "110178"
+    },
+    {
+        "id": "GEYTCMBTGU======",
+        "sofifaID": "111035"
+    },
+    {
+        "id": "HAZDA===",
+        "sofifaID": "820"
+    },
+    {
+        "id": "GEYTCNJYHA======",
+        "sofifaID": "111588"
+    },
+    {
+        "id": "GI3TQ===",
+        "sofifaID": "278"
+    },
+    {
+        "id": "GE4DINY=",
+        "sofifaID": "1847"
+    },
+    {
+        "id": "GI3DS===",
+        "sofifaID": "269"
+    },
+    {
+        "id": "G42TG===",
+        "sofifaID": "753"
+    },
+    {
+        "id": "GEYTENJXHE======",
+        "sofifaID": "112579"
+    },
+    {
+        "id": "GEYTANZXGA======",
+        "sofifaID": "110770"
+    },
+    {
+        "id": "GE3DA===",
+        "sofifaID": "160"
+    },
+    {
+        "id": "GUZA====",
+        "sofifaID": "52"
+    },
+    {
+        "id": "GEYDAOBTGE======",
+        "sofifaID": "100831"
+    },
+    {
+        "id": "GEYTCNZRGQ======",
+        "sofifaID": "111714"
+    },
+    {
+        "id": "G4YDE===",
+        "sofifaID": "702"
+    },
+    {
+        "id": "GE2DS===",
+        "sofifaID": "149"
+    },
+    {
+        "id": "GIZA====",
+        "sofifaID": "22"
+    },
+    {
+        "id": "GEYTCMZZHA======",
+        "sofifaID": "111398"
+    },
+    {
+        "id": "GEYTANZQGA======",
+        "sofifaID": "110700"
+    },
+    {
+        "id": "GY4DQ===",
+        "sofifaID": "688"
+    },
+    {
+        "id": "GQ4DA===",
+        "sofifaID": "480"
+    },
+    {
+        "id": "GE3TSMQ=",
+        "sofifaID": "1792"
+    },
+    {
+        "id": "GEYTEMZZGE======",
+        "sofifaID": "112391"
+    },
+    {
+        "id": "GU3DG===",
+        "sofifaID": "563"
+    },
+    {
+        "id": "GE2DGOA=",
+        "sofifaID": "1438"
+    },
+    {
+        "id": "GE4TCMY=",
+        "sofifaID": "1913"
+    },
+    {
+        "id": "GIZTA===",
+        "sofifaID": "230"
+    },
+    {
+        "id": "GE4TGNA=",
+        "sofifaID": "1934"
+    },
+    {
+        "id": "GU3DC===",
+        "sofifaID": "561"
+    },
+    {
+        "id": "GIZTO===",
+        "sofifaID": "237"
+    },
+    {
+        "id": "GEYTGMJWGE======",
+        "sofifaID": "113161"
+    },
+    {
+        "id": "GE4TKOI=",
+        "sofifaID": "1959"
+    },
+    {
+        "id": "GUYDG===",
+        "sofifaID": "503"
+    },
+    {
+        "id": "GIYDCMY=",
+        "sofifaID": "2013"
+    },
+    {
+        "id": "GEZDC===",
+        "sofifaID": "121"
+    },
+    {
+        "id": "GE4DMNY=",
+        "sofifaID": "1867"
+    },
+    {
+        "id": "GE2TSOA=",
+        "sofifaID": "1598"
+    },
+    {
+        "id": "GEYTENJTG4======",
+        "sofifaID": "112537"
+    },
+    {
+        "id": "GQ2A====",
+        "sofifaID": "44"
+    },
+    {
+        "id": "GEYDCMBZHE======",
+        "sofifaID": "101099"
+    },
+    {
+        "id": "GYYDO===",
+        "sofifaID": "607"
+    },
+    {
+        "id": "GEYTEMRSGQ======",
+        "sofifaID": "112224"
+    },
+    {
+        "id": "GEYTENJSHA======",
+        "sofifaID": "112528"
+    },
+    {
+        "id": "GIZTM===",
+        "sofifaID": "236"
+    },
+    {
+        "id": "GEYTEMBSGY======",
+        "sofifaID": "112026"
+    },
+    {
+        "id": "GEYTEMJTGQ======",
+        "sofifaID": "112134"
+    },
+    {
+        "id": "GIYTE===",
+        "sofifaID": "212"
+    },
+    {
+        "id": "GQ3DQ===",
+        "sofifaID": "468"
+    },
+    {
+        "id": "GE4DOMY=",
+        "sofifaID": "1873"
+    },
+    {
+        "id": "GEYTAOJYGA======",
+        "sofifaID": "110980"
+    },
+    {
+        "id": "G4YDK===",
+        "sofifaID": "705"
+    },
+    {
+        "id": "GUYA====",
+        "sofifaID": "50"
+    },
+    {
+        "id": "GE4TMOA=",
+        "sofifaID": "1968"
+    },
+    {
+        "id": "HAZDE===",
+        "sofifaID": "822"
+    },
+    {
+        "id": "GE4TANA=",
+        "sofifaID": "1904"
+    },
+    {
+        "id": "GY4TQ===",
+        "sofifaID": "698"
+    },
+    {
+        "id": "GE4DANQ=",
+        "sofifaID": "1806"
+    },
+    {
+        "id": "GYYTI===",
+        "sofifaID": "614"
+    },
+    {
+        "id": "GE4TIOI=",
+        "sofifaID": "1949"
+    },
+    {
+        "id": "GEYTEOJQGM======",
+        "sofifaID": "112903"
+    },
+    {
+        "id": "GEYTANBWHA======",
+        "sofifaID": "110468"
+    },
+    {
+        "id": "GE4TANQ=",
+        "sofifaID": "1906"
+    },
+    {
+        "id": "GYZTI===",
+        "sofifaID": "634"
+    },
+    {
+        "id": "GEZQ====",
+        "sofifaID": "13"
+    },
+    {
+        "id": "GE4TGOA=",
+        "sofifaID": "1938"
+    },
+    {
+        "id": "GEYTCMZSG4======",
+        "sofifaID": "111327"
+    },
+    {
+        "id": "GI3DM===",
+        "sofifaID": "266"
+    },
+    {
+        "id": "GU======",
+        "sofifaID": "5"
+    },
+    {
+        "id": "GQZDG===",
+        "sofifaID": "423"
+    },
+    {
+        "id": "GIZDS===",
+        "sofifaID": "229"
+    },
+    {
+        "id": "GE3TSMA=",
+        "sofifaID": "1790"
+    },
+    {
+        "id": "GE4TCOI=",
+        "sofifaID": "1919"
+    },
+    {
+        "id": "GE3DO===",
+        "sofifaID": "167"
+    },
+    {
+        "id": "GY3TI===",
+        "sofifaID": "674"
+    },
+    {
+        "id": "GI2DI===",
+        "sofifaID": "244"
+    },
+    {
+        "id": "GEYTCMJUGQ======",
+        "sofifaID": "111144"
+    },
+    {
+        "id": "GEYTENRXGA======",
+        "sofifaID": "112670"
+    },
+    {
+        "id": "GEYTEMJTHE======",
+        "sofifaID": "112139"
+    },
+    {
+        "id": "GU2A====",
+        "sofifaID": "54"
+    },
+    {
+        "id": "GEYDCMJUG4======",
+        "sofifaID": "101147"
+    },
+    {
+        "id": "GU3TM===",
+        "sofifaID": "576"
+    },
+    {
+        "id": "GE4DQMA=",
+        "sofifaID": "1880"
+    },
+    {
+        "id": "GI4TQ===",
+        "sofifaID": "298"
+    },
+    {
+        "id": "GI3TC===",
+        "sofifaID": "271"
+    },
+    {
+        "id": "GU4Q====",
+        "sofifaID": "59"
+    },
+    {
+        "id": "HAZQ====",
+        "sofifaID": "83"
+    },
+    {
+        "id": "GEYTEMJXGI======",
+        "sofifaID": "112172"
+    },
+    {
+        "id": "GEYTCOBTHE======",
+        "sofifaID": "111839"
+    },
+    {
+        "id": "GQ3DS===",
+        "sofifaID": "469"
+    },
+    {
+        "id": "GE4TOMI=",
+        "sofifaID": "1971"
+    },
+    {
+        "id": "GIYDK===",
+        "sofifaID": "205"
+    },
+    {
+        "id": "GE3TCOI=",
+        "sofifaID": "1719"
+    },
+    {
+        "id": "GEYTCNZSGQ======",
+        "sofifaID": "111724"
+    },
+    {
+        "id": "GE4DCNQ=",
+        "sofifaID": "1816"
+    },
+    {
+        "id": "GQ2DK===",
+        "sofifaID": "445"
+    },
+    {
+        "id": "GM3DC===",
+        "sofifaID": "361"
+    },
+    {
+        "id": "GE4DEMY=",
+        "sofifaID": "1823"
+    },
+    {
+        "id": "GE4TIMY=",
+        "sofifaID": "1943"
+    },
+    {
+        "id": "GEYTCNZWGY======",
+        "sofifaID": "111766"
+    },
+    {
+        "id": "GE2DONA=",
+        "sofifaID": "1474"
+    },
+    {
+        "id": "GIZQ====",
+        "sofifaID": "23"
+    },
+    {
+        "id": "GE4DGMI=",
+        "sofifaID": "1831"
+    },
+    {
+        "id": "HEZDE===",
+        "sofifaID": "922"
+    },
+    {
+        "id": "GE3TQNI=",
+        "sofifaID": "1785"
+    },
+    {
+        "id": "HEYTO===",
+        "sofifaID": "917"
+    },
+    {
+        "id": "GEYTAMZXGM======",
+        "sofifaID": "110373"
+    },
+    {
+        "id": "GM2TO===",
+        "sofifaID": "357"
+    },
+    {
+        "id": "GE3TE===",
+        "sofifaID": "172"
+    },
+    {
+        "id": "GEYTENJTGQ======",
+        "sofifaID": "112534"
+    },
+    {
+        "id": "HA4TM===",
+        "sofifaID": "896"
+    },
+    {
+        "id": "GEYTCOBSGI======",
+        "sofifaID": "111822"
+    },
+    {
+        "id": "GEYA====",
+        "sofifaID": "10"
+    },
+    {
+        "id": "GEYTAMJUG4======",
+        "sofifaID": "110147"
+    },
+    {
+        "id": "G4YTA===",
+        "sofifaID": "710"
+    },
+    {
+        "id": "GE2DINQ=",
+        "sofifaID": "1446"
+    },
+    {
+        "id": "GEYTANJYGE======",
+        "sofifaID": "110581"
+    }
+]
