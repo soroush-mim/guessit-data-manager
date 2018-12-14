@@ -4748,3 +4748,21 @@
 
 ### 13:54:04 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=5640 
 
+### 13:54:06 - INFO     : 1.204s - downloding page source ... https://sofifa.com/players?offset=9840 
+
+### 13:54:08 - INFO     : 1.260s - downloding page source ... https://sofifa.com/players?offset=14340 
+
+### 13:54:09 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=5520 
+
+### 13:54:10 - INFO     : 0.002s - reading page source from file ... https://sofifa.com/players?offset=540 
+
+### 13:54:10 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=2760 
+
+### 13:54:11 - INFO     : 0.003s - reading page source from file ... https://sofifa.com/players?offset=5220 
+
+### 13:54:12 - INFO     : 0.001s - reading page source from file ... https://sofifa.com/players?offset=5040 
+
+### 13:54:33 - ERROR    : HTTPSConnectionPool(host='sofifa.com', port=443): Max retries exceeded with url: /players?offset=8460 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f859ae43be0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)) 
+
+### 13:54:33 - INFO     : could not get the page. trying again for 0th time... 
+
