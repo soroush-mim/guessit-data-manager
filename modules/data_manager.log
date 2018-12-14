@@ -172,3 +172,13 @@
 
 ### 11:48:20 - INFO     : 0.004s - reading page source from file ... https://sofifa.com/teams?offset=0 
 
+### 11:48:22 - INFO     : 1.099s - downloding page source ... https://sofifa.com/teams?offset=2640 
+
+### 11:48:24 - INFO     : 1.201s - downloding page source ... https://sofifa.com/teams?offset=4860 
+
+### 11:48:25 - INFO     : 1.068s - downloding page source ... https://sofifa.com/teams?offset=4080 
+
+### 11:48:27 - INFO     : 1.113s - downloding page source ... https://sofifa.com/teams?offset=1020 
+
+### 11:48:28 - INFO     : 1.111s - downloding page source ... https://sofifa.com/teams?offset=5340 
+
