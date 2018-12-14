@@ -107,7 +107,6 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 	return checked_id, pages, checked_pages
 
 
-
 def waitToConnect(timeout=10, delay=2):
 	connected = False
 	while not connected:
@@ -158,8 +157,7 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-
-def make_soup(url, local_save=True):
+def make_soup(url, local_save=إشمسث):
 	start_time = time.time()
 
 	#url = re.sub('#.*?', '', url)
