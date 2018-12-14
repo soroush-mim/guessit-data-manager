@@ -1054,4 +1054,4 @@ def collect_director_id_from_imdb(pages, data_count=10, timeout=10**3, checked_i
 
 
 if __name__ == '__main__':
-	print(collect_footballPlayer_id_from_sofifa([f'https://sofifa.com/players?offset={i}' for i in range(0, 600, 60)]))
+	print(collect_footballPlayer_id_from_sofifa([f'https://sofifa.com/players?offset={i}' for i in range(0, 6000, 60)]))
