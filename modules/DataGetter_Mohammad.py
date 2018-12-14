@@ -984,8 +984,8 @@ def collect_footballTeam_id_from_sofifa(pages, data_count=700, timeout=10 ** 3, 
 	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/team/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages, recursive=False)
 
 
-def collect_footballPlayer_id_from_sofifa(pages, data_count=10, timeout=10**3 , checked_id=[], checked_pages=[]):
-	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/player/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages)
+def collect_footballPlayer_id_from_sofifa(pages, data_count=15000, timeout=10**3 , checked_id=[], checked_pages=[]):
+	return collect_data_id_from_resource(pages, 'https://sofifa.com', '/player/([^/]*).*?', data_count=data_count, timeout=timeout, checked_id=checked_id, checked_pages=checked_pages, recursive=False)
 
 
 def collect_author_id_from_goodreads(pages, data_count=10, timeout=10**3 , checked_id=[], checked_pages=[]):
