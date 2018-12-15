@@ -34,8 +34,8 @@ memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 
 cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
 cpuuse	  	= lambda : psutil.cpu_percent()
 memuse	  	= lambda : psutil.virtual_memory()[2]
-logMemory   = lambda : print()#logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
-logCpu	  	= lambda : print()#logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
+logMemory   = lambda : logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
+logCpu	  	= lambda : logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
 
 
 def download_db_link(url):
@@ -534,14 +534,14 @@ if __name__ == '__main__':
 
 	#sleep(100)
 
-	#for data4set in datasets: init_db(dataset)
+	#for dataset in datasets: init_db(dataset)
 
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
-	for dataset in ['footballTeam', 'footballPlayer']:
+	for dataset in ['footballPlayer']:
 		init_db(dataset)
-		find_db(dataset, max_find_all=20)
+		find_db(dataset)
 		update_db(dataset)
 
 #test_getter('footballTeam', 'sofifa')
