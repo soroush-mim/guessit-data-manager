@@ -534,7 +534,7 @@ if __name__ == '__main__':
 
 	#sleep(100)
 
-	#for dataset in datasets: init_db(dataset)
+	#for data4set in datasets: init_db(dataset)
 
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
