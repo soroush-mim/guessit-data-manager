@@ -34,8 +34,8 @@ memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 
 cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
 cpuuse	  	= lambda : psutil.cpu_percent()
 memuse	  	= lambda : psutil.virtual_memory()[2]
-logMemory   = lambda : logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
-logCpu	  	= lambda : logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
+logMemory   = lambda : print()#logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
+logCpu	  	= lambda : print()#logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
 
 
 def download_db_link(url):
