@@ -534,14 +534,14 @@ if __name__ == '__main__':
 
 	#sleep(100)
 
-	#for data4set in datasets: init_db(dataset)
+	#for dataset in datasets: init_db(dataset)
 
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
-	for dataset in ['footballTeam', 'footballPlayer']:
+	for dataset in ['footballPlayer']:
 		init_db(dataset)
-		find_db(dataset, max_find_all=20)
+		find_db(dataset)
 		update_db(dataset)
 
 #test_getter('footballTeam', 'sofifa')
