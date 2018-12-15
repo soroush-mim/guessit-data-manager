@@ -539,9 +539,9 @@ if __name__ == '__main__':
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
-	for dataset in ['footballTeam', 'footballPlayer']:
-		#init_db(dataset)
-		#find_db(dataset)
+	for dataset in ['footballPlayer']:
+		init_db(dataset)
+		find_db(dataset)
 		update_db(dataset)
 
 #test_getter('footballTeam', 'sofifa')
