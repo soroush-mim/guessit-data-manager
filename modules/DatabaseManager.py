@@ -540,8 +540,8 @@ if __name__ == '__main__':
 
 
 	for dataset in ['footballTeam', 'footballPlayer']:
-		#init_db(dataset)
-		#find_db(dataset)
+		init_db(dataset)
+		find_db(dataset, max_find_all=20)
 		update_db(dataset)
 
 #test_getter('footballTeam', 'sofifa')
