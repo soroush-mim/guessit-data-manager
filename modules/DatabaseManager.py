@@ -539,21 +539,9 @@ if __name__ == '__main__':
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
-<<<<<<< HEAD
 	for dataset in ['footballTeam', 'footballPlayer']:
 		init_db(dataset)
 		find_db(dataset, max_find_all=20)
-=======
-<<<<<<< HEAD
-	for dataset in ['footballPlayer']:
-		init_db(dataset)
-		find_db(dataset)
-=======
-	for dataset in ['footballTeam', 'footballPlayer']:
-		init_db(dataset)
-		find_db(dataset, max_find_all=20)
->>>>>>> 68570f6ce1bbd51f87100e1d9c4db86e4749ed9b
->>>>>>> 858f2e680e2a8ccbb0b23bbf2c6185f5758ce712
 		update_db(dataset)
 
 #test_getter('footballTeam', 'sofifa')
