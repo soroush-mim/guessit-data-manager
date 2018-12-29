@@ -369,7 +369,6 @@ def load_modules():
 			globals()[module] = getattr(module_file, module)
 
 
-
 def check_get_function(data_name, resource, page_link):
 	page = make_soup(page_link)
 
