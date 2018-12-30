@@ -1,4 +1,3 @@
-from pymongo import MongoClient
 import gzip
 import shutil
 import requests
