@@ -24,7 +24,7 @@ from tools import *
 
 sftp = None
 
-
+۲
 def Clear_duplicate_name(array):
     for i in range(len(array)):
         for j in range(i+1,len(array)):
