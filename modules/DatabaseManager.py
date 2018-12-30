@@ -257,8 +257,8 @@ def update_db(db_name, begin=0, end=None, timeout=10**4):
 
 		for i in range(begin, end, updating_step):
 
-			logMemory()
-			logCpu()
+			Monitoring.logMemory()
+			Monitoring.logCpu()
 			logger.critical(f'Updating {db_name} dataset from {i} to {i + updating_step} ...')
 
 			old_data = get_expired_data(db, begin=i, end=min(i + updating_step, end))
