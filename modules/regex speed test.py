@@ -1,3 +1,3 @@
 import re
 
-re.search()
+re.search(r"\\b(sub)([^ ]*)", )
