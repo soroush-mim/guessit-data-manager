@@ -981,8 +981,6 @@ def get_anime_data_from_myanimelist(attribute, page):
 		return page.find('img', {'itemprop': 'image'})['src']
 
 
-
-
 def get_word_data_from_merriam(attribute, page):
 	if attribute == 'word_list':
 		page = make_soup(page)
@@ -1015,7 +1013,6 @@ def get_word_data_from_merriam(attribute, page):
 		return [tag.text for tag in page.find('div', {'class' : 'card-primary-content def-text'}).find_all('p', {'class' : 'definition-inner-item'})]
 
 	return
-
 
 
 def get_volleyballTeam_data_from_volleyballWorld(attribute, page):
@@ -1167,7 +1164,6 @@ def get_celebrity_data_from_theFamousPeople(attribute, page):
 	return
 
 
-
 def get_musicArtist_data_from_discogs(attribute, page):
 	if attribute == 'musicArtist_list':
 		page = make_soup(page)
@@ -1193,7 +1189,6 @@ def get_musicArtist_data_from_discogs(attribute, page):
 
 
 	return
-
 
 
 def collect_data_id_from_resource(pages, base, pattern, timeout=10**3, debug=False):
@@ -1242,15 +1237,12 @@ def collect_volleyballTeam_id_from_volleyballWorld(pages, timeout=10**3):
 	return collect_data_id_from_resource(pages, 'https://volleyball.world', '/en/men/teams/(.*)', timeout) 
 
 
-
 def collect_word_id_from_merriam(pages, timeout=10**3):
 	return collect_data_id_from_resource(pages, 'https://www.merriam-webster.com', '/dictionary/(.*)', timeout) 
 
 
-
 def collect_celebrity_id_from_theFamousPeople(pages, timeout=10**3):
 	return collect_data_id_from_resource(pages, 'https://www.thefamouspeople.com', '/profiles/(.*).php', timeout) 
-
 
 
 def collect_musicArtist_id_from_discogs(pages, timeout=10**3):
