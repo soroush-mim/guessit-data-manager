@@ -1,3 +1,4 @@
+from pymongo import MongoClient
 import gzip
 import shutil
 import requests
@@ -22,11 +23,9 @@ import pysftp
 import time
 import math
 
-
 from tools import *
 
-from DataGetter_Mohammad import *
-from DataGetter_Farhan import *
+from DataGetters import *
 
 
 class Monitoring:
