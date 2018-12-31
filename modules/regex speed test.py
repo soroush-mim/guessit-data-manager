@@ -1,3 +1,3 @@
 import re
 
-re.search(r"\\b(sub)([^ ]*)", )
+ans = re.search(r"\\b(sub)([^ ]*)", "this subject has a submarine as a subsequence" * 10)
