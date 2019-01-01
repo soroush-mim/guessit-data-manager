@@ -30,7 +30,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.INFO,
 					handlers=[
-						logging.FileHandler(f'{project_dir}/data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
+						logging.FileHandler(f'{project_dir}/guessit_data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
@@ -209,7 +209,7 @@ def get_page(url, try_count=10, delay=0, **args):
 			time.sleep(delay)
 
 	if not content:
-		if logger: logging.error(f'could not get the page at last!')
+		if logger: logging.error(f'could not get the page at last after {try_count} times of trying!')
 
 	return content
 
