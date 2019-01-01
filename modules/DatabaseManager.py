@@ -298,7 +298,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 			datas = [data[data_id_name] for data in db if data_id_name in data]
 
-			resource_links = get_page_link(resource, f'{db_name}_list')
+			resource_links = get_page_link(resource, db_name, f'{db_name}_list')
 
 			logger.critical(f"resource links : {resource_links if len(resource_links) < 3 else str(resource_links[:3]) + '...'} ")
 
