@@ -535,7 +535,7 @@ resources	=   {
 			}
 
 
-project_dir			= '/home/flc/'
+project_dir			= '/home/flc/guessit/guessit_data_manager/'
 dataset_dir			= f'{project_dir}/data_manager/modules/datasets'
 process_count	   	= 4
 updating_step	   	= 10
