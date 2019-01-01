@@ -424,7 +424,7 @@ def download_resources(resource, db_name):
 				if url not in page_queue:
 					page_queue += [urllib.parse.urljoin(base, url)]
 					print(url)
-					if len(page_queue) > 10:
+					if len(page_queue) > 100:
 						return page_queue
 
 	
