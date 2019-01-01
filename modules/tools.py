@@ -204,7 +204,7 @@ def get_page(url, try_count=10, delay=0, **args):
 			content = requests.get(url, proxies=proxies[i % len(proxies)], **args).text
 			break
 		except Exception as error :
-			if logger: logging.error(f'{error}')
+			if logger: logging.error(f'{url} : {error}')
 			if logger: logging.info(f'could not get the page. trying again for {i}th time...')
 			time.sleep(delay)
 
