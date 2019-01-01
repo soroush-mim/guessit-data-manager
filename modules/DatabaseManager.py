@@ -416,7 +416,10 @@ def download_resources(db_name):
 	
 	for resource in get_resources(db_name):
 		page_queue = get_page_link(resource, db_name, f'{db_name}_list')
-		
+		for i, page in enumerate(page_queue):
+			for pattern in patterns:
+				if page.find('a', {'href': re.compile(pattern)})['href']:
+					
 
 
 resources	=   {
