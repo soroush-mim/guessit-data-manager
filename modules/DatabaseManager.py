@@ -413,6 +413,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 import urllib.parse
 def download_resources(resource, db_name):
+	base = 'https://'
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list')
 	for _, page in enumerate(page_queue):
 		page_queue.remove(page)
