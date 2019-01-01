@@ -476,20 +476,24 @@ resources	=   {
 					}
 				},
 				'myanimelist': {
-					'anime': 'https://www.myanimelist.net/anime/{data_id}'
-					,
-					'anime_list': [f'https://myanimelist.net/topanime.php?limit={i}' for i in range(0, 20000, 50)]
+					'anime': {
+						'anime': 'https://www.myanimelist.net/anime/{data_id}'
+						,
+						'anime_list': [f'https://myanimelist.net/topanime.php?limit={i}' for i in range(0, 20000, 50)]
+					}
 				},
 				'discogs': {
-					#'song': ''
-					#,
-					#'song_list': []
-					#,
-					'musicArtist': 'https://www.discogs.com/artist/{data_id}'
+					'song': {
+						#'song': ''
+						#,
+						#'song_list': []
+					}
 					,
-					'musicArtist_list': [f'https://www.discogs.com/search/?sort=want%2Cdesc&type=artist&page={i}' for i in range(1, 200)]
-					,
-
+					'song': {
+						'musicArtist': 'https://www.discogs.com/artist/{data_id}'
+						,
+						'musicArtist_list': [f'https://www.discogs.com/search/?sort=want%2Cdesc&type=artist&page={i}' for i in range(1, 200)]
+					}
 				},
 				'merriam' :{
 					'word' : 'https://www.merriam-webster.com/dictionary/{data_id}'
