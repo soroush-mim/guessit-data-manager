@@ -414,20 +414,26 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 resources	=   {
 				'imdb': {
-					'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+					'movie': {
+						'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+						,
+						'movie': 'https://www.imdb.com/title/{data_id}'
+					}
 					,
-					'movie': 'https://www.imdb.com/title/{data_id}'
-					,
-					'actor_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+					'actor': {
+						'actor_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+						,
+						'actor': 'https://www.imdb.com/name/{data_id}'
+					}
 					,
-					'actor': 'https://www.imdb.com/name/{data_id}'
-					,
-					'director_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+					'director': {
+						'director_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 										+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-					,
-					'director': 'https://www.imdb.com/name/{data_id}'
+						,
+						'director': 'https://www.imdb.com/name/{data_id}'
+					}
 				},
 				'sofifa': {
 					'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
