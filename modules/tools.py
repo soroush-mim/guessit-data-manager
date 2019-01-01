@@ -23,7 +23,7 @@ import pysftp
 import time
 
 
-project_dir 		= '/root/guessit'
+project_dir 		= '/home/flc/guessit'
 download_page_dir 	= f'{project_dir}/download/page'
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
