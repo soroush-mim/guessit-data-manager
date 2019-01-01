@@ -417,7 +417,7 @@ def download_resources(resource, db_name):
 	for _, page in enumerate(page_queue):
 		page_queue.remove(page)
 		souped_page = make_soup(page)
-		patterns = ['https://www.imdb.com/title/{data_id}']
+		patterns = ['https://www.imdb.com/title/']
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
 				if url not in page_queue:
