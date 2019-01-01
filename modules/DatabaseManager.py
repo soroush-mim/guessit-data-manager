@@ -469,9 +469,11 @@ resources	=   {
 					}
 				},
 				'biography': {
-					'people': 'https://www.biography.com/people/{data_id}'
-					,
-					'people_list': ['https://www.biography.com/people']
+					'people': {
+						'people': 'https://www.biography.com/people/{data_id}'
+						,
+						'people_list': ['https://www.biography.com/people']
+					}
 				},
 				'myanimelist': {
 					'anime': 'https://www.myanimelist.net/anime/{data_id}'
