@@ -355,7 +355,6 @@ def init_db(db_name):
 def save_pages(url, patterns):
 	return
 
-
 # does not work yet
 def load_modules():
 	names = ['Amirabbas', 'Kiarash', 'Mohammad']
@@ -411,6 +410,13 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	}
 
 	return test_result
+
+
+def download_resources(db_name):
+	
+	for resource in get_resources(db_name):
+		page_queue = get_page_link(resource, db_name, f'{db_name}_list')
+		
 
 
 resources	=   {
