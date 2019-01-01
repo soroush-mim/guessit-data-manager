@@ -161,8 +161,9 @@ def get_resources(data_name):
 	return [resource for resource in resources.keys() if data_name in resources[resource]]
 
 
-def get_page_link(resource, data_name):
-	return resources[resource][data_name]
+def get_page_link(resource, data_name, attribute=None):
+	attribute = data_name if attribute is None else attribute
+	return resources[resource][data_name][attribute]
 
 
 def load_db(db_name):
@@ -509,12 +510,13 @@ resources	=   {
 						'volleyballTeam_list': ['http://www.volleyball.world/en/men/teams']
 					}
 				},
-				'theFamousPeople':{
-					'celebrity': 'https://www.thefamouspeople.com/profiles/{data_id}.php'
-					,
-					'celebrity_list' :list(itertools.chain.from_iterable([[f'https://www.thefamouspeople.com/{type}.php?page={i}' for i in range(1,10)] for type in ["singers"]]))
+				'theFamousPeople': {
+					'celebrity': {
+						'celebrity': 'https://www.thefamouspeople.com/profiles/{data_id}.php'
+						,
+						'celebrity_list' :list(itertools.chain.from_iterable([[f'https://www.thefamouspeople.com/{type}.php?page={i}' for i in range(1,10)] for type in ["singers"]]))
+					}
 				}
-
 			}
 
 
