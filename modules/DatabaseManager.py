@@ -412,20 +412,18 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
-def download_resources(db_name):
-	
-	for resource in get_resources(db_name):
-		page_queue = get_page_link(resource, db_name, f'{db_name}_list')
-		for _, page in enumerate(page_queue):
-			page_queue.remove(page)
-			souped_page = make_soup(page)
-			patterns = ['https://www.imdb.com/title/{data_id}']
-			for pattern in patterns:
-				for url in souped_page.find('a', {'href': re.compile(pattern)})['href']:
-					if url not in page_queue:
-						page_queue += [url]
-						if len(page_queue) > 10:
-							return page_queue
+def download_resources(resource, db_name):
+	page_queue = get_page_link(resource, db_name, f'{db_name}_list')
+	for _, page in enumerate(page_queue):
+		page_queue.remove(page)
+		souped_page = make_soup(page)
+		patterns = ['https://www.imdb.com/title/{data_id}']
+		for pattern in patterns:
+			for url in souped_page.find('a', {'href': re.compile(pattern)})['href']:
+				if url not in page_queue:
+					page_queue += [url]
+					if len(page_queue) > 10:
+						return page_queue
 	
 	
 
@@ -580,9 +578,10 @@ if __name__ == '__main__':
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
-	for dataset in ['footballPlayer']:
+	for dataset in []:
 		init_db(dataset)
 		find_db(dataset)
 		update_db(dataset)
-
+	
+	download_resources('imdb', 'movie')
 #test_getter('footballTeam', 'sofifa')
