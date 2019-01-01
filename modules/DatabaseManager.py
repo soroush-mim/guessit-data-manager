@@ -495,10 +495,12 @@ resources	=   {
 						'musicArtist_list': [f'https://www.discogs.com/search/?sort=want%2Cdesc&type=artist&page={i}' for i in range(1, 200)]
 					}
 				},
-				'merriam' :{
-					'word' : 'https://www.merriam-webster.com/dictionary/{data_id}'
-					,
-					'word_list' : list(itertools.chain.from_iterable([[f'https://www.merriam-webster.com/browse/dictionary/{char}/{i}' for i in range(1,100)] for char in "qwertyuiopasdfghjklzxcvbnm"]))
+				'merriam': {
+					'word': {
+						'word' : 'https://www.merriam-webster.com/dictionary/{data_id}'
+						,
+						'word_list' : list(itertools.chain.from_iterable([[f'https://www.merriam-webster.com/browse/dictionary/{char}/{i}' for i in range(1,100)] for char in "qwertyuiopasdfghjklzxcvbnm"]))
+					}
 				},
 				'volleyballWorld':{
 					'volleyballTeam': 'http://www.volleyball.world/en/men/teams/{data_id}'
