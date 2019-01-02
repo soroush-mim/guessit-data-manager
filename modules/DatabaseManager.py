@@ -413,7 +413,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
-def download_resources(resource, db_name, count_saves=100, count_founds=float('Inf'), page_queue=None, start=0):
+def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0):
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	for i, page in enumerate(page_queue[start:]):
@@ -425,8 +425,8 @@ def download_resources(resource, db_name, count_saves=100, count_founds=float('I
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
-					if i > count_saves or len(db_name) > count_founds:
-						print(page_queue[:5], i)
+					if i > count_saves or len(db_name) > count_founds or :
+						print(f'Donwlo {len(page_queue)} pages', i)
 						return page_queue, i
 
 
