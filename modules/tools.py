@@ -157,9 +157,9 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-def make_soup(url, local_save=True):
+def make_soup(url, local_save=True, location=None):
 	start_time = time.time()
-
+	
 	#url = re.sub('#.*?', '', url)
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
 	#url = re.sub('[?]$', '', url)
