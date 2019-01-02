@@ -421,14 +421,14 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	while i < len(page_queue):
 		page = page_queue[i]
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
-		souped_page = make_soup(page)
+		souped_page = make_soup(page, location=f'{project_dir}/download/page')
 		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
-					if i > count_saves or len(page_queue) > count_founds or time.time() - start_time > timeout:
+					if i >= count_saves or len(page_queue) >= count_founds or time.time() - start_time >= timeout:
 						print(f'Donwloaded pages: {i}')
 						return page_queue, i
 		i += 1
@@ -593,5 +593,5 @@ if __name__ == '__main__':
 		find_db(dataset)
 		update_db(dataset)
 	
-	download_resources('imdb', 'movie', count_saves=10**1)
+	download_resources('imdb', 'movie', count_saves=10**1 * 2)
 #test_getter('footballTeam', 'sofifa')
