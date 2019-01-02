@@ -440,7 +440,7 @@ def init_project():
 	for resource in get_resources():
 		for db_name in get_resources(resource):
 			try: os.makedirs(f'{main_dir}/download/page/{resource}/{db_name}/')
-			except: pass
+			except Exception as error: print(error)
 
 
 resources	=   {
