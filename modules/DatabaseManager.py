@@ -434,7 +434,7 @@ def download_resources(resource, db_name, count=100):
 resources	=   {
 				'imdb': {
 					'movie': {
-						'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1) + 1)}' for i in range(0, 10000, 250)]
+						'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&start={int((i+1) + 1)}' for i in range(0, 10000, 250)]
 									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 						,
 						'movie': 'https://www.imdb.com/title/{data_id}'
