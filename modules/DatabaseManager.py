@@ -415,7 +415,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0):
 	start_time = time.time()
-	location = f'{main_dir}/download/page/{resource}/{db_name}/'
+	location = f'{main_dir}/download/page/{resource}/{db_name}'
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	i = start - 1
