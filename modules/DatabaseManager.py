@@ -414,7 +414,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 
 def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
-	start_time = time.time()FalseFalseFalse
+	start_time = time.time()
 	location = f'{main_dir}/download/page/{resource}/{db_name}'
 	if resume:
 		try:
@@ -424,6 +424,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 		except: pass
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
+	page_queue_first_len = len(page_queue)
 	i = start - 1
 	while i < len(page_queue):
 		i += 1
@@ -438,7 +439,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
 					json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
-					if i >= count_saves or len(page_queue) >= count_founds or time.time() - start_time >= timeout:
+					if i - start >= count_saves or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
 						print(f'Donwloaded pages: {i}')
 						return page_queue, i
 
