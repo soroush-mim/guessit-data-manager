@@ -601,5 +601,7 @@ if __name__ == '__main__':
 		find_db(dataset)
 		update_db(dataset)
 	
+	init_project()
+	
 	download_resources('imdb', 'movie', count_saves=10**1 * 2)
 #test_getter('footballTeam', 'sofifa')
