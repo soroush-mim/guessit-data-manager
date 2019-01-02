@@ -417,8 +417,9 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	start_time = time.time()FalseFalseFalse
 	location = f'{main_dir}/download/page/{resource}/{db_name}'
 	if resume:
-		start = json.load()
-		page_queue = 
+		statics = json.load(open(f'location/statics.json'))
+		start = statics['start']
+		page_queue = statics['start']
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	i = start - 1
