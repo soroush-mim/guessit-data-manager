@@ -441,7 +441,7 @@ def init_project():
 	for resource in get_resources():
 		for db_name in get_resources()[resource]:
 			try: os.makedirs(f'{main_dir}/download/page/{resource}/{db_name}/')
-			except Exception as error: print(error)
+			except Exception as error: logger.error(error)
 
 
 resources	=   {
@@ -604,5 +604,5 @@ if __name__ == '__main__':
 	
 	init_project()
 	
-	download_resources('imdb', 'movie', count_saves=10**1 * 2)
+	download_resources('imdb', 'movie', count_saves=10**1)
 #test_getter('footballTeam', 'sofifa')
