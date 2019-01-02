@@ -158,8 +158,8 @@ def update_data(data_name, data):
 	return data
 
 
-def get_resources(data_name):
-	return [resource for resource in resources.keys() if data_name in resources[resource]]
+def get_resources(data_name=None):
+	return [resource for resource in resources.keys() if data_name in resources[resource]] if data_name else resources.keys()
 
 
 def get_page_link(resource, data_name, attribute=None):
@@ -433,9 +433,11 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 						print(f'Donwloaded pages: {i}')
 						return page_queue, i
 		i += 1
+
+
 def init_project():
 	location = f'{project_dir}/download/page/{resource}/{db_name}/'
-	for resource in resources.keys():
+	for resource in get_resources():
 
 resources	=   {
 				'imdb': {
