@@ -415,14 +415,13 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0):
 	start_time = time.time()
-	location = f'{main_dir}/download/page/{resource}/{db_name}/'
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	i = start
 	while i < len(page_queue):
 		page = page_queue[i]
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
-		souped_page = make_soup(page, location=location)
+		souped_page = make_soup(page, location=f'{main_dir}/download/page/{resource}/{db_name}/')
 		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
