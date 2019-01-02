@@ -420,7 +420,7 @@ def download_resources(resource, db_name, count=100, page_queue=None, start=0):
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
 		#page_queue.remove(page)
 		souped_page = make_soup(page)
-		patterns = ['(' + re.escape('title/') + '[a-z0-9]*)/?.*?$']
+		patterns = [f"({re.escape('title/')}[a-z0-9]*)/?.*?$"]
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
