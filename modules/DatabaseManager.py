@@ -441,7 +441,7 @@ def init_project():
 			try: os.makedirs(f'{main_dir}/download/page/{resource}/{db_name}/')
 			except Exception as error: print(error)
 
-print(get_resources())
+
 resources	=   {
 				'imdb': {
 					'movie': {
@@ -565,7 +565,7 @@ safe_mode		   	= False
 
 sftp 				= None
 
-
+print(get_resources())
 if __name__ == '__main__':
 	#init_db('movie')
 	#find_db('movie')
