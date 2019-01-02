@@ -160,6 +160,7 @@ def download(url, local_filename=None):
 def make_soup(url, local_save=True, location=None):
 	start_time = time.time()
 	location = download_page_dir if location is None else location
+	local_load = True
 	#url = re.sub('#.*?', '', url)
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
 	#url = re.sub('[?]$', '', url)
@@ -178,6 +179,7 @@ def make_soup(url, local_save=True, location=None):
 	if 'page_source' not in locals():
 
 		page_source = get_page(url)
+		local_load = False
 
 		if local_save:
 			try: open(file_address, 'w+', encoding='utf-8').write(page_source)
@@ -187,7 +189,7 @@ def make_soup(url, local_save=True, location=None):
 
 		#sftp.open(file_address, 'w+').write(page_source)
 
-	return soup(page_source, 'html.parser')
+	return soup(page_source, 'html.parser'), local_load
 
 
 def get_page(url, try_count=10, delay=0, **args):
