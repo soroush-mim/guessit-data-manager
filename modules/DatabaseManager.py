@@ -159,7 +159,7 @@ def update_data(data_name, data):
 
 
 def get_resources(data_name=None):
-	return [resource for resource in resources.keys() if data_name in resources[resource]] if data_name else resources.keys()
+	return [resource for resource in resources.keys() if data_name in resources[resource]] if data_name else resources
 
 
 def get_page_link(resource, data_name, attribute=None):
@@ -437,7 +437,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 
 def init_project():
 	for resource in get_resources():
-		for db_name in get_resources(resource):
+		for db_name in resource.keys():
 			try: os.makedirs(f'{main_dir}/download/page/{resource}/{db_name}/');print(f'{main_dir}/download/page/{resource}/{db_name}/')
 			except Exception as error: print(error)
 
