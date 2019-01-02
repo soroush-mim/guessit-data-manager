@@ -438,7 +438,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 def init_project():
 	location = f'{project_dir}/download/page/{resource}/{db_name}/'
 	for resource in get_resources():
-		
+		os.make
 resources	=   {
 				'imdb': {
 					'movie': {
