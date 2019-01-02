@@ -22,6 +22,7 @@ import base64
 import pysftp
 import time
 import math
+import urllib
 
 from tools import *
 
@@ -411,9 +412,9 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 	return test_result
 
-import urllib
+
 def download_resources(resource, db_name, count=100):
-	base = 'https://www.imdb.com'
+	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list')
 	for _, page in enumerate(page_queue):
 		page_queue.remove(page)
@@ -438,6 +439,8 @@ resources	=   {
 									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 						,
 						'movie': 'https://www.imdb.com/title/{data_id}'
+						,
+						'base': 'https://www.imdb.com'
 					}
 					,
 					'actor': {
@@ -586,5 +589,5 @@ if __name__ == '__main__':
 		find_db(dataset)
 		update_db(dataset)
 	
-	download_resources('imdb', 'movie', 1000)
+	download_resources('imdb', 'movie', 10**4)
 #test_getter('footballTeam', 'sofifa')
