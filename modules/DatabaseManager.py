@@ -430,8 +430,6 @@ def download_resources(resource, db_name, count=100, count_founded_page=float('I
 						return page_queue, i
 
 
-
-
 resources	=   {
 				'imdb': {
 					'movie': {
