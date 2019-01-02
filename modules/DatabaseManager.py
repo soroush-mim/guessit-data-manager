@@ -413,11 +413,11 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
-def download_resources(resource, db_name, count=100):
+def download_resources(resource, db_name, count=100, page_queue=None, start=0):
 	base = get_page_link(resource, db_name, 'base')
-	page_queue = get_page_link(resource, db_name, f'{db_name}_list')
-	for _, page in enumerate(page_queue):
-		page_queue.remove(page)
+	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
+	for i, page in enumerate(page_queue[0:]):
+		#page_queue.remove(page)
 		souped_page = make_soup(page)
 		patterns = ['(' + re.escape('title/') + '[a-z0-9]*)/?.*?$']
 		for pattern in patterns:
@@ -427,7 +427,7 @@ def download_resources(resource, db_name, count=100):
 					page_queue += [absolute_url]
 					print(page_queue[-1], pattern)
 					if len(page_queue) > count:
-						return page_queue
+						return page_queue, i
 
 
 
