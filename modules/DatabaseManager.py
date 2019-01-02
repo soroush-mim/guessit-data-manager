@@ -413,7 +413,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
-def download_resources(resource, db_name, count=100, count_founded_page=float('Inf'), page_queue=None, start=0):
+def download_resources(resource, db_name, count_saves=100, count_founds=float('Inf'), page_queue=None, start=0):
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	for i, page in enumerate(page_queue[start:]):
