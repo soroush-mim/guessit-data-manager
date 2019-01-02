@@ -423,7 +423,7 @@ def download_resources(resource, db_name, ):
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
 				if url not in page_queue:
 					page_queue += [urllib.parse.urljoin(base, url)]
-					print(page_queue[-1])
+					print(page_queue[-1], pattern)
 					if len(page_queue) > 100:
 						return page_queue
 
