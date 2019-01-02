@@ -593,5 +593,5 @@ if __name__ == '__main__':
 		find_db(dataset)
 		update_db(dataset)
 	
-	download_resources('imdb', 'movie', count_saves=10**۲)
+	download_resources('imdb', 'movie', count_saves=10**2)
 #test_getter('footballTeam', 'sofifa')
