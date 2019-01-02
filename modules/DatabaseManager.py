@@ -425,7 +425,7 @@ def download_resources(resource, db_name, count=100, count_founded_page=float('I
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
-					if i > count:
+					if i > count or len(db_name) > count_founded_page:
 						print(page_queue[:5], i)
 						return page_queue, i
 
