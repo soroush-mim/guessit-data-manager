@@ -418,10 +418,10 @@ def download_resources(resource, db_name, ):
 	for _, page in enumerate(page_queue):
 		page_queue.remove(page)
 		souped_page = make_soup(page)
-		patterns = [re.escape('title/') + '[a-z0-9]*$']
+		patterns = ['(' + re.escape('title/') + '[a-z0-9]*)/?.*?$']
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
-				absolute_url = urllib.parse.urljoin(base, url)
+				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
 					print(page_queue[-1], pattern)
