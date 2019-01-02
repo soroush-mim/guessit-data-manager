@@ -440,7 +440,6 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 					page_queue += [absolute_url]
 					json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
 					if i - start >= count_saves or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
-						print(f'Donwloaded pages: {i}')
 						return page_queue, i
 
 
