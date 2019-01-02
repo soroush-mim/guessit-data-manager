@@ -420,7 +420,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 		try:
 			statics = json.load(open(f'{location}/statics.json'))
 			start = statics['start']
-			page_queue = statics['start']
+			page_queue = statics['page_queue']
 		except: pass
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
