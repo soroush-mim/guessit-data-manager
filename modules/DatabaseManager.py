@@ -415,6 +415,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 
 def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0):
 	start_time = time.time()
+	location = f'{main_dir}/download/page/{resource}/{db_name}/'
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	i = start - 1
@@ -422,7 +423,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 		i += 1
 		page = page_queue[i]
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
-		souped_page, local_load = make_soup(page, location=f'{main_dir}/download/page/{resource}/{db_name}/')
+		souped_page, local_load = make_soup(page, location=location)
 		if local_load:
 			continue
 		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
@@ -431,6 +432,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
+					json.dump({'page_queue': page_queue, 'start': start}, open(f'{location}/statics.json', 'w+'))
 					if i >= count_saves or len(page_queue) >= count_founds or time.time() - start_time >= timeout:
 						print(f'Donwloaded pages: {i}')
 						return page_queue, i
