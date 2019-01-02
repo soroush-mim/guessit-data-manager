@@ -413,9 +413,12 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
-def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0):
-	start_time = time.time()
+def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
+	start_time = time.time()FalseFalseFalse
 	location = f'{main_dir}/download/page/{resource}/{db_name}'
+	if resume:
+		start = json.load()
+		page_queue = 
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	i = start - 1
@@ -604,5 +607,5 @@ if __name__ == '__main__':
 	
 	init_project()
 	
-	download_resources('imdb', 'movie', count_saves=10**1)
+	download_resources('imdb', 'movie', count_saves=10**1, resume=True)
 #test_getter('footballTeam', 'sofifa')
