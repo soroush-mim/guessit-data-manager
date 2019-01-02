@@ -419,7 +419,7 @@ def download_resources(resource, db_name, count=100, page_queue=None, start=0):
 	for i, page in enumerate(page_queue[start:]):
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
 		souped_page = make_soup(page)
-		patterns = [f"({re.escape('title/')}[a-z0-9]*)/?.*?$"]
+		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
@@ -442,7 +442,7 @@ resources	=   {
 						,
 						'base': 'https://www.imdb.com'
 						,
-						'movie_id': ''
+						'movie_pattern': f"({re.escape('title/')}[a-z0-9]*)/?.*?$"
 					}
 					,
 					'actor': {
