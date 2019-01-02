@@ -421,7 +421,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	while i < len(page_queue):
 		page = page_queue[i]
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
-		souped_page = make_soup(page, location=f'{project_dir}/download/page')
+		souped_page = make_soup(page, location=f'{project_dir}/download/page/{resource}/')
 		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
