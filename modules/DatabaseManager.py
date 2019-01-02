@@ -418,7 +418,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	location = f'{main_dir}/download/page/{resource}/{db_name}'
 	if resume:
 		try:
-			statics = json.load(open(f'location/statics.json'))
+			statics = json.load(open(f'{location}/statics.json'))
 			start = statics['start']
 			page_queue = statics['start']
 		except: pass
