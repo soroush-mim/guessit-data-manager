@@ -441,7 +441,7 @@ def init_project():
 			try: os.makedirs(f'{main_dir}/download/page/{resource}/{db_name}/')
 			except Exception as error: print(error)
 
-
+print(get_resources())
 resources	=   {
 				'imdb': {
 					'movie': {
