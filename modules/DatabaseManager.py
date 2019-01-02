@@ -421,8 +421,9 @@ def download_resources(resource, db_name, ):
 		patterns = [re.escape('title/') + '[a-z0-9]*$']
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
-				if url not in page_queue:
-					page_queue += [urllib.parse.urljoin(base, url)]
+				absolute_url = urllib.parse.urljoin(base, url)
+				if absolute_url not in page_queue:
+					page_queue += [absolute_url]
 					print(page_queue[-1], pattern)
 					if len(page_queue) > 100:
 						return page_queue
