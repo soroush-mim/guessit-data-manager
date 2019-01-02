@@ -417,8 +417,9 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	start_time = time.time()
 	base = get_page_link(resource, db_name, 'base')
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
-	i = start
+	i = start - 1
 	while i < len(page_queue):
+		i += 1
 		page = page_queue[i]
 		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
 		souped_page, local_load = make_soup(page, location=f'{main_dir}/download/page/{resource}/{db_name}/')
@@ -433,7 +434,6 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 					if i >= count_saves or len(page_queue) >= count_founds or time.time() - start_time >= timeout:
 						print(f'Donwloaded pages: {i}')
 						return page_queue, i
-		i += 1
 
 
 def init_project():
