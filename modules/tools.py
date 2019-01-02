@@ -159,7 +159,7 @@ def download(url, local_filename=None):
 
 def make_soup(url, local_save=True, location=None):
 	start_time = time.time()
-	
+	location = download_page_dir if location is None else location
 	#url = re.sub('#.*?', '', url)
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
 	#url = re.sub('[?]$', '', url)
@@ -167,7 +167,7 @@ def make_soup(url, local_save=True, location=None):
 	if local_save:
 		#sftp = ftp_connect()
 
-		file_address = f"{download_page_dir}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+		file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
 
 		if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
 
