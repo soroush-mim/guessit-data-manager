@@ -430,6 +430,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 					if i > count_saves or len(page_queue) > count_founds or time.time() - start_time > timeout:
 						print(f'Donwloaded pages: {i}')
 						return page_queue, i
+		i += 1
 
 
 resources	=   {
