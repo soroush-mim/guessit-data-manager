@@ -427,7 +427,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
 					if i > count_saves or len(page_queue) > count_founds or time.time() - start_time > timeout:
-						print(f'Donwloaded pages: {len(page_queue)}')
+						print(f'Donwloaded pages: {i}')
 						return page_queue, i
 
 
