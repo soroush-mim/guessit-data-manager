@@ -429,7 +429,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	while i < len(page_queue):
 		i += 1
 		page = page_queue[i]
-		logger.info(f'Founded pages: {len(page_queue)} ------ Saved pages: {i}')
+		logger.info(f'i: {i} ------ Founded pages: {len(page_queue)}')
 		souped_page, local_save = make_soup(page, location=location, return_local_save=True)
 		#if local_save: continue
 		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
