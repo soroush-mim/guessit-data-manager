@@ -466,19 +466,19 @@ resources	=   {
 						,
 						'movie_pattern': f"({re.escape('title/')}[a-z0-9]*)/*?$"
 						,
-						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
+						'summaries_pattern': f"/title/[a-z0-9]*/({re.escape('plotsummary/')}).*?$"
 						,
-						'mediaindex_pattern': f"({re.escape('mediaindex/')}).*?$"
+						'mediaindex_pattern': f"/title/[a-z0-9]*/({re.escape('mediaindex/')}).*?$"
 						,
-						'videogallery_pattern': f"({re.escape('videogallery/')}).*?$"
+						'videogallery_pattern': f"/title/[a-z0-9]*/({re.escape('videogallery/')}).*?$"
 						,
-						'quotes_pattern': f"({re.escape('quotes/')}).*?$"
+						'quotes_pattern': f"/title/[a-z0-9]*/({re.escape('quotes/')}).*?$"
 						,
-						'taglines_pattern': f"({re.escape('taglines/')}).*?$"
+						'taglines_pattern': f"/title/[a-z0-9]*/({re.escape('taglines/')}).*?$"
 						,
-						'keywords_pattern': f"({re.escape('keywords/')}).*?$"
+						'keywords_pattern': f"/title/[a-z0-9]*/({re.escape('keywords/')}).*?$"
 						,
-						'trivia_pattern': f"({re.escape('trivia/')}).*?$"
+						'trivia_pattern': f"/title/[a-z0-9]*/({re.escape('trivia/')}).*?$"
 					}
 					,
 					'actor': {
