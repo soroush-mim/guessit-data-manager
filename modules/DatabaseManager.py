@@ -475,7 +475,11 @@ resources	=   {
 						,
 						'taglines_pattern': f"({re.escape('taglines/')}).*?$"
 						,
-						'quotes_pattern': f"({re.escape('quotes/')}).*?$"
+						'keywords_pattern': f"({re.escape('keywords/')}).*?$"
+						,
+						'taglines_pattern': f"({re.escape('taglines/')}).*?$"
+						,
+						'keywords_pattern': f"({re.escape('keywords/')}).*?$"
 						
 					}
 					,
