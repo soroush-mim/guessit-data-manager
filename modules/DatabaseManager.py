@@ -467,7 +467,7 @@ resources	=   {
 						,
 						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
 						,
-						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
+						'fullcredits_pattern': f"({re.escape('fullcredits/')}).*?$"
 						
 					}
 					,
