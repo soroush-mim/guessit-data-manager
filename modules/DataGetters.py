@@ -688,15 +688,16 @@ def get_movie_data_from_imdb(attribute):
 	def photos(page):
 		# TODO : this function must change according to new version of datamanager and must get all images from the mediaindex page itself(from scrept part of page)
 		# "image": [
-			{
-			"@type": "ImageObject",
-			"width": "2048",
-			"height": "1686",
-			"url": "https://m.media-amazon.com/images/M/MV5BNDYwMjc5NDM5M15BMl5BanBnXkFtZTgwNTM3ODIxNjM@._V1_.jpg",
-			"mainEntityOfPage": "/title/tt0071562/mediaviewer/rm3250420480",
-			"contentUrl": "https://m.media-amazon.com/images/M/MV5BNDYwMjc5NDM5M15BMl5BanBnXkFtZTgwNTM3ODIxNjM@._V1_.jpg",
-			"caption": "Talia Shire and Morgana King in The Godfather: Part II (1974)"
-			},
+		#	{
+		#	"@type": "ImageObject",
+		#	"width": "2048",
+		#	"height": "1686",
+		#	"url": "https://m.media-amazon.com/images/M/MV5BNDYwMjc5NDM5M15BMl5BanBnXkFtZTgwNTM3ODIxNjM@._V1_.jpg",
+		#	"mainEntityOfPage": "/title/tt0071562/mediaviewer/rm3250420480",
+		#	"contentUrl": "https://m.media-amazon.com/images/M/MV5BNDYwMjc5NDM5M15BMl5BanBnXkFtZTgwNTM3ODIxNjM@._V1_.jpg",
+		#	"caption": "Talia Shire and Morgana King in The Godfather: Part II (1974)"
+		#	},
+		
 		try:
 			gallery_page = 'https://www.imdb.com' + page.find('a', text='Photo Gallery')['href']
 			page = make_soup(gallery_page)
