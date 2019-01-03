@@ -433,7 +433,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
 		souped_page, local_save = make_soup(page, location=location, return_local_save=True)
 		#if local_save: continue
-		patterns = [get_page_link(resource, db_name, f'{db_name}_pattern')]
+		patterns = [x for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
@@ -477,10 +477,7 @@ resources	=   {
 						,
 						'keywords_pattern': f"({re.escape('keywords/')}).*?$"
 						,
-						'taglines_pattern': f"({re.escape('taglines/')}).*?$"
-						,
-						'keywords_pattern': f"({re.escape('keywords/')}).*?$"
-						
+						'trivia_pattern': f"({re.escape('trivia/')}).*?$"
 					}
 					,
 					'actor': {
