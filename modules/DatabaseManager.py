@@ -463,9 +463,11 @@ resources	=   {
 						,
 						'base': 'https://www.imdb.com'
 						,
-						'movie_pattern': f"({re.escape('title/')}[a-z0-9]*)/?.*?$"
+						'movie_pattern': f"({re.escape('title/')}[a-z0-9]*)/*?$"
 						,
-						'summaries_pattern': f"({re.escape('title/')}[a-z0-9]*)/?.*?$"
+						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
+						,
+						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
 						
 					}
 					,
