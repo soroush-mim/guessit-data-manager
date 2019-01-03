@@ -434,7 +434,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
 		souped_page = make_soup(page, location=location)
 		#if local_save: continue
-		patterns = [x for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
+		patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
 		print(patterns)
 		for pattern in patterns:
 			for url in [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(pattern)})]:
