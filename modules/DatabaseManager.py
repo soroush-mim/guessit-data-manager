@@ -430,6 +430,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	while i < len(page_queue):
 		i += 1
 		page = page_queue[i]
+		json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
 		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
 		souped_page, local_save = make_soup(page, location=location, return_local_save=True)
 		#if local_save: continue
@@ -439,7 +440,6 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
-					json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
 					if i - start >= count_saves or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
 						return page_queue, i
 
