@@ -469,9 +469,13 @@ resources	=   {
 						,
 						'mediaindex_pattern': f"({re.escape('mediaindex/')}).*?$"
 						,
-						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
+						'videogallery_pattern': f"({re.escape('videogallery/')}).*?$"
 						,
-						'mediaindex_pattern': f"({re.escape('mediaindex/')}).*?$"
+						'quotes_pattern': f"({re.escape('quotes/')}).*?$"
+						,
+						'mediaviewer_pattern': f"({re.escape('videogallery/')}).*?$"
+						,
+						'quotes_pattern': f"({re.escape('quotes/')}).*?$"
 						
 					}
 					,
