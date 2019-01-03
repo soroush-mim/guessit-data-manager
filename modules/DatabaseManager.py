@@ -473,7 +473,7 @@ resources	=   {
 						,
 						'quotes_pattern': f"({re.escape('quotes/')}).*?$"
 						,
-						'mediaviewer_pattern': f"({re.escape('videogallery/')}).*?$"
+						'taglines_pattern': f"({re.escape('taglines/')}).*?$"
 						,
 						'quotes_pattern': f"({re.escape('quotes/')}).*?$"
 						
