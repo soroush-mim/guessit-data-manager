@@ -686,7 +686,8 @@ def get_movie_data_from_imdb(attribute):
 		return popularity_rate# / (2 * 10**7)
 
 	def photos(page):
-		# TODO : this function must change according  to new version of 
+		# TODO : this function must change according to new version of datamanager and must get all images from the mediaindex page itself
+		# 
 		try:
 			gallery_page = 'https://www.imdb.com' + page.find('a', text='Photo Gallery')['href']
 			page = make_soup(gallery_page)
