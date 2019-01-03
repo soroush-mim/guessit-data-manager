@@ -432,7 +432,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 		page = page_queue[i]
 		if i % 10 == 0: json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
 		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
-		souped_page, local_save = make_soup(page, location=location, return_local_save=True)
+		souped_page = make_soup(page, location=location)
 		#if local_save: continue
 		patterns = [x for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
 		for pattern in patterns:
