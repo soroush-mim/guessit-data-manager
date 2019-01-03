@@ -467,7 +467,11 @@ resources	=   {
 						,
 						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
 						,
-						'fullcredits_pattern': f"({re.escape('fullcredits/')}).*?$"
+						'mediaindex_pattern': f"({re.escape('mediaindex/')}).*?$"
+						,
+						'summaries_pattern': f"({re.escape('plotsummary/')}).*?$"
+						,
+						'mediaindex_pattern': f"({re.escape('mediaindex/')}).*?$"
 						
 					}
 					,
