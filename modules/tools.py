@@ -186,8 +186,8 @@ def make_soup(url, local_save=True, location=None, return_local_save=False):
 		if logger: logger.info(f'{(time.time() - start_time):.3f}s - downloding page source ... {url}')
 
 		#sftp.open(file_address, 'w+').write(page_source)
-
-	return soup(page_source, 'html.parser'), local_save if return_local_save else soup(page_source, 'html.parser') 
+	if return_local_save: return soup(page_source, 'html.parser'), local_save
+	else: soup(page_source, 'html.parser') 
 
 
 def get_page(url, try_count=10, delay=0, **args):
