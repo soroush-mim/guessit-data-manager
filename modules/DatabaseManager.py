@@ -464,21 +464,21 @@ resources	=   {
 						,
 						'base': 'https://www.imdb.com'
 						,
-						'movie_pattern': "(title\/[a-z0-9]*).*?$"
+						'movie_pattern': r'(title\/[a-z0-9]*).*?$'
 						,
-						'summaries_pattern': "(\/title\/[a-z0-9]*\/plotsummary).*?$"
+						'summaries_pattern': r'(\/title\/[a-z0-9]*\/plotsummary).*?$'
 						,
-						'mediaindex_pattern': "(\/title\/[a-z0-9]*\/mediaindex).*?$"
+						'mediaindex_pattern': r'(\/title\/[a-z0-9]*\/mediaindex).*?$'
 						,
-						'videogallery_pattern': "(\/title\/[a-z0-9]*\/videogallery).*?$"
+						'videogallery_pattern': r'(\/title\/[a-z0-9]*\/videogallery).*?$'
 						,
-						'quotes_pattern': "(\/title\/[a-z0-9]*\/quotes).*?$"
+						'quotes_pattern': r'(\/title\/[a-z0-9]*\/quotes).*?$'
 						,
-						'taglines_pattern': "(\/title\/[a-z0-9]*\/taglines).*?$"
+						'taglines_pattern': r'(\/title\/[a-z0-9]*\/taglines).*?$'
 						,
-						'keywords_pattern': "(\/title\/[a-z0-9]*\/keywords).*?$"
+						'keywords_pattern': r'(\/title\/[a-z0-9]*\/keywords).*?$'
 						,
-						'trivia_pattern': "(\/title\/[a-z0-9]*\/trivia).*?$"
+						'trivia_pattern': r'(\/title\/[a-z0-9]*\/trivia).*?$'
 					}
 					,
 					'actor': {
@@ -486,6 +486,10 @@ resources	=   {
 									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 						,
 						'actor': 'https://www.imdb.com/name/{data_id}'
+						,
+						'base': 'https://www.imdb.com'
+						,
+						'actor_pattern': r''
 					}
 					,
 					'director': {
