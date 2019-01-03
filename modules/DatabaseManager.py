@@ -430,7 +430,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 	while i < len(page_queue):
 		i += 1
 		page = page_queue[i]
-		json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
+		if i % 10 == 0: json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
 		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
 		souped_page, local_save = make_soup(page, location=location, return_local_save=True)
 		#if local_save: continue
