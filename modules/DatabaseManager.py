@@ -464,21 +464,21 @@ resources	=   {
 						,
 						'base': 'https://www.imdb.com'
 						,
-						'movie_pattern': f"({re.escape('title/')}[a-z0-9]*)/*?$"
+						'movie_pattern': f"(title\/[a-z0-9]*).*?$"
 						,
-						'summaries_pattern': f"/title/[a-z0-9]*/({re.escape('plotsummary/')}).*?$"
+						'summaries_pattern': f"(\/title\/[a-z0-9]*\/plotsummary).*?$"
 						,
-						'mediaindex_pattern': f"/title/[a-z0-9]*/({re.escape('mediaindex/')}).*?$"
+						'mediaindex_pattern': f"(\/title\/[a-z0-9]*\/mediaindex).*?$"
 						,
-						'videogallery_pattern': f"/title/[a-z0-9]*/({re.escape('videogallery/')}).*?$"
+						'videogallery_pattern': f"(\/title\/[a-z0-9]*\/videogallery).*?$"
 						,
-						'quotes_pattern': f"/title/[a-z0-9]*/({re.escape('quotes/')}).*?$"
+						'quotes_pattern': f"(\/title\/[a-z0-9]*\/quotes).*?$"
 						,
-						'taglines_pattern': f"/title/[a-z0-9]*/({re.escape('taglines/')}).*?$"
+						'taglines_pattern': f"(\/title\/[a-z0-9]*\/taglines).*?$"
 						,
-						'keywords_pattern': f"/title/[a-z0-9]*/({re.escape('keywords/')}).*?$"
+						'keywords_pattern': f"(\/title\/[a-z0-9]*\/keywords).*?$"
 						,
-						'trivia_pattern': f"/title/[a-z0-9]*/({re.escape('trivia/')}).*?$"
+						'trivia_pattern': f"(\/title\/[a-z0-9]*\/trivia).*?$"
 					}
 					,
 					'actor': {
