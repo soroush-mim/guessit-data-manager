@@ -187,7 +187,7 @@ def make_soup(url, local_save=True, location=None, return_local_save=False):
 
 		#sftp.open(file_address, 'w+').write(page_source)
 	if return_local_save: return soup(page_source, 'html.parser'), local_save
-	else: soup(page_source, 'html.parser') 
+	else: return soup(page_source, 'html.parser') 
 
 
 def get_page(url, try_count=10, delay=0, **args):
