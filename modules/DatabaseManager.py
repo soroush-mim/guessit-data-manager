@@ -440,7 +440,7 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
-					print(f'i - start >= count_saves : {i - start >= count_saves}   i = {i}  start = {start}   count_saves = {count_saves}')
+					#print(f'i - start >= count_saves : {i - start >= count_saves}   i = {i}  start = {start}   count_saves = {count_saves}')
 					if i - start >= count_saves or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
 						return page_queue, i
 
