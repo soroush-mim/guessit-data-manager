@@ -21,6 +21,7 @@ import pkgutil
 import base64
 import pysftp
 import time
+import glob
 
 
 project_dir 		= '/home/flc/guessit'
@@ -167,9 +168,8 @@ def make_soup(url, local_save=True, location=None, return_local_save=False):
 	if local_save:
 		#sftp = ftp_connect()
 
-		for file_address in glob.iglob(f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
-			file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
-
+		for file_address in glob.glob(f"{download_page_dir}/*/*/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
+			
 			if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
 
 				page_source = open(file_address, encoding='utf-8').read()
