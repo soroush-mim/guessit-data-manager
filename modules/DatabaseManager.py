@@ -636,5 +636,5 @@ if __name__ == '__main__':
 	
 	init_project()
 	
-	download_resources('sofifa', 'footballPlayer', count_saves=10**4, resume=True)
+	download_resources('sofifa', 'footballPlayer', count_saves=10**2, resume=True)
 #test_getter('footballTeam', 'sofifa')
