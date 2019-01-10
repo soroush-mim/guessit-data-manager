@@ -630,12 +630,12 @@ if __name__ == '__main__':
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
-	for dataset in []:
+	init_project()
+
+	for dataset in ['footballPlayer']:
 		init_db(dataset)
 		find_db(dataset)
 		update_db(dataset)
 	
-	init_project()
-	
-	download_resources('sofifa', 'footballPlayer', count=10**2, resume=True)
+	#download_resources('sofifa', 'footballPlayer', count=10**2, resume=True)
 #test_getter('footballTeam', 'sofifa')
