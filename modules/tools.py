@@ -167,7 +167,7 @@ def make_soup(url, local_save=True, location=None, return_local_save=False):
 	if local_save:
 		#sftp = ftp_connect()
 
-		
+		for file in glob.iglob('src/**/*.c':
 			file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
 
 			if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
