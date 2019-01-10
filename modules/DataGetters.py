@@ -1201,7 +1201,7 @@ def get_musicArtist_data_from_discogs(attribute, page):
 
 	return
 
-
+"""
 def collect_data_id_from_resource(pages, base, pattern, timeout=10**3, debug=False):
 	start_time 		= time()
 	checked_id 		= []
@@ -1242,7 +1242,7 @@ def collect_data_id_from_resource(pages, base, pattern, timeout=10**3, debug=Fal
 			
 			if time() - start_time > timeout:
 				return
-
+"""
 
 def collect_volleyballTeam_id_from_volleyballWorld(pages, timeout=10**3):
 	return collect_data_id_from_resource(pages, 'https://volleyball.world', '/en/men/teams/(.*)', timeout) 
