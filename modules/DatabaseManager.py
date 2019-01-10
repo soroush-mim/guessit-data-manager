@@ -414,7 +414,7 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
-def download_resources(resource, db_name, count_saves=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
+def download_resources(resource, db_name, count=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
 	start_time = time.time()
 	location = f'{main_dir}/download/page/{resource}/{db_name}'
 	if resume:
@@ -440,8 +440,8 @@ def download_resources(resource, db_name, count_saves=float('Inf'), count_founds
 				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
 				if absolute_url not in page_queue:
 					page_queue += [absolute_url]
-					#print(f'i - start >= count_saves : {i - start >= count_saves}   i = {i}  start = {start}   count_saves = {count_saves}')
-					if i - start >= count_saves or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
+					#print(f'i - start >= count : {i - start >= count}   i = {i}  start = {start}   count = {count}')
+					if i - start >= count or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
 						return page_queue, i
 
 
@@ -637,5 +637,5 @@ if __name__ == '__main__':
 	
 	init_project()
 	
-	download_resources('sofifa', 'footballPlayer', count_saves=10**2, resume=True)
+	download_resources('sofifa', 'footballPlayer', count=10**2, resume=True)
 #test_getter('footballTeam', 'sofifa')
