@@ -502,7 +502,12 @@ resources	=   {
 					'footballPlayer': {
 						'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
 						,
-						'footballPlayer': 'https://sofifa.com/player/{data_id}'
+						'footballPlayer': 'https://sofifa.com/player/{data_id}',
+						,
+						'base': 'https://sofifa.com',
+						,
+						'footballPlayer_pattern': '',
+						
 					}
 					,
 					'footballTeam': {
@@ -631,5 +636,5 @@ if __name__ == '__main__':
 	
 	init_project()
 	
-	download_resources('imdb', 'movie', count_saves=10**4, resume=True)
+	download_resources('sofifa', 'footballPlayer', count_saves=10**4, resume=True)
 #test_getter('footballTeam', 'sofifa')
