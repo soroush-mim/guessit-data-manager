@@ -507,7 +507,7 @@ resources	=   {
 						,
 						'base': 'https://sofifa.com'
 						,
-						'footballPlayer_pattern': r'(\/player\/[0-9]*\/[^\/]\/).*?$'
+						'footballPlayer_pattern': r'(\/player\/[0-9]*\/[^\/]*\/).*?$'
 						
 					}
 					,
