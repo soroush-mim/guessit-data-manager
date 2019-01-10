@@ -167,13 +167,14 @@ def make_soup(url, local_save=True, location=None, return_local_save=False):
 	if local_save:
 		#sftp = ftp_connect()
 
-		file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+		
+			file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
 
-		if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
+			if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
 
-			page_source = open(file_address, encoding='utf-8').read()
+				page_source = open(file_address, encoding='utf-8').read()
 
-			logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
+				logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
 
 	if 'page_source' not in locals():
 
