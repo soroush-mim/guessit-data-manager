@@ -22,20 +22,21 @@ import base64
 import pysftp
 import time
 import math
-
+import urllib
+import glob
 
 from tools import *
 
-from DataGetter_Mohammad import *
-from DataGetter_Farhan import *
+from DataGetters import *
 
 
-memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
-cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
-cpuuse	  	= lambda : psutil.cpu_percent()
-memuse	  	= lambda : psutil.virtual_memory()[2]
-logMemory   = lambda : logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
-logCpu	  	= lambda : logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
+class Monitoring:
+	memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
+	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
+	cpuuse	  	= lambda : psutil.cpu_percent()
+	memuse	  	= lambda : psutil.virtual_memory()[2]
+	logMemory   = lambda : logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
+	logCpu	  	= lambda : logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
 
 
 def download_db_link(url):
@@ -158,12 +159,13 @@ def update_data(data_name, data):
 	return data
 
 
-def get_resources(data_name):
-	return [resource for resource in resources.keys() if data_name in resources[resource]]
+def get_resources(data_name=None):
+	return [resource for resource in resources.keys() if data_name in resources[resource]] if data_name else resources
 
 
-def get_page_link(resource, data_name):
-	return resources[resource][data_name]
+def get_page_link(resource, data_name, attribute=None):
+	attribute = data_name if attribute is None else attribute
+	return resources[resource][data_name][attribute]
 
 
 def load_db(db_name):
@@ -256,8 +258,8 @@ def update_db(db_name, begin=0, end=None, timeout=10**4):
 
 		for i in range(begin, end, updating_step):
 
-			logMemory()
-			logCpu()
+			Monitoring.logMemory()
+			Monitoring.logCpu()
 			logger.critical(f'Updating {db_name} dataset from {i} to {i + updating_step} ...')
 
 			old_data = get_expired_data(db, begin=i, end=min(i + updating_step, end))
@@ -298,7 +300,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 			datas = [data[data_id_name] for data in db if data_id_name in data]
 
-			resource_links = get_page_link(resource, f'{db_name}_list')
+			resource_links = get_page_link(resource, db_name, f'{db_name}_list')
 
 			logger.critical(f"resource links : {resource_links if len(resource_links) < 3 else str(resource_links[:3]) + '...'} ")
 
@@ -355,7 +357,6 @@ def init_db(db_name):
 def save_pages(url, patterns):
 	return
 
-
 # does not work yet
 def load_modules():
 	names = ['Amirabbas', 'Kiarash', 'Mohammad']
@@ -366,7 +367,6 @@ def load_modules():
 		for module in [module for module in dir(module_file) if re.match('get.*', module)]:
 			print(module, name)
 			globals()[module] = getattr(module_file, module)
-
 
 
 def check_get_function(data_name, resource, page_link):
@@ -414,89 +414,181 @@ def test_getter(data_name, resource, attr=None, test_count=20):
 	return test_result
 
 
+def download_resources(resource, db_name, count=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
+	start_time = time.time()
+	location = f'{main_dir}/download/page/{resource}/{db_name}'
+	if resume:
+		try:
+			statics = json.load(open(f'{location}/statics.json'))
+			start = statics['start']
+			page_queue = statics['page_queue']
+		except: pass
+	base = get_page_link(resource, db_name, 'base')
+	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
+	page_queue_first_len = len(page_queue)
+	i = start - 1
+	while i < len(page_queue):
+		i += 1
+		page = page_queue[i]
+		if i % 100 == 0: json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
+		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
+		souped_page = make_soup(page, location=location)
+		#if local_save: continue
+		patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
+		for pattern in patterns:
+			for url in [tag['href'] for tag in souped_page.find_all('a', {'href':re.compile(pattern)})]:
+				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
+				if absolute_url not in page_queue:
+					page_queue += [absolute_url]
+					#print(f'i - start >= count : {i - start >= count}   i = {i}  start = {start}   count = {count}')
+					if i - start >= count or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
+						return page_queue, i
+
+
+def init_project():
+	for resource in get_resources():
+		for db_name in get_resources()[resource]:
+			directory = f'{main_dir}/download/page/{resource}/{db_name}/'
+			if os.path.exists(directory): continue
+			try: os.makedirs(directory)
+			except Exception as error: logger.error(error)
+
+
 resources	=   {
 				'imdb': {
-					'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+					'movie': {
+						'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&start={i + 1}' for i in range(0, 10000, 250)]
+									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&start={i + 1}' for i in range(0, 10000, 250)]
+						,
+						'movie': 'https://www.imdb.com/title/{data_id}'
+						,
+						'base': 'https://www.imdb.com'
+						,
+						'movie_pattern': r'(title\/[a-z0-9]*).*?$'
+						,
+						'summaries_pattern': r'(\/title\/[a-z0-9]*\/plotsummary).*?$'
+						,
+						'mediaindex_pattern': r'(\/title\/[a-z0-9]*\/mediaindex).*?$'
+						,
+						'videogallery_pattern': r'(\/title\/[a-z0-9]*\/videogallery).*?$'
+						,
+						'quotes_pattern': r'(\/title\/[a-z0-9]*\/quotes).*?$'
+						,
+						'taglines_pattern': r'(\/title\/[a-z0-9]*\/taglines).*?$'
+						,
+						'keywords_pattern': r'(\/title\/[a-z0-9]*\/keywords).*?$'
+						,
+						'trivia_pattern': r'(\/title\/[a-z0-9]*\/trivia).*?$'
+					}
+					,
+					'actor': {
+						'actor_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+						,
+						'actor': 'https://www.imdb.com/name/{data_id}'
+						,
+						'base': 'https://www.imdb.com'
+						,
+						'actor_pattern': r''
+					}
 					,
-					'movie': 'https://www.imdb.com/title/{data_id}'
-					,
-					'actor_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-					,
-					'actor': 'https://www.imdb.com/name/{data_id}'
-					,
-					'director_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
+					'director': {
+						'director_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
 										+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-					,
-					'director': 'https://www.imdb.com/name/{data_id}'
+						,
+						'director': 'https://www.imdb.com/name/{data_id}'
+					}
 				},
 				'sofifa': {
-					'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
+					'footballPlayer': {
+						'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
+						,
+						'footballPlayer': 'https://sofifa.com/player/{data_id}'
+						,
+						'base': 'https://sofifa.com'
+						,
+						'footballPlayer_pattern': r'(\/player\/[0-9]*\/[^\/]*\/).*?$'
+						
+					}
 					,
-					'footballPlayer': 'https://sofifa.com/player/{data_id}'
-					,
-					'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 700, 60)]
-					,
-					'footballTeam': 'https://sofifa.com/team/{data_id}'
+					'footballTeam': {
+						'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 700, 60)]
+						,
+						'footballTeam': 'https://sofifa.com/team/{data_id}'
+					}
 				},
 				'goodreads': {
-					'book': 'https://www.goodreads.com/book/show/{data_id}'
+					'book': {
+						'book': 'https://www.goodreads.com/book/show/{data_id}'
+						,
+						'book_list': list(itertools.chain.from_iterable([[f'https://www.goodreads.com/book/popular_by_date/{i}/{j}' for j in range(1, 13)] for i in range(2010, 2018)]))
+					}
 					,
-					'book_list': list(itertools.chain.from_iterable([[f'https://www.goodreads.com/book/popular_by_date/{i}/{j}' for j in range(1, 13)] for i in range(2010, 2018)]))
-					,
-					'author': 'https://www.goodreads.com/author/show/{data_id}'
-					,
-					'author_list': list(itertools.chain.from_iterable([[f'https://www.goodreads.com/book/popular_by_date/{i}/{j}' for j in range(1, 13)] for i in range(2010, 2018)]))
-
+					'author': {
+						'author': 'https://www.goodreads.com/author/show/{data_id}'
+						,
+						'author_list': list(itertools.chain.from_iterable([[f'https://www.goodreads.com/book/popular_by_date/{i}/{j}' for j in range(1, 13)] for i in range(2010, 2018)]))
+					}
 				},
 				'cia': {
-					'country': 'https://www.cia.gov/library/publications/the-world-factbook/geos/{data_id}.html'
-					,
-					'country_list': ['https://www.cia.gov/library/publications/the-world-factbook/docs/flagsoftheworld.html']
-
+					'country': {
+						'country': 'https://www.cia.gov/library/publications/the-world-factbook/geos/{data_id}.html'
+						,
+						'country_list': ['https://www.cia.gov/library/publications/the-world-factbook/docs/flagsoftheworld.html']
+					}
 				},
 				'biography': {
-					'people': 'https://www.biography.com/people/{data_id}'
-					,
-					'people_list': ['https://www.biography.com/people']
+					'people': {
+						'people': 'https://www.biography.com/people/{data_id}'
+						,
+						'people_list': ['https://www.biography.com/people']
+					}
 				},
 				'myanimelist': {
-					'anime': 'https://www.myanimelist.net/anime/{data_id}'
-					,
-					'anime_list': [f'https://myanimelist.net/topanime.php?limit={i}' for i in range(0, 20000, 50)]
+					'anime': {
+						'anime': 'https://www.myanimelist.net/anime/{data_id}'
+						,
+						'anime_list': [f'https://myanimelist.net/topanime.php?limit={i}' for i in range(0, 20000, 50)]
+					}
 				},
 				'discogs': {
-					#'song': ''
-					#,
-					#'song_list': []
-					#,
-					'musicArtist': 'https://www.discogs.com/artist/{data_id}'
+					'song': {
+						#'song': ''
+						#,
+						#'song_list': []
+					}
 					,
-					'musicArtist_list': [f'https://www.discogs.com/search/?sort=want%2Cdesc&type=artist&page={i}' for i in range(1, 200)]
-					,
-
+					'musicArtist': {
+						'musicArtist': 'https://www.discogs.com/artist/{data_id}'
+						,
+						'musicArtist_list': [f'https://www.discogs.com/search/?sort=want%2Cdesc&type=artist&page={i}' for i in range(1, 200)]
+					}
 				},
-				'merriam' :{
-					'word' : 'https://www.merriam-webster.com/dictionary/{data_id}'
-					,
-					'word_list' : list(itertools.chain.from_iterable([[f'https://www.merriam-webster.com/browse/dictionary/{char}/{i}' for i in range(1,100)] for char in "qwertyuiopasdfghjklzxcvbnm"]))
+				'merriam': {
+					'word': {
+						'word' : 'https://www.merriam-webster.com/dictionary/{data_id}'
+						,
+						'word_list' : list(itertools.chain.from_iterable([[f'https://www.merriam-webster.com/browse/dictionary/{char}/{i}' for i in range(1,100)] for char in "qwertyuiopasdfghjklzxcvbnm"]))
+					}
 				},
-				'volleyballWorld':{
-					'volleyballTeam': 'http://www.volleyball.world/en/men/teams/{data_id}'
-					,
-					'volleyballTeam_list' : ['http://www.volleyball.world/en/men/teams']
+				'volleyballWorld': {
+					'volleyballTeam': {
+						'volleyballTeam': 'http://www.volleyball.world/en/men/teams/{data_id}'
+						,
+						'volleyballTeam_list': ['http://www.volleyball.world/en/men/teams']
+					}
 				},
-				'theFamousPeople':{
-					'celebrity': 'https://www.thefamouspeople.com/profiles/{data_id}.php'
-					,
-					'celebrity_list' :list(itertools.chain.from_iterable([[f'https://www.thefamouspeople.com/{type}.php?page={i}' for i in range(1,10)] for type in ["singers"]]))
+				'theFamousPeople': {
+					'celebrity': {
+						'celebrity': 'https://www.thefamouspeople.com/profiles/{data_id}.php'
+						,
+						'celebrity_list' :list(itertools.chain.from_iterable([[f'https://www.thefamouspeople.com/{type}.php?page={i}' for i in range(1,10)] for type in ["singers"]]))
+					}
 				}
-
 			}
 
-
-project_dir			= '/root/guessit'
+main_dir			= '/home/flc/guessit'
+project_dir			= f'{main_dir}/guessit_data_manager'
 dataset_dir			= f'{project_dir}/data_manager/modules/datasets'
 process_count	   	= 4
 updating_step	   	= 10
@@ -507,7 +599,6 @@ debug			   	= False
 safe_mode		   	= False
 
 sftp 				= None
-
 
 if __name__ == '__main__':
 	#init_db('movie')
@@ -539,9 +630,12 @@ if __name__ == '__main__':
 	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
 
 
+	init_project()
+
 	for dataset in ['footballPlayer']:
 		init_db(dataset)
 		find_db(dataset)
 		update_db(dataset)
-
+	
+	#download_resources('sofifa', 'footballPlayer', count=10**2, resume=True)
 #test_getter('footballTeam', 'sofifa')

@@ -575,7 +575,6 @@ def get_movie_data_from_imdb(attribute):
 		else:
 			return 10**10
 
-
 	def imdb_user_reviews(page):
 		try:
 			return int(re.search(r'(.*?) .*?', page.find('div', {'class': 'titleReviewBarItem titleReviewbarItemBorder'}).find('a', {'href': re.compile('reviews.*?')}).text.strip().replace(',', '')).group(1))
@@ -687,6 +686,18 @@ def get_movie_data_from_imdb(attribute):
 		return popularity_rate# / (2 * 10**7)
 
 	def photos(page):
+		# TODO : this function must change according to new version of datamanager and must get all images from the mediaindex page itself(from scrept part of page)
+		# "image": [
+		#	{
+		#	"@type": "ImageObject",
+		#	"width": "2048",
+		#	"height": "1686",
+		#	"url": "https://m.media-amazon.com/images/M/MV5BNDYwMjc5NDM5M15BMl5BanBnXkFtZTgwNTM3ODIxNjM@._V1_.jpg",
+		#	"mainEntityOfPage": "/title/tt0071562/mediaviewer/rm3250420480",
+		#	"contentUrl": "https://m.media-amazon.com/images/M/MV5BNDYwMjc5NDM5M15BMl5BanBnXkFtZTgwNTM3ODIxNjM@._V1_.jpg",
+		#	"caption": "Talia Shire and Morgana King in The Godfather: Part II (1974)"
+		#	},
+		
 		try:
 			gallery_page = 'https://www.imdb.com' + page.find('a', text='Photo Gallery')['href']
 			page = make_soup(gallery_page)
@@ -1190,7 +1201,7 @@ def get_musicArtist_data_from_discogs(attribute, page):
 
 	return
 
-
+"""
 def collect_data_id_from_resource(pages, base, pattern, timeout=10**3, debug=False):
 	start_time 		= time()
 	checked_id 		= []
@@ -1231,7 +1242,7 @@ def collect_data_id_from_resource(pages, base, pattern, timeout=10**3, debug=Fal
 			
 			if time() - start_time > timeout:
 				return
-
+"""
 
 def collect_volleyballTeam_id_from_volleyballWorld(pages, timeout=10**3):
 	return collect_data_id_from_resource(pages, 'https://volleyball.world', '/en/men/teams/(.*)', timeout) 
@@ -1323,4 +1334,4 @@ def collect_director_id_from_imdb(pages, data_count=10, timeout=10**3, checked_i
 
 
 if __name__ == '__main__':
-	print(collect_footballPlayer_id_from_sofifa([f'https://sofifa.com/players?offset={i}' for i in range(0, 6000, 60)]))
+	(collect_footballPlayer_id_from_sofifa([f'https://sofifa.com/players?offset={i}' for i in range(0, 6000, 60)]))

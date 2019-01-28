@@ -21,16 +21,17 @@ import pkgutil
 import base64
 import pysftp
 import time
+import glob
 
 
-project_dir 		= '/root/guessit'
+project_dir 		= '/home/flc/guessit'
 download_page_dir 	= f'{project_dir}/download/page'
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.INFO,
 					handlers=[
-						logging.FileHandler(f'{project_dir}/data_manager/modules/data_manager_.log', mode='w+', encoding='utf8', delay=0),
+						logging.FileHandler(f'{project_dir}/guessit_data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
@@ -157,9 +158,9 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-def make_soup(url, local_save=True):
+def make_soup(url, local_save=True, location=None, return_local_save=False):
 	start_time = time.time()
-
+	location = download_page_dir if location is None else location
 	#url = re.sub('#.*?', '', url)
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
 	#url = re.sub('[?]$', '', url)
@@ -167,13 +168,13 @@ def make_soup(url, local_save=True):
 	if local_save:
 		#sftp = ftp_connect()
 
-		file_address = f"{download_page_dir}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+		for file_address in glob.glob(f"{download_page_dir}/*/*/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
+			
+			if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
 
-		if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
+				page_source = open(file_address, encoding='utf-8').read()
 
-			page_source = open(file_address, encoding='utf-8').read()
-
-			logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
+				logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
 
 	if 'page_source' not in locals():
 
@@ -186,8 +187,8 @@ def make_soup(url, local_save=True):
 		if logger: logger.info(f'{(time.time() - start_time):.3f}s - downloding page source ... {url}')
 
 		#sftp.open(file_address, 'w+').write(page_source)
-
-	return soup(page_source, 'html.parser')
+	if return_local_save: return soup(page_source, 'html.parser'), local_save
+	else: return soup(page_source, 'html.parser') 
 
 
 def get_page(url, try_count=10, delay=0, **args):
@@ -204,12 +205,12 @@ def get_page(url, try_count=10, delay=0, **args):
 			content = requests.get(url, proxies=proxies[i % len(proxies)], **args).text
 			break
 		except Exception as error :
-			if logger: logging.error(f'{error}')
+			if logger: logging.error(f'{url} : {error}')
 			if logger: logging.info(f'could not get the page. trying again for {i}th time...')
 			time.sleep(delay)
 
 	if not content:
-		if logger: logging.error(f'could not get the page at last!')
+		if logger: logging.error(f'could not get the page at last after {try_count} times of trying!')
 
 	return content
 
