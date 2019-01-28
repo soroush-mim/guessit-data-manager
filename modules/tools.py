@@ -23,15 +23,15 @@ import pysftp
 import time
 import glob
 
+import config
 
-project_dir 		= '/home/flc/guessit'
-download_page_dir 	= f'{project_dir}/download/page'
+download_page_dir 	= f'{config.main_dir}/download/page'
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.INFO,
 					handlers=[
-						logging.FileHandler(f'{project_dir}/guessit_data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
+						logging.FileHandler(f'{config.main_dir}/guessit_data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
@@ -55,7 +55,7 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 
 		#print(new_pages)
 
-		new_pages =  [re.sub('/?\?.*', '', page) for page in new_pages]
+		new_pages =  [re.sub(r'/?\?.*', '', page) for page in new_pages]
 
 		new_pages = list(set(new_pages) - set(pages))
 
@@ -108,7 +108,7 @@ def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_cou
 	return checked_id, pages, checked_pages
 
 
-def waitToConnect(timeout=10, delay=2):
+def wait_to_connect(timeout=10, delay=2):
 	connected = False
 	while not connected:
 		try:
@@ -158,20 +158,30 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-def make_soup(url, local_save=True, location=None, return_local_save=False):
+def make_soup(url, use_local_save=None, save_page_local=True, location=None, return_local_save=False):
 	start_time = time.time()
-	location = download_page_dir if location is None else location
+	if use_local_save is None: use_local_save = config.use_local_save
+	if save_page_local is None: save_page_local = config.save_page_local
+
+	try:
+		resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0] 
+		db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
+		guessed_location = f'{download_page_dir}/{resource}/{db_name}'
+	except Exception as error:
+		logging.critical(f'function make_soup() {error}')
+		guessed_location = download_page_dir
+
+	location = guessed_location if location is None else location
+
 	#url = re.sub('#.*?', '', url)
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
 	#url = re.sub('[?]$', '', url)
 
-	if local_save:
+	if use_local_save:
 		#sftp = ftp_connect()
 
-		for file_address in glob.glob(f"{download_page_dir}/*/*/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
-			
+		for file_address in glob.glob(f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
 			if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
-
 				page_source = open(file_address, encoding='utf-8').read()
 
 				logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
@@ -180,14 +190,15 @@ def make_soup(url, local_save=True, location=None, return_local_save=False):
 
 		page_source = get_page(url)
 
-		if local_save:
+		if save_page_local:
+			file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
 			try: open(file_address, 'w+', encoding='utf-8').write(page_source)
-			except Exception as error: logger.error(f'could not save the page because {error}')
+			except Exception as error: logger.error(f'could not save the page because {error} occured')
 
 		if logger: logger.info(f'{(time.time() - start_time):.3f}s - downloding page source ... {url}')
 
 		#sftp.open(file_address, 'w+').write(page_source)
-	if return_local_save: return soup(page_source, 'html.parser'), local_save
+	if return_local_save: return soup(page_source, 'html.parser'), use_local_save
 	else: return soup(page_source, 'html.parser') 
 
 
@@ -218,3 +229,31 @@ def get_page(url, try_count=10, delay=0, **args):
 def make_id(data_id):
 
 	return base64.b32encode(str(data_id).encode()).decode()
+
+
+
+def get_resources(data_name=None):
+	return [resource for resource in config.resources.keys() if data_name in config.resources[resource]] if data_name else config.resources
+
+
+def get_page_link(resource, data_name, attribute=None):
+	attribute = data_name if attribute is None else attribute
+	return config.resources[resource][data_name][attribute]
+
+
+"""
+if __name__ == '__main__':
+
+	url = 'https://sofifa.com/team/245716'
+	try:
+
+		resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0] 
+		print(resource)
+
+		db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
+		guessed_location = f'{download_page_dir}/{resource}/{db_name}'
+		print(guessed_location, db_name)
+	except Exception as error:
+		guessed_location = download_page_dir
+		print(error)
+"""

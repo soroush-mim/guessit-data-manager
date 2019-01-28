@@ -24,9 +24,11 @@ import time
 import math
 import urllib
 import glob
+import random
+import argparse
 
+import config
 from tools import *
-
 from DataGetters import *
 
 
@@ -35,8 +37,8 @@ class Monitoring:
 	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
 	cpuuse	  	= lambda : psutil.cpu_percent()
 	memuse	  	= lambda : psutil.virtual_memory()[2]
-	logMemory   = lambda : logger.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
-	logCpu	  	= lambda : logger.info(f'cpu	usage : all = {cpuuse()} %  -  me = {cpuuseme()} % ')
+	logMemory   = lambda : logger.info(f'memory usage : all = {Monitoring.memuse()} %  -  me = {Monitoring.memuseme()} MB')
+	logCpu	  	= lambda : logger.info(f'cpu	usage : all = {Monitoring.cpuuse()} %  -  me = {Monitoring.cpuuseme()} % ')
 
 
 def download_db_link(url):
@@ -47,7 +49,7 @@ def download_db_link(url):
 	new_url = url
 
 	try:
-		if re.search('.*?youtube\.com/watch.*', url):
+		if re.search(r'.*?youtube\.com/watch.*', url):
 
 			file_name = youtube_downloader.download_music(url, str(int(time.time())))
 
@@ -159,21 +161,12 @@ def update_data(data_name, data):
 	return data
 
 
-def get_resources(data_name=None):
-	return [resource for resource in resources.keys() if data_name in resources[resource]] if data_name else resources
-
-
-def get_page_link(resource, data_name, attribute=None):
-	attribute = data_name if attribute is None else attribute
-	return resources[resource][data_name][attribute]
-
-
 def load_db(db_name):
 
 	try:
 		logger.critical(f'trying to load {db_name} dataset from hard disk...')
 
-		db = json.load(open(f'{dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+		db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
 
 		logger.critical(f'loading {db_name} dataset from hard disk is done.')
 
@@ -181,7 +174,7 @@ def load_db(db_name):
 
 		logger.error(error)
 
-		logger.critical(f'could not open dataset from {dataset_dir}/ directory')
+		logger.critical(f'could not open dataset from {config.dataset_dir}/ directory')
 
 		logger.critical(f'trying to download {db_name} dataset from server...')
 
@@ -190,11 +183,11 @@ def load_db(db_name):
 		logger.critical(f'loading {db_name} dataset from server is done.')
 
 
-	if backup:
+	if config.backup:
 
 		logger.critical(f'taking backup from {db_name} dataset ...')
 
-		json.dump(db, open(f"{dataset_dir}/{db_name}db {time.ctime().replace(':', '-')}.backup", 'w'), indent=4)
+		json.dump(db, open(f"{config.dataset_dir}/{db_name}db {time.ctime().replace(':', '-')}.backup", 'w'), indent=4)
 
 		logger.info(f'taking backup from {db_name} dataset is done.')
 
@@ -204,10 +197,10 @@ def load_db(db_name):
 def save_db(db, db_name):
 	logger.critical('Writing to file ...')
 
-	json.dump(db, open(f'{dataset_dir}/{db_name}db.json', 'w'), indent=4)
+	json.dump(db, open(f'{config.dataset_dir}/{db_name}db.json', 'w'), indent=4)
 
-	if safe_mode:
-		json.dump(db, open(f'{dataset_dir}/{db_name}dbLastUpdate.json', 'w'), indent=4)
+	if config.safe_mode:
+		json.dump(db, open(f'{config.dataset_dir}/{db_name}dbLastUpdate.json', 'w'), indent=4)
 
 	logger.critical('Writing to file is done.')
 
@@ -220,7 +213,7 @@ def get_expired_data(db, begin, end):
 		if not 'lastUpdate' in db[j] or not db[j]['lastUpdate'] or not isinstance(db[j]['lastUpdate'], str):
 			db[j]['lastUpdate'] = str(time.strftime('%a %b %d %H:%M:%S %Y', time.gmtime(0)))
 
-		if time.strptime(db[j]['lastUpdate'], '%a %b %d %H:%M:%S %Y') < time.localtime(time.time() - expiration_time):
+		if time.strptime(db[j]['lastUpdate'], '%a %b %d %H:%M:%S %Y') < time.localtime(time.time() - config.expiration_time):
 			old_data += [db[j]]
 
 	return old_data
@@ -246,7 +239,7 @@ def update_db_partial(db, updated_items, begin=0, end=None):
 	return db, changes
 
 
-def update_db(db_name, begin=0, end=None, timeout=10**4):
+def update_db(db_name, begin=0, en                                                                                                                                                        d=None, timeout=10**4):
 
 	db = load_db(db_name)
 	if end is None:
@@ -260,6 +253,7 @@ def update_db(db_name, begin=0, end=None, timeout=10**4):
 
 			Monitoring.logMemory()
 			Monitoring.logCpu()
+			
 			logger.critical(f'Updating {db_name} dataset from {i} to {i + updating_step} ...')
 
 			old_data = get_expired_data(db, begin=i, end=min(i + updating_step, end))
@@ -341,7 +335,6 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 					save_db(db, db_name)
 
 
-
 	#logger.critical(f"all new datas {new_datas if len(new_datas) < 3 else str(new_datas[:3]) + '...'}")
 
 
@@ -351,7 +344,7 @@ def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, t
 
 
 def init_db(db_name):
-	open(f'{dataset_dir}/{db_name}db.json', 'w+').write('[]')
+	open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
 
 
 def save_pages(url, patterns):
@@ -387,35 +380,72 @@ def check_get_function(data_name, resource, page_link):
 	pprint(new_data)
 
 
-def test_getter(data_name, resource, attr=None, test_count=20):
-	getter_module = globals()[f'get_{data_name}_data_from_{resource}']
-	module = getter_module(attr)
-	data_ids = [new_data[f'{resource}ID'] for new_data in find_db(data_name, resources=[resource], save_to_db=False, max_find_all=test_count)]
+def test_getter(data_name, resource, attributes=None, count=None, id_list=None, complete_report=True):
+	getter_modules = globals()[f'get_{data_name}_data_from_{resource}']
+	if attributes is None: attributes = getter_modules('get_locals')
+	db = load_db(data_name)
+	count = len(load_db(data_name)) if count is None else count
+	sample_data = random.sample(db, count)
+	data_ids = id_list if id_list else [new_data[f'{resource}ID'] for new_data in sample_data if f'{resource}ID' in new_data] #find_db(data_name, resources=[resource], save_to_db=False, max_find_all=count)
 
-	failed_data_ids = []
+	test_results = []
 
-	for data_id in data_ids:
-		page_link = make_soup(get_page_link(resource, data_name).format(data_id=data_id))
-		try:
-			print(module(page_link))
-		except Exception as error:
-			failed_data_ids += [data_id]
-			print(error)
+	for attribute in attributes:
+		
+		failed_get_ids, failed_test_ids, all_datas = [], [], []
 
-	test_result = {
-		'data_name'			: data_name,
-		'attr'				: attr,
-		'resource'			: resource,
-		'failed_data_ids'	: failed_data_ids,
-		'success_rate'		: str((test_count - len(failed_data_ids)) / test_count * 100) + '%',
+		for data_id in data_ids:
+			page = make_soup(get_page_link(resource, data_name).format(data_id=data_id))
+			
+			try:
+				new_data = getter_modules(attribute)(page, test=True)
+				logger.info(f'id = "{data_id}" ------- {attribute} = "{new_data}"')
+				if new_data is None: failed_test_ids += [new_data]
+				else: all_datas += [new_data]
 
-	}
+			except Exception as error:
+				failed_get_ids += [data_id]
+				logger.error(error)
+ 
+		test_result = {
+			'data_name'			: data_name,
+			'attribute'			: attribute,
+			'resource'			: resource,
+			'failed_get_ids'	: failed_get_ids,
+			'failed_tests_ids'	: failed_test_ids,
+			
+			'success_rate'		: str((count - len(failed_get_ids) - len(failed_test_ids)) / count * 100) + '%'
+		}
+		if complete_report: 
+			test_result = dict(list(test_result.items()) + list({
+				'all_datas'		: all_datas
+			}.items()))
 
-	return test_result
+		test_results += [test_result]
 
+	return test_results
+
+"""
+def download_resouce_page(resource, db_name):
+	with mp.Pool(10) as pool:
+		while 1:
+				try:
+					page_queue = json.load(open(f'{main_dir}/download/page/{resource}/{db_name}/statics.json'))['page_queue']
+					break
+				except: pass
+		step = 10
+		for i in range(0, len(page_queue), step):
+			while 1:
+				try:
+					page_queue = json.load(open(f'{main_dir}/download/page/{resource}/{db_name}/statics.json'))['page_queue']
+					break
+				except: pass
+			pool.map(make_soup, page_queue[i:i+step])
+"""
 
 def download_resources(resource, db_name, count=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
 	start_time = time.time()
+	#mp.Process(target=download_resouce_page, args=(resource, db_name, )).start()
 	location = f'{main_dir}/download/page/{resource}/{db_name}'
 	if resume:
 		try:
@@ -427,10 +457,10 @@ def download_resources(resource, db_name, count=float('Inf'), count_founds=float
 	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
 	page_queue_first_len = len(page_queue)
 	i = start - 1
-	while i < len(page_queue):
+	while i < len(page_queue) - 1:
 		i += 1
 		page = page_queue[i]
-		if i % 100 == 0: json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'))
+		if i % 30 == 0 or i == len(page_queue) - 1: json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'), indent=4)
 		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
 		souped_page = make_soup(page, location=location)
 		#if local_save: continue
@@ -444,6 +474,8 @@ def download_resources(resource, db_name, count=float('Inf'), count_founds=float
 					if i - start >= count or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
 						return page_queue, i
 
+	logger.critical(f'Downloading resource ended successfully!')
+
 
 def init_project():
 	for resource in get_resources():
@@ -454,188 +486,77 @@ def init_project():
 			except Exception as error: logger.error(error)
 
 
-resources	=   {
-				'imdb': {
-					'movie': {
-						'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&start={i + 1}' for i in range(0, 10000, 250)]
-									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&start={i + 1}' for i in range(0, 10000, 250)]
-						,
-						'movie': 'https://www.imdb.com/title/{data_id}'
-						,
-						'base': 'https://www.imdb.com'
-						,
-						'movie_pattern': r'(title\/[a-z0-9]*).*?$'
-						,
-						'summaries_pattern': r'(\/title\/[a-z0-9]*\/plotsummary).*?$'
-						,
-						'mediaindex_pattern': r'(\/title\/[a-z0-9]*\/mediaindex).*?$'
-						,
-						'videogallery_pattern': r'(\/title\/[a-z0-9]*\/videogallery).*?$'
-						,
-						'quotes_pattern': r'(\/title\/[a-z0-9]*\/quotes).*?$'
-						,
-						'taglines_pattern': r'(\/title\/[a-z0-9]*\/taglines).*?$'
-						,
-						'keywords_pattern': r'(\/title\/[a-z0-9]*\/keywords).*?$'
-						,
-						'trivia_pattern': r'(\/title\/[a-z0-9]*\/trivia).*?$'
-					}
-					,
-					'actor': {
-						'actor_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-									+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-						,
-						'actor': 'https://www.imdb.com/name/{data_id}'
-						,
-						'base': 'https://www.imdb.com'
-						,
-						'actor_pattern': r''
-					}
-					,
-					'director': {
-						'director_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-										+ [f'https://www.imdb.com/search/title?title_type=feature&sort=num_votes,desc&count={250}&page={int((i+1)/250 + 1)}' for i in range(0, 10000, 250)]
-						,
-						'director': 'https://www.imdb.com/name/{data_id}'
-					}
-				},
-				'sofifa': {
-					'footballPlayer': {
-						'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
-						,
-						'footballPlayer': 'https://sofifa.com/player/{data_id}'
-						,
-						'base': 'https://sofifa.com'
-						,
-						'footballPlayer_pattern': r'(\/player\/[0-9]*\/[^\/]*\/).*?$'
-						
-					}
-					,
-					'footballTeam': {
-						'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 700, 60)]
-						,
-						'footballTeam': 'https://sofifa.com/team/{data_id}'
-					}
-				},
-				'goodreads': {
-					'book': {
-						'book': 'https://www.goodreads.com/book/show/{data_id}'
-						,
-						'book_list': list(itertools.chain.from_iterable([[f'https://www.goodreads.com/book/popular_by_date/{i}/{j}' for j in range(1, 13)] for i in range(2010, 2018)]))
-					}
-					,
-					'author': {
-						'author': 'https://www.goodreads.com/author/show/{data_id}'
-						,
-						'author_list': list(itertools.chain.from_iterable([[f'https://www.goodreads.com/book/popular_by_date/{i}/{j}' for j in range(1, 13)] for i in range(2010, 2018)]))
-					}
-				},
-				'cia': {
-					'country': {
-						'country': 'https://www.cia.gov/library/publications/the-world-factbook/geos/{data_id}.html'
-						,
-						'country_list': ['https://www.cia.gov/library/publications/the-world-factbook/docs/flagsoftheworld.html']
-					}
-				},
-				'biography': {
-					'people': {
-						'people': 'https://www.biography.com/people/{data_id}'
-						,
-						'people_list': ['https://www.biography.com/people']
-					}
-				},
-				'myanimelist': {
-					'anime': {
-						'anime': 'https://www.myanimelist.net/anime/{data_id}'
-						,
-						'anime_list': [f'https://myanimelist.net/topanime.php?limit={i}' for i in range(0, 20000, 50)]
-					}
-				},
-				'discogs': {
-					'song': {
-						#'song': ''
-						#,
-						#'song_list': []
-					}
-					,
-					'musicArtist': {
-						'musicArtist': 'https://www.discogs.com/artist/{data_id}'
-						,
-						'musicArtist_list': [f'https://www.discogs.com/search/?sort=want%2Cdesc&type=artist&page={i}' for i in range(1, 200)]
-					}
-				},
-				'merriam': {
-					'word': {
-						'word' : 'https://www.merriam-webster.com/dictionary/{data_id}'
-						,
-						'word_list' : list(itertools.chain.from_iterable([[f'https://www.merriam-webster.com/browse/dictionary/{char}/{i}' for i in range(1,100)] for char in "qwertyuiopasdfghjklzxcvbnm"]))
-					}
-				},
-				'volleyballWorld': {
-					'volleyballTeam': {
-						'volleyballTeam': 'http://www.volleyball.world/en/men/teams/{data_id}'
-						,
-						'volleyballTeam_list': ['http://www.volleyball.world/en/men/teams']
-					}
-				},
-				'theFamousPeople': {
-					'celebrity': {
-						'celebrity': 'https://www.thefamouspeople.com/profiles/{data_id}.php'
-						,
-						'celebrity_list' :list(itertools.chain.from_iterable([[f'https://www.thefamouspeople.com/{type}.php?page={i}' for i in range(1,10)] for type in ["singers"]]))
-					}
-				}
-			}
 
-main_dir			= '/home/flc/guessit'
-project_dir			= f'{main_dir}/guessit_data_manager'
-dataset_dir			= f'{project_dir}/data_manager/modules/datasets'
-process_count	   	= 4
-updating_step	   	= 10
-finding_step	   	= 10
-expiration_time	 	= 60 * 60 * 10
-backup			  	= False
-debug			   	= False
-safe_mode		   	= False
+def arg_parse():
+	"""
+	"""
 
-sftp 				= None
+	parser = argparse.ArgumentParser()
+
+	parser.add_argument('--test_getter', action='store_true', dest='test_getter',
+		            	default=False, help='test getter modules')
+
+	parser.add_argument('--download_resources', action='store_true', dest='download_resources',
+		            	default=False, help='download resources')
+
+	parser.add_argument('--update_db', action='store_true', dest='update_db',
+		            	default=False, help='updating database')
+
+	parser.add_argument('--find_db', action='store_true', dest='find_db',
+		            	default=False, help='finding database id')
+
+	parser.add_argument('--init_db', action='store_true', dest='init_db',
+		            	default=False, help='initializing database')
+
+	parser.add_argument('-resource', type=str, dest='resource',
+		            	help='resource of test data')
+
+	parser.add_argument('-db', type=str, dest='db',
+		            	help='db of test data')
+
+	parser.add_argument('-attributes', type=str, nargs='+', dest='attributes', default=None,
+		            	help='attribute of test data')
+
+	parser.add_argument('-count', type=int, dest='count', default=None,
+		            	help='number of test datas')
+
+	parser.add_argument('-id', type=str, nargs='+', dest='id',
+		            	help='data id s to be tested')
+
+	parser.add_argument('-resume', action='store_true', dest='resume', default=False,
+		            	help='specify the resume arg in download_resources function')
+
+	parser.add_argument('-dont_use_local_save', action='store_true', dest='dont_use_local_save', default=False,
+		            	help='specify whether should use local saved pages in make_spup funtion or not')
+
+	parser.add_argument('-dont_save_page_local', action='store_true', dest='dont_save_page_local', default=False,
+		            	help='specify whether should use local saved pages in make_spup funtion or not')
+
+	parser.add_argument('-complete_report', action='store_true', dest='complete_report', default=False,
+		            	help='gives complete eport of task')
+
+	args = parser.parse_args()
+
+	config.use_local_save = not args.dont_use_local_save
+	config.save_page_local = not args.dont_save_page_local
+
+	if args.test_getter:
+		logger.critical('test results : ')
+		pprint(test_getter(args.db, args.resource, args.attributes, count=args.count, id_list=args.id, complete_report=args.complete_report))
+	
+	elif args.download_resources:
+		download_resources(args.resource, args.db, count=args.count, resume=args.resume)
+
+	elif args.update_db:
+		update_db(args.db)
+
+	elif args.find_db:
+		find_db(args.db)
+
+	elif args.init_db:
+		init_db(args.db)
+
 
 if __name__ == '__main__':
-	#init_db('movie')
-	#find_db('movie')
-	#update_db('movie')
-	#download_db('movie')
-
-	#for dataset in ['musicArtist']:
-	#	init_db(dataset)
-	#	find_db(dataset)
-	#	update_db(dataset)
-
-	#download_db('movie')
-
-	#update_db('movie')
-
-	#check_get_function('movie', 'imdb', 'https://www.imdb.com/title/tt2674426')
-
-	#check_get_function('actor', 'imdb', 'https://www.imdb.com/name/nm0488953')
-
-	#check_get_function('book', 'goodreads', 'https://www.goodreads.com/book/show/341879.Just_Kids')
-
-	#check_get_function('author', 'goodreads', 'https://www.goodreads.com/author/show/196092.Patti_Smith')
-
-	#sleep(100)
-
-	#for dataset in datasets: init_db(dataset)
-
-	#pprint(test_getter(data_name='director', resource='imdb', attr='birthdate', test_count=2))
-
-
-	init_project()
-
-	for dataset in ['footballPlayer']:
-		init_db(dataset)
-		find_db(dataset)
-		update_db(dataset)
-	
-	#download_resources('sofifa', 'footballPlayer', count=10**2, resume=True)
-#test_getter('footballTeam', 'sofifa')
+	arg_parse()
+	#init_project()

@@ -18,9 +18,10 @@ import inspect
 import functools
 import itertools
 import time
-from tools import *
 import youtube_downloader
 
+import config
+from tools import *
 
 
 sftp = None
@@ -34,93 +35,180 @@ def Clear_duplicate_name(array):
                     Clear_duplicate_name(array)
                     break
 
-
     return
 
+money_value = lambda money : int(float(money[1:-1]) * (10 ** (3 if money[-1] == 'K' else 6 if money[-1] == 'M' else 0))) if money != '€0' else 0
+date_value = lambda date : (date[-4:], int([value for key, value in \
+									{'January'	: 1 , 'February': 2	, 'March'		: 3,
+									'April'		: 4 , 'May'		: 5	, 'June'		: 6,
+									'July'		: 7 , 'August'	: 8	, 'September'	: 9,
+									'October'	: 10, 'November': 11, 'December'	: 12
+									}.items() if date[:3] in key][0]), int(date[date.find(' ') + 1:date.find(',')]))
 
 
 def get_footballTeam_data_from_sofifa(attribute):
-	def name(page):
-		return re.search('(.*) \(.*', page.find('h1').text.strip()).group(1)
+	def name(page, test=False):
+		pattern = r'[a-z]{2,30}'
+		value 	= re.search(r'(.*?) \(.*', page.find('h1').text.strip()).group(1).strip()
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def players(page):
-		return [tag.find('a', {'href': re.compile('/player/[0-9]*')})['title'] for tag in page.find_all('tr',{'class' : 'starting'})+page.find_all('tr',{'class' : 'sub'})+page.find_all('tr',{'class' : 'res'})]
+	def players(page, test=False):
+		pattern = r'.{3,30}'
+		values 	= [tag.find('a', {'href': re.compile('/player/[0-9]*')})['title'] for tag in page.find_all('tr',{'class' : 'starting'})+page.find_all('tr',{'class' : 'sub'})+page.find_all('tr',{'class' : 'res'})]
+		
+		return values if not test or all([re.search(pattern, str(value)) for value in values]) else None
 
-	def homeStadium(page):
-		return re.search('.*?</label>(.*)</li>', str(page.find('label', text='Home Stadium').parent)).group(1).strip()
+	def homestadium(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= re.search('.*?</label>(.*)</li>', str(page.find('label', text='Home Stadium').parent)).group(1).strip().replace('\u20ac',' yoro ')
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def rivalTeam(page):
-		return page.find('label', text='Rival Team').findNext().text
+	def rivalteam(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Rival Team').parent.find('a').text
 
-	def transferBudget(page):
-		return re.search('.*?</label>(.*)</li>', str(page.find('label', text='Transfer Budget').parent)).group(1).strip().replace('\u20ac',' yoro ')
+		return value if not test or re.search(pattern, value) else None
 
-	def mainAverageAge(page):
-		return re.search('.*?</label>(.*)</li>', str(page.find('label', text='Starting 11 Average Age').parent)).group(1).strip()
+	def transferbudget(page, test=False):
+		pattern = r'[0-9]{1,10}'
+		value 	= money_value(re.search('.*?</label>(.*)</li>', str(page.find('label', text='Transfer Budget').parent)).group(1).strip().replace('\u20ac',''))
+		
+		return value if not test or re.search(pattern, str(value)) else None
 
-	def allAverageAge(page):
-		return re.search('.*?</label>(.*)</li>', str(page.find('label', text='Whole Team Average Age').parent)).group(1).strip()
+	def mainaverageage(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= re.search('.*?</label>(.*)</li>', str(page.find('label', text='Starting 11 Average Age').parent)).group(1).strip()
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def captain(page):
-		return page.find('label', text='Captain').parent.find('a')['data-tooltip']
+	def allaverageage(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= re.search('.*?</label>(.*)</li>', str(page.find('label', text='Whole Team Average Age').parent)).group(1).strip()
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def shortFreeKick(page):
-		return page.find('label', text='Short Free Kick').parent.find('a')['data-tooltip']
+	def captain(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Captain').parent.find('a')['data-tooltip']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def longFreeKick(page):
-		return page.find('label', text='Long Free Kick').parent.find('a')['data-tooltip']
+	def shortfreekick(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Short Free Kick').parent.find('a')['data-tooltip']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def penalty(page):
-		return page.find('label', text='Penalties').parent.find('a')['data-tooltip']
+	def longfreekick(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Long Free Kick').parent.find('a')['data-tooltip']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def leftCorner(page):
-		return page.find('label', text='Left Corner').parent.find('a')['data-tooltip']
+	def penalty(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Penalties').parent.find('a')['data-tooltip']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def rightCorner(page):
-		return page.find('label', text='Right Corner').parent.find('a')['data-tooltip']
+	def leftcorner(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Left Corner').parent.find('a')['data-tooltip']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def sofifaLikes(page):
-		return int(page.select('a.like-btn.btn')[0].find('span').text.strip())
+	def rightcorner(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('label', text='Right Corner').parent.find('a')['data-tooltip']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def homeKit(page):
-		return [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Home') != -1][0]['src']
+	def sofifalikes(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= int(page.select('a.like-btn.btn')[0].find('span').text.strip())
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def awayKit(page):
-		return [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Away') != -1][0]['src']
+	def homekit(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Home') != -1][0]['src']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def thirdKit(page):
-		return [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Third') != -1][0]['src']
+	def awaykit(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Away') != -1][0]['src']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def goalkeeperKit(page):
-		return [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Goalkeeper') != -1][0]['src']
+	def thirdkit(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Third') != -1][0]['src']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def picture(page):
-		return page.find('img', {'data-src': re.compile('.*?/teams/.*')})['data-src']
+	def goalkeeperkit(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= [tag for tag in page.find_all('img', {'src': re.compile('.*?/kits/.*')}) if tag.parent.text.find('Goalkeeper') != -1][0]['src']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def country(page):
-		return page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')})['title']
+	def picture(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.find('img', {'data-src': re.compile('.*?/teams/.*')})['data-src']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def sofifaAttackRate(page):
-		return int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Attack') != -1][0].find('span').text)
+	def country(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')})['title']
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def sofifaMidfieldRate(page):
-		return int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Midfield') != -1][0].find('span').text)
+	def sofifaattackrate(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Attack') != -1][0].find('span').text)
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def sofifaOverallRate(page):
-		return int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Overall') != -1][0].find('span').text)
+	def sofifamidfieldrate(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Midfield') != -1][0].find('span').text)
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def sofifaDefenceRate(page):
-		return int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Defence') != -1][0].find('span').text)
+	def sofifaoverallrate(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Overall') != -1][0].find('span').text)
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def sofifaDefenceRate(page):
-		return [tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Defence') != -1][0].find('span').text
+	def sofifadefencerate(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= int([tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Defence') != -1][0].find('span').text)
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def country(page):
-		return page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')})['title']
+	def sofifadefencerate(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= [tag for tag in page.select('div.card-body.stats')[0].find('div').select('div') if tag.text.find('Defence') != -1][0].find('span').text
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def league(page):
+	def country(page, test=False):
+		pattern = r'.{3,30}'
+		value 	= page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')})['title']
+		
+		return value if not test or re.search(pattern, value) else None
+
+	def league(page, test=False):
 		t = page.select('div.info')[0].find('a', {'href': re.compile('.*?/teams.*')}).findNext().findNext().text
-		return re.sub(r' \([0-9]*\)','',t)
+		pattern = r'.{3,30}'
+		value 	= re.sub(r' \([0-9]*\)','',t)
+		
+		return value if not test or re.search(pattern, value) else None
 
 	if attribute ==  'get_locals': return list(locals().keys())
 
@@ -128,54 +216,213 @@ def get_footballTeam_data_from_sofifa(attribute):
 
 
 def get_footballPlayer_data_from_sofifa(attribute):
-	def name(page):
-		return re.search(r'([A-Za-z -.].*)  .*?' ,page.find('div',{'class' : 'meta'}).text.strip()).group(1)
 
-	def age(page):
-		return re.search(r'.*?Age ([0-9]{2}) .*?', page.find('div',  {'class': 'info'}).decode_contents(formatter="html").strip()).group(1)
+	"""
+	TODO : get national teams info ---> https://sofifa.com/players?na=7
+	"""
 
-	def birthYear(page):
-		return int(re.search(r'.*? \([a-zA-Z]*? [0-9,]*? ([0-9]*?)\) .*?', page.find('div',  {'class': 'info'}).decode_contents(formatter="html").strip().replace(',', '')).group(1))
+	def name(page, test=False):
+		pattern = r'[^\(\)]{3,50}'
+		value 	= re.search(r'([^\(]*).*?  .*?' ,page.find('div',{'class' : 'meta'}).text.strip()).group(1).strip()
+		value 	= re.search(r'(.*?)\(ID.*' ,page.find('div',{'class' : 'info'}).find('h1').text.strip()).group(1)
+		
+		return value if not test or re.search(pattern, value) else None
 
-	def foot(page):
-		return re.search(r'.*?</label>.*?([a-zA-Z]{3,})', page.find('div',  {'class': 'teams'}).find_all('li')[0].decode_contents(formatter="html").strip()).group(1)
+	def age(page, test=False):
+		pattern = r'[0-9]{2}'
+		value 	= int(re.search(r'.*?Age ([0-9]{2}) .*?', page.find('div',  {'class': 'info'}).text.strip()).group(1))
+		
+		return value if not test or re.search(pattern, str(value)) else None
 
-	def team(page):
-		return page.find_all('a',  {'href': re.compile('/team.*?')})[1].decode_contents(formatter="html").strip()
+	def birthyear(page, test=False):
+		pattern = r'[1-2][019][0-9]{2}'
+		value 	= int(re.search(r'.*? \([a-zA-Z]*? [0-9,]*? ([0-9]*?)\) .*?', page.find('div',  {'class': 'info'}).text.strip().replace(',', '')).group(1))		
 
-	def natioalTeam(page):
-		return page.find_all('a',  {'href': re.compile('/team.*?')})[2].decode_contents(formatter="html").strip()
+		return value if not test or re.search(pattern, str(value)) else None
 
-	def country(page):
-		return page.find('div', {'class': 'info'}).find('div', {'class': 'meta'}).find('a',  {'href': re.compile('/players.*?')})['title'].strip()
+	def foot(page, test=False):
+		pattern = r'(right|left)'
+		value 	= re.search(r'.*(Right|Left).*', page.find('div',  {'class': 'teams'}).find_all('li')[0].text.strip()).group(1).strip().lower()
 
-	def jerseyNumber(page):
-		return re.search(r'.*?</label>([0-9]{1,3})<.*?', [str(tag) for tag in page.find_all('li') if str(tag).find('Jersey Number') != -1][0]).group(1)
+		return value if not test or re.search(pattern, str(value)) else None
 
-	def jerseyNumberNational(page):
-		return re.search(r'.*?</label>([0-9]{1,3})<.*?', [str(tag) for tag in page.find_all('li') if str(tag).find('Jersey Number') != -1][1]).group(1)
+	def team(page, test=False):
+		pattern = r'[^\(\)]{3,50}'
+		value 	= page.find_all('a',  {'href': re.compile('/team.*?')})[1].text.strip()
 
-	def rate(page):
-		return [tag for tag in page.find_all('div', {'class': 'column col-4 text-center'}) if str(tag).find('Overall Rating') != -1][0].find('span').decode_contents(formatter="html")
+		return value if not test or re.search(pattern, str(value)) else None
 
-	def potential(page):
-		return [tag for tag in page.find_all('div', {'class': 'column col-4 text-center'}) if str(tag).find('Potential') != -1][0].find('span').decode_contents(formatter="html")
+	def team_id(page, test=False):
+		pattern = r'[0-9]*'
+		value 	= re.search(r'\/team\/([0-9]*)\/.*?', page.find_all('a',  {'href': re.compile('/team.*?')})[1]['href']).group(1)
 
-	def value(page):
-		return [tag for tag in page.find_all('div', {'class': 'column col-4 text-center'}) if str(tag).find('Value') != -1][0].find('span').decode_contents(formatter="html")
+		return value if not test or re.search(pattern, str(value)) else None
 
-	def wage(page):
-		return [tag for tag in page.find_all('div', {'class': 'column col-4 text-center'}) if str(tag).find('Wage') != -1][0].find('span').decode_contents(formatter="html")
+	def joinedteam(page, test=False):
+		pattern = r'[0-9]{4},[0-9]{1,2},[0-9]{1,2}'
+		if [tag for tag in page.find_all('li') if str(tag).find('Joined') != -1]:
+			value 	= [','.join(map(str, date_value(re.search(r'.*?([A-Z].{1,10}[0-9]{4}).*?', str(tag)).group(1)))) for tag in page.find_all('li') if str(tag).find('Joined') != -1][0]
+		else:
+			value 	= '####'
 
-	def position(page):
-		return [tag for tag in page.find_all('li') if str(tag.find('label')).find('Position') != -1][0].find('span').decode_contents()
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
 
-	def sofifaFollow(page):
-		return [tag for tag in page.find_all('a') if str(tag).find('Follow') != -1 and tag.find('span')][0].find('span').decode_contents()
+	def joinedteamuntil(page, test=False):
+		pattern = r'[0-9]{4}'
+		if [tag for tag in page.find_all('li') if str(tag).find('Contract Valid Until') != -1]:
+			value 	= [int(re.search(r'.*?([0-9]{4}).*?', str(tag)).group(1)) for tag in page.find_all('li') if str(tag).find('Contract Valid Until') != -1][0]
+		else:
+			value 	= '####'
 
-	def picture(page):
-		return page.find('img', {'data-src': re.compile('https://cdn.sofifa.org/players.*?')})['data-src']
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
 
+	def joinednationalteam(page, test=False):
+		pattern = r'[0-9]{4},[0-9]{1,2},[0-9]{1,2}'
+		if [tag for tag in page.find_all('li') if str(tag).find('Joined') != -1]:
+			value 	= [','.join(map(str, date_value(re.search(r'.*?([A-Z].{1,10}[0-9]{4}).*?', str(tag)).group(1)))) for tag in page.find_all('li') if str(tag).find('Joined') != -1][1]
+		else:
+			value 	= '####'
+
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def joinednationalteamuntil(page, test=False):
+		pattern = r'[0-9]{4}'
+		if [tag for tag in page.find_all('li') if str(tag).find('Contract Valid Until') != -1]:
+			value 	= [int(re.search(r'.*?([0-9]{4}).*?', str(tag)).group(1)) for tag in page.find_all('li') if str(tag).find('Contract Valid Until') != -1][1]
+		else:
+			value 	= '####'
+
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def nationalteam(page, test=False):
+		pattern = r'[^\(\)]{3,50}'
+
+		if len([tag for tag in page.find('div', {'class': 'teams'}).find_all('label') if tag.text.find('Jersey Number') != -1]) > 1:
+			value 	= page.find('div', {'class': 'teams'}).find_all('a',  {'href': re.compile('/team.*?')})[1].text.strip()
+		else:
+			value = '####'
+
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def nationality(page, test=False):
+		pattern = r'.*'
+		value 	= page.find_all('a',  {'href': re.compile(r'\/players\?na.*?')})[0]['title']
+
+		return value if not test or re.search(pattern, str(value)) else None
+
+	def jerseynumber(page, test=False):
+		pattern = r'[0-9]{1,2}'
+		value 	= re.search(r'.*?([0-9]{1,2}).*?', [str(tag) for tag in page.find_all('li') if str(tag).find('Jersey Number') != -1][0]).group(1)
+
+		return value if not test or re.search(pattern, str(value)) else None
+
+	def jerseynumbernational(page, test=False):
+		pattern = r'[0-9]{1,2}'
+		if len([tag for tag in page.find('div', {'class': 'teams'}).find_all('label') if tag.text.find('Jersey Number') != -1]) > 1:
+			value 	= re.search(r'.*?([0-9]{1,2}).*?', [str(tag) for tag in page.find('div', {'class': 'teams'}).find_all('li') if str(tag).find('Jersey Number') != -1][1]).group(1)
+		else:
+			value = '####'
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def overalrating(page, test=False):
+		pattern = r'[0-9]{1,2}'
+		value 	= [int(tag.find('span').text) for tag in page.find('div', {'class': 'card-body stats'}).find('div').find_all('div') if tag.text.find('Overall Rating') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def potential(page, test=False):
+		pattern = r'[0-9]{1,2}'
+		value 	= [int(tag.find('span').text) for tag in page.find('div', {'class': 'card-body stats'}).find('div').find_all('div') if tag.text.find('Potential') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def value(page, test=False):
+		pattern = r'[0-9]{1,10}'
+		value 	= [money_value(tag.find('span').text.strip()) for tag in page.find('div', {'class': 'card-body stats'}).find('div').find_all('div') if tag.text.find('Value') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def wage(page, test=False):
+		pattern = r'[0-9]{1,10}'
+		value 	= [money_value(tag.find('span').text) for tag in page.find('div', {'class': 'card-body stats'}).find('div').find_all('div') if tag.text.find('Wage') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def position(page, test=False):
+		pattern = r'[A-Z]{2,3}'
+		value 	= [tag for tag in page.find_all('li') if tag.find('label').text.find('Position') != -1][0].find('span').text
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def sofifafollow(page, test=False):
+		pattern = r'[0-9]{1,5}'
+		value 	= [int(tag.find('span').text) for tag in page.find_all('a') if tag.text.find('Follow') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def sofifalike(page, test=False):
+		pattern = r'[0-9]{1,5}'
+		value 	= [int(tag.find('span').text) for tag in page.find_all('a') if tag.text.find('Like') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def sofifadislike(page, test=False):
+		pattern = r'[0-9]{1,5}'
+		value 	= [int(tag.find('span').text) for tag in page.find_all('a') if tag.text.find('Dislike') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def bodytype(page, test=False):
+		pattern = r'[a-z]{1,5}'
+		value 	= [tag for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('Body Type') != -1][0].find('span').text.lower()
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def realface(page, test=False):
+		pattern = r'(yes|no)'
+		value 	= [tag for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('Real Face') != -1][0].find('span').text.lower()
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def skillmoves(page, test=False):
+		pattern = r'[0-9]'
+		value 	= [re.search('.*?([0-9]).*?', str(tag)).group(1) for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('Skill Moves') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def weakfoot(page, test=False):
+		pattern = r'[0-9]'
+		value 	= [re.search('.*?([0-9]).*?', str(tag)).group(1) for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('Weak Foot') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def internationalreputation(page, test=False):
+		pattern = r'[0-9]'
+		value 	= [re.search('.*?([0-9]).*?', str(tag)).group(1) for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('International Reputation') != -1][0]
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def releaseclause(page, test=False):
+		pattern = r'[0-9]{1,10}'
+		if [tag for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('Release Clause') != -1]:
+			value 	= [money_value(re.search(r'.*?(€[0-9\.]*[KM]{0,1}).*?', str(tag)).group(1)) for tag in page.find_all('li') if tag.find('label') and tag.find('label').text.find('Release Clause') != -1][0]
+		else:
+			value 	= '####'
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def picture(page, test=False):
+		pattern = f"{re.escape('https://cdn.sofifa.org/players')}.*?"
+		value 	= page.find('img', {'data-src': re.compile(f"{re.escape('https://cdn.sofifa.org/players')}.*?")})['data-src']
+		
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
+
+	def popularity(page, test=False):
+		pattern = r"([0-9]|10)"
+		value 	= sofifalike(page, test=test) // 30
+		value 	= value if value <= 10 else 10
+
+		return value if not test or re.search(pattern, str(value)) or value == '####' else None
 
 	if attribute ==  'get_locals': return list(locals().keys())
 
@@ -183,18 +430,18 @@ def get_footballPlayer_data_from_sofifa(attribute):
 
 
 def get_actor_data_from_imdb(attribute):
-	def name(page):
+	def name(page, test=False):
 		return str(page.find('div',  {'id': 'name-overview-widget'}).find('h1').find('span', {'class': 'itemprop'}).decode_contents(formatter="html")).strip()
 
-	def rank(page):
+	def rank(page, test=False):
 		return page.find('div', {'id' : 'meterHeaderBox'}).find('a').text
 
-	def trivia(page):
+	def trivia(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			tag = page.find('a', {'name' : 'trivia'}).findNext()
 			trivia = []
-			count = int(re.search('.*?\(([0-9]*)\)', tag.text).group(1))
+			count = int(re.search(r'.*?\(([0-9]*)\)', tag.text).group(1))
 			tag = tag.findNext()
 			i = 0
 			while i < count:
@@ -205,12 +452,12 @@ def get_actor_data_from_imdb(attribute):
 		except:
 			return []
 
-	def quotes(page):
+	def quotes(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			tag = page.find('a', {'name' : 'trivia'}).findNext()
 			quotes = []
-			count = int(re.search('.*?\(([0-9]*)\)', tag.text).group(1))
+			count = int(re.search(r'.*?\(([0-9]*)\)', tag.text).group(1))
 			tag = tag.findNext()
 			i = 0
 			while i < count:
@@ -221,46 +468,46 @@ def get_actor_data_from_imdb(attribute):
 		except:
 			return []
 
-	def birthdate(page):
+	def birthdate(page, test=False):
 		try:
 			return re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Born:').parent.find('time')['datetime']).group(1)+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Born:').parent.find('time')['datetime']).group(2)\
 			+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Born:').parent.find('time')['datetime']).group(3)
 		except:return '##'
 
-	def deathdate(page):
+	def deathdate(page, test=False):
 		try:
 			return re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Died:').parent.find('time')['datetime']).group(1)+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Died:').parent.find('time')['datetime']).group(2)\
 			+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Died:').parent.find('time')['datetime']).group(3)
 		except:
 			return '##'
 
-	def birth_year(page):
+	def birth_year(page, test=False):
 		try:
 			return int(page.find('h4', text='Born:').parent.find('time')['datetime'][:4])
 		except:
 			return 0
 
-	def death_year(page):
+	def death_year(page, test=False):
 		try:
 			return page.find('h4', text='Died:').parent.find('time')['datetime'][:4]
 		except:
  			return 0
 
-	def dead(page):
+	def dead(page, test=False):
 		return bool(page.find('h4', text='Died:'))
 
-	def picture(page):
+	def picture(page, test=False):
 		try:
 			return page.find('img', {'id': 'name-poster'})['src']
 		except: return '##'
 
-	def series(page):
+	def series(page, test=False):
 		page = make_soup('https://imdb.com' + page.find('a', {'href': re.compile('/name/.*?/?nmdp=1&ref_=nm_ql_4#filmography')})['href'])
 		return [tag.find('b').find('a').text for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row odd'}) if tag.text.find('Series')\
 				!= -1] + [tag.find('b').find('a').text for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row even'}) if\
 				tag.text.find('Series') != -1]
 
-	def series_characters(page):
+	def series_characters(page, test=False):
 		page = make_soup('https://imdb.com' + page.find('a', {'href': re.compile('/name/.*?/?nmdp=1&ref_=nm_ql_4#filmography')})['href'])
 		oddList = [tag.text.strip().replace('\n' , '') for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row odd'}) if tag.text.find('Series')\
 					!= -1]
@@ -270,28 +517,28 @@ def get_actor_data_from_imdb(attribute):
 
 
 
-	def movies_characters(page):
+	def movies_characters(page, test=False):
 		page = make_soup('https://imdb.com' + page.find('a', {'href': re.compile('/name/.*?/?nmdp=1&ref_=nm_ql_4#filmography')})['href'])
 		oddList = [tag.text.strip() for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row odd'}) if not re.search('.*?\(.*?\)', tag.text)]
 		evenList =[tag.text.strip() for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row even'}) if not re.search('.*?\(.*?\)', tag.text)]
 		return [re.search('.*?\\n\\n.*?\\n\\n(.*)', i).group(1) for i in oddList if re.search('.*?\\n\\n.*?\\n\\n(.*)', i)]+ [re.search('.*?\\n\\n.*?\\n\\n(.*)', i).group(1) for i in evenList if re.search('.*?\\n\\n.*?\\n\\n(.*)', i)]
 
-	def bio(page):
+	def bio(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			return re.search('(.*)\.- .*',[tag.findNext().text.strip().replace('\n','') for tag in page.find_all('h4', {'class' : 'li_group'}) if tag.text.find('Mini Bio') != -1][0]).group(1)
 		except:
 			return '##'
 
-	def known_for(page):
+	def known_for(page, test=False):
 		return [tag.find('a').text.strip() for tag in page.select('div.knownfor-title-role')]
 
-	def movies(page):
+	def movies(page, test=False):
 		page = make_soup('https://imdb.com' + page.find('a', {'href': re.compile('/name/.*?/?nmdp=1&ref_=nm_ql_4#filmography')})['href'])
-		return [tag.find('b').find('a').text for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row odd'}) if not re.search('.*?\(.*?\)', tag.text)]\
+		return [tag.find('b').find('a').text for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row odd'}) if not re.search('.*?\(.*?\)', tag.text)] \
 				+[tag.find('b').find('a').text for tag in page.find('div',{'id' : 'filmography'}).find('div',{'class' : 'filmo-category-section'}).find_all('div',{'class' : 'filmo-row even'}) if not re.search('.*?\(.*?\)', tag.text)]
 
-	def pictures(page):
+	def pictures(page, test=False):
 		try:
 			gallery_page = 'https://www.imdb.com' + page.find('a', text='Photo Gallery')['href']
 			page = make_soup(gallery_page)
@@ -308,24 +555,24 @@ def get_actor_data_from_imdb(attribute):
 			return [pic_link(pic_id) for pic_id in pic_ids]
 		except:return []
 
-	def height(page):
+	def height(page, test=False):
 		try:
 			return float(re.search('.*?"\((.*?)m\)',page.find('div', {'id' : 'details-height'}).text.strip().replace('\xa0','').replace('\n' , '')).group(1))
 		except: return 0
 
-	def spouse(page):
+	def spouse(page, test=False):
 		page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 		if page.find('table',{'id' : 'tableSpouses'}):
 			return re.search('(.*?)\(.*\).*',page.find('table',{'id' : 'tableSpouses'}).text.strip().replace('\n' , '').replace('  ', '')).group(1)
 		else:
 			return []
 
-	def trademark(page):
+	def trademark(page, test=False):
 		if page.find('div',{'id':'dyk-trademark'}):
 			return page.find('div',{'id':'dyk-trademark'}).text.replace('\n','').replace('Trademark:' , '').replace('  ' , '')
 		else:return '##'
 
-	def starSign(page):
+	def starSign(page, test=False):
 		if page.find('div',{'id':'dyk-star-sign'}):
 			return page.find('div',{'id':'dyk-star-sign'}).text.replace('\n','').replace('Star Sign:' , '')
 		else:return '##'
@@ -336,51 +583,51 @@ def get_actor_data_from_imdb(attribute):
 
 
 def get_director_data_from_imdb(attribute):
-	def name(page):
+	def name(page, test=False):
 		return str(page.find('div',  {'id': 'name-overview-widget'}).find('h1').find('span', {'class': 'itemprop'}).decode_contents(formatter="html")).strip()
 
-	def rank(page):
+	def rank(page, test=False):
 		try:
 			return page.find('div', {'id' : 'meterHeaderBox'}).find('a').text
 		except:
 			return 0
 
-	def birthdate(page):
+	def birthdate(page, test=False):
 		try:
 			return re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Born:').parent.find('time')['datetime']).group(1)+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Born:').parent.find('time')['datetime']).group(2)\
 				+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Born:').parent.find('time')['datetime']).group(3)
 		except:
 			return '0000_00_00'
 
-	def deathdate(page):
+	def deathdate(page, test=False):
 		try:
 			return re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Died:').parent.find('time')['datetime']).group(1)+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Died:').parent.find('time')['datetime']).group(2)\
 					+ '_' + re.search('(.*?)-([0-9]*)-([0-9]*)', page.find('h4', text='Died:').parent.find('time')['datetime']).group(3)
 		except:
 			return '0000_00_00'
 
-	def birth_year(page):
+	def birth_year(page, test=False):
 		try:
 			return int(page.find('h4', text='Born:').parent.find('time')['datetime'][:4])
 		except:
 			return 0
 
-	def death_year(page):
+	def death_year(page, test=False):
 		try:
 			return int(page.find('h4', text='Died:').parent.find('time')['datetime'][:4])
 		except:
 			return 0
 
-	def dead(page):
+	def dead(page, test=False):
 		return bool(page.find('h4', text='Died:'))
 
-	def picture(page):
+	def picture(page, test=False):
 		try:
 			return page.find('img', {'id': 'name-poster'})['src']
 		except:
 			return '##'
 
-	def trivia(page):
+	def trivia(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			tag = page.find('a', {'name' : 'trivia'}).findNext()
@@ -396,7 +643,7 @@ def get_director_data_from_imdb(attribute):
 		except:
 			return []
 
-	def quotes(page):
+	def quotes(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			tag = page.find('a', {'name' : 'quotes'}).findNext()
@@ -412,7 +659,7 @@ def get_director_data_from_imdb(attribute):
 		except:
 			return []
 
-	def trade_mark(page):
+	def trade_mark(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			tag = page.find('a', {'name' : 'trademark'}).findNext()
@@ -428,7 +675,7 @@ def get_director_data_from_imdb(attribute):
 		except:
 			return []
 
-	def bio(page):
+	def bio(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			bio = [tag for tag in page.find_all('h4', {'class' : 'li_group'}) if tag.text.find('Mini Bio') != -1][0]
@@ -436,13 +683,13 @@ def get_director_data_from_imdb(attribute):
 		except:
 			return '##'
 
-	def known_for(page):
+	def known_for(page, test=False):
 		try:
 			return [tag.find('a').text.strip() for tag in page.select('div.knownfor-title-role')]
 		except:
 			return []
 
-	def movies(page):
+	def movies(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', {'href': re.compile('/name/.*?/?nmdp=1&ref_=nm_ql_4#filmography')})['href'])
 			page = page.find('a', {'name' : 'director'}).findNext().findNext()
@@ -456,7 +703,7 @@ def get_director_data_from_imdb(attribute):
 		except:
 			return []
 
-	def pictures(page):
+	def pictures(page, test=False):
 		try:
 			gallery_page = 'https://www.imdb.com' + page.find('a', text='Photo Gallery')['href']
 			page = make_soup(gallery_page)
@@ -474,21 +721,21 @@ def get_director_data_from_imdb(attribute):
 		except:
 			return []
 
-	def nick_name(page):
+	def nick_name(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			return [tag.findNext().text.strip() for tag in page.find_all('td', {'class' : 'label'}) if tag.text.find('Nickname') != -1]
 		except:
 			return '##'
 
-	def height(page):
+	def height(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Biography')['href'])
 			return float(re.search('.*\((.*?)m\)',[tag.findNext().text.strip().replace('\xa0' , '') for tag in page.find_all('td', {'class' : 'label'}) if tag.text.find('Height') != -1][0]).group(1))
 		except:
 			return 0
 
-	def spouse(page):
+	def spouse(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Trivia ')['href'])
 			spouse = [tag for tag in page.find_all('h4') if tag.text.find('Spouse') != -1][0]
@@ -506,7 +753,7 @@ def get_movie_data_from_imdb(attribute):
 
 	# TODO: get all name of movie from aka page
 
-	def name(page):
+	def name(page, test=False):
 		# TODO: remove "the IMAX experience" from end of some movie names
 		# TODO: some names are not in english
 		# TODO: check if ": The Motion Picture" should be removed from name
@@ -522,13 +769,13 @@ def get_movie_data_from_imdb(attribute):
 
 		return result
 
-	def release_day(page):
+	def release_day(page, test=False):
 		try:
 			return int(page.select('div.title_wrapper')[0].find('a', {'href': re.compile('.*?releaseinfo.*')}).text.split(' ')[0])
 		except:
 			return '##'
 
-	def release_month(page):
+	def release_month(page, test=False):
 		try:
 			return {'January'	: 1 , 'February': 2	, 'March'		: 3,
 					'April'		: 4 , 'May'		: 5	, 'June'		: 6,
@@ -538,102 +785,102 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return ''
 
-	def release_year(page):
+	def release_year(page, test=False):
 		try:
 			return int(page.select('div.title_wrapper')[0].find('a', {'href': re.compile('.*?releaseinfo.*')}).text.split(' ')[2])
 		except:
 			return 0
 
-	#def release_date(page):
+	#def release_date(page, test=False):
 	#	try:
 	#		return f'{release_year(page)}_{release_month(page)}_{release_day(page)}'
 	#	except:
 	#		return '##'
 
-	def imdb_rate(page):
+	def imdb_rate(page, test=False):
 		try:
 			return float(page.find('span', {'itemprop': 'ratingValue'}).text)
 		except:
 			return 0
 
-	def imdb_votes(page):
+	def imdb_votes(page, test=False):
 		try:
 			return int(page.find('span', {'itemprop': 'ratingCount'}).text.replace(',', ''))
 		except:
 			return 0
 
-	def imdb_popularity(page):
+	def imdb_popularity(page, test=False):
 		popularity_tag = [tag for tag in page.select('div.titleReviewBar')[0].select('div') if tag.text.strip() == 'Popularity']
 		if popularity_tag:
 			return int(popularity_tag[0].findNext('div').text.replace(',', '').strip().split('\n')[0])
 		else:
 			return 0
 
-	def imdb_rank(page):
+	def imdb_rank(page, test=False):
 		if page.select('div.titleAwardsRanks'):
 			return re.search('.*?#([0-9]*).*?', page.select('div#titleAwardsRanks')[0].find('a', {'href': re.compile('/chart/top.*')}).text).group(1)
 		else:
 			return 10**10
 
-	def imdb_user_reviews(page):
+	def imdb_user_reviews(page, test=False):
 		try:
 			return int(re.search(r'(.*?) .*?', page.find('div', {'class': 'titleReviewBarItem titleReviewbarItemBorder'}).find('a', {'href': re.compile('reviews.*?')}).text.strip().replace(',', '')).group(1))
 		except:
 			return 0
 
-	def imdb_critic_reviews(page):
+	def imdb_critic_reviews(page, test=False):
 		try:
 			return int(re.search(r'(.*?) .*?', page.find('div', {'class': 'titleReviewBarItem titleReviewbarItemBorder'}).find('a', {'href': re.compile('externalreviews.*?')}).decode_contents(formatter="html").strip().replace(',', '')).group(1))
 		except:
 			return 0
 
-	def poster(page):
+	def poster(page, test=False):
 		try:
 			return page.find('div', {'class': 'poster'}).find('img')['src']
 		except:
 			return '##'
 
-	def storyline(page):
+	def storyline(page, test=False):
 		try:
 			return page.find('div', {'id': 'titleStoryLine'}).find('div').find('span').text.strip()
 		except:
 			return '##'
 
-	def runtime(page):
+	def runtime(page, test=False):
 		try:
 			return int(page.select('div.titleBar')[0].find('time')['datetime'][2:-1])
 		except:
 			return 0
 
-	def country(page):
+	def country(page, test=False):
 		# TODO: it returns the released country, but should return the origin country
 		return page.find('h4', text='Country:').parent.find('a').text
 
-	def genres(page):
+	def genres(page, test=False):
 		return [tag.text.strip() for tag in page.find('h4', text='Genres:').parent.find_all('a')]
 
-	def summaries(page):
+	def summaries(page, test=False):
 		page = make_soup('https://www.imdb.com' + page.find('a', text = 'Plot Summary')['href'])
 		return [tag.find('p').text.strip() for tag in page.find('ul', {'id' : 'plot-summaries-content'}).find_all('li', {'class' : 'ipl-zebra-list__item'})]
 
-	def summary(page):
+	def summary(page, test=False):
 		page = make_soup('https://www.imdb.com' + page.find('a', text = 'Plot Summary')['href'])
 		return [tag.find('p').text.strip() for tag in page.find('ul', {'id' : 'plot-summaries-content'}).find_all('li', {'class' : 'ipl-zebra-list__item'})][0]
 
-	def directors(page):
+	def directors(page, test=False):
 		try:
 			page = make_soup('https://www.imdb.com' + page.find('a', text = 'Full Cast and Crew')['href'])
 			return list(set([tag.find('td').text.strip() for tag in [tag for tag in page.select('h4') if tag.text.strip() == 'Directed by'][0].findNext('table').find_all('tr') if tag.find('td').text.strip() != '']))
 		except:
 			return []
 
-	def director(page):
+	def director(page, test=False):
 		if page.find('h4', text='Director:'):
 			return page.find('h4', text='Director:').parent.find('a').text.strip()
 		else:
 			return '##'
 
-	def writers(page):
+	def writers(page, test=False):
 		# TODO: should be gotten from datails page of movie, main page is incomplete
 		try:
 			page = make_soup('https://www.imdb.com' + page.find('a', text = 'Full Cast and Crew')['href'])
@@ -641,31 +888,31 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return []
 
-	def writer(page):
+	def writer(page, test=False):
 		if page.find('h4', text='Writer:'):
 			return page.find('h4', text='Writer:').parent.find('a').text.strip()
 		else:
 			return '##'
 
-	def stars(page):
+	def stars(page, test=False):
 		return [tag.text.strip() for tag in page.find('h4', text='Stars:').parent.find_all('a', {'href': re.compile('.*/name/.*')})]
 
-	def cast(page):
+	def cast(page, test=False):
 		page = make_soup('https://www.imdb.com' + page.find('a', text = 'Full Cast and Crew')['href'])
 		return [tag.text.strip().replace('\n' , '').replace('  ' , '') for tag in page.find('table', {'class' : 'cast_list'}).find_all('a') if tag.text != '']
 
-	def characters(page):
+	def characters(page, test=False):
 		page = make_soup('https://www.imdb.com' + page.find('a', text = 'Full Cast and Crew')['href'])
 		return [tag.text.strip().replace('\n' , '').replace('  ' , '') for tag in page.select('table.cast_list')[0].select('td.character')]
 
 
-	#def soundtracks(page):
+	#def soundtracks(page, test=False):
 	#	page_id = re.search('/title/(.*?)/.*', page.select('a.quicklink')[0]['href']).group(1)
 	#	page = make_soup(f'https://www.imdb.com/title/{page_id}/soundtrack')
 	#
 	#	return [re.search('(.*?) .*', tag.text.strip()).group(1) for tag in page.select('div.soundTrack')]
 
-	#def soundtracks_file(page):
+	#def soundtracks_file(page, test=False):
 	#	playlist_page = make_soup(youtube_downloader.search_music(name, mode='soundtrack', _type='playlist', count=1)[0]['url'])
 	#	return ['https://youtube.com' + tag['href'] for tag in playlist_page.select('table.pl-video-table')[0].select('a.pl-video-title-link.yt-uix-tile-link.yt-uix-sessionlink.spf-link')]
 
@@ -675,7 +922,7 @@ def get_movie_data_from_imdb(attribute):
 		#		'name': re.search('(.*?) .*', tag.text.strip()).group(1)
 		#	}]
 
-	def popularity(page):
+	def popularity(page, test=False):
 		# TODO: should use a better formula for normalization
 
 		try:
@@ -685,7 +932,7 @@ def get_movie_data_from_imdb(attribute):
 
 		return popularity_rate# / (2 * 10**7)
 
-	def photos(page):
+	def photos(page, test=False):
 		# TODO : this function must change according to new version of datamanager and must get all images from the mediaindex page itself(from scrept part of page)
 		# "image": [
 		#	{
@@ -715,7 +962,7 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return []
 
-	def videos(page):
+	def videos(page, test=False):
 		try:
 			page_url = 'https://www.imdb.com' + page.find('a', text='Trailers and Videos')['href']
 			page = make_soup(page_url)
@@ -729,14 +976,14 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return []
 
-	def quotes(page):
+	def quotes(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Quotes')['href'])
 			return [tag.find('div').text.strip().replace('\n','') for tag in page.find_all('div',{'class' : 'quote soda sodavote odd'}) + page.find_all('div',{'class' : 'quote soda sodavote even'})]
 		except:
 			return []
 
-	def filming_locations(page):
+	def filming_locations(page, test=False):
 		try:
 			x = 'https://www.imdb.com' + page.find('a', text = 'Filming & Production')['href']
 			page = make_soup(x)
@@ -744,19 +991,19 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return []
 
-	#def color(page):
+	#def color(page, test=False):
 	#	x = 'https://www.imdb.com' + page.find('a', text = 'Technical Specs')['href']
 	#	page = make_soup(x)
 	#	return [tag.findNext().text.strip() for tag in [tag.find('td', text = ' Color ') for tag in page.find('div', {'id' : 'technical_content'}).find_all('tr',{'class' : 'odd'})+
 	#	 		page.find_all('tr',{'class' : 'even'}) if tag.find('td', text = ' Color ')]]
 
-	#def sound_mix(page):
+	#def sound_mix(page, test=False):
 	#	x = 'https://www.imdb.com' + page.find('a', text = 'Technical Specs')['href']
 	#	page = make_soup(x)
 	#	return [tag.findNext().text.strip().replace('\n',"") for tag in [tag.find('td', text = ' Sound Mix ') for tag in page.find('div', {'id' : 'technical_content'}).find_all('tr',{'class' : 'odd'})+
 	#	 		page.find_all('tr',{'class' : 'even'}) if tag.find('td', text = ' Sound Mix ')]]
 
-	def tag_lines(page):
+	def tag_lines(page, test=False):
 		try:
 			x = 'https://www.imdb.com' + page.find('a', text = 'Taglines')['href']
 			page = make_soup(x)
@@ -764,7 +1011,7 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return []
 
-	def keywords(page):
+	def keywords(page, test=False):
 		try:
 			x = 'https://www.imdb.com' + page.find('a', text = 'Plot Keywords')['href']
 			page = make_soup(x)
@@ -772,7 +1019,7 @@ def get_movie_data_from_imdb(attribute):
 		except:
 			return []
 
-	def trivia(page):
+	def trivia(page, test=False):
 		try:
 			page = make_soup('https://imdb.com' + page.find('a', text = 'Trivia')['href'])
 			return [tag.find('div').text.strip() for tag in page.find_all('div',{'class' : 'soda odd sodavote'}) + page.find_all('div',{'class' : 'soda even sodavote'})]
@@ -785,47 +1032,47 @@ def get_movie_data_from_imdb(attribute):
 
 
 def get_book_data_from_goodreads(attribute):
-	def book_list(page):
+	def book_list(page, test=False):
 		page = make_soup(page)
 		return list(set([re.search(r'.*?/book/show/(.*)', tag['href']).group(1) for tag in page.find_all('a', {'href': re.compile('.*?/book/show/(.*)')})]))
 
-	def title(page):
+	def title(page, test=False):
 		return page.find('h1', {'id': 'bookTitle'}).text.strip()
 
-	def author(page):
+	def author(page, test=False):
 		return page.select('div.authorName__container')[0].find('span').text
 
-	def picture(page):
+	def picture(page, test=False):
 		return page.find('img', {'id': 'coverImage'})['src']
 
-	def goodreadsRate(page):
+	def goodreadsRate(page, test=False):
 		return float(page.select('span.value.rating')[0].find('span').text.strip())
 
-	def goodreadsVotes(page):
+	def goodreadsVotes(page, test=False):
 		 return int(page.select('span.votes.value-title')[0]['title'])
 
-	def goodreadsReviews(page):
+	def goodreadsReviews(page, test=False):
 		 return int(page.select('span.count.value-title')[0]['title'])
 
-	def description(page):
+	def description(page, test=False):
 		 return page.select('div#description')[0].text.strip()[:-9]
 
-	def pages(page):
+	def pages(page, test=False):
 		 return re.search('([0-9]*) pages', page.find('span', {'itemprop': 'numberOfPages'}).text).group(1)
 
-	def publishYear(page):
+	def publishYear(page, test=False):
 		 return int(re.search('.*?([0-9]{3,4}).*', page.select('div#details')[0].select('div.row')[1].text).group(1))
 
-	def relatedBooks(page):
+	def relatedBooks(page, test=False):
 		 return [tag['alt'] for tag in page.select('div.bookCarousel')[0].select('img')]
 
-	def publishYear(page):
+	def publishYear(page, test=False):
 		 return int(re.search('.*?([0-9]{3,4}).*', page.select('div#details')[0].select('div.row')[1].text).group(1))
 
-	def popularity(page):
+	def popularity(page, test=False):
 		return int(page.select('span.votes.value-title')[0]['title'])
 
-	def related(page):
+	def related(page, test=False):
 		return [tag.find('img')['alt'] for tag in page.find_all('a',{'href' : re.compile('/list/show/.*')}) if tag.find('img')]
 
 
@@ -833,162 +1080,162 @@ def get_book_data_from_goodreads(attribute):
 
 
 def get_author_data_from_goodreads(attribute):
-	def author_list(page):
+	def author_list(page, test=False):
 		page = make_soup(page)
 		return list(set([re.search(r'.*?/author/show/(.*)', tag['href']).group(1) for tag in page.find_all('a', {'href': re.compile('.*?/author/show/(.*)')})]))
 
-	def name(page):
+	def name(page, test=False):
 		return page.select('div.mainContent ')[0].find('span', {'itemprop': 'name'}).text.strip()
 
-	def picture(page):
+	def picture(page, test=False):
 		return page.select('div.mainContent ')[0].find('img')['src']
 
-	def goodreadsRate(page):
+	def goodreadsRate(page, test=False):
 		return float(re.search('.*:([0-9.])', page.select('a.js-ratingDistTooltip')[0].text).group(1))
 
-	def goodreadsVotes(page):
+	def goodreadsVotes(page, test=False):
 		 return int(re.search('.*?([0-9]*).*', page.find('a', {'href': re.compile('/review/list/.*sort.rating.view.reviews')}).text.strip()).group(1))
 
-	def goodreadsReviews(page):
+	def goodreadsReviews(page, test=False):
 		 return int(re.search('.*?([0-9]*).*', page.find('a', {'href': re.compile('/review/list/.*sort.review.view.reviews')}).text.strip()).group(1))
 
-	def books(page):
+	def books(page, test=False):
 		 page = make_soup('https://www.goodreads.com' + [tag['href'] for tag in page.find_all('a', {'class' : 'actionLink'}) if tag.text.find('More books by ') != -1][0])
 		 return [tag.text.strip() for tag in page.find('table', {'class' : 'tableList'}).find_all('a',{'class' : 'bookTitle'})]
 
-	def bio(page):
+	def bio(page, test=False):
 		 return page.select('div.aboutAuthorInfo')[0].find('span').text.strip()
 
-	def goodreadsFolowers(page):
+	def goodreadsFolowers(page, test=False):
 		return int(re.search('.*?\(([0-9,]*)\).*?', page.find('a', {'href': re.compile('/author_followings.id..*.method.get')}).text).group(1).replace(',', ''))
 
-	def relatedAuthors(page):
+	def relatedAuthors(page, test=False):
 		page = make_soup('https://goodreads.com' + page.find('a', {'href': re.compile('/author/similar/.*')})['href'])
 		return [tag.find('a', {'href': re.compile('/author/show/.*')}).text.strip() for tag in page.select('ul.list')[1].select('div.readable.description')]
 
-	def popularity(page):
+	def popularity(page, test=False):
 		return page.find('a', {'href': re.compile('/review/.*')}).text.strip()
 
-	def favoriteBooks(page):
+	def favoriteBooks(page, test=False):
 		page = make_soup('https://www.goodreads.com' + [tag['href'] for tag in page.find_all('a', {'class' : 'actionLink right'}) if tag.text.find('More of ') != -1][0])
 		return [tag.find('td',{'class' : 'field title'}).find('a').text.strip() for tag in page.find_all('tr', {'class' : 'bookalike review'})]
 
 
 def get_country_data_from_cia(attribute, page):
-	def name(page):
+	def name(page, test=False):
 		return page.find('span', {'class': 'region_name1 countryName '}).text.strip().lower()
 
-	def flag(page):
+	def flag(page, test=False):
 		return 'https://www.cia.gov/library/publications/the-world-factbook/' + page.find('img', {'src': re.compile('.*?/graphics/flags/large/.*?.gif')})['src'][3:]
 
-	def pictures(page):
+	def pictures(page, test=False):
 		return ['https://www.cia.gov/library/publications/the-world-factbook/' + tag['href'][3:] for tag in page.find_all('a', {'href': re.compile('.*?/photo_gallery/[a-z]{2}/images/large/.*?\.jpg')})]
 
-	def location_picture(page):
+	def location_picture(page, test=False):
 		return 'https://www.cia.gov/library/publications/the-world-factbook/' + page.find('img', {'src': re.compile('.*?/graphics/locator/.*?/.*?_large_locator.gif')})['src'][3:]
 
-	def map(page):
+	def map(page, test=False):
 		return 'https://www.cia.gov/library/publications/the-world-factbook/' + page.find('img', {'src': re.compile('.*?/graphics/maps/[a-z]{2}-map.gif')})['src'][3:]
 
-	def location_description(page):
+	def location_description(page, test=False):
 		return [tag.parent.find_next_sibling("div").text.strip() for tag in page.find_all('a') if tag.text.strip() == 'Location:'][0]
 
-	def area(page):
+	def area(page, test=False):
 		return [re.search('([0-9]*) .*', tag.find_next_sibling('div').find('span', {'class': 'category_data'}).text.strip().replace(',', '')).group(1) for tag in page.find_all('div') if tag.text.strip() == 'Area:'][0]
 
-	def population(page):
+	def population(page, test=False):
 		return [re.search('([0-9]*) .*', tag.parent.find_next_sibling("div").text.strip().replace(',', '')).group(1) for tag in page.find_all('a') if tag.text.strip() == 'Population:'][0]
 
-	def borderCountreis(page):
+	def borderCountreis(page, test=False):
 		return [tag.findNext().text for tag in page.find_all('span', {'class' : 'category'}) if tag.text.find('border countries') != -1]
 
-	def climate(page):
+	def climate(page, test=False):
 		return [tag.findNext().findNext().findNext().text for tag in page.find_all('a', text = 'Climate:')]
 
-	def terrain(page):
+	def terrain(page, test=False):
 		return [tag.findNext().findNext().findNext().text for tag in page.find_all('a', text = 'Terrain:')]
-	def lowestPoint(page):
+	def lowestPoint(page, test=False):
 		return	[tag.findNext().text.replace('lowest point:','') for tag in page.find_all('span',{'class' : 'category'}) if tag.text.find('elevation extremes: ') != -1]
-	def highestPoint(page):
+	def highestPoint(page, test=False):
 		return [tag.findNext().findNext().text.replace('highest point: ','') for tag in page.find_all('span',{'class' : 'category'}) if tag.text.find('elevation extremes: ') != -1]
-	def naturalResources(page):
+	def naturalResources(page, test=False):
 		return [tag.findNext().findNext().findNext().text for tag in page.find_all('a', text = 'Natural resources:')]
-	def naturalHazards(page):
+	def naturalHazards(page, test=False):
 		return [tag.findNext().findNext().findNext().text for tag in page.find_all('a', text = 'Natural hazards:')]
-	def geography(page):
+	def geography(page, test=False):
 		return [tag.findNext().findNext().findNext().text for tag in page.find_all('a', text = 'Geography - note:')]
-	def ethnicGroups(page):
+	def ethnicGroups(page, test=False):
 		return page.find('a', text = 'Ethnic groups:').findNext().findNext().findNext().text
-	def languages(page):
+	def languages(page, test=False):
 		return page.find('a', text = 'Languages:').findNext().findNext().findNext().text
-	def religions(page):
+	def religions(page, test=False):
 		return	page.find('a', text = 'Religions:').findNext().findNext().findNext().text
-	def populationGrowthRate(page):
+	def populationGrowthRate(page, test=False):
 		return re.search('(.*?)%.*', page.find('a', text = 'Population growth rate:').findNext().findNext().findNext().text).group(1)
-	def birthRate(page):
+	def birthRate(page, test=False):
 		return page.find('a', text = 'Birth rate:').findNext().findNext().findNext().text
-	def deathRate(page):
+	def deathRate(page, test=False):
 		return page.find('a', text = 'Death rate:').findNext().findNext().findNext().text
-	def netMigrationRate(page):
+	def netMigrationRate(page, test=False):
 		return page.find('a', text = 'Net migration rate:').findNext().findNext().findNext().text
-	def majorUrbanAreas_population(page):
+	def majorUrbanAreas_population(page, test=False):
 		return page.find('a', text = 'Major urban areas - population:').findNext().findNext().findNext().text
-	def sexRatio(page):
+	def sexRatio(page, test=False):
 		return float(re.search('([0-9.]*) .*',page.find('span', text = 'total population: ').findNext().text).group(1))
-	def maternalMortalityRatio(page):
+	def maternalMortalityRatio(page, test=False):
 		return page.find('a', text = 'Maternal mortality ratio:').findNext().findNext().findNext().text
-	def physiciansDensity(page):
+	def physiciansDensity(page, test=False):
 		return page.find('a', text = 'Physicians density:').findNext().findNext().findNext().text
-	def terrain(page):
+	def terrain(page, test=False):
 		return
-	def terrain(page):
+	def terrain(page, test=False):
 		return
-	def terrain(page):
+	def terrain(page, test=False):
 		return
-	def terrain(page):
+	def terrain(page, test=False):
 		return
-	def terrain(page):
+	def terrain(page, test=False):
 		return
 
 	return
 
 
 def get_people_data_from_biography(attribute):
-	def people_list(page):
+	def people_list(page, test=False):
 		page = make_soup(page)
 		return list(set([re.search(r'.*/people/(.*)', tag['href']).group(1) for tag in page.find_all('a', {'href': re.compile('.*/people/.*')})]))
 
-	def name(page):
+	def name(page, test=False):
 		return page.find('dd', {'itemprop':'name'}).text
 
-	def picture(page):
+	def picture(page, test=False):
 		return page.find('div', {'class': 'l-person--rail'}).find('img')['src']
 
-	def jobs(page):
+	def jobs(page, test=False):
 		return [tag.text for tag in bp.find('dd', {'itemprop':'jobTitle'}).find_all('a')]
 
-	def birthYear(page):
+	def birthYear(page, test=False):
 		return int(page.find('dd', {'itemprop':'birthDate'}).find_all('a')[1].text)
 
-	def birthPlace(page):
+	def birthPlace(page, test=False):
 		return [tag.find_next_sibling('dd').text for tag in page.find_all('dt') if tag.text == 'Place of Birth'][0]
 
 
 def get_anime_data_from_myanimelist(attribute, page):
-	def anime_list(page):
+	def anime_list(page, test=False):
 		page = make_soup(page)
 		return list(set([re.search(r'.*/anime/([0-9]*?/[^/]*)', tag['href']).group(1) for tag in page.find_all('a', {'href': re.compile('.*/anime/([0-9]*?/[^/]*)')})]))
 
-	def name(page):
+	def name(page, test=False):
 		return page.find('span', {'itemprop':'name'}).text.strip()
 
-	def nameJapanese(page):
+	def nameJapanese(page, test=False):
 		return [re.search('<span.*</span>(.*)', str(tag.parent)).group(1) for tag in page.find_all('span') if tag.text.strip() == 'Japanese:'][0].strip()
 
-	def nameEnglish(page):
+	def nameEnglish(page, test=False):
 		return [re.search('<span.*</span>(.*)', str(tag.parent)).group(1) for tag in page.find_all('span') if tag.text.strip() == 'English:'][0].strip()
 
-	def picture(page):
+	def picture(page, test=False):
 		return page.find('img', {'itemprop': 'image'})['src']
 
 
@@ -1295,7 +1542,7 @@ def collect_movie_id_from_imdb(pages, data_count=10, timeout=10**3 , checked_id=
 
 	return checked_id, pages, pages
 
-	#def check_page(page):
+	#def check_page(page, test=False):
 	#	try: return page.select('div.title_wrapper')[0].text.find('TV Series') == -1
 	#	except: return False
 	#
@@ -1309,7 +1556,7 @@ def collect_actor_id_from_imdb(pages, data_count=10, timeout=10**3 , checked_id=
 
 	return checked_id, pages, pages
 
-	#def check_page(page):
+	#def check_page(page, test=False):
 	#	try: return bool('#actor' in [tag['href'] for tag in page.select('div#name-job-categories')[0].find_all('a', {'href': re.compile('#.*?')})])
 	#	except: return False
 	#
@@ -1323,7 +1570,7 @@ def collect_director_id_from_imdb(pages, data_count=10, timeout=10**3, checked_i
 
 	return checked_id, pages, pages
 
-	#def check_page(page):
+	#def check_page(page, test=False):
 	#	try: return bool('#director' in [tag['href'] for tag in page.select('div#name-job-categories')[0].find_all('a', {'href': re.compile('#.*?')})])
 	#	except: return False
 	#
