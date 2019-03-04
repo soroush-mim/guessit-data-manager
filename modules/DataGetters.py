@@ -24,6 +24,53 @@ import config
 from tools import *
 
 
+class Data_getter:
+	def __init__(self , page):
+		self.page = page
+
+class get_footballPlayer_data_from_sofifa(Data_getter):
+
+	def __init__(self , page):
+		Data_getter.__init__(self , page)
+		self.main_table = page.find('div' , class_ = 'card card-border player fixed-width')
+		self.top_row = self.main_table.find('div' , class_ = 'meta')
+
+	@property
+	def shirt_name(self):
+		return re.search(r'.*\(' , self.main_table.find('div' , class_ = 'info').text.strip()).group()[:-1]
+
+	@property
+	def name(self):
+		return re.search(r'((.*?)  )' , self.top_row.text.strip()).group()[:-2].strip()
+
+	@property
+	def age(self):
+		age = re.search(r'\d\d\d?' , self.top_row.text.strip()).group().strip()
+
+	@property
+	def nationality(self):
+		return self.top_row.find('a' , {'href' : re.compile(r'\/players\?na.*')})['title']
+
+	@property
+	def photo_link(self):
+		return self.main_table.find('img' )['data-src']
+
+	@property
+	def id(self):
+		return re.search(r'\d+' , self.main_table.find('div' , class_ = 'info').find('h1').text.strip()).group()
+
+	@property
+	def positions(self):
+		positions_str = re.search(r'  .*A' , self.top_row.text.strip()).group()[2:-1].strip()
+		return positions_str.split()
+
+
+
+
+
+
+
+
 sftp = None
 
 
@@ -220,19 +267,6 @@ def get_footballPlayer_data_from_sofifa(attribute):
 	"""
 	TODO : get national teams info ---> https://sofifa.com/players?na=7
 	"""
-
-	def name(page, test=False):
-		pattern = r'[^\(\)]{3,50}'
-		value 	= re.search(r'([^\(]*).*?  .*?' ,page.find('div',{'class' : 'meta'}).text.strip()).group(1).strip()
-		value 	= re.search(r'(.*?)\(ID.*' ,page.find('div',{'class' : 'info'}).find('h1').text.strip()).group(1)
-		
-		return value if not test or re.search(pattern, value) else None
-
-	def age(page, test=False):
-		pattern = r'[0-9]{2}'
-		value 	= int(re.search(r'.*?Age ([0-9]{2}) .*?', page.find('div',  {'class': 'info'}).text.strip()).group(1))
-		
-		return value if not test or re.search(pattern, str(value)) else None
 
 	def birthyear(page, test=False):
 		pattern = r'[1-2][019][0-9]{2}'
