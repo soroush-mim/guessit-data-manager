@@ -25,10 +25,12 @@ from tools import *
 
 
 class Data_getter:
+	"""a parent class for all data getters classes that get page soup file for input"""
 	def __init__(self , page):
 		self.page = page
 
 class get_footballPlayer_data_from_sofifa(Data_getter):
+	"""a class for getting footballPlayers data from sofifa that get page soup file for input with 38 property functions"""
 
 	def __init__(self , page):
 		Data_getter.__init__(self , page)
@@ -45,6 +47,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
 	@property
 	def getter_shirt_name(self):
+		
 		return re.search(r'.*\(' , self.main_table.find('div' , class_ = 'info').text.strip()).group()[:-1]
 
 	@property
@@ -53,7 +56,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
 	@property
 	def getter_age(self):
-		age = re.search(r'\d\d\d?' , self.top_row.text.strip()).group().strip()
+		return int(re.search(r'\d\d\d?' , self.top_row.text.strip()).group().strip())
 
 	@property
 	def getter_nationality(self):
@@ -65,7 +68,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
 	@property
 	def getter_id(self):
-		return re.search(r'\d+' , self.main_table.find('div' , class_ = 'info').find('h1').text.strip()).group()
+		return int(re.search(r'\d+' , self.main_table.find('div' , class_ = 'info').find('h1').text.strip()).group())
 
 	@property
 	def getter_positions(self):
@@ -83,7 +86,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 	@property
 	def getter_height_in_cnm(self):
 		dirty_height = re.search(r'\d\d?.\d\d?\"',self.top_row.text.strip()).group().strip()
-		return str(int(dirty_height[0]) * 30.28 + int(re.search(r'\'.*"' , dirty_height).group().strip()[1:-1]) * 2.54)
+		return int(dirty_height[0]) * 30.28 + int(re.search(r'\'.*"' , dirty_height).group().strip()[1:-1]) * 2.54
 	
 	@property
 	def getter_value(self):
@@ -212,22 +215,20 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 	def getter_dislikes_num(self):
 		return self.like_table.find('a' , class_ = "dislike-btn btn").find('span').text.strip()
 	
-	@property
 	def get_all_data(self):
+		"""a function for getting all data of a player in a dictionary"""
 		data = {}
-		for i in dir(self):
-			if i.startswith('getter_'):
+		for i in [x for x in dir(self) if x.startswith('getter_')]:
+			if re.search(r'.*' , str(getattr(self,i))):
 				data[i[7:]] = getattr(self,i)
 		return data
 
 
-	# 38 funcs
+	
 
 
 
 
-
-sftp = None
 
 
 def Clear_duplicate_name(array):
