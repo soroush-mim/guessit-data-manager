@@ -8,6 +8,8 @@ __pycache__/
 */__pycache__/
 */*/__pycache__/
 .vscode/
+modules/data_manager.log
+
 
 *.py[cod]
 *$py.class
