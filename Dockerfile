@@ -8,7 +8,7 @@ COPY ./requirements.txt /usr/src/requirements.txt
 
 WORKDIR /usr/src
 
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . /usr/src
 
