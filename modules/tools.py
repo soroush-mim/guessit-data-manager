@@ -158,11 +158,7 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-def make_soup(url, use_local_save=None, save_page_local=True, location=None, return_local_save=False):
-	start_time = time.time()
-	if use_local_save is None: use_local_save = config.use_local_save
-	if save_page_local is None: save_page_local = config.save_page_local
-
+def make_soup(url):
 	try:
 		resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0] 
 		db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
@@ -177,23 +173,21 @@ def make_soup(url, use_local_save=None, save_page_local=True, location=None, ret
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
 	#url = re.sub('[?]$', '', url)
 
-	if use_local_save:
 		#sftp = ftp_connect()
 
-		for file_address in glob.glob(f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
-			if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
-				page_source = open(file_address, encoding='utf-8').read()
+	for file_address in glob.glob(f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
+		if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
+			page_source = open(file_address, encoding='utf-8').read()
 
-				logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
+			logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
 
 	if 'page_source' not in locals():
 
 		page_source = get_page(url)
 
-		if save_page_local:
-			file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
-			try: open(file_address, 'w+', encoding='utf-8').write(page_source)
-			except Exception as error: logger.error(f'could not save the page because {error} occured')
+		file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+		try: open(file_address, 'w+', encoding='utf-8').write(page_source)
+		except Exception as error: logger.error(f'could not save the page because {error} occured')
 
 		if logger: logger.info(f'{(time.time() - start_time):.3f}s - downloding page source ... {url}')
 
@@ -237,6 +231,7 @@ def get_resources(data_name=None):
 
 
 def get_page_link(resource, data_name, attribute=None):
+	"""gitting pages links from resources in config"""
 	attribute = data_name if attribute is None else attribute
 	return config.resources[resource][data_name][attribute]
 
