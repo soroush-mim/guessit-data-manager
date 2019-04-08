@@ -1,0 +1,6 @@
+flask
+pandas
+pprint
+pymongo
+requests
+bs4
