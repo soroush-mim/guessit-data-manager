@@ -156,6 +156,7 @@ def get_resource_from_url(url):
         return None
 
 def get_db_name_from_url(url):
+	"""getting db_name of a url"""
     db_name = []
     resource = get_resource_from_url(url)
     if not resource :
@@ -188,26 +189,26 @@ def download(url, local_filename=None):
 def make_soup(url):
 	"""for new urls create the soup file and save it in downloaded pages 
 	and for old urls loads soup file for them from files in memory"""
-    resource = get_resource_from_url(url)
-    db_name = get_db_name_from_url(url)
-    if resource and db_name:
-        guessed_location = f'{download_page_dir}/{resource}/{db_name}'
-    else:
-        guessed_location = f'{download_page_dir}/others'
+	resource = get_resource_from_url(url)
+	db_name = get_db_name_from_url(url)
+	if resource and db_name:
+		guessed_location = f'{download_page_dir}/{resource}/{db_name}'
+	else:
+		guessed_location = f'{download_page_dir}/others'
         
         
-    location = guessed_location
-    file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+	location = guessed_location
+	file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
     
-    if os.path.isfile(file_address):
-        page_source = open(file_address, encoding='utf-8').read()
-    else:
-        page_source = get_page(url)
-        try: open(file_address, 'w+', encoding='utf-8').write(page_source)
-        except Exception as error:
-            print(error)
+	if os.path.isfile(file_address):
+		page_source = open(file_address, encoding='utf-8').read()
+	else:
+		page_source = get_page(url)
+		try: open(file_address, 'w+', encoding='utf-8').write(page_source)
+		except Exception as error:
+			print(error)
         
-    return soup(page_source , 'html.parser')    
+	return soup(page_source , 'html.parser')    
 
 
 def get_page(url, try_count=10, delay=0):
