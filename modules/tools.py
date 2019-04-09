@@ -152,6 +152,17 @@ def get_resource_from_url(url):
                     resources.append(resource)
     return resources[0]
 
+def get_db_name_from_url(url):
+    db_name = []
+    resource = get_resource_from_url(url)
+    for db in get_resources()[resource].keys():
+        for key , pattern in get_resources()[resource][db].items():
+            if 'pattern' in key:
+                if any([re.search(pattern, url)]):
+                    db_name.append(db)
+    return db_name[0]
+
+	
 def download(url, local_filename=None):
 	if local_filename is None:
 		local_filename = url.split('/')[-1]
