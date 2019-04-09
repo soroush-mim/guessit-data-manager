@@ -142,6 +142,15 @@ def ftp_connect(timeout=10):
 		raise NameError('sFTP connection failed')
 		return
 
+def get_resource_from_url(url):
+    """getting resource of a url"""
+    resources = []
+    for resource in get_resources().keys():
+        for db in list(get_resources()[resource].keys()):
+            if 'base' in get_resources()[resource][db]:
+                if any([get_resources()[resource][db]['base'] in url]):
+                    resources.append(resource)
+    return resources[0]
 
 def download(url, local_filename=None):
 	if local_filename is None:
@@ -163,11 +172,12 @@ def make_soup(url):
 		resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0] 
 		db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
 		guessed_location = f'{download_page_dir}/{resource}/{db_name}'
+		
 	except Exception as error:
 		logging.critical(f'function make_soup() {error}')
 		guessed_location = download_page_dir
 
-	location = guessed_location if location is None else location
+	location = guessed_location #if location is None else location
 
 	#url = re.sub('#.*?', '', url)
 	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
@@ -200,8 +210,6 @@ def get_page(url, try_count=10, delay=0, **args):
 	proxies = [{
 				"http": None,
 				"https": None,
-			  }, {
-
 			  }]
 
 	content = ''
@@ -227,6 +235,7 @@ def make_id(data_id):
 
 
 def get_resources(data_name=None):
+	
 	return [resource for resource in config.resources.keys() if data_name in config.resources[resource]] if data_name else config.resources
 
 
