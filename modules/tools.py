@@ -157,19 +157,19 @@ def get_resource_from_url(url):
 
 def get_db_name_from_url(url):
 	"""getting db_name of a url"""
-    db_name = []
-    resource = get_resource_from_url(url)
-    if not resource :
-        return None
-    for db in get_resources()[resource].keys():
-        for key , pattern in get_resources()[resource][db].items():
-            if 'pattern' in key:
-                if any([re.search(pattern, url)]):
-                    db_name.append(db)
-    if len(db_name) > 0:
-        return db_name[0]
-    else:
-        return None
+	db_name = []
+	resource = get_resource_from_url(url)
+	if not resource :
+		return None
+	for db in get_resources()[resource].keys():
+		for key , pattern in get_resources()[resource][db].items():
+			if 'pattern' in key:
+				if any([re.search(pattern, url)]):
+					db_name.append(db)
+	if len(db_name) > 0:
+		return db_name[0]
+	else:
+		return None
 	
 def download(url, local_filename=None):
 	if local_filename is None:

@@ -478,6 +478,7 @@ def download_resources(resource, db_name, count=float('Inf'), count_founds=float
 
 
 def init_project():
+	"""create needed folders for project and pages that will be downloaded"""
 	for resource in get_resources():
 		for db_name in get_resources()[resource]:
 			directory = f'{main_dir}/download/page/{resource}/{db_name}/'
