@@ -150,18 +150,25 @@ def get_resource_from_url(url):
             if 'base' in get_resources()[resource][db]:
                 if any([get_resources()[resource][db]['base'] in url]):
                     resources.append(resource)
-    return resources[0]
+    if len(resources) > 0:
+        return resources[0]
+    else:
+        return None
 
 def get_db_name_from_url(url):
     db_name = []
     resource = get_resource_from_url(url)
+    if not resource :
+        return None
     for db in get_resources()[resource].keys():
         for key , pattern in get_resources()[resource][db].items():
             if 'pattern' in key:
                 if any([re.search(pattern, url)]):
                     db_name.append(db)
-    return db_name[0]
-
+    if len(db_name) > 0:
+        return db_name[0]
+    else:
+        return None
 	
 def download(url, local_filename=None):
 	if local_filename is None:
@@ -186,7 +193,7 @@ def make_soup(url):
 		
 	except Exception as error:
 		logging.critical(f'function make_soup() {error}')
-		guessed_location = download_page_dir
+		guessed_location = f'{download_page_dir}/others'
 
 	location = guessed_location #if location is None else location
 
@@ -212,12 +219,11 @@ def make_soup(url):
 
 		if logger: logger.info(f'{(time.time() - start_time):.3f}s - downloding page source ... {url}')
 
-		#sftp.open(file_address, 'w+').write(page_source)
-	if return_local_save: return soup(page_source, 'html.parser'), use_local_save
-	else: return soup(page_source, 'html.parser') 
+	return soup(page_source, 'html.parser') 
 
 
-def get_page(url, try_count=10, delay=0, **args):
+def get_page(url, try_count=10, delay=0):
+	"""get request to url by diffrent options"""
 	proxies = [{
 				"http": None,
 				"https": None,
@@ -226,7 +232,7 @@ def get_page(url, try_count=10, delay=0, **args):
 	content = ''
 	for i in range(try_count):
 		try	 :
-			content = requests.get(url, proxies=proxies[i % len(proxies)], **args).text
+			content = requests.get(url, proxies=proxies[i % len(proxies)]).text
 			break
 		except Exception as error :
 			if logger: logging.error(f'{url} : {error}')
