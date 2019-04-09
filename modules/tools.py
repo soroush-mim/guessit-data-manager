@@ -186,40 +186,28 @@ def download(url, local_filename=None):
 
 
 def make_soup(url):
-	try:
-		resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0] 
-		db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
-		guessed_location = f'{download_page_dir}/{resource}/{db_name}'
-		
-	except Exception as error:
-		logging.critical(f'function make_soup() {error}')
-		guessed_location = f'{download_page_dir}/others'
-
-	location = guessed_location #if location is None else location
-
-	#url = re.sub('#.*?', '', url)
-	#url = re.sub('ref[_]?=[a-zA-Z0-9_]*', '', url)
-	#url = re.sub('[?]$', '', url)
-
-		#sftp = ftp_connect()
-
-	for file_address in glob.glob(f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"):
-		if os.path.isfile(file_address):# and os.access(file_address, os.R_OK):
-			page_source = open(file_address, encoding='utf-8').read()
-
-			logger.info(f'{(time.time() - start_time):.3f}s - reading page source from file ... {url}')
-
-	if 'page_source' not in locals():
-
-		page_source = get_page(url)
-
-		file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
-		try: open(file_address, 'w+', encoding='utf-8').write(page_source)
-		except Exception as error: logger.error(f'could not save the page because {error} occured')
-
-		if logger: logger.info(f'{(time.time() - start_time):.3f}s - downloding page source ... {url}')
-
-	return soup(page_source, 'html.parser') 
+	"""for new urls create the soup file and save it in downloaded pages 
+	and for old urls loads soup file for them from files in memory"""
+    resource = get_resource_from_url(url)
+    db_name = get_db_name_from_url(url)
+    if resource and db_name:
+        guessed_location = f'{download_page_dir}/{resource}/{db_name}'
+    else:
+        guessed_location = f'{download_page_dir}/others'
+        
+        
+    location = guessed_location
+    file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+    
+    if os.path.isfile(file_address):
+        page_source = open(file_address, encoding='utf-8').read()
+    else:
+        page_source = get_page(url)
+        try: open(file_address, 'w+', encoding='utf-8').write(page_source)
+        except Exception as error:
+            print(error)
+        
+    return soup(page_source , 'html.parser')    
 
 
 def get_page(url, try_count=10, delay=0):
