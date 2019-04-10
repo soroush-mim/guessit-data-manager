@@ -142,6 +142,7 @@ def ftp_connect(timeout=10):
 		raise NameError('sFTP connection failed')
 		return
 
+
 def get_resource_from_url(url):
     """getting resource of a url"""
     resources = []
@@ -154,6 +155,7 @@ def get_resource_from_url(url):
         return resources[0]
     else:
         return None
+
 
 def get_db_name_from_url(url):
 	"""getting db_name of a url"""
@@ -170,7 +172,8 @@ def get_db_name_from_url(url):
 		return db_name[0]
 	else:
 		return None
-	
+
+
 def download(url, local_filename=None):
 	if local_filename is None:
 		local_filename = url.split('/')[-1]
@@ -239,10 +242,12 @@ def make_id(data_id):
 	return base64.b32encode(str(data_id).encode()).decode()
 
 
-
 def get_resources(data_name=None):
 	
-	return [resource for resource in config.resources.keys() if data_name in config.resources[resource]] if data_name else config.resources
+	if not data_name:
+        return resources
+    else:
+        return [resource for resource in resources.keys() if data_name in resources[resource]]
 
 
 def get_page_link(resource, data_name, attribute=None):

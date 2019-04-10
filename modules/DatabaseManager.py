@@ -174,23 +174,6 @@ def load_db(db_name):
 
 		logger.error(error)
 
-		logger.critical(f'could not open dataset from {config.dataset_dir}/ directory')
-
-		logger.critical(f'trying to download {db_name} dataset from server...')
-
-		db = json.loads(requests.get(f'{db_url}{db_name}db.json', 'r').text)
-
-		logger.critical(f'loading {db_name} dataset from server is done.')
-
-
-	if config.backup:
-
-		logger.critical(f'taking backup from {db_name} dataset ...')
-
-		json.dump(db, open(f"{config.dataset_dir}/{db_name}db {time.ctime().replace(':', '-')}.backup", 'w'), indent=4)
-
-		logger.info(f'taking backup from {db_name} dataset is done.')
-
 	return db
 
 
