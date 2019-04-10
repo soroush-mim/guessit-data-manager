@@ -244,10 +244,10 @@ def make_id(data_id):
 
 def get_resources(data_name=None):
 	
-	if not data_name:
-        return resources
-    else:
-        return [resource for resource in resources.keys() if data_name in resources[resource]]
+	if data_name is None:
+		return config.resources
+	else:
+		return [resource for resource in config.resources.keys() if data_name in config.resources[resource]]
 
 
 def get_page_link(resource, data_name, attribute=None):
