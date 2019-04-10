@@ -443,38 +443,18 @@ def download_resouce_page(resource, db_name):
 			pool.map(make_soup, page_queue[i:i+step])
 """
 
-def download_resources(resource, db_name, count=float('Inf'), count_founds=float('Inf'), timeout=float('Inf'), page_queue=None, start=0, resume=False):
-	start_time = time.time()
-	#mp.Process(target=download_resouce_page, args=(resource, db_name, )).start()
-	location = f'{main_dir}/download/page/{resource}/{db_name}'
-	if resume:
-		try:
-			statics = json.load(open(f'{location}/statics.json'))
-			start = statics['start']
-			page_queue = statics['page_queue']
-		except: pass
-	base = get_page_link(resource, db_name, 'base')
-	page_queue = get_page_link(resource, db_name, f'{db_name}_list') if page_queue is None else page_queue
-	page_queue_first_len = len(page_queue)
-	i = start - 1
-	while i < len(page_queue) - 1:
-		i += 1
-		page = page_queue[i]
-		if i % 30 == 0 or i == len(page_queue) - 1: json.dump({'page_queue': page_queue, 'start': i}, open(f'{location}/statics.json', 'w+'), indent=4)
-		logger.info(f"i: {i} ------ Founded pages: {len(page_queue)} ------ Saved pages: {len(glob.glob(f'{location}/*.html'))}")
-		souped_page = make_soup(page)
-		#if local_save: continue
-		patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
-		for pattern in patterns:
-			for url in [tag['href'] for tag in souped_page.find_all('a', {'href':re.compile(pattern)})]:
-				absolute_url = urllib.parse.urljoin(base, re.search(pattern, url).group(1))
-				if absolute_url not in page_queue:
-					page_queue += [absolute_url]
-					#print(f'i - start >= count : {i - start >= count}   i = {i}  start = {start}   count = {count}')
-					if i - start >= count or len(page_queue) - page_queue_first_len >= count_founds or time.time() - start_time >= timeout:
-						return page_queue, i
-
-	logger.critical(f'Downloading resource ended successfully!')
+def download_resources(resource , db_name):
+    """downloading wanted pages for a specific pair of resource and ab and saving them with make_soup"""
+    location = f'{main_dir}/download/page/{resource}/{db_name}'
+    base = get_page_link(resource , db_name , 'base')
+    page_queue = get_page_link(resource , db_name , f'{db_name}_list')
+    patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
+    for page in page_queue:
+        souped_page = make_soup(page)
+        for pattern in patterns:
+            for url in [tag['href'] for tag in souped_page.find_all('a' , {'href':re.compile(pattern)})]:
+                make_soup(urllib.parse.urljoin(base ,re.search(pattern,url).group(1)))            
+                
 
 
 def init_project():
