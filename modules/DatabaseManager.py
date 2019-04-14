@@ -117,46 +117,16 @@ def update_data(data_name, data):
 
 			page = make_soup(page_link)
 
-			#logger.info(str(page)[:1000])
 
 			new_data = {}
 
-			#get_attributes(resource, data_name) + common_attributes
 
 			getter_module = globals()[f'get_{data_name}_data_from_{resource}']
 
 			modules = []
 
-			for local_var in getter_module('get_locals'):
-				if callable(getter_module(local_var)):
-					modules += [getter_module(local_var)]
 
-			for module in modules:
-				try	 : new_data[module.__name__] = module(page)
-				except Exception as error : logger.warning(f'no "{module.__name__}" from "{page_link}" becuase {error}')
-
-
-
-			#def get_attribute_from_page(page, module):
-			#		try:
-			#			return (module.__name__, module(page), '')
-			#		except Exception as error:
-			#			return (module.__name__, '###', error)
-			#
-			#	attributes = pool.map_async(functools.partial(get_attribute_from_page, page), modules).get()
-			#
-			#	for attribute, value, error in attributes:
-			#		if value != '###':
-			#			new_data[attribute] = value
-			#		else:
-			#			logger.warning(f'no "{attribute}" from "{value}" becuase {error}')
-
-			#logger.info(f'from "{page_link}" page got : {new_data}')
-
-			#data.update(new_data)
-			#pprint(new_data)
 			for key in new_data: data[key] = new_data[key]
-			#pprint(data)
 
 	return data
 
@@ -235,7 +205,7 @@ def find_db(db_name):
 
 		petterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
 
-		ids += collect_data_id_from_resource(pages , base , patterns)
+		db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages , base , patterns)]
 
 	save_db(db , db_name)
 
@@ -247,7 +217,7 @@ def init_db(db_name):
 
 
 def save_pages(url, patterns):
-	return
+	pass
 
 # does not work yet
 def load_modules():
