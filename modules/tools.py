@@ -38,74 +38,27 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 logger = logging.getLogger('DatabaseManager')
 
 
-def collect_data_id_from_resource(pages, base, pattern, data_name=None, data_count=10, data_check_module=None, timeout=10**3, debug=False, checked_id=[], checked_pages=[], recursive=True):
-	start_time 		= time.time()
+def collect_data_id_from_resource(pages, base, patterns):
 
-	#print(pages, checked_id, data_count, checked_pages)
+	all_new_pages = []
 
-	for i, page in enumerate(list(set(pages) - set(checked_pages))):
+	for page in pages:
 
 		souped_page = make_soup(page)
 
-		new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})] + [page]
+		for pattern in patterns:
+			new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
 
-		new_pages =  [base + page if page.find('http') == -1 else page for page in new_pages]
+			new_pages =  [base + page if page.find('http') == -1 else page for page in new_pages]
 
-		new_pages =  [page for page in new_pages if page[5:].find('http') == -1]
+			new_pages =  [page for page in new_pages if page[5:].find('http') == -1]
 
-		#print(new_pages)
-
-		new_pages =  [re.sub(r'/?\?.*', '', page) for page in new_pages]
-
-		new_pages = list(set(new_pages) - set(pages))
-
-		#print(new_pages)
-
-		for new_page in new_pages:
-
-			if debug:
-				try: print(i, new_page)
-				except Exception as error: print(error)
-				time.sleep(0.1)
-
-			new_id_re = re.search(f'{base}{pattern}', new_page)
-			#print('===')
-			if new_id_re and new_id_re.group(1) not in checked_id and \
-				not (data_name and data_check_module and not data_check_module(make_soup(new_page))):
-
-				if debug or 1:
-					try: print(new_page)
-					except Exception as error: print(error)
-
-				#yield new_id_re.group(1)
-
-				checked_id = list(set(checked_id + [new_id_re.group(1)]))
-
-				
-				if data_count <= len(checked_id):
-					logger.info('*****')
-					logger.info(set(pages))
-					logger.info(set(checked_pages))
-					logger.info(set(checked_id))
-					logger.info((data_count))
-					return checked_id, pages, checked_pages
-
-
-			else:
-				#print('---')
-				pass
-			if recursive and re.search(f'{base}{pattern}', new_page) and new_page not in pages:
-				pages += [new_page]
-
-
-		if time.time() - start_time > timeout:
-			return checked_id, pages, checked_pages
-
-
-		checked_pages += [page]
+			new_pages =  [re.sub(r'/?\?.*', '', page) for page in new_pages]
+		
+		all_new_pages +=new_pages
 	
-	
-	return checked_id, pages, checked_pages
+	return all_new_pages
+
 
 
 def wait_to_connect(timeout=10, delay=2):

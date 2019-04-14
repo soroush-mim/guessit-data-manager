@@ -163,7 +163,7 @@ resources	=   {
 
 main_dir			= '/home/flc/guessit'
 project_dir			= f'{main_dir}/guessit_data_manager'
-dataset_dir			= f'{project_dir}/modules/datasets'
+dataset_dir			= f'{project_dir}/../datasets'
 process_count	   	= 4
 updating_step	   	= 10
 finding_step	   	= 10

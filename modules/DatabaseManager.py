@@ -173,6 +173,9 @@ def load_db(db_name):
 	except Exception as error:
 
 		logger.error(error)
+		open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
+		db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+
 
 	return db
 
@@ -181,9 +184,6 @@ def save_db(db, db_name):
 	logger.critical('Writing to file ...')
 
 	json.dump(db, open(f'{config.dataset_dir}/{db_name}db.json', 'w'), indent=4)
-
-	if config.safe_mode:
-		json.dump(db, open(f'{config.dataset_dir}/{db_name}dbLastUpdate.json', 'w'), indent=4)
 
 	logger.critical('Writing to file is done.')
 
@@ -222,108 +222,42 @@ def update_db_partial(db, updated_items, begin=0, end=None):
 	return db, changes
 
 
-def update_db(db_name, begin=0, en                                                                                                                                                        d=None, timeout=10**4):
-
+def update_db(db_name, begin, end,updating_step = 1):
+	
 	db = load_db(db_name)
-	if end is None:
-		end = len(db)
-	else:
-		end = min(end, len(db))
+	begin = 0
+	end = len(db)
+	
+	for i in range(begin, end, updating_step):
 
-	with mp.Pool() as pool:
+		old_data = get_expired_data(db, begin=i, end=min(i + updating_step, end))
 
-		for i in range(begin, end, updating_step):
+		updated_items = pool.map_async(functools.partial(globals()['update_data'], db_name), old_data).get()
 
-			Monitoring.logMemory()
-			Monitoring.logCpu()
-			
-			logger.critical(f'Updating {db_name} dataset from {i} to {i + updating_step} ...')
+		db, changes = update_db_partial(db, updated_items, begin=i, end=min(i + updating_step, end))
 
-			old_data = get_expired_data(db, begin=i, end=min(i + updating_step, end))
-
-			logger.critical('Retrieving data ...')
-
-			updated_items = pool.map_async(functools.partial(globals()['update_data'], db_name), old_data).get()
-
-			logger.critical('Retrieving data is done.')
-
-			db, changes = update_db_partial(db, updated_items, begin=i, end=min(i + updating_step, end))
-
-			if changes > 0:
-				save_db(db, db_name)
-
-	logger.critical(f'{db_name} dataset updated successfully :)')
+		save_db(db, db_name)
 
 
-def find_db(db_name, max_find_new=10**4, max_find_all=10**4, max_db_all=10**6, timeout=10**5, save_to_db=True, resources=None):
-
-	start_time = time.time()
+def find_db(db_name):
 
 	db = load_db(db_name)
 
-	count_find_new, count_find_all = 0, 0
+	ids = []
 
-	logger.critical('trying to find new data...')
+	for resource in get_resources(db_name):
 
-	changes = 0
+		pages = get_resources()[resource][db_name][f'{db_name}_list']
 
-	with mp.Pool(process_count) as pool:
+		base = get_resources()[resource][db_name]['base']
 
-		for resource in get_resources(db_name) if resources is None else resources:
+		petterns = [pattern for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
 
-			logger.critical(f'trying to find {db_name} data from {resource}.')
+		ids += collect_data_id_from_resource(pages , base , patterns)
 
-			data_id_name = f'{resource}ID'
-
-			datas = [data[data_id_name] for data in db if data_id_name in data]
-
-			resource_links = get_page_link(resource, db_name, f'{db_name}_list')
-
-			logger.critical(f"resource links : {resource_links if len(resource_links) < 3 else str(resource_links[:3]) + '...'} ")
-
-			new_datas, new_datas_all, checked_pages = [], [], []
-
-			if f'collect_{db_name}_id_from_{resource}' not in globals(): break
-
-			while len(db) < max_db_all and count_find_all < max_find_all and count_find_new < max_find_new:
-
-				#print([x[f'{resource}ID'] for x in new_datas_all])
-
-				new_datas, resource_links, checked_pages = zip(*pool.map(functools.partial(globals()[f'collect_{db_name}_id_from_{resource}'], checked_id=[x[f'{resource}ID'] for x in db], checked_pages=checked_pages, timeout=start_time - time.time() + timeout), [resource_links]))
-
-				checked_pages = list(itertools.chain.from_iterable(list(checked_pages)))
-
-				resource_links = list(itertools.chain.from_iterable(list(resource_links)))
-
-				#print(new_datas)
-
-				new_datas = set(list(itertools.chain.from_iterable(list(new_datas))))
-
-				logger.info(new_datas)
-
-				count_find_all += len(new_datas)
-
-				new_datas -= set([x[f'{resource}ID'] for x in db])
-
-				logger.info(new_datas)
-
-				count_find_new += len(new_datas)
-
-				logger.critical(f'finding {db_name} data is done.')
-
-				changes = len(new_datas)
-
-				if save_to_db and changes > 0:
-					db +=  [{'id': make_id(data_id), f'{resource}ID': data_id} for data_id in new_datas]
-					save_db(db, db_name)
+	save_db(db , db_name)
 
 
-	#logger.critical(f"all new datas {new_datas if len(new_datas) < 3 else str(new_datas[:3]) + '...'}")
-
-
-	logger.critical(f'{changes} number of new items added to {db_name} dataset successfully :)')
-
-	return new_datas
 
 
 def init_db(db_name):

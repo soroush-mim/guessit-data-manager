@@ -217,6 +217,8 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 	
 	def get_all_data(self):
 		"""a function for getting all data of a player in a dictionary"""
+
+		
 		data = {}
 		for i in [x for x in dir(self) if x.startswith('getter_')]:
 			if re.search(r'.*' , str(getattr(self,i))):
