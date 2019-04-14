@@ -40,7 +40,7 @@ logger = logging.getLogger('DatabaseManager')
 
 def collect_data_id_from_resource(pages, base, patterns):
 
-	all_new_pages = []
+	new_ids = []
 
 	for page in pages:
 
@@ -55,9 +55,9 @@ def collect_data_id_from_resource(pages, base, patterns):
 
 			new_pages =  [re.sub(r'/?\?.*', '', page) for page in new_pages]
 		
-		all_new_pages +=new_pages
+			new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
 	
-	return all_new_pages
+	return new_ids
 
 
 
