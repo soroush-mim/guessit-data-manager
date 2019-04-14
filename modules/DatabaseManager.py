@@ -243,15 +243,13 @@ def find_db(db_name):
 
 	db = load_db(db_name)
 
-	ids = []
-
 	for resource in get_resources(db_name):
 
 		pages = get_resources()[resource][db_name][f'{db_name}_list']
 
 		base = get_resources()[resource][db_name]['base']
 
-		petterns = [pattern for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
+		petterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
 
 		ids += collect_data_id_from_resource(pages , base , patterns)
 
