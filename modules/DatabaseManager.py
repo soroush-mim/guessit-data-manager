@@ -162,7 +162,7 @@ def update_data(data_name, data):
 
 
 def load_db(db_name):
-
+	"""open the json file if that is created already else create it and open it for find db"""
 	try:
 		logger.critical(f'trying to load {db_name} dataset from hard disk...')
 
@@ -181,6 +181,7 @@ def load_db(db_name):
 
 
 def save_db(db, db_name):
+	"""save objects on a json file for find db"""
 	logger.critical('Writing to file ...')
 
 	json.dump(db, open(f'{config.dataset_dir}/{db_name}db.json', 'w'), indent=4)
@@ -240,7 +241,7 @@ def update_db(db_name, begin, end,updating_step = 1):
 
 
 def find_db(db_name):
-
+	"""finding ids and saving them in a json file for each db"""
 	db = load_db(db_name)
 
 	for resource in get_resources(db_name):

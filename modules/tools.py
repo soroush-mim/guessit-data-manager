@@ -39,6 +39,7 @@ logger = logging.getLogger('DatabaseManager')
 
 
 def collect_data_id_from_resource(pages, base, patterns):
+	"""general finding ids from list pages """
 
 	new_ids = []
 
