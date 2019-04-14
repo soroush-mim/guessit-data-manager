@@ -192,6 +192,7 @@ def save_db(db, db_name):
 
 
 def get_expired_data(db, begin, end):
+	"""getting expired datas from begin to end by expiration_time in config"""
 	old_data = []
 	for j in range(begin, end):
 		if not 'lastUpdate' in db[j] or not db[j]['lastUpdate'] or not isinstance(db[j]['lastUpdate'], str):
@@ -203,24 +204,6 @@ def get_expired_data(db, begin, end):
 	return old_data
 
 
-def update_db_partial(db, updated_items, begin=0, end=None):
-	if end is None:
-		end = len(db)
-
-	changes = 0
-	for j in range(begin, end):
-		updated_data = [data for data in updated_items if data['id'] == db[j]['id']]
-
-		if updated_data:
-			updated_data = updated_data[0]
-			updated_data['lastUpdate'] = time.ctime()
-
-			for key in updated_data:
-				if (key not in db[j] or db[j][key] != updated_data[key]):
-					db[j][key] = updated_data[key]
-					changes += 1
-
-	return db, changes
 
 
 def update_db(db_name, begin, end,updating_step = 1):
