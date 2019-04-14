@@ -105,7 +105,7 @@ def update_data(data_name, data):
 
 	for resource in get_resources(data_name):
 
-		data_id_name = f'{resource}ID'
+		data_id_name = f'{resource}_id'
 
 		if data_id_name in data:
 
@@ -117,18 +117,10 @@ def update_data(data_name, data):
 
 			page = make_soup(page_link)
 
-
-			new_data = {}
-
-
-			getter_module = globals()[f'get_{data_name}_data_from_{resource}']
-
-			modules = []
+			getter_module = globals()[f'get_{data_name}_data_from_{resource}'](page)
 
 
-			for key in new_data: data[key] = new_data[key]
-
-	return data
+	return getter_module.get_all_data()
 
 
 def load_db(db_name):
@@ -203,7 +195,7 @@ def find_db(db_name):
 
 		base = get_resources()[resource][db_name]['base']
 
-		petterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
+		patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
 
 		db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages , base , patterns)]
 

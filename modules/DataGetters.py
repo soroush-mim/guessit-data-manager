@@ -421,7 +421,7 @@ def get_footballTeam_data_from_sofifa(attribute):
 	return locals()[attribute] # return partial_function with page
 
 
-def get_footballPlayer_data_from_sofifa(attribute):
+"""def get_footballPlayer_data_from_sofifa(attribute):
 
 	"""
 	TODO : get national teams info ---> https://sofifa.com/players?na=7
@@ -620,7 +620,7 @@ def get_footballPlayer_data_from_sofifa(attribute):
 	if attribute ==  'get_locals': return list(locals().keys())
 
 	return locals()[attribute] # return partial_function with page
-
+"""
 
 def get_actor_data_from_imdb(attribute):
 	def name(page, test=False):
