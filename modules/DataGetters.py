@@ -44,6 +44,9 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 		self.like_table = self.main_table.find('div' , class_ = 'operation mt-2')   
 		if len(self.columns) > 3:
 			self.forth_column = self.columns[3].find_all('li')
+		if len(self.third_column) < 5:
+			self.third_column , self.forth_column = self.forth_column , self.third_column
+
 
 	@property
 	def getter_shirt_name(self):
@@ -158,7 +161,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
 	@property
 	def getter_Jersey_Number_in_club(self):
-		return self.third_column[3].text.strip()[-2:]
+		return self.third_column[3].text.strip()[13:]
 
 	@property
 	def getter_club_join_date(self):
@@ -199,7 +202,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 	@property
 	def getter_Jersey_Number_in_national(self):
 		if len(self.forth_column) > 0:
-			return self.forth_column[3].text.strip()[-2:]
+			return self.forth_column[3].text.strip()[13:]
 		else:
 			return None
 
