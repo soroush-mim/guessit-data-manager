@@ -168,19 +168,18 @@ def get_expired_data(db, begin, end):
 
 
 
-def update_db(db_name, begin, end,updating_step = 1):
+def update_db(db_name, begin = None, end = None,updating_step = 1):
 	
 	db = load_db(db_name)
-	begin = 0
-	end = len(db)
+	if end is None:
+		end = len(db)
+	if begin is None:
+		begin = 0
+	updated_items = []
 	
 	for i in range(begin, end, updating_step):
 
-		old_data = get_expired_data(db, begin=i, end=min(i + updating_step, end))
-
-		updated_items = pool.map_async(functools.partial(globals()['update_data'], db_name), old_data).get()
-
-		db, changes = update_db_partial(db, updated_items, begin=i, end=min(i + updating_step, end))
+		updated_items += update_data(db_name , db[i])
 
 		save_db(db, db_name)
 

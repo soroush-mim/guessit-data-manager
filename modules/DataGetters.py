@@ -134,7 +134,11 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 	
 	@property
 	def getter_release_clause(self):
-		return self.left_column_elements[7].text.strip()[14:]
+		try:
+			release_clause = self.left_column_elements[7].text.strip()[14:]
+		except Exception as error:
+			release_clause = ''
+		return release_clause
 	
 	@property
 	def getter_club_team(self):
