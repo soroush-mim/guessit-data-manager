@@ -102,6 +102,7 @@ def download_db(db_name):
 
 
 def update_data(data_name, data):
+	"""use dataGetters classes for colleting data of one id"""
 
 	for resource in get_resources(data_name):
 
@@ -169,7 +170,7 @@ def get_expired_data(db, begin, end):
 
 
 def update_db(db_name, begin = None, end = None,updating_step = 1):
-	
+	"""update all datas of one db"""
 	db = load_db(db_name)
 	if end is None:
 		end = len(db)
@@ -179,9 +180,9 @@ def update_db(db_name, begin = None, end = None,updating_step = 1):
 	
 	for i in range(begin, end, updating_step):
 
-		updated_items += update_data(db_name , db[i])
+		db[i].update(update_data(db_name , db[i]))
 
-		save_db(db, db_name)
+	save_db(db, db_name)
 
 
 def find_db(db_name):
@@ -305,7 +306,7 @@ def download_resouce_page(resource, db_name):
 
 def download_resources(resource , db_name):
     """downloading wanted pages for a specific pair of resource and ab and saving them with make_soup"""
-    location = f'{main_dir}/download/page/{resource}/{db_name}'
+    location = f'{config.main_dir}/download/page/{resource}/{db_name}'
     base = get_page_link(resource , db_name , 'base')
     page_queue = get_page_link(resource , db_name , f'{db_name}_list')
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]

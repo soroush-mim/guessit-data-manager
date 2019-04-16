@@ -229,7 +229,11 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 		data = {}
 		for i in [x for x in dir(self) if x.startswith('getter_')]:
 			if re.search(r'.*' , str(getattr(self,i))):
-				data[i[7:]] = getattr(self,i)
+				try:
+					data[i[7:]] = getattr(self,i)
+				except Exception as error:
+					data[i[7:]] = None
+					print(error)
 		return data
 
 
