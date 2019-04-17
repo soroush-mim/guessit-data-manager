@@ -310,7 +310,7 @@ def init_project():
 	"""create needed folders for project and pages that will be downloaded"""
 	for resource in get_resources():
 		for db_name in get_resources()[resource]:
-			directory = f'{main_dir}/download/page/{resource}/{db_name}/'
+			directory = f'{config.main_dir}/download/page/{resource}/{db_name}/'
 			if os.path.exists(directory): continue
 			try: os.makedirs(directory)
 			except Exception as error: logger.error(error)
