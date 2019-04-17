@@ -8,7 +8,6 @@ import re
 import pandas as pd
 import json
 from pprint import pprint
-import psutil
 import os
 import html
 import logging
@@ -18,7 +17,6 @@ import itertools
 import importlib
 import pkgutil
 import base64
-import pysftp
 import time
 import glob
 

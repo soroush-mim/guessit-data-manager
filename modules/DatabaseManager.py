@@ -9,7 +9,6 @@ import re
 import pandas as pd
 import json
 from pprint import pprint
-import psutil
 import os
 import html
 import logging
@@ -19,7 +18,6 @@ import itertools
 import importlib
 import pkgutil
 import base64
-import pysftp
 import time
 import math
 import urllib
@@ -31,14 +29,6 @@ import config
 from tools import *
 from DataGetters import *
 
-
-class Monitoring:
-	memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
-	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
-	cpuuse	  	= lambda : psutil.cpu_percent()
-	memuse	  	= lambda : psutil.virtual_memory()[2]
-	logMemory   = lambda : logger.info(f'memory usage : all = {Monitoring.memuse()} %  -  me = {Monitoring.memuseme()} MB')
-	logCpu	  	= lambda : logger.info(f'cpu	usage : all = {Monitoring.cpuuse()} %  -  me = {Monitoring.cpuuseme()} % ')
 
 
 def download_db_link(url):

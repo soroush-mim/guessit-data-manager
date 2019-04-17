@@ -10,7 +10,6 @@ import pandas as pd
 import json
 import time
 from pprint import pprint
-import psutil
 import os
 import html
 import logging

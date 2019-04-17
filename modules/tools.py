@@ -9,7 +9,6 @@ import re
 import pandas as pd
 import json
 from pprint import pprint
-import psutil
 import os
 import html
 import logging
@@ -19,11 +18,11 @@ import itertools
 import importlib
 import pkgutil
 import base64
-import pysftp
 import time
 import glob
 
 import config
+
 
 download_page_dir 	= f'{config.main_dir}/download/page'
 
@@ -72,30 +71,6 @@ def wait_to_connect(timeout=10, delay=2):
 			connected = False
 			time.sleep(delay)
 			print('no internet connection')
-
-
-def ftp_connect(timeout=10):
-	while timeout > 0:
-		if 'sftp' in globals() and globals()['sftp'] and globals()['sftp'].pwd == '/root':
-			break
-		else:
-			globals()['sftp'] = None
-
-		cnopts = pysftp.CnOpts()
-
-		cnopts.hostkeys = None
-
-		globals()['sftp'] = pysftp.Connection(host='51.255.213.191', username='root', password='b7uxrE8ugOeiTHEl', cnopts=cnopts)
-
-		timeout -= 1
-
-	if globals()['sftp']:
-		return globals()['sftp']
-
-	else:
-		raise NameError('sFTP connection failed')
-		return
-
 
 def get_resource_from_url(url):
     """getting resource of a url"""
