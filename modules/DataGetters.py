@@ -433,9 +433,9 @@ def get_footballTeam_data_from_sofifa(attribute):
 
 """def get_footballPlayer_data_from_sofifa(attribute):
 
-	"""
+	'''
 	TODO : get national teams info ---> https://sofifa.com/players?na=7
-	"""
+	'''
 
 	def birthyear(page, test=False):
 		pattern = r'[1-2][019][0-9]{2}'
