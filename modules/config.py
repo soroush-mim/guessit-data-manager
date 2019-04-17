@@ -159,7 +159,7 @@ resources	=   {
 				}
 			}
 
-main_dir			= '/home/flc/guessit'
+main_dir			= '/home/ASUS/guessit'
 project_dir			= f'{main_dir}/guessit_data_manager'
 dataset_dir			= f'{project_dir}/../datasets'
 process_count	   	= 4
