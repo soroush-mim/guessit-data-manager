@@ -30,7 +30,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.INFO,
 					handlers=[
-						logging.FileHandler(f'{config.main_dir}/guessit_data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
+						#logging.FileHandler(f'{config.main_dir}/guessit_data_manager/modules/data_manager.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
