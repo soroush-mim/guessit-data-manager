@@ -21,6 +21,9 @@ import time
 import glob
 
 
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
 
 resources	=   {
 				'imdb': {
@@ -159,7 +162,12 @@ resources	=   {
 				}
 			}
 
-main_dir			= '/home/ASUS/guessit'
+
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+
+main_dir			= '.'
 project_dir			= f'{main_dir}/guessit_data_manager'
 dataset_dir			= f'{project_dir}/../datasets'
 process_count	   	= 4
@@ -174,3 +182,22 @@ sftp 				= None
 
 local_save			= False
 save_page_local		= True
+
+
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+
+logging.basicConfig(
+    datefmt='%y-%b-%d %H:%M:%S',
+    format='%(levelname)8s:[%(asctime)s][%(filename)20s:%(lineno)4s -%(funcName)20s() ]: %(message)s',
+
+    # datefmt='%H:%M:%S',
+    level=logging.CRITICAL,
+    handlers=[
+        # logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+        logging.StreamHandler(),
+    ]
+)
+
+logger = logging.getLogger('DataManager')
