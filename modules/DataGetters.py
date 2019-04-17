@@ -17,10 +17,10 @@ import inspect
 import functools
 import itertools
 import time
-import youtube_downloader
+import modules.youtube_downloader
 
-import config
-from tools import *
+import modules.config
+from modules.tools import *
 
 
 class Data_getter:

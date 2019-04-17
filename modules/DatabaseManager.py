@@ -1,14 +1,14 @@
+from bs4 import BeautifulSoup as soup
 from pymongo import MongoClient
+from pprint import pprint
 import gzip
 import shutil
 import requests
-from bs4 import BeautifulSoup as soup
 import multiprocessing as mp
 import datetime
 import re
 import pandas as pd
 import json
-from pprint import pprint
 import os
 import html
 import logging
@@ -25,9 +25,9 @@ import glob
 import random
 import argparse
 
-import config
-from tools import *
-from DataGetters import *
+import modules.config
+from modules.tools import get_page_link
+from modules.DataGetters import *
 
 
 

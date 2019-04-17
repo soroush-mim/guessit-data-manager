@@ -1,6 +1,7 @@
-flask
+youtube_dl
+requests
+pymongo
 pandas
 pprint
-pymongo
-requests
+flask
 bs4
