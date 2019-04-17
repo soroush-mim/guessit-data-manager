@@ -193,7 +193,7 @@ logging.basicConfig(
     format='%(levelname)8s:[%(asctime)s][%(filename)20s:%(lineno)4s -%(funcName)20s() ]: %(message)s',
 
     # datefmt='%H:%M:%S',
-    level=logging.CRITICAL,
+    level=logging.DEBUG,
     handlers=[
         # logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),
