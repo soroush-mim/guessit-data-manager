@@ -22,7 +22,7 @@ import time
 import glob
 
 import config
-
+import argparse
 
 download_page_dir 	= f'{config.main_dir}/download/page'
 
@@ -183,6 +183,48 @@ def get_page_link(resource, data_name, attribute=None):
 	"""gitting pages links from resources in config"""
 	attribute = data_name if attribute is None else attribute
 	return config.resources[resource][data_name][attribute]
+
+
+def arg_parse():
+    '''
+    command line interface
+    '''
+
+    parser = argparse.ArgumentParser(description='Process some integers.')
+
+    parser.add_argument(
+        '-t', '--test', '--test_templates',
+        dest='test', default=None,
+        type=str,
+
+        help='test the templates and make questions',
+    )
+
+    parser.add_argument(
+        '-ch', '--checkup',
+        dest='checkup', default=False,
+        action='store_true',
+        help='checkup every necessary part of project to work fine',
+    )
+
+    parser.add_argument(
+        '-co', '--count',
+        dest='count', default=5,
+        type=int,
+        help='number of test for each template',
+    )
+
+    args = parser.parse_args()
+	
+
+
+	
+    # if there is any arg, return True
+    if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] =='-log'):
+        return False
+    else:
+        return True
+
 
 
 """

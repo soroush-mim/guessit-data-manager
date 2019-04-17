@@ -1,12 +1,16 @@
-import server.flask
-from flask import Flask
+from flask import Flask 
+from modules.tools import arg_parse
 
-import server.routeHandle as routeHandler
+import server.flask
+import server.routeHandle 
+
 
 server.flask.app = Flask(__name__)
-routeHandler.addRoutes()
+server.routeHandle.addRoutes()
 
 if __name__ == '__main__':
-
-    # server.flask.app.run(debug=True, host='0.0.0.0', port='3001')
-    server.flask.getApp().run(debug=True)
+    isThereArg = arg_parse()
+    
+    if not isThereArg:
+        # server.flask.app.run(debug=True, host='0.0.0.0', port='3001')
+        server.flask.getApp().run(debug=True)
