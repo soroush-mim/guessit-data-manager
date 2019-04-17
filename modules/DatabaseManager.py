@@ -202,8 +202,6 @@ def find_db(db_name):
 	save_db(db , db_name)
 
 
-
-
 def init_db(db_name):
 	open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
 
@@ -400,5 +398,8 @@ def arg_parse():
 
 
 if __name__ == '__main__':
-	arg_parse()
-	#init_project()
+	#arg_parse()
+	init_project()
+	download_resources('sofifa' , 'footballPlayer')
+	find_db('footballPlayer')
+	update_db('footballPlayer')
