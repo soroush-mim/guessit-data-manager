@@ -165,7 +165,7 @@ def update_db(db_name, begin = None, end = None,updating_step = 1):
 	db = load_db(db_name)
 	
 	end = end if end is not None else len(db)
-	begin = begin if begin is None else 0
+	begin = begin if begin is not None else 0
 	
 	updated_items = []
 	
