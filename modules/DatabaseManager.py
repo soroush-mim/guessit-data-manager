@@ -28,7 +28,7 @@ import argparse
 import modules.config
 from modules.tools import get_page_link
 from modules.DataGetters import *
-
+from modules.config import logger
 
 
 def download_db_link(url):
