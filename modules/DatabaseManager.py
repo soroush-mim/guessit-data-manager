@@ -314,6 +314,11 @@ def init_project():
 			if os.path.exists(directory): continue
 			try: os.makedirs(directory)
 			except Exception as error: logger.error(error)
+	
+	os.makedirs(f'{config.dataset_dir}')
+		
+	
+
 
 
 
