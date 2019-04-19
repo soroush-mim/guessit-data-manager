@@ -195,7 +195,7 @@ logging.basicConfig(
     # datefmt='%H:%M:%S',
     level=logging.DEBUG,
     handlers=[
-        # logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(f'{project_dir}/log.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),
     ]
 )
