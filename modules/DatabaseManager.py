@@ -157,20 +157,25 @@ def get_expired_data(db, begin, end):
 	return old_data
 
 
-
-
 def update_db(db_name, begin = None, end = None,updating_step = 1):
 	"""update all datas of one db"""
+
+	logger.debug(f'update_db started with db_name={db_name},  begin={begin},  end={end},  updating_step={updating_step}')
+	
 	db = load_db(db_name)
-	if end is None:
-		end = len(db)
-	if begin is None:
-		begin = 0
+	
+	end = end if end is not None else len(db)
+	begin = begin if begin is None else 0
+	
 	updated_items = []
 	
 	for i in range(begin, end, updating_step):
-
+		logger.debug(f'updating data number {i} in {db_name} dataset')
+		
 		db[i].update(update_data(db_name , db[i]))
+		
+		logger.debug(f'data number {i} in {db_name} dataset updated successfully')
+		
 
 	save_db(db, db_name)
 
@@ -315,7 +320,7 @@ def init_project():
 			try: os.makedirs(directory)
 			except Exception as error: logger.error(error)
 	
-	os.makedirs(f'{config.dataset_dir}/')
+	os.makedirs(f'{config.dataset_dir}')
 		
 	
 
