@@ -167,9 +167,9 @@ resources	=   {
 # --------------------------------------------------------------------
 # --------------------------------------------------------------------
 
-main_dir			= '.'
-project_dir			= f'{main_dir}/guessit_data_manager'
-dataset_dir			= f'{project_dir}/../datasets'
+main_dir			= './..'
+project_dir			= f'{main_dir}/guessit-data-manager'
+dataset_dir			= f'{main_dir}/datasets'
 process_count	   	= 4
 updating_step	   	= 10
 finding_step	   	= 10
