@@ -315,7 +315,7 @@ def init_project():
 			try: os.makedirs(directory)
 			except Exception as error: logger.error(error)
 	
-	os.makedirs(f'{config.dataset_dir}')
+	os.makedirs(f'{config.dataset_dir}/')
 		
 	
 
