@@ -3,6 +3,7 @@ from pymongo import MongoClient
 import modules.config as config
 import multiprocessing as mp
 from pprint import pprint
+from modules.config import logger
 
 import pandas as pd
 import functools
