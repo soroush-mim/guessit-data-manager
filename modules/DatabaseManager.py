@@ -163,8 +163,6 @@ def get_expired_data(db, begin, end):
 def update_db(db_name, begin = None, end = None,updating_step = 1):
 	"""update all datas of one db"""
 
-	logger.debug(f'update_db started with db_name={db_name},  begin={begin},  end={end},  updating_step={updating_step}')
-	
 	db = load_db(db_name)
 	
 	end = end if end is not None else len(db)

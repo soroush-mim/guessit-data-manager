@@ -127,9 +127,10 @@ def make_soup(url):
         page_source = open(file_address, encoding='utf-8').read()
     else:
         page_source = get_page(url)
-        try: open(file_address, 'w+', encoding='utf-8').write(page_source)
+        try: 
+            open(file_address, 'w+', encoding='utf-8').write(page_source)
         except Exception as error:
-            print(error)
+            logger.error(error)
         
     return soup(page_source , 'html.parser')    
 
