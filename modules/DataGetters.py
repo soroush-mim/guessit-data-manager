@@ -20,6 +20,7 @@ import time
 import modules.youtube_downloader
 
 import modules.config
+from modules.config import logger
 from modules.tools import *
 
 
