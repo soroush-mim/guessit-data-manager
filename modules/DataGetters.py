@@ -223,16 +223,15 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 	
 	def get_all_data(self):
 		"""a function for getting all data of a player in a dictionary"""
-
 		
 		data = {}
-		for i in [x for x in dir(self) if x.startswith('getter_')]:
-			if re.search(r'.*' , str(getattr(self,i))):
+		for _property in [x for x in dir(self) if x.startswith('getter_')]:
+			if re.search(r'.*' , str(getattr(self,_property))):
 				try:
-					data[i[7:]] = getattr(self,i)
+					data[_property.replace('getter_', '')] = getattr(self,_property)
 				except Exception as error:
-					data[i[7:]] = None
-					print(error)
+					data[_property.replace('getter_', '')] = None
+					logger.error(error)
 		return data
 
 
