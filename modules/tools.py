@@ -133,7 +133,7 @@ def make_soup(url):
         except Exception as error:
             logger.error(error)
         
-    return soup(page_source , 'html.parser')    
+    return soup(page_source , 'html.parser')
 
 
 def get_page(url, try_count=10, delay=0):
