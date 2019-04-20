@@ -51,7 +51,6 @@ def collect_data_id_from_resource(pages, base, patterns):
     return new_ids
 
 
-
 def wait_to_connect(timeout=10, delay=2):
     connected = False
     while not connected:
@@ -62,6 +61,7 @@ def wait_to_connect(timeout=10, delay=2):
             connected = False
             time.sleep(delay)
             print('no internet connection')
+
 
 def get_resource_from_url(url):
     """getting resource of a url"""
@@ -136,6 +136,9 @@ def make_soup(url):
 
 def get_page(url, try_count=10, delay=0):
     """get request to url by diffrent options"""
+    
+    logger.debug(f'get_page started with url={url}, try_count={try_count}, delay={delay}')
+
     proxies = [{
                 "http": None,
                 "https": None,
@@ -152,7 +155,7 @@ def get_page(url, try_count=10, delay=0):
             time.sleep(delay)
 
     if not content:
-        if logger: logging.error(f'could not get the page at last after {try_count} times of trying!')
+        if logger: logging.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
 
     return content
 
@@ -168,12 +171,6 @@ def get_resources(data_name=None):
         return config.resources
     else:
         return [resource for resource in config.resources.keys() if data_name in config.resources[resource]]
-
-
-def get_page_link(resource, data_name, attribute=None):
-    """gitting pages links from resources in config"""
-    attribute = data_name if attribute is None else attribute
-    return config.resources[resource][data_name][attribute]
 
 
 """

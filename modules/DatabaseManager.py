@@ -26,7 +26,6 @@ import random
 import argparse
 
 import modules.config
-from modules.tools import get_page_link
 from modules.DataGetters import *
 from modules.config import logger
 
@@ -91,10 +90,14 @@ def download_db(db_name):
 		#sleep(10)
 
 
-def update_data(data_name, data):
-	"""use dataGetters classes for colleting data of one id"""
+def update_data(db_name, data):
+	"""use dataGetters classes for colleting data using it's resource_id"""
+	
+	logger.debug(f'update_data started with data_name={db_name},  data={data}')
+	
+	for resource in get_resources(db_name):
 
-	for resource in get_resources(data_name):
+		logger.debug(f'starting to updating "{db_name}" data from "{resource}" resource')
 
 		data_id_name = f'{resource}_id'
 
@@ -102,13 +105,13 @@ def update_data(data_name, data):
 
 			data_id = data[f'{data_id_name}']
 
-			page_link = get_page_link(resource, data_name).format(data_id=data_id)
-
-			logger.info(f'trying to get info from link : {page_link}')
+			page_link = config.resources[resource][db_name][db_name].format(data_id=data_id)
 
 			page = make_soup(page_link)
 
-			getter_module = globals()[f'get_{data_name}_data_from_{resource}'](page)
+			getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
+		
+		logger.debug(f'"{db_name}" data from "{resource}" resource updated successfully')
 
 
 	return getter_module.get_all_data()
@@ -170,6 +173,7 @@ def update_db(db_name, begin = None, end = None,updating_step = 1):
 	updated_items = []
 	
 	for i in range(begin, end, updating_step):
+		
 		logger.debug(f'updating data number {i} in {db_name} dataset')
 		
 		db[i].update(update_data(db_name , db[i]))
@@ -249,7 +253,7 @@ def test_getter(data_name, resource, attributes=None, count=None, id_list=None, 
 		failed_get_ids, failed_test_ids, all_datas = [], [], []
 
 		for data_id in data_ids:
-			page = make_soup(get_page_link(resource, data_name).format(data_id=data_id))
+			page = make_soup(config.resources[resource][db_name][db_name]).format(data_id=data_id))
 			
 			try:
 				new_data = getter_modules(attribute)(page, test=True)
@@ -300,8 +304,8 @@ def download_resouce_page(resource, db_name):
 def download_resources(resource , db_name):
     """downloading wanted pages for a specific pair of resource and ab and saving them with make_soup"""
     location = f'{config.main_dir}/download/page/{resource}/{db_name}'
-    base = get_page_link(resource , db_name , 'base')
-    page_queue = get_page_link(resource , db_name , f'{db_name}_list')
+    base = config.resources[resource][db_name]['base']
+    page_queue = resource[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
     for page in page_queue:
         souped_page = make_soup(page)
