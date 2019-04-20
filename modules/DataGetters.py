@@ -226,12 +226,14 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 		
 		data = {}
 		for _property in [x for x in dir(self) if x.startswith('getter_')]:
-			if re.search(r'.*' , str(getattr(self,_property))):
-				try:
-					data[_property.replace('getter_', '')] = getattr(self,_property)
-				except Exception as error:
-					data[_property.replace('getter_', '')] = None
-					logger.error(error)
+
+			try:
+				data[_property.replace('getter_', '')] = getattr(self, _property)
+
+			except Exception as error:
+				data[_property.replace('getter_', '')] = None
+				logger.error(error)
+				
 		return data
 
 
