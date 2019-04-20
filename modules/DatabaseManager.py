@@ -253,7 +253,7 @@ def test_getter(data_name, resource, attributes=None, count=None, id_list=None, 
 		failed_get_ids, failed_test_ids, all_datas = [], [], []
 
 		for data_id in data_ids:
-			page = make_soup(config.resources[resource][db_name][db_name]).format(data_id=data_id))
+			page = make_soup(config.resources[resource][db_name][db_name].format(data_id=data_id))
 			
 			try:
 				new_data = getter_modules(attribute)(page, test=True)
