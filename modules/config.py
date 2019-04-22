@@ -1,29 +1,5 @@
-import gzip
-import shutil
-import requests
-from bs4 import BeautifulSoup as soup
-import multiprocessing as mp
-import datetime
-import re
-import pandas as pd
-import json
-from pprint import pprint
-import os
-import html
 import logging
-import inspect
-import functools
 import itertools
-import importlib
-import pkgutil
-import base64
-import time
-import glob
-
-
-# --------------------------------------------------------------------
-# --------------------------------------------------------------------
-# --------------------------------------------------------------------
 
 resources	=   {
 				'imdb': {
@@ -164,7 +140,7 @@ resources	=   {
 
 
 # --------------------------------------------------------------------
-# --------------------------------------------------------------------
+# project data config
 # --------------------------------------------------------------------
 
 main_dir			= './..'
@@ -185,7 +161,7 @@ save_page_local		= True
 
 
 # --------------------------------------------------------------------
-# --------------------------------------------------------------------
+# logger config
 # --------------------------------------------------------------------
 
 logging.basicConfig(
