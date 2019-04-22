@@ -1,6 +1,6 @@
+import modules.DatabaseManager as dbManager
 import argparse
 import sys
-import modules.DatabaseManager as dbManager
 
 def arg_parse():
     '''
@@ -124,4 +124,3 @@ def old_arg_parse():
 
     elif args.init_db:
         init_db(args.db)
-

@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup as soup
-import modules.config as config
-from pprint import pprint
 from modules.config import logger
+from pprint import pprint
 
+import modules.config as config
 import requests
 import base64
 import time

@@ -1,16 +1,17 @@
 from bs4 import BeautifulSoup as soup
+from modules.config import logger
+from modules.DataGetters import *
 from pprint import pprint
-import re
-import json
-import os
-import importlib
-import time
-import urllib
-import random
 
 import modules.config as config
-from modules.DataGetters import *
-from modules.config import logger
+import importlib
+import urllib
+import random
+import json
+import time
+import re
+import os
+
 
 
 def download_db_link(url):

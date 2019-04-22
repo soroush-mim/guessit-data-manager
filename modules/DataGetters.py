@@ -1,14 +1,14 @@
-import requests
 from bs4 import BeautifulSoup as soup
-import re
-from pprint import pprint
-import os
-import itertools
-import modules.youtube_downloader as youtube_downloader
-
-import modules.config as config
 from modules.config import logger
 from modules.tools import *
+from pprint import pprint
+
+import modules.youtube_downloader as youtube_downloader
+import modules.config as config
+import itertools
+import requests
+import re
+import os
 
 
 class Data_getter:

@@ -1,5 +1,5 @@
-from flask import Flask 
 from modules.argParse import arg_parse
+from flask import Flask
 
 import server.flask
 import server.routeHandle 
