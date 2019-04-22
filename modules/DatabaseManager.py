@@ -9,7 +9,7 @@ import urllib
 import random
 import argparse
 
-import modules.config
+import modules.config as config
 from modules.DataGetters import *
 from modules.config import logger
 

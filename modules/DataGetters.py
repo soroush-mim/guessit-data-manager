@@ -1,25 +1,12 @@
-from pymongo import MongoClient
-import gzip
-import shutil
 import requests
 from bs4 import BeautifulSoup as soup
-import multiprocessing as mp
-import datetime
 import re
-import pandas as pd
-import json
-import time
 from pprint import pprint
 import os
-import html
-import logging
-import inspect
-import functools
 import itertools
-import time
-import modules.youtube_downloader
+import modules.youtube_downloader as youtube_downloader
 
-import modules.config
+import modules.config as config
 from modules.config import logger
 from modules.tools import *
 
