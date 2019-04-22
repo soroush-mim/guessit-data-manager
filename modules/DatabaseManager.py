@@ -278,13 +278,13 @@ def check_get_function(data_name, resource, page_link):
 #             pool.map(make_soup, page_queue[i:i+step])
 
 
-def download_resources(resource , db_name):
+async def download_resources(resource , db_name):
     """
     download all the data from web
 
     downloading wanted pages for
-    a specific pair of resource and db and
-    saving them with make_soup
+    a specific pair of resource and db
+    and saving them with make_soup
 
     :param
     resource (str): name of site.
@@ -294,11 +294,9 @@ def download_resources(resource , db_name):
         - example: 'footballdb', 'playerdb'
 
     :returns
-    None
+    None: function has no return
 
     """
-
-    # location = f'{config.main_dir}/download/page/{resource}/{db_name}'
 
     base_url = config.resources[resource][db_name]['base']
     page_queue_urls = resource[resource][db_name][f'{db_name}_list']
@@ -308,12 +306,10 @@ def download_resources(resource , db_name):
         souped_page = make_soup(page_url)
 
         for pattern in patterns:
-
             urls = list(map(lambda tag: tag['href'],
                             souped_page.find_all('a' , {'href':re.compile(pattern)})))
             for url in urls:
                 make_soup(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
-
 
 
 def init_project():

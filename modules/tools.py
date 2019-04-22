@@ -31,9 +31,9 @@ def collect_data_id_from_resource(pages, base, patterns):
             new_pages =  [page for page in new_pages if page[5:].find('http') == -1]
 
             new_pages =  [re.sub(r'/?\?.*', '', page) for page in new_pages]
-        
+
             new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
-    
+
     return new_ids
 
 #
@@ -51,6 +51,7 @@ def collect_data_id_from_resource(pages, base, patterns):
 
 def get_resource_from_url(url):
     """getting resource of a url"""
+
     resources = []
     for resource in get_resources().keys():
         for db in list(get_resources()[resource].keys()):
@@ -65,6 +66,7 @@ def get_resource_from_url(url):
 
 def get_db_name_from_url(url):
     """getting db_name of a url"""
+
     db_name = []
     resource = get_resource_from_url(url)
     if not resource :
@@ -78,6 +80,17 @@ def get_db_name_from_url(url):
         return db_name[0]
     else:
         return None
+
+def get_guessed_location(url):
+    """getting guessed_location of file that we can find them"""
+
+    resource = get_resource_from_url(url)
+    db_name = get_db_name_from_url(url)
+
+    if resource and db_name:
+        return f'{download_page_dir}/{resource}/{db_name}'
+    else:
+        return f'{download_page_dir}/others'
 
 
 def download(url, local_filename=None):
@@ -95,37 +108,55 @@ def download(url, local_filename=None):
     return local_filename
 
 
-def make_soup(url):
+async def make_soup(url):
     """
-        for new urls create the soup file and save it in downloaded pages
-        and for old urls loads soup file for them from files in memory
+    get the BeautifulSoup object of this page
+
+    :param
+    url (str): the url of page that we want
+
+    :returns
+    BeautifulSoup object: content of page of given url
+
+    1. load the page
+        for new urls:
+            download the html and save it as html file in downloaded pages
+
+        for old urls:
+            loads html for them from files to memmory
+
+    2. return page as soup object
+
     """
-    resource = get_resource_from_url(url)
-    db_name = get_db_name_from_url(url)
-    if resource and db_name:
-        guessed_location = f'{download_page_dir}/{resource}/{db_name}'
-    else:
-        guessed_location = f'{download_page_dir}/others'
-        
-        
-    location = guessed_location
+
+    location = get_guessed_location(url)
     file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
-    
+
     if os.path.isfile(file_address):
         page_source = open(file_address, encoding='utf-8').read()
     else:
         page_source = get_page(url)
-        try: 
+        try:
             open(file_address, 'w+', encoding='utf-8').write(page_source)
         except Exception as error:
             logger.error(error)
-        
+
     return soup(page_source , 'html.parser')
 
 
-def get_page(url, try_count=10, delay=0):
-    """get request to url by diffrent options"""
-    
+async def get_page(url, try_count=10, delay=0):
+    """
+    download the given url by GET
+
+    :param
+    url (str): url address that we must download
+    try_count (int): how many times we want to try
+    delay (int): delay time between two try
+
+    :returns
+    str: html content of page
+    """
+
     logger.debug(f'get_page started with url={url}, try_count={try_count}, delay={delay}')
 
     proxies = [{
@@ -135,46 +166,43 @@ def get_page(url, try_count=10, delay=0):
 
     content = ''
     for i in range(try_count):
-        try	 :
+        try:
             content = requests.get(url, proxies=proxies[i % len(proxies)]).text
             break
         except Exception as error :
-            if logger: logger.error(f'{url} : {error}')
-            if logger: logger.info(f'could not get the page. trying again for {i}th time...')
+            logger.error(f'{url} : {error}')
+            logger.info(f'could not get the page. trying again for {i}th time...')
             time.sleep(delay)
 
     if not content:
-        if logger: logger.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
+        logger.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
 
     return content
 
 
 def make_id(data_id):
-
     return base64.b32encode(str(data_id).encode()).decode()
 
 
 def get_resources(data_name=None):
-    
     if data_name is None:
         return config.resources
     else:
         return [resource for resource in config.resources.keys() if data_name in config.resources[resource]]
 
 
-"""
-if __name__ == '__main__':
 
-    url = 'https://sofifa.com/team/245716'
-    try:
-
-        resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0] 
-        print(resource)
-
-        db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
-        guessed_location = f'{download_page_dir}/{resource}/{db_name}'
-        print(guessed_location, db_name)
-    except Exception as error:
-        guessed_location = download_page_dir
-        print(error)
-"""
+# if __name__ == '__main__':
+#
+#     url = 'https://sofifa.com/team/245716'
+#     try:
+#
+#         resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0]
+#         print(resource)
+#
+#         db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
+#         guessed_location = f'{download_page_dir}/{resource}/{db_name}'
+#         print(guessed_location, db_name)
+#     except Exception as error:
+#         guessed_location = download_page_dir
+#         print(error)
