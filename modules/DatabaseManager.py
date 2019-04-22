@@ -287,6 +287,7 @@ async def download_resources(resource , db_name):
     and saving them with make_soup
 
     :param
+
     resource (str): name of site.
         - example: 'sofifa', 'imdb'
 
