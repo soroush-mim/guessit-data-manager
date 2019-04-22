@@ -96,8 +96,10 @@ def download(url, local_filename=None):
 
 
 def make_soup(url):
-    """for new urls create the soup file and save it in downloaded pages 
-    and for old urls loads soup file for them from files in memory"""
+    """
+        for new urls create the soup file and save it in downloaded pages
+        and for old urls loads soup file for them from files in memory
+    """
     resource = get_resource_from_url(url)
     db_name = get_db_name_from_url(url)
     if resource and db_name:
