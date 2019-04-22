@@ -13,7 +13,6 @@ import re
 import os
 
 
-
 # def download_db_link(url):
 #     logger.critical(f'trying to download url : {url}')
 #
@@ -75,22 +74,20 @@ import os
 
 
 def update_data(db_name, data):
-    """use dataGetters classes for colleting data using it's resource_id"""
+    """
+        use dataGetters classes for colleting data using it's resource_id
+    """
     
     logger.debug(f'update_data started with data_name={db_name},  data={data}')
     
     for resource in get_resources(db_name):
-
         logger.debug(f'starting to updating "{db_name}" data from "{resource}" resource')
 
         data_id_name = f'{resource}_id'
-
         if data_id_name in data:
-
             data_id = data[f'{data_id_name}']
 
             page_link = config.resources[resource][db_name][db_name].format(data_id=data_id)
-
             page = make_soup(page_link)
 
             getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
@@ -115,7 +112,6 @@ def load_db(db_name):
         logger.error(error)
         open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
         db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
-
 
     return db
 
@@ -148,12 +144,11 @@ def update_db(db_name, begin = None, end = None,updating_step = 1):
     """update all datas of one db"""
 
     db = load_db(db_name)
-    
-    end = end if end is not None else len(db)
+
     begin = begin if begin is not None else 0
+    end = end if end is not None else len(db)
     
-    updated_items = []
-    
+
     for i in range(begin, end, updating_step):
         
         logger.debug(f'updating data number {i} in {db_name} dataset')
@@ -285,19 +280,39 @@ def check_get_function(data_name, resource, page_link):
 
 def download_resources(resource , db_name):
     """
-    downloading wanted pages for a specific pair of resource and ab and saving them with make_soup
+    download all the data from web
+
+    downloading wanted pages for
+    a specific pair of resource and db and
+    saving them with make_soup
+
+    :param
+    resource (str): name of site.
+        - example: 'sofifa', 'imdb'
+
+    db_name (str): data name. example:
+        - example: 'footballdb', 'playerdb'
+
+    :returns
+    None
+
     """
-    location = f'{config.main_dir}/download/page/{resource}/{db_name}'
-    
-    base = config.resources[resource][db_name]['base']
-    
-    page_queue = resource[resource][db_name][f'{db_name}_list']
+
+    # location = f'{config.main_dir}/download/page/{resource}/{db_name}'
+
+    base_url = config.resources[resource][db_name]['base']
+    page_queue_urls = resource[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
-    for page in page_queue:
-        souped_page = make_soup(page)
+
+    for page_url in page_queue_urls:
+        souped_page = make_soup(page_url)
+
         for pattern in patterns:
-            for url in [tag['href'] for tag in souped_page.find_all('a' , {'href':re.compile(pattern)})]:
-                make_soup(urllib.parse.urljoin(base ,re.search(pattern,url).group(1)))                
+
+            urls = list(map(lambda tag: tag['href'],
+                            souped_page.find_all('a' , {'href':re.compile(pattern)})))
+            for url in urls:
+                make_soup(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
 
 
 
@@ -315,7 +330,6 @@ def init_project():
     
 
 if __name__ == '__main__':
-    #arg_parse()
     init_project()
     download_resources('sofifa' , 'footballPlayer')
     find_db('footballPlayer')
