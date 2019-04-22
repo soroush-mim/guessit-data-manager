@@ -1,17 +1,11 @@
 from __future__ import unicode_literals
-from bs4 import BeautifulSoup as soup
 from modules.tools import *
 from pprint import pprint
 
 
 
 import multiprocessing as mp
-import os
-import requests
-import json
 import re
-import logging
-import time
 import youtube_dl
 
 
@@ -118,8 +112,6 @@ def download_music(page, output=None):
 	
 	print('/'*50, file_name)
 
-    #os.system(f"youtube-dl -o '%(title)s-%(id)s.%(ext)s' --restrict-filenames --extract-audio --audio-format mp3 {page}")
-	
 	return file_name
 	
 	

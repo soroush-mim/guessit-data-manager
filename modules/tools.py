@@ -1,27 +1,12 @@
 from bs4 import BeautifulSoup as soup
-from pymongo import MongoClient
 import modules.config as config
-import multiprocessing as mp
 from pprint import pprint
 from modules.config import logger
 
-import pandas as pd
-import functools
-import importlib
-import datetime
 import requests
-import logging
-import inspect
-import pkgutil
 import base64
-import shutil
-import gzip
-import json
-import html
 import time
 import glob
-import argparse
-import sys
 import os
 import re
 
@@ -152,12 +137,12 @@ def get_page(url, try_count=10, delay=0):
             content = requests.get(url, proxies=proxies[i % len(proxies)]).text
             break
         except Exception as error :
-            if logger: logging.error(f'{url} : {error}')
-            if logger: logging.info(f'could not get the page. trying again for {i}th time...')
+            if logger: logger.error(f'{url} : {error}')
+            if logger: logger.info(f'could not get the page. trying again for {i}th time...')
             time.sleep(delay)
 
     if not content:
-        if logger: logging.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
+        if logger: logger.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
 
     return content
 
