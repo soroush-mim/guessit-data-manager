@@ -14,64 +14,64 @@ import os
 
 
 
-def download_db_link(url):
-    logger.critical(f'trying to download url : {url}')
+# def download_db_link(url):
+#     logger.critical(f'trying to download url : {url}')
+#
+#     sftp = ftp_connect()
+#
+#     new_url = url
+#
+#     try:
+#         if re.search(r'.*?youtube\.com/watch.*', url):
+#
+#             file_name = youtube_downloader.download_music(url, str(int(time.time())))
+#
+#         else:
+#
+#             file_name = download(url)
+#
+#
+#         file_address = f'{os.getcwd()}/{file_name}'
+#
+#         sftp.put(file_address, f'guessit/download/{file_name}')
+#
+#         new_url = f'http://51.255.213.191:3002/{file_name}'
+#
+#         logger.critical(file_address)
+#
+#         logger.critical('removing file ...')
+#
+#         os.remove(file_address)
+#
+#     except Exception as error:
+#         logger.critical('llll')
+#         logger.critical(error)
+#
+#     return new_url
 
-    sftp = ftp_connect()
-
-    new_url = url
-
-    try:
-        if re.search(r'.*?youtube\.com/watch.*', url):
-
-            file_name = youtube_downloader.download_music(url, str(int(time.time())))
-
-        else:
-
-            file_name = download(url)
-
-
-        file_address = f'{os.getcwd()}/{file_name}'
-
-        sftp.put(file_address, f'guessit/download/{file_name}')
-
-        new_url = f'http://51.255.213.191:3002/{file_name}'
-
-        logger.critical(file_address)
-
-        logger.critical('removing file ...')
-
-        os.remove(file_address)
-
-    except Exception as error:
-        logger.critical('llll')
-        logger.critical(error)
-
-    return new_url
-
-
-def download_db(db_name):
-    db = load_db(db_name)
-
-    for doc in db:
-
-        for field in doc:
-            logger.critical(field)
-            new_data = []
-
-            items = doc[field] if isinstance(doc[field], list) else [doc[field]]
-
-            if not isinstance(items[0], str) or items[0].find('http') == -1 or items[0].find('87.236.209.215') != -1:
-                continue
-
-            for item in items:
-                new_data += [download_db_link(item)]
-
-            doc[field] = new_data if isinstance(doc[field], list) else new_data[0]
-
-        save_db(db, db_name)
-
-        #sleep(10)
+#
+# def download_db(db_name):
+#     db = load_db(db_name)
+#
+#     for doc in db:
+#
+#         for field in doc:
+#             logger.critical(field)
+#             new_data = []
+#
+#             items = doc[field] if isinstance(doc[field], list) else [doc[field]]
+#
+#             if not isinstance(items[0], str) or items[0].find('http') == -1 or items[0].find('87.236.209.215') != -1:
+#                 continue
+#
+#             for item in items:
+#                 new_data += [download_db_link(item)]
+#
+#             doc[field] = new_data if isinstance(doc[field], list) else new_data[0]
+#
+#         save_db(db, db_name)
+#
+#         #sleep(10)
 
 
 def update_data(db_name, data):
@@ -219,69 +219,69 @@ def check_get_function(data_name, resource, page_link):
 
     pprint(new_data)
 
+#
+# def test_getter(data_name, resource, attributes=None, count=None, id_list=None, complete_report=True):
+#     getter_modules = globals()[f'get_{data_name}_data_from_{resource}']
+#     if attributes is None: attributes = getter_modules('get_locals')
+#     db = load_db(data_name)
+#     count = len(load_db(data_name)) if count is None else count
+#     sample_data = random.sample(db, count)
+#     data_ids = id_list if id_list else [new_data[f'{resource}ID'] for new_data in sample_data if f'{resource}ID' in new_data] #find_db(data_name, resources=[resource], save_to_db=False, max_find_all=count)
+#
+#     test_results = []
+#
+#     for attribute in attributes:
+#
+#         failed_get_ids, failed_test_ids, all_datas = [], [], []
+#
+#         for data_id in data_ids:
+#             page = make_soup(config.resources[resource][db_name][db_name].format(data_id=data_id))
+#
+#             try:
+#                 new_data = getter_modules(attribute)(page, test=True)
+#                 logger.info(f'id = "{data_id}" ------- {attribute} = "{new_data}"')
+#                 if new_data is None: failed_test_ids += [new_data]
+#                 else: all_datas += [new_data]
+#
+#             except Exception as error:
+#                 failed_get_ids += [data_id]
+#                 logger.error(error)
+#
+#         test_result = {
+#             'data_name'			: data_name,
+#             'attribute'			: attribute,
+#             'resource'			: resource,
+#             'failed_get_ids'	: failed_get_ids,
+#             'failed_tests_ids'	: failed_test_ids,
+#
+#             'success_rate'		: str((count - len(failed_get_ids) - len(failed_test_ids)) / count * 100) + '%'
+#         }
+#         if complete_report:
+#             test_result = dict(list(test_result.items()) + list({
+#                 'all_datas'		: all_datas
+#             }.items()))
+#
+#         test_results += [test_result]
+#
+#     return test_results
 
-def test_getter(data_name, resource, attributes=None, count=None, id_list=None, complete_report=True):
-    getter_modules = globals()[f'get_{data_name}_data_from_{resource}']
-    if attributes is None: attributes = getter_modules('get_locals')
-    db = load_db(data_name)
-    count = len(load_db(data_name)) if count is None else count
-    sample_data = random.sample(db, count)
-    data_ids = id_list if id_list else [new_data[f'{resource}ID'] for new_data in sample_data if f'{resource}ID' in new_data] #find_db(data_name, resources=[resource], save_to_db=False, max_find_all=count)
 
-    test_results = []
+# def download_resouce_page(resource, db_name):
+#     with mp.Pool(10) as pool:
+#         while 1:
+#                 try:
+#                     page_queue = json.load(open(f'{main_dir}/download/page/{resource}/{db_name}/statics.json'))['page_queue']
+#                     break
+#                 except: pass
+#         step = 10
+#         for i in range(0, len(page_queue), step):
+#             while 1:
+#                 try:
+#                     page_queue = json.load(open(f'{main_dir}/download/page/{resource}/{db_name}/statics.json'))['page_queue']
+#                     break
+#                 except: pass
+#             pool.map(make_soup, page_queue[i:i+step])
 
-    for attribute in attributes:
-        
-        failed_get_ids, failed_test_ids, all_datas = [], [], []
-
-        for data_id in data_ids:
-            page = make_soup(config.resources[resource][db_name][db_name].format(data_id=data_id))
-            
-            try:
-                new_data = getter_modules(attribute)(page, test=True)
-                logger.info(f'id = "{data_id}" ------- {attribute} = "{new_data}"')
-                if new_data is None: failed_test_ids += [new_data]
-                else: all_datas += [new_data]
-
-            except Exception as error:
-                failed_get_ids += [data_id]
-                logger.error(error)
- 
-        test_result = {
-            'data_name'			: data_name,
-            'attribute'			: attribute,
-            'resource'			: resource,
-            'failed_get_ids'	: failed_get_ids,
-            'failed_tests_ids'	: failed_test_ids,
-            
-            'success_rate'		: str((count - len(failed_get_ids) - len(failed_test_ids)) / count * 100) + '%'
-        }
-        if complete_report: 
-            test_result = dict(list(test_result.items()) + list({
-                'all_datas'		: all_datas
-            }.items()))
-
-        test_results += [test_result]
-
-    return test_results
-
-"""
-def download_resouce_page(resource, db_name):
-    with mp.Pool(10) as pool:
-        while 1:
-                try:
-                    page_queue = json.load(open(f'{main_dir}/download/page/{resource}/{db_name}/statics.json'))['page_queue']
-                    break
-                except: pass
-        step = 10
-        for i in range(0, len(page_queue), step):
-            while 1:
-                try:
-                    page_queue = json.load(open(f'{main_dir}/download/page/{resource}/{db_name}/statics.json'))['page_queue']
-                    break
-                except: pass
-            pool.map(make_soup, page_queue[i:i+step])
-"""
 
 def download_resources(resource , db_name):
     """

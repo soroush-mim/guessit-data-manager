@@ -36,17 +36,17 @@ def collect_data_id_from_resource(pages, base, patterns):
     
     return new_ids
 
-
-def wait_to_connect(timeout=10, delay=2):
-    connected = False
-    while not connected:
-        try:
-            getPage('https://www.google.com', timeout=timeout)
-            connected = True
-        except:
-            connected = False
-            time.sleep(delay)
-            print('no internet connection')
+#
+# def wait_to_connect(timeout=10, delay=2):
+#     connected = False
+#     while not connected:
+#         try:
+#             getPage('https://www.google.com', timeout=timeout)
+#             connected = True
+#         except:
+#             connected = False
+#             time.sleep(delay)
+#             print('no internet connection')
 
 
 def get_resource_from_url(url):
