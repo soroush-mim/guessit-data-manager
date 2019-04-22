@@ -1,27 +1,11 @@
 from bs4 import BeautifulSoup as soup
-from pymongo import MongoClient
 from pprint import pprint
-import gzip
-import shutil
-import requests
-import multiprocessing as mp
-import datetime
 import re
-import pandas as pd
 import json
 import os
-import html
-import logging
-import inspect
-import functools
-import itertools
 import importlib
-import pkgutil
-import base64
 import time
-import math
 import urllib
-import glob
 import random
 import argparse
 
@@ -327,8 +311,6 @@ def init_project():
 	os.makedirs(f'{config.dataset_dir}')
 		
 	
-
-
 
 
 def arg_parse():
