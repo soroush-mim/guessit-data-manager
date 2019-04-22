@@ -300,7 +300,9 @@ def download_resouce_page(resource, db_name):
 """
 
 def download_resources(resource , db_name):
-    """downloading wanted pages for a specific pair of resource and ab and saving them with make_soup"""
+    """
+	downloading wanted pages for a specific pair of resource and ab and saving them with make_soup
+	"""
     location = f'{config.main_dir}/download/page/{resource}/{db_name}'
     base = config.resources[resource][db_name]['base']
     page_queue = resource[resource][db_name][f'{db_name}_list']
@@ -309,8 +311,8 @@ def download_resources(resource , db_name):
         souped_page = make_soup(page)
         for pattern in patterns:
             for url in [tag['href'] for tag in souped_page.find_all('a' , {'href':re.compile(pattern)})]:
-                make_soup(urllib.parse.urljoin(base ,re.search(pattern,url).group(1)))            
-                
+                make_soup(urllib.parse.urljoin(base ,re.search(pattern,url).group(1)))                
+
 
 
 def init_project():
