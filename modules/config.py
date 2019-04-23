@@ -38,5 +38,3 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger('DataGeters')
-
-
