@@ -1,13 +1,13 @@
-from modules.Resources.imdb import imdb
-from modules.Resources.sofifa import sofifa
-from modules.Resources.goodreads import goodreads
-from modules.Resources.cia import cia
-from modules.Resources.biography import biography
-from modules.Resources.myanimelist import myanimelist
-from modules.Resources.discogs import discogs
-from modules.Resources.merriam import merriam
-from modules.Resources.volleyballWorld import volleyballWorld
-from modules.Resources.theFamousPeople import theFamousPeople
+from modules.resources.imdb import imdb
+from modules.resources.sofifa import sofifa
+from modules.resources.goodreads import goodreads
+from modules.resources.cia import cia
+from modules.resources.biography import biography
+from modules.resources.myanimelist import myanimelist
+from modules.resources.discogs import discogs
+from modules.resources.merriam import merriam
+from modules.resources.volleyballWorld import volleyballWorld
+from modules.resources.theFamousPeople import theFamousPeople
 
 
 Resources = {

@@ -1,12 +1,12 @@
-from modules.argParse import arg_parse
+from modules.arg_parse import arg_parse
 from flask import Flask
 
 import server.flask
-import server.routeHandle 
+import server.route_handle 
 
 
 server.flask.app = Flask(__name__)
-server.routeHandle.addRoutes()
+server.route_handle.addRoutes()
 
 if __name__ == '__main__':
     isThereArg = arg_parse()
