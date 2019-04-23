@@ -3,6 +3,7 @@ from modules.config import logger
 from pprint import pprint
 
 import modules.config as config
+from modules.Resources.__Handler import Resources
 import requests
 import base64
 import time
@@ -186,9 +187,9 @@ def make_id(data_id):
 
 def get_resources(data_name=None):
     if data_name is None:
-        return config.resources
+        return Resources
     else:
-        return [resource for resource in config.resources.keys() if data_name in config.resources[resource]]
+        return [resource for resource in Resources.keys() if data_name in Resources[resource]]
 
 
 

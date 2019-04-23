@@ -4,6 +4,7 @@ from modules.DataGetters import *
 from pprint import pprint
 
 import modules.config as config
+from modules.Resources.__Handler import Resources
 import importlib
 import urllib
 import random
@@ -87,7 +88,7 @@ def update_data(db_name, data):
         if data_id_name in data:
             data_id = data[f'{data_id_name}']
 
-            page_link = config.resources[resource][db_name][db_name].format(data_id=data_id)
+            page_link = Resources[resource][db_name][db_name].format(data_id=data_id)
             page = make_soup(page_link)
 
             getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
@@ -230,7 +231,7 @@ def check_get_function(data_name, resource, page_link):
 #         failed_get_ids, failed_test_ids, all_datas = [], [], []
 #
 #         for data_id in data_ids:
-#             page = make_soup(config.resources[resource][db_name][db_name].format(data_id=data_id))
+#             page = make_soup(Resources[resource][db_name][db_name].format(data_id=data_id))
 #
 #             try:
 #                 new_data = getter_modules(attribute)(page, test=True)
@@ -299,7 +300,7 @@ async def download_resources(resource , db_name):
 
     """
 
-    base_url = config.resources[resource][db_name]['base']
+    base_url = Resources[resource][db_name]['base']
     page_queue_urls = resource[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
 
