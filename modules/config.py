@@ -1,4 +1,3 @@
-import itertools
 import logging
 
 # --------------------------------------------------------------------
@@ -27,10 +26,10 @@ save_page_local		= True
 # --------------------------------------------------------------------
 
 logging.basicConfig(
-    datefmt='%y-%b-%d %H:%M:%S',
-    format='%(levelname)8s:[%(asctime)s][%(filename)20s:%(lineno)4s -%(funcName)20s() ]: %(message)s',
+    # datefmt='%y-%b-%d %H:%M:%S',
+    datefmt='%H:%M:%S',
+    format='%(levelname)8s:[%(asctime)s][%(funcName)20s()]: %(message)s',
 
-    # datefmt='%H:%M:%S',
     level=logging.DEBUG,
     handlers=[
         logging.FileHandler(f'{project_dir}/log.log', mode='w+', encoding='utf8', delay=0),
@@ -38,4 +37,6 @@ logging.basicConfig(
     ]
 )
 
-logger = logging.getLogger('DataManager')
+logger = logging.getLogger('DataGeters')
+
+
