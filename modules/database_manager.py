@@ -4,7 +4,7 @@ from modules.data_getters.__data_getters import *
 from pprint import pprint
 
 import modules.config as config
-from modules.resources.__Handler import Resources
+from modules.resources.__handler import Resources
 import importlib
 import urllib
 import random
