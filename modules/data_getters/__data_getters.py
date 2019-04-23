@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup as soup
-from modules.config import logger
+from modules.config.config import logger
 from modules.tools import *
 from pprint import pprint
 
 import modules.youtube_downloader as youtube_downloader
-import modules.config as config
+import modules.config.config as config
 import itertools
 import requests
 import re

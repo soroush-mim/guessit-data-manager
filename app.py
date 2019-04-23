@@ -1,4 +1,4 @@
-from modules.arg_parse import arg_parse
+from modules.config.arg_parse import arg_parse
 from flask import Flask
 
 import server.flask
