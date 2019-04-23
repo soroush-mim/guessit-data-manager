@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup as soup
 from modules.config import logger
-from modules.DataGetters import *
+from modules.DataGetters.DataGetters import *
 from pprint import pprint
 
 import modules.config as config
