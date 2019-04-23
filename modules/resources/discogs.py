@@ -1,4 +1,4 @@
-discogs = {
+res = {
     'song': {
         #'song': ''
         #,

@@ -1,4 +1,6 @@
-goodreads = {
+import itertools
+
+res = {
     'book': {
 
         'book': 'https://www.goodreads.com/book/show/{data_id}',

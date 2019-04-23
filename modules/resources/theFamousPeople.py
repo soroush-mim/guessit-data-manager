@@ -1,4 +1,6 @@
-theFamousPeople = {
+import itertools
+
+res = {
     'celebrity': {
         
         'celebrity': 'https://www.thefamouspeople.com/profiles/{data_id}.php',

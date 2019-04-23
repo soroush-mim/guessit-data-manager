@@ -1,4 +1,4 @@
-myanimelist = {
+res = {
     'anime': {
         
         'anime': 'https://www.myanimelist.net/anime/{data_id}',

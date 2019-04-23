@@ -1,4 +1,4 @@
-biography = {
+res = {
     'people': {
         
         'people': 'https://www.biography.com/people/{data_id}',

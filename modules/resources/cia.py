@@ -1,4 +1,4 @@
-cia = {
+res = {
     'country': {
         
         'country': 'https://www.cia.gov/library/publications/the-world-factbook/geos/{data_id}.html',

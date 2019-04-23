@@ -1,4 +1,6 @@
-merriam = {
+import itertools
+
+res = {
     'word': {
         
         'word' : 'https://www.merriam-webster.com/dictionary/{data_id}',

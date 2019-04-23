@@ -1,4 +1,4 @@
-imdb = {
+res = {
     'movie': {
 
         'movie_list': [f'https://www.imdb.com/search/title?title_type=feature&count={250}&start={i + 1}' for i in range(0, 10000, 250)]

@@ -1,4 +1,4 @@
-sofifa = {
+res = {
     'footballPlayer': {
 
         'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)],
