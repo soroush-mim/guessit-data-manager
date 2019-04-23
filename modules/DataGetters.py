@@ -77,38 +77,34 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_weight_in_pond(self):
-        return re.search(r'\d?\d\d\dlbs',self.top_row.text.strip()).group().strip()
-    
+        return int (re.search(r'\d?\d\d\dlbs',self.top_row.text.strip()).group().strip()[:-3])
+
+    @property
+    def getter_weight_in_kg(self):
+        return self.getter_weight_in_pond * 0.453592
+
     @property
     def getter_height_in_cnm(self):
         dirty_height = re.search(r'\d\d?.\d\d?\"',self.top_row.text.strip()).group().strip()
         return int(dirty_height[0]) * 30.28 + int(re.search(r'\'.*"' , dirty_height).group().strip()[1:-1]) * 2.54
     
     @property
-    def getter_value(self):
+    def getter_value_in_euro(self):
         value = self.main_table.find('div' , class_ = 'card-body stats').find_all('div' , class_ = 'column col-4 text-center')[2].find('span').text.strip()
-        if value[-1] == 'K':
-            return value[0] + str(float(value[1:-1]) * 10 ** 3)
-        if value[-1] == 'M':
-            return value[0] + str(float(value[1:-1]) * 10 ** 6)
-        return value
+        return money_value(value)
         
     @property
     def getter_wage(self):
         value = self.main_table.find('div' , class_ = 'card-body stats').find_all('div' , class_ = 'column col-4 text-center')[3].find('span').text.strip()
-        if value[-1] == 'K':
-            return value[0] + str(float(value[1:-1]) * 10 ** 3)
-        if value[-1] == 'M':
-            return value[0] + str(float(value[1:-1]) * 10 ** 6)
-        return value
+        return money_value(value)
         
     @property
     def getter_overall_rating(self):
-        return self.main_table.find('div' , class_ = 'card-body stats').find_all('div' , class_ = 'column col-4 text-center')[0].find('span').text.strip()
+        return int(self.main_table.find('div' , class_ = 'card-body stats').find_all('div' , class_ = 'column col-4 text-center')[0].find('span').text.strip())
 
     @property
     def getter_potential(self):
-        return self.main_table.find('div' , class_ = 'card-body stats').find_all('div' , class_ = 'column col-4 text-center')[1].find('span').text.strip()
+        return int(self.main_table.find('div' , class_ = 'card-body stats').find_all('div' , class_ = 'column col-4 text-center')[1].find('span').text.strip())
 
     @property
     def getter_foot(self):
@@ -116,15 +112,15 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_International_Reputation(self):
-        return self.left_column_elements[1].text.strip()[-1]
+        return int(self.left_column_elements[1].text.strip()[-1])
 
     @property
     def getter_weak_foot_star(self):
-        return self.left_column_elements[2].text.strip()[-1]
+        return int(self.left_column_elements[2].text.strip()[-1])
 
     @property
     def getter_skill_moves(self):
-        return self.left_column_elements[3].text.strip()[-1]
+        return int(self.left_column_elements[3].text.strip()[-1])
 
     @property
     def getter_work_rate(self):
@@ -143,8 +139,8 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
         try:
             release_clause = self.left_column_elements[7].text.strip()[14:]
         except Exception as error:
-            release_clause = ''
-        return release_clause
+            return None
+        return money_value(release_clause)
     
     @property
     def getter_club_team(self):
@@ -152,11 +148,11 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_club_team_id_sofifa(self):
-        return re.search(r'\/\d*\/' , self.third_column[0].find('a' , {'href' : re.compile(r'\/team\/.*')})['href']).group().strip()[1:-1]
+        return int(re.search(r'\/\d*\/' , self.third_column[0].find('a' , {'href' : re.compile(r'\/team\/.*')})['href']).group().strip()[1:-1])
 
     @property
     def getter_power_in_club(self):
-        return self.third_column[1].text.strip()
+        return int(self.third_column[1].text.strip())
 
     @property
     def getter_Position_in_club(self):
@@ -164,7 +160,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_Jersey_Number_in_club(self):
-        return self.third_column[3].text.strip()[13:]
+        return int(self.third_column[3].text.strip()[13:])
 
     @property
     def getter_club_join_date(self):
@@ -176,7 +172,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_Contract_Valid_Until(self):
-        return self.third_column[5].text.strip()[-4:]
+        return int(self.third_column[5].text.strip()[-4:])
 
     @property
     def getter_national_team(self):
@@ -188,14 +184,14 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
     @property
     def getter_national_team_id(self):
         if len(self.forth_column) > 0:
-            return re.search(r'\/\d*\/' , self.forth_column[0].find('a' , {'href' : re.compile(r'\/team\/.*')})['href']).group().strip()[1:-1]
+            return int(re.search(r'\/\d*\/' , self.forth_column[0].find('a' , {'href' : re.compile(r'\/team\/.*')})['href']).group().strip()[1:-1])
         else:
             return None
 
     @property
     def getter_power_in_national(self):
         if len(self.forth_column) > 0:
-            return self.forth_column[1].text.strip()
+            return int(self.forth_column[1].text.strip())
         else:
             return None
 
@@ -209,7 +205,7 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
     @property
     def getter_Jersey_Number_in_national(self):
         if len(self.forth_column) > 0:
-            return self.forth_column[3].text.strip()[13:]
+            return int(self.forth_column[3].text.strip()[13:])
         else:
             return None
 
@@ -219,15 +215,15 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_followers_num(self):
-        return self.like_table.find('a' , class_ = "follow-btn btn").find('span').text.strip()
+        return int(self.like_table.find('a' , class_ = "follow-btn btn").find('span').text.strip())
 
     @property
     def getter_likes_num(self):
-        return self.like_table.find('a' , class_ = "like-btn btn").find('span').text.strip()
+        return int(self.like_table.find('a' , class_ = "like-btn btn").find('span').text.strip())
 
     @property
     def getter_dislikes_num(self):
-        return self.like_table.find('a' , class_ = "dislike-btn btn").find('span').text.strip()
+        return int(self.like_table.find('a' , class_ = "dislike-btn btn").find('span').text.strip())
     
     def get_all_data(self):
         """a function for getting all data of a player in a dictionary"""
