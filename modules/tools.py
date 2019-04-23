@@ -1,9 +1,9 @@
+from modules.Resources.__Handler import Resources
 from bs4 import BeautifulSoup as soup
 from modules.config import logger
 from pprint import pprint
 
 import modules.config as config
-from modules.Resources.__Handler import Resources
 import requests
 import base64
 import time
