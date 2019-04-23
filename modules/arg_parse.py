@@ -1,4 +1,4 @@
-import modules.DatabaseManager as dbManager
+import modules.database_manager as dbManager
 import argparse
 import sys
 
