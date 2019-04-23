@@ -1,8 +1,8 @@
 
 
-from modules.DataGetters.__baseClass import DataGetter_BaseClass
+from modules.data_getters.__baseClass import DataGetter_BaseClass
 from modules.config import logger
-from modules.DataGetters.tools import date_value, money_value
+from modules.data_getters.tools import date_value, money_value
 
 import re
 

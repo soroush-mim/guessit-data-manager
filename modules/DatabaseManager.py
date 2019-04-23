@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup as soup
 from modules.config import logger
-from modules.DataGetters.DataGetters import *
+from modules.data_getters.DataGetters import *
 from pprint import pprint
 
 import modules.config as config
-from modules.Resources.__Handler import Resources
+from modules.resources.__Handler import Resources
 import importlib
 import urllib
 import random

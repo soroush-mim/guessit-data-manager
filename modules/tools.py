@@ -1,4 +1,4 @@
-from modules.Resources.__Handler import Resources
+from modules.resources.__Handler import Resources
 from bs4 import BeautifulSoup as soup
 from modules.config import logger
 from pprint import pprint
