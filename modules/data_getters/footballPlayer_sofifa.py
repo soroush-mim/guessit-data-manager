@@ -1,22 +1,40 @@
-from __baseClass import Data_getter
-class get_footballPlayer_data_from_sofifa(Data_getter):
+
+
+from modules.data_getters.__baseClass import DataGetter_BaseClass
+from modules.config import logger
+from modules.data_getters.tools import date_value, money_value
+
+import re
+
+class Getter_footballPlayer_sofifa(DataGetter_BaseClass):
     """a class for getting footballPlayers data from sofifa that get page soup file for input with 38 property functions"""
 
     def __init__(self , page):
-        Data_getter.__init__(self , page)
+
+        DataGetter_BaseClass.__init__(self , page)
+
         self.main_table = page.find('div' , class_ = 'card card-border player fixed-width')
+
         self.top_row = self.main_table.find('div' , class_ = 'meta')
+
         self.columns = self.main_table.find_all('div' , class_ = 'columns' )[1].find_all('div' , class_ = 'column col-4')
+
         self.left_column_elements = self.columns[0].find_all('li')
+
         self.third_column = self.columns[2].find_all('li')
+
         self.forth_column = []
+
         self.hashtags_table = self.main_table.find('div' , class_ = 'mt-2').find_all('a')
+
         self.like_table = self.main_table.find('div' , class_ = 'operation mt-2')   
+
+
         if len(self.columns) > 3:
             self.forth_column = self.columns[3].find_all('li')
+            
         if len(self.third_column) < 5:
             self.third_column , self.forth_column = self.forth_column , self.third_column
-
 
     @property
     def getter_shirt_name(self):
