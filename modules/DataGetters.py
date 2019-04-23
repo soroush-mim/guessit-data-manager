@@ -69,7 +69,11 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
     
     @property
     def getter_birth_date(self):
-        return re.search(r'\d \(.*, \d\d\d\d\)' ,self.top_row.text.strip()).group()[3:-1]
+        birth_date = re.search(r'\d \(.*, \d\d\d\d\)' ,self.top_row.text.strip()).group()[3:-1]
+        date =''
+        for item in date_value(birth_date):
+            date += str(item) + '/'
+        return date[:-1]
 
     @property
     def getter_weight_in_pond(self):
@@ -164,7 +168,11 @@ class get_footballPlayer_data_from_sofifa(Data_getter):
 
     @property
     def getter_club_join_date(self):
-        return self.third_column[4].text.strip()[6:]
+        join_date = self.third_column[4].text.strip()[6:]
+        date =''
+        for item in date_value(join_date):
+            date += str(item) + '/'
+        return date[:-1]
 
     @property
     def getter_Contract_Valid_Until(self):
@@ -255,7 +263,7 @@ def Clear_duplicate_name(array):
     return
 
 money_value = lambda money : int(float(money[1:-1]) * (10 ** (3 if money[-1] == 'K' else 6 if money[-1] == 'M' else 0))) if money != '€0' else 0
-date_value = lambda date : (date[-4:], int([value for key, value in \
+date_value = lambda date : (int(date[-4:]), int([value for key, value in \
                                     {'January'	: 1 , 'February': 2	, 'March'		: 3,
                                     'April'		: 4 , 'May'		: 5	, 'June'		: 6,
                                     'July'		: 7 , 'August'	: 8	, 'September'	: 9,
