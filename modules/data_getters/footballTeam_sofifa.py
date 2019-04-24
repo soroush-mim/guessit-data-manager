@@ -8,6 +8,6 @@ import re
 class Getter_footballTeam_sofifa(DataGetter_BaseClass):
     """
     a class for getting footballTeams data from sofifa 
-    that get page soup file for input with 38 property
+    that get page soup file for input 
     """
     pass

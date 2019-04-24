@@ -86,9 +86,11 @@ def update_data(db_name, data):
 
         data_id_name = f'{resource}_id'
         if data_id_name in data:
+
             data_id = data[f'{data_id_name}']
 
             page_link = Resources[resource][db_name][db_name].format(data_id=data_id)
+
             page = make_soup(page_link)
 
             getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
@@ -110,9 +112,15 @@ def load_db(db_name):
 
     except Exception as error:
 
-        logger.error(error)
+        logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
+
+        logger.critical(f'opening a new json file for {db_name} dataset')
+
         open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
+
         db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+
+        
 
     return db
 
@@ -131,6 +139,7 @@ def save_db(db, db_name):
 def get_expired_data(db, begin, end):
     """getting expired datas from begin to end by expiration_time in config"""
     old_data = []
+
     for j in range(begin, end):
         if not 'lastUpdate' in db[j] or not db[j]['lastUpdate'] or not isinstance(db[j]['lastUpdate'], str):
             db[j]['lastUpdate'] = str(time.strftime('%a %b %d %H:%M:%S %Y', time.gmtime(0)))
@@ -149,7 +158,6 @@ def update_db(db_name, begin = None, end = None,updating_step = 1):
     begin = begin if begin is not None else 0
     end = end if end is not None else len(db)
     
-
     for i in range(begin, end, updating_step):
         
         logger.debug(f'updating data number {i} in {db_name} dataset')
@@ -168,6 +176,8 @@ def find_db(db_name):
 
     for resource in get_resources(db_name):
 
+        logger.debug(f'getting ids for {resource} resource')
+
         pages = get_resources()[resource][db_name][f'{db_name}_list']
 
         base = get_resources()[resource][db_name]['base']
@@ -175,6 +185,8 @@ def find_db(db_name):
         patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
 
         db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages , base , patterns)]
+
+        logger.debug(f'ids collected for {resource} resource')
 
     save_db(db , db_name)
 
@@ -299,7 +311,7 @@ async def download_resources(resource , db_name):
     None: function has no return
 
     """
-
+    logger.debug(f'downloading resources for {db_name} dataset from {resource} resource')
     base_url = Resources[resource][db_name]['base']
     page_queue_urls = resource[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
@@ -312,16 +324,27 @@ async def download_resources(resource , db_name):
                             souped_page.find_all('a' , {'href':re.compile(pattern)})))
             for url in urls:
                 make_soup(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
-
+    logger.debug(f'resources for {db_name} dataset from {resource} resource downloaded')
 
 def init_project():
     """create needed folders for project and pages that will be downloaded"""
+    logger.debug('starting init_project')
+
     for resource in get_resources():
+
         for db_name in get_resources()[resource]:
+
             directory = f'{config.main_dir}/download/page/{resource}/{db_name}/'
+
             if os.path.exists(directory): continue
-            try: os.makedirs(directory)
-            except Exception as error: logger.error(error)
+
+            try:
+                
+                os.makedirs(directory)
+
+            except Exception as error:
+                
+                logger.error(error)
     
     os.makedirs(f'{config.dataset_dir}')
         

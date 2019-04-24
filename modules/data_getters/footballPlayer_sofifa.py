@@ -41,7 +41,6 @@ class Getter_footballPlayer_sofifa(DataGetter_BaseClass):
 
     @property
     def getter_shirt_name(self):
-        
         return re.search(r'.*\(' , self.main_table.find('div' , class_ = 'info').text.strip()).group()[:-1]
 
     @property
