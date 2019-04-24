@@ -7,7 +7,10 @@ from modules.config.config import logger
 import re
 
 class Getter_footballPlayer_sofifa(DataGetter_BaseClass):
-    """a class for getting footballPlayers data from sofifa that get page soup file for input with 38 property functions"""
+    """
+    a class for getting footballPlayers data from sofifa 
+    that get page soup file for input with 38 property
+    """
 
     def __init__(self , page):
 
