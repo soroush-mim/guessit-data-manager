@@ -6,7 +6,6 @@ class DataGetter_BaseClass:
     
     def get_all_data(self):
         """a function for getting all data of a player and put it in a dictionary"""
-        
         data = {}
         for _property in [x for x in dir(self) if x.startswith('getter_')]:
 

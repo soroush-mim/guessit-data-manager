@@ -17,14 +17,17 @@ download_page_dir 	= f'{config.main_dir}/download/page'
 
 def collect_data_id_from_resource(pages, base, patterns):
     """general finding ids from list pages """
-
+    logger.info(f'start collecting ids from {base}')
     new_ids = []
 
     for page in pages:
 
+        logger.debug(f'collecting ids from {page}')
+        
         souped_page = make_soup(page)
 
         for pattern in patterns:
+
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
 
             new_pages =  [base + page if page.find('http') == -1 else page for page in new_pages]
@@ -129,7 +132,7 @@ async def make_soup(url):
     2. return page as soup object
 
     """
-
+    logger.debgu(f'start make_soup for url = {url}')
     location = get_guessed_location(url)
     file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
 

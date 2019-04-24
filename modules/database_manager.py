@@ -79,10 +79,10 @@ def update_data(db_name, data):
         use dataGetters classes for colleting data using it's resource_id
     """
     
-    logger.debug(f'update_data started with data_name={db_name},  data={data}')
+    logger.info(f'update_data started with data_name={db_name},  data={data}')
     
     for resource in get_resources(db_name):
-        logger.debug(f'starting to updating "{db_name}" data from "{resource}" resource')
+        logger.info(f'starting to updating "{db_name}" data from "{resource}" resource')
 
         data_id_name = f'{resource}_id'
         if data_id_name in data:
@@ -95,7 +95,7 @@ def update_data(db_name, data):
 
             getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
         
-        logger.debug(f'"{db_name}" data from "{resource}" resource updated successfully')
+        logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
 
     return getter_module.get_all_data()
@@ -104,17 +104,17 @@ def update_data(db_name, data):
 def load_db(db_name):
     """open the json file if that is created already else create it and open it for find db"""
     try:
-        logger.critical(f'trying to load {db_name} dataset from hard disk...')
+        logger.info(f'trying to load {db_name} dataset from hard disk...')
 
         db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
 
-        logger.critical(f'loading {db_name} dataset from hard disk is done.')
+        logger.info(f'loading {db_name} dataset from hard disk is done.')
 
     except Exception as error:
 
         logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
 
-        logger.critical(f'opening a new json file for {db_name} dataset')
+        logger.info(f'opening a new json file for {db_name} dataset')
 
         open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
 
@@ -127,11 +127,11 @@ def load_db(db_name):
 
 def save_db(db, db_name):
     """save objects on a json file for find db"""
-    logger.critical('Writing to file ...')
+    logger.info('Writing to file ...')
 
     json.dump(db, open(f'{config.dataset_dir}/{db_name}db.json', 'w'), indent=4)
 
-    logger.critical('Writing to file is done.')
+    logger.info('Writing to file is done.')
 
     return True
 
@@ -160,11 +160,11 @@ def update_db(db_name, begin = None, end = None,updating_step = 1):
     
     for i in range(begin, end, updating_step):
         
-        logger.debug(f'updating data number {i} in {db_name} dataset')
+        logger.critical(f'updating data number {i} in {db_name} dataset')
         
         db[i].update(update_data(db_name , db[i]))
         
-        logger.debug(f'data number {i} in {db_name} dataset updated successfully')
+        logger.critical(f'data number {i} in {db_name} dataset updated successfully')
         
 
     save_db(db, db_name)
@@ -176,7 +176,7 @@ def find_db(db_name):
 
     for resource in get_resources(db_name):
 
-        logger.debug(f'getting ids for {resource} resource')
+        logger.critical(f'getting ids for {resource} resource')
 
         pages = get_resources()[resource][db_name][f'{db_name}_list']
 
@@ -186,7 +186,7 @@ def find_db(db_name):
 
         db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages , base , patterns)]
 
-        logger.debug(f'ids collected for {resource} resource')
+        logger.critical(f'ids collected for {resource} resource')
 
     save_db(db , db_name)
 
@@ -311,7 +311,7 @@ async def download_resources(resource , db_name):
     None: function has no return
 
     """
-    logger.debug(f'downloading resources for {db_name} dataset from {resource} resource')
+    logger.critical(f'downloading resources for {db_name} dataset from {resource} resource')
     base_url = Resources[resource][db_name]['base']
     page_queue_urls = resource[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
@@ -324,11 +324,11 @@ async def download_resources(resource , db_name):
                             souped_page.find_all('a' , {'href':re.compile(pattern)})))
             for url in urls:
                 make_soup(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
-    logger.debug(f'resources for {db_name} dataset from {resource} resource downloaded')
+    logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
 
 def init_project():
     """create needed folders for project and pages that will be downloaded"""
-    logger.debug('starting init_project')
+    logger.critical('starting init_project')
 
     for resource in get_resources():
 
