@@ -223,8 +223,9 @@ def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url_of_page) as resp:
                         siteHtml = await resp.text()
+                        file_address = f"{location}/{base64.b64encode(url_of_page.encode()).decode().replace('/', '-')}.html"
 
-                        f = open(f"pages/{base64.b64encode(url_of_page.encode()).decode().replace('/', '-')[-20:]}.html", 'w+', encoding='utf8')
+                        f = open(file_address[-20:], 'w+', encoding='utf8')
                         f.write(siteHtml)
                         f.close()
                         return {url_of_page: siteHtml}

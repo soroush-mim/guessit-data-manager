@@ -357,6 +357,6 @@ def init_project():
 
 if __name__ == '__main__':
     init_project()
-    download_resources('sofifa' , 'footballPlayer')
-    find_db('footballPlayer')
-    update_db('footballPlayer')
+    download_resources('sofifa' , 'footballTeam')
+    # find_db('footballPlayer')
+    # update_db('footballPlayer')
