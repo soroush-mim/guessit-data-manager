@@ -22,4 +22,4 @@ res = {
         'footballTeam_pattern': r'(\/team\/[0-9]*).*?$',
 
     },
-},
+}

@@ -47,4 +47,4 @@ res = {
         'director': 'https://www.imdb.com/name/{data_id}',
 
     },
-},
+}

@@ -6,4 +6,4 @@ res = {
         'country_list': ['https://www.cia.gov/library/publications/the-world-factbook/docs/flagsoftheworld.html'],
 
     },
-},
+}
