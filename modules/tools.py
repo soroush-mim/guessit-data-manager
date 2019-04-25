@@ -224,7 +224,7 @@ def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
         try:
             return {url_of_page: os.open(file_address, 'r').read()}
         except Exception as error:
-            print(error)
+            print('kiiirr', error)
         
         for i in range(try_count):
             try:
