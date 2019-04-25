@@ -6,6 +6,8 @@ from pprint import pprint
 import modules.config.config as config
 import requests
 import base64
+import asyncio
+import aiohttp
 import time
 import glob
 import os
@@ -193,6 +195,64 @@ def get_resources(data_name=None):
         return Resources
     else:
         return [resource for resource in Resources.keys() if data_name in Resources[resource]]
+
+
+
+
+def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
+    """
+    download a list of the urls and save them if you want
+
+    :param
+
+    urlList(list): list of urls that we want to download
+    """
+
+    async def webpage_downloader(url_of_page, try_count, delay):
+        """
+        download one page by send get request to the url
+        save the page and return it as string
+        """
+        for i in range(try_count):
+            try:
+                async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
+                    async with session.get(url_of_page) as resp:
+                        siteHtml = await resp.text()
+
+                        f = open(f"pages/{base64.b64encode(url_of_page.encode()).decode().replace('/', '-')[-20:]}.html", 'w+', encoding='utf8')
+                        f.write(siteHtml)
+                        f.close()
+                        return {url_of_page: siteHtml}
+
+            except Exception as err:
+                await asyncio.sleep(delay)
+                print('error', err)
+
+
+    def split_list(input_list, step):
+        return [input_list[i-step:i] for i in range(step, len(input_list) + step, step)]
+
+
+    async def async_handler(urlList, workers, try_count, delay):
+        urls_splited = split_list(urlList, workers)
+        responses = {}
+        
+        for urls in urls_splited:
+            tasks = [asyncio.ensure_future(webpage_downloader(url, try_count, delay)) for url in urls]
+            res_list = await asyncio.gather(*tasks)
+            responses.update({list(res.keys())[0]: list(res.values())[0] for res in res_list})
+        
+        return responses
+    
+    loop = asyncio.get_event_loop()
+    response = loop.run_until_complete(async_handler(urlList, workers, try_count, delay))
+    loop.close()
+
+    return response
+
+
+
+
 
 
 
