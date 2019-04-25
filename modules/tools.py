@@ -1,7 +1,6 @@
 from modules.resources.__handler import Resources
 from bs4 import BeautifulSoup as soup
 from modules.config.config import logger
-from pprint import pprint
 
 import modules.config.config as config
 import requests
@@ -9,7 +8,6 @@ import base64
 import asyncio
 import aiohttp
 import time
-import glob
 import os
 import re
 
@@ -18,7 +16,15 @@ download_page_dir = f'{config.main_dir}/download/page'
 
 
 def collect_data_id_from_resource(pages, base, patterns):
-    """general finding ids from list pages """
+    """
+    general finding ids from list pages
+
+    :param pages:
+    :param base:
+    :param patterns:
+    :return:
+    """
+
     logger.info(f'start collecting ids from {base}')
     new_ids = []
 
@@ -56,7 +62,13 @@ def collect_data_id_from_resource(pages, base, patterns):
 
 
 def get_resource_from_url(url):
-    """getting resource of a url"""
+    """
+    getting resource of a url
+
+    :param url:
+    :return:
+    """
+
 
     resources = []
     for resource in get_resources().keys():
@@ -71,7 +83,12 @@ def get_resource_from_url(url):
 
 
 def get_db_name_from_url(url):
-    """getting db_name of a url"""
+    """
+    getting db_name of a url
+
+    :param url:
+    :return:
+    """
 
     db_name = []
     resource = get_resource_from_url(url)
@@ -89,7 +106,12 @@ def get_db_name_from_url(url):
 
 
 def get_guessed_location(url):
-    """getting guessed_location of file that we can find them"""
+    """
+    getting guessed_location of file that we can find them
+
+    :param url:
+    :return:
+    """
 
     resource = get_resource_from_url(url)
     db_name = get_db_name_from_url(url)
@@ -101,6 +123,13 @@ def get_guessed_location(url):
 
 
 def download(url, local_filename=None):
+    """
+
+    :param url:
+    :param local_filename:
+    :return:
+    """
+
     if local_filename is None:
         local_filename = url.split('/')[-1]
     else:
@@ -111,6 +140,7 @@ def download(url, local_filename=None):
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
+
     return local_filename
 
 
@@ -123,13 +153,14 @@ def make_soup(urls):
 
     :returns
     BeautifulSoup object: content of page of given url
-
+    """
+    """
     1. load the page
         for new urls:
             download the html and save it as html file in downloaded pages
 
         for old urls:
-            loads html for them from files to memmory
+            loads html for them from files to memory
 
     2. return page as soup object
 
@@ -193,10 +224,21 @@ def get_page(url, try_count=10, delay=0):
 
 
 def make_id(data_id):
+    """
+    make id from url
+
+    :param data_id:
+    :return:
+    """
     return base64.b32encode(str(data_id).encode()).decode()
 
 
 def get_resources(data_name=None):
+    """
+
+    :param data_name:
+    :return:
+    """
     if data_name is None:
         return Resources
     else:
@@ -207,9 +249,11 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
     """
     download a list of the urls and save them if you want
 
-    :param
-
-    urlList(list): list of urls that we want to download
+    :param url_list: list of urls that we want to download
+    :param workers:
+    :param try_count:
+    :param delay:
+    :return: list of responses
     """
 
     async def webpage_downloader(url, try_count, delay):
@@ -259,4 +303,3 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
     loop.close()
 
     return response
-
