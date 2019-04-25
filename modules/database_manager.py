@@ -327,6 +327,7 @@ def download_resources(resource , db_name):
             for url in urls:
                 urls_for_download.append(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
 
+    
     make_soup(urls_for_download)
 
     logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
