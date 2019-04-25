@@ -151,7 +151,7 @@ def get_expired_data(db, begin, end):
 
 
 def update_db(db_name, begin = None, end = None,updating_step = 1):
-    """update all datas of one db"""
+    """update all data of one db"""
 
     db = load_db(db_name)
 
@@ -333,31 +333,33 @@ def download_resources(resource , db_name):
     logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
 
 def init_project():
-    """create needed folders for project and pages that will be downloaded"""
+    """
+    create needed folders for project
+    and pages that will be downloaded
+
+    :return:
+    """
+
     logger.critical('starting init_project')
 
     for resource in get_resources():
-
         for db_name in get_resources()[resource]:
 
             directory = f'{config.main_dir}/download/page/{resource}/{db_name}/'
-
-            if os.path.exists(directory): continue
+            if os.path.exists(directory):
+                continue
 
             try:
-                
                 os.makedirs(directory)
-
             except Exception as error:
-                
                 logger.error(error)
     
     os.makedirs(f'{config.dataset_dir}')
-        
+    os.makedirs(f'{config.download_page_dir}/others')
     
 
-if __name__ == '__main__':
-    init_project()
-    download_resources('sofifa' , 'footballTeam')
-    # find_db('footballPlayer')
-    # update_db('footballPlayer')
+# if __name__ == '__main__':
+#     init_project()
+#     download_resources('sofifa' , 'footballTeam')
+#     # find_db('footballPlayer')
+#     # update_db('footballPlayer')
