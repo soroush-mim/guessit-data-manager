@@ -314,7 +314,7 @@ def download_resources(resource , db_name):
     logger.critical(f'downloading resources for {db_name} dataset from {resource} resource')
 
     base_url = Resources[resource][db_name]['base']
-    page_queue_urls = resource[resource][db_name][f'{db_name}_list']
+    page_queue_urls = Resources[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
 
     urls_for_download = []
