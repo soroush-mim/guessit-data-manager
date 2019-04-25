@@ -114,7 +114,7 @@ def download(url, local_filename=None):
     return local_filename
 
 
-async def make_soup(urls):
+def make_soup(urls):
     """
     get the BeautifulSoup object of this page
 
@@ -155,7 +155,7 @@ async def make_soup(urls):
     else:
         download_pages(urls)
 
-async def get_page(url, try_count=10, delay=0):
+def get_page(url, try_count=10, delay=0):
     """
     download the given url by GET
 

@@ -291,7 +291,7 @@ def check_get_function(data_name, resource, page_link):
 #             pool.map(make_soup, page_queue[i:i+step])
 
 
-async def download_resources(resource , db_name):
+def download_resources(resource , db_name):
     """
     download all the data from web
 
