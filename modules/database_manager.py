@@ -357,9 +357,3 @@ def init_project():
     os.makedirs(f'{config.dataset_dir}')
     os.makedirs(f'{config.download_page_dir}/others')
     
-
-# if __name__ == '__main__':
-#     init_project()
-#     download_resources('sofifa' , 'footballTeam')
-#     # find_db('footballPlayer')
-#     # update_db('footballPlayer')

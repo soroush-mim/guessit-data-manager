@@ -14,7 +14,7 @@ import os
 import re
 
 
-download_page_dir 	= f'{config.main_dir}/download/page'
+download_page_dir = f'{config.main_dir}/download/page'
 
 
 def collect_data_id_from_resource(pages, base, patterns):
@@ -32,11 +32,11 @@ def collect_data_id_from_resource(pages, base, patterns):
 
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
 
-            new_pages =  [base + page if page.find('http') == -1 else page for page in new_pages]
+            new_pages = [base + page if page.find('http') == -1 else page for page in new_pages]
 
-            new_pages =  [page for page in new_pages if page[5:].find('http') == -1]
+            new_pages = [page for page in new_pages if page[5:].find('http') == -1]
 
-            new_pages =  [re.sub(r'/?\?.*', '', page) for page in new_pages]
+            new_pages = [re.sub(r'/?\?.*', '', page) for page in new_pages]
 
             new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
 
@@ -75,10 +75,10 @@ def get_db_name_from_url(url):
 
     db_name = []
     resource = get_resource_from_url(url)
-    if not resource :
+    if not resource:
         return None
     for db in get_resources()[resource].keys():
-        for key , pattern in get_resources()[resource][db].items():
+        for key, pattern in get_resources()[resource][db].items():
             if 'pattern' in key:
                 if any([re.search(pattern, url)]):
                     db_name.append(db)
@@ -86,6 +86,7 @@ def get_db_name_from_url(url):
         return db_name[0]
     else:
         return None
+
 
 def get_guessed_location(url):
     """getting guessed_location of file that we can find them"""
@@ -110,7 +111,6 @@ def download(url, local_filename=None):
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
-                #f.flush() commented by recommendation from J.F.Sebastian
     return local_filename
 
 
@@ -154,6 +154,7 @@ def make_soup(urls):
 
     else:
         download_pages(urls)
+
 
 def get_page(url, try_count=10, delay=0):
     """
@@ -202,9 +203,7 @@ def get_resources(data_name=None):
         return [resource for resource in Resources.keys() if data_name in Resources[resource]]
 
 
-
-
-def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
+def download_pages(url_list, workers=50, try_count=10, delay=1):
     """
     download a list of the urls and save them if you want
 
@@ -213,42 +212,39 @@ def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
     urlList(list): list of urls that we want to download
     """
 
-    async def webpage_downloader(url_of_page, try_count, delay):
+    async def webpage_downloader(url, try_count, delay):
         """
         download one page by send get request to the url
         save the page and return it as string
         """
 
-        file_address = f"{get_guessed_location(url_of_page)}/{base64.b64encode(url_of_page.encode()).decode().replace('/', '-')}.html"
-        
+        file_address = f"{get_guessed_location(url)}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+
         try:
-            return {url_of_page: open(file_address, 'r').read()}
+            return {url: open(file_address, 'r').read()}
         except Exception as error:
-            print('kiiirr', error)
+            logger.debug(error)
         
         for i in range(try_count):
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
-                    async with session.get(url_of_page) as resp:
-                        siteHtml = await resp.text()
-                        
+                    async with session.get(url) as resp:
+                        site_html = await resp.text()
 
                         f = open(file_address, 'w+', encoding='utf8')
-                        f.write(siteHtml)
+                        f.write(site_html)
                         f.close()
-                        return {url_of_page: siteHtml}
+                        return {url: site_html}
 
-            except Exception as err:
+            except Exception as error:
                 await asyncio.sleep(delay)
-                print('error', err)
-
+                logger.info(error)
 
     def split_list(input_list, step):
         return [input_list[i-step:i] for i in range(step, len(input_list) + step, step)]
 
-
-    async def async_handler(urlList, workers, try_count, delay):
-        urls_splited = split_list(urlList, workers)
+    async def async_handler(url_list, workers, try_count, delay):
+        urls_splited = split_list(url_list, workers)
         responses = {}
         
         for urls in urls_splited:
@@ -259,28 +255,8 @@ def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
         return responses
     
     loop = asyncio.get_event_loop()
-    response = loop.run_until_complete(async_handler(urlList, workers, try_count, delay))
+    response = loop.run_until_complete(async_handler(url_list, workers, try_count, delay))
     loop.close()
 
     return response
 
-
-
-
-
-
-
-# if __name__ == '__main__':
-#
-#     url = 'https://sofifa.com/team/245716'
-#     try:
-#
-#         resource = [resource for resource in get_resources().keys() if any([get_resources()[resource][db]['base'] in url for db in list(get_resources()[resource].keys()) if 'base' in get_resources()[resource][db]])][0]
-#         print(resource)
-#
-#         db_name = [db for db in get_resources()[resource].keys() if any([re.search(pattern, url) for key, pattern in get_resources()[resource][db].items() if 'pattern' in key])][0]
-#         guessed_location = f'{download_page_dir}/{resource}/{db_name}'
-#         print(guessed_location, db_name)
-#     except Exception as error:
-#         guessed_location = download_page_dir
-#         print(error)

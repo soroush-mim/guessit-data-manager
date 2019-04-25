@@ -1,7 +1,9 @@
 from modules.config.config import logger
-class DataGetter_BaseClass:
+
+
+class DataGetterBaseClass:
     """a parent class for all data getters classes that get page soup file for input"""
-    def __init__(self , page):
+    def __init__(self, page):
         self.page = page
     
     def get_all_data(self):
