@@ -317,6 +317,7 @@ async def download_resources(resource , db_name):
     page_queue_urls = resource[resource][db_name][f'{db_name}_list']
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
 
+    urls_for_download = []
     for page_url in page_queue_urls:
         souped_page = make_soup(page_url)
 
@@ -324,8 +325,9 @@ async def download_resources(resource , db_name):
             urls = list(map(lambda tag: tag['href'],
                             souped_page.find_all('a' , {'href':re.compile(pattern)})))
             for url in urls:
-                make_soup(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
+                urls_for_download.append(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
 
+    make_soup(urls_for_download)
 
     logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
 

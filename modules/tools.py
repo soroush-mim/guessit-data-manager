@@ -114,7 +114,7 @@ def download(url, local_filename=None):
     return local_filename
 
 
-async def make_soup(url):
+async def make_soup(urls):
     """
     get the BeautifulSoup object of this page
 
@@ -134,21 +134,26 @@ async def make_soup(url):
     2. return page as soup object
 
     """
-    logger.debgu(f'start make_soup for url = {url}')
-    location = get_guessed_location(url)
-    file_address = f"{location}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+    logger.debgu(f'start make_soup for url = {urls}')
 
-    if os.path.isfile(file_address):
-        page_source = open(file_address, encoding='utf-8').read()
+    if not isinstance(urls, list):
+
+        location = get_guessed_location(urls)
+        file_address = f"{location}/{base64.b64encode(urls.encode()).decode().replace('/', '-')}.html"
+
+        if os.path.isfile(file_address):
+            page_source = open(file_address, encoding='utf-8').read()
+        else:
+            page_source = get_page(urls)
+            try:
+                open(file_address, 'w+', encoding='utf-8').write(page_source)
+            except Exception as error:
+                logger.error(error)
+
+        return soup(page_source , 'html.parser')
+
     else:
-        page_source = get_page(url)
-        try:
-            open(file_address, 'w+', encoding='utf-8').write(page_source)
-        except Exception as error:
-            logger.error(error)
-
-    return soup(page_source , 'html.parser')
-
+        download_pages(urls)
 
 async def get_page(url, try_count=10, delay=0):
     """
