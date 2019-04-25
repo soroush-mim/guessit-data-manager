@@ -134,7 +134,7 @@ def make_soup(urls):
     2. return page as soup object
 
     """
-    logger.debgu(f'start make_soup for url = {urls}')
+    logger.debug(f'start make_soup for url = {urls}')
 
     if not isinstance(urls, list):
 
