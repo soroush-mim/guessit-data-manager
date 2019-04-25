@@ -222,7 +222,7 @@ def download_pages(urlList, workers = 50, try_count = 10, delay = 1):
         file_address = f"{get_guessed_location(url_of_page)}/{base64.b64encode(url_of_page.encode()).decode().replace('/', '-')}.html"
         
         try:
-            return {url_of_page: os.open(file_address, 'r').read()}
+            return {url_of_page: open(file_address, 'r').read()}
         except Exception as error:
             print('kiiirr', error)
         
