@@ -80,11 +80,13 @@ def get_db_name_from_url(url):
     resource = get_resource_from_url(url)
     if not resource:
         return None
+        
     for db in get_resources()[resource].keys():
         for key, pattern in get_resources()[resource][db].items():
             if 'pattern' in key:
                 if any([re.search(pattern, url)]):
                     db_name.append(db)
+
     if len(db_name) > 0:
         return db_name[0]
     else:
