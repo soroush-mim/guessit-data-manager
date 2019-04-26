@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
-from modules.tools import *
-from pprint import pprint
 
 import multiprocessing as mp
-import youtube_dl
 import re
+from pprint import pprint
+
+import youtube_dl
+
+from modules.tools import *
 
 
 def my_hook(d):

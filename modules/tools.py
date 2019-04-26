@@ -1,16 +1,16 @@
-from modules.resources.__handler import Resources
-from bs4 import BeautifulSoup as soup
-from modules.config.config import logger
-
-import modules.config.config as config
-import requests
-import base64
 import asyncio
-import aiohttp
-import time
+import base64
 import os
 import re
+import time
 
+import aiohttp
+import requests
+from bs4 import BeautifulSoup as soup
+
+import modules.config.config as config
+from modules.config.config import logger
+from modules.resources.__handler import Resources
 
 download_page_dir = f'{config.main_dir}/download/page'
 

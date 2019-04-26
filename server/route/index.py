@@ -1,5 +1,7 @@
+from flask import json
+
 from server.flask import getApp
-from flask import json, request
+
 
 def add():
     app = getApp()

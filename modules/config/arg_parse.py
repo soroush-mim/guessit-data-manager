@@ -1,6 +1,8 @@
-import modules.database_manager as dbManager
 import argparse
 import sys
+
+import modules.database_manager as dbManager
+
 
 def arg_parse():
     '''

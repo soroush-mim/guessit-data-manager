@@ -1,9 +1,8 @@
-from modules.config.arg_parse import arg_parse
 from flask import Flask
 
 import server.flask
-import server.route_handle 
-
+import server.route_handle
+from modules.config.arg_parse import arg_parse
 
 server.flask.app = Flask(__name__)
 server.route_handle.addRoutes()
