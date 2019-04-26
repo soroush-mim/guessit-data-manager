@@ -48,17 +48,6 @@ def collect_data_id_from_resource(pages, base, patterns):
     return new_ids
 
 
-#
-# def wait_to_connect(timeout=10, delay=2):
-#     connected = False
-#     while not connected:
-#         try:
-#             getPage('https://www.google.com', timeout=timeout)
-#             connected = True
-#         except:
-#             connected = False
-#             time.sleep(delay)
-#             print('no internet connection')
 
 
 def get_resource_from_url(url):
@@ -306,3 +295,15 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
     loop.close()
 
     return response
+
+
+# def wait_to_connect(timeout=10, delay=2):
+#     connected = False
+#     while not connected:
+#         try:
+#             getPage('https://www.google.com', timeout=timeout)
+#             connected = True
+#         except:
+#             connected = False
+#             time.sleep(delay)
+#             print('no internet connection')
