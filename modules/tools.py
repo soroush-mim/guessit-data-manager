@@ -287,6 +287,10 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
         return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
 
     async def async_handler(url_list, workers, try_count, delay):
+        """
+        make tasks and run them in a queue
+        :return dict of {url: html_page}
+        """
         urls_splited = split_list(url_list, workers)
         responses = {}
 
