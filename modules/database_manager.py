@@ -73,7 +73,7 @@ from modules.resources.__handler import Resources
 
 def update_data(db_name, data):
     """
-        use dataGetters classes for colleting data using it's resource_id
+        use dataGetters classes for collecting data using it's resource_id
     """
 
     logger.info(f'update_data started with data_name={db_name},  data={data}')
@@ -130,7 +130,7 @@ def save_db(db, db_name):
 
 
 def get_expired_data(db, begin, end):
-    """getting expired datas from begin to end by expiration_time in config"""
+    """getting expired data from begin to end by expiration_time in config"""
     old_data = []
 
     for j in range(begin, end):
@@ -190,18 +190,18 @@ def init_db(db_name):
 def save_pages(url, patterns):
     pass
 
-
-# does not work yet
-def load_modules():
-    names = ['Amirabbas', 'Kiarash', 'Mohammad']
-    for name in names:
-        download(f'http://51.255.213.191/guessit/database/DataGetter_{name}.py')
-        module_file = importlib.import_module(f'DataGetter_{name}')
-
-        for module in [module for module in dir(module_file) if re.match('get.*', module)]:
-            print(module, name)
-            globals()[module] = getattr(module_file, module)
-
+#
+# # does not work yet
+# def load_modules():
+#     names = ['Amirabbas', 'Kiarash', 'Mohammad']
+#     for name in names:
+#         download(f'http://51.255.213.191/guessit/database/DataGetter_{name}.py')
+#         module_file = importlib.import_module(f'DataGetter_{name}')
+#
+#         for module in [module for module in dir(module_file) if re.match('get.*', module)]:
+#             print(module, name)
+#             globals()[module] = getattr(module_file, module)
+#
 
 def check_get_function(data_name, resource, page_link):
     page = make_soup(page_link)
