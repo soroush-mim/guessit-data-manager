@@ -153,7 +153,6 @@ def find_db(db_name):
         logger.critical(f'getting ids for {resource} resource')
 
         pages = get_resources()[resource][db_name][f'{db_name}_list']
-
         base = get_resources()[resource][db_name]['base']
 
         patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if
@@ -232,6 +231,7 @@ def download_resources(resource, db_name):
 
     base_url = Resources[resource][db_name]['base']
     page_queue_urls = Resources[resource][db_name][f'{db_name}_list']
+
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
                 x.endswith('_pattern')]
 
