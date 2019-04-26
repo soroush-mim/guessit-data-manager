@@ -1,12 +1,9 @@
-
-
 def money_value(money):
     """ change the number of money to a standard form """
 
     return int(
         float(money[1:-1]) * (10 ** (3 if money[-1] == 'K' else
                                      6 if money[-1] == 'M' else 0))) if money != '€0' else 0
-
 
 
 def date_value(date):
@@ -26,5 +23,3 @@ def date_value(date):
     return (int(date[-4:]),
             int([value for key, value in months.items() if date[:3] in key][0]),
             int(date[date.find(' ') + 1: date.find(',')]))
-
-

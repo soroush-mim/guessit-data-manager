@@ -31,11 +31,10 @@ def collect_data_id_from_resource(pages, base, patterns):
     for page in pages:
 
         logger.debug(f'collecting ids from {page}')
-        
+
         souped_page = make_soup(page)
 
         for pattern in patterns:
-
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
 
             new_pages = [base + page if page.find('http') == -1 else page for page in new_pages]
@@ -47,6 +46,7 @@ def collect_data_id_from_resource(pages, base, patterns):
             new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
 
     return new_ids
+
 
 #
 # def wait_to_connect(timeout=10, delay=2):
@@ -68,7 +68,6 @@ def get_resource_from_url(url):
     :param url:
     :return:
     """
-
 
     resources = []
     for resource in get_resources().keys():
@@ -181,7 +180,7 @@ def make_soup(urls):
             except Exception as error:
                 logger.error(error)
 
-        return soup(page_source , 'html.parser')
+        return soup(page_source, 'html.parser')
 
     else:
         download_pages(urls)
@@ -203,16 +202,16 @@ def get_page(url, try_count=10, delay=0):
     logger.debug(f'get_page started with url={url}, try_count={try_count}, delay={delay}')
 
     proxies = [{
-                "http": None,
-                "https": None,
-              }]
+        "http": None,
+        "https": None,
+    }]
 
     content = ''
     for i in range(try_count):
         try:
             content = requests.get(url, proxies=proxies[i % len(proxies)]).text
             break
-        except Exception as error :
+        except Exception as error:
             logger.error(f'{url} : {error}')
             logger.info(f'could not get the page. trying again for {i}th time...')
             time.sleep(delay)
@@ -268,7 +267,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
             return {url: open(file_address, 'r').read()}
         except Exception as error:
             logger.debug(error)
-        
+
         for i in range(try_count):
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
@@ -285,19 +284,19 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
                 logger.info(error)
 
     def split_list(input_list, step):
-        return [input_list[i-step:i] for i in range(step, len(input_list) + step, step)]
+        return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
 
     async def async_handler(url_list, workers, try_count, delay):
         urls_splited = split_list(url_list, workers)
         responses = {}
-        
+
         for urls in urls_splited:
             tasks = [asyncio.ensure_future(webpage_downloader(url, try_count, delay)) for url in urls]
             res_list = await asyncio.gather(*tasks)
             responses.update({list(res.keys())[0]: list(res.values())[0] for res in res_list})
-        
+
         return responses
-    
+
     loop = asyncio.get_event_loop()
     response = loop.run_until_complete(async_handler(url_list, workers, try_count, delay))
     loop.close()

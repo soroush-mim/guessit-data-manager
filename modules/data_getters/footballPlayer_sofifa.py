@@ -89,15 +89,15 @@ class Getter_footballPlayer_sofifa(DataGetterBaseClass):
     @property
     def getter_value_in_euro(self):
         value = \
-        self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
-            2].find('span').text.strip()
+            self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
+                2].find('span').text.strip()
         return money_value(value)
 
     @property
     def getter_wage(self):
         value = \
-        self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
-            3].find('span').text.strip()
+            self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
+                3].find('span').text.strip()
         return money_value(value)
 
     @property

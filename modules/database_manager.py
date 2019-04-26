@@ -75,15 +75,14 @@ def update_data(db_name, data):
     """
         use dataGetters classes for colleting data using it's resource_id
     """
-    
+
     logger.info(f'update_data started with data_name={db_name},  data={data}')
-    
+
     for resource in get_resources(db_name):
         logger.info(f'starting to updating "{db_name}" data from "{resource}" resource')
 
         data_id_name = f'{resource}_id'
         if data_id_name in data:
-
             data_id = data[f'{data_id_name}']
 
             page_link = Resources[resource][db_name][db_name].format(data_id=data_id)
@@ -91,9 +90,8 @@ def update_data(db_name, data):
             page = make_soup(page_link)
 
             getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
-        
-        logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
+        logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
     return getter_module.get_all_data()
 
@@ -117,8 +115,6 @@ def load_db(db_name):
 
         db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
 
-        
-
     return db
 
 
@@ -141,28 +137,27 @@ def get_expired_data(db, begin, end):
         if not 'lastUpdate' in db[j] or not db[j]['lastUpdate'] or not isinstance(db[j]['lastUpdate'], str):
             db[j]['lastUpdate'] = str(time.strftime('%a %b %d %H:%M:%S %Y', time.gmtime(0)))
 
-        if time.strptime(db[j]['lastUpdate'], '%a %b %d %H:%M:%S %Y') < time.localtime(time.time() - config.expiration_time):
+        if time.strptime(db[j]['lastUpdate'], '%a %b %d %H:%M:%S %Y') < time.localtime(
+                time.time() - config.expiration_time):
             old_data += [db[j]]
 
     return old_data
 
 
-def update_db(db_name, begin = None, end = None,updating_step = 1):
+def update_db(db_name, begin=None, end=None, updating_step=1):
     """update all data of one db"""
 
     db = load_db(db_name)
 
     begin = begin if begin is not None else 0
     end = end if end is not None else len(db)
-    
+
     for i in range(begin, end, updating_step):
-        
         logger.critical(f'updating data number {i} in {db_name} dataset')
-        
-        db[i].update(update_data(db_name , db[i]))
-        
+
+        db[i].update(update_data(db_name, db[i]))
+
         logger.critical(f'data number {i} in {db_name} dataset updated successfully')
-        
 
     save_db(db, db_name)
 
@@ -172,20 +167,20 @@ def find_db(db_name):
     db = load_db(db_name)
 
     for resource in get_resources(db_name):
-
         logger.critical(f'getting ids for {resource} resource')
 
         pages = get_resources()[resource][db_name][f'{db_name}_list']
 
         base = get_resources()[resource][db_name]['base']
 
-        patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if pattern.endswith('pattern') ]
+        patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if
+                    pattern.endswith('pattern')]
 
-        db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages , base , patterns)]
+        db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages, base, patterns)]
 
         logger.critical(f'ids collected for {resource} resource')
 
-    save_db(db , db_name)
+    save_db(db, db_name)
 
 
 def init_db(db_name):
@@ -194,6 +189,7 @@ def init_db(db_name):
 
 def save_pages(url, patterns):
     pass
+
 
 # does not work yet
 def load_modules():
@@ -219,10 +215,13 @@ def check_get_function(data_name, resource, page_link):
             modules += [getter_module(local_var)]
 
     for module in modules:
-        try	 : new_data[module.__name__] = module(page)
-        except Exception as error : logger.warning(f'no "{module.__name__}" from "{page_link}" becuase {error}')
+        try:
+            new_data[module.__name__] = module(page)
+        except Exception as error:
+            logger.warning(f'no "{module.__name__}" from "{page_link}" becuase {error}')
 
     pprint(new_data)
+
 
 #
 # def test_getter(data_name, resource, attributes=None, count=None, id_list=None, complete_report=True):
@@ -288,7 +287,7 @@ def check_get_function(data_name, resource, page_link):
 #             pool.map(make_soup, page_queue[i:i+step])
 
 
-def download_resources(resource , db_name):
+def download_resources(resource, db_name):
     """
     download all the data from web
 
@@ -312,7 +311,8 @@ def download_resources(resource , db_name):
 
     base_url = Resources[resource][db_name]['base']
     page_queue_urls = Resources[resource][db_name][f'{db_name}_list']
-    patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if x.endswith('_pattern')]
+    patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
+                x.endswith('_pattern')]
 
     urls_for_download = []
     for page_url in page_queue_urls:
@@ -320,14 +320,14 @@ def download_resources(resource , db_name):
 
         for pattern in patterns:
             urls = list(map(lambda tag: tag['href'],
-                            souped_page.find_all('a' , {'href':re.compile(pattern)})))
+                            souped_page.find_all('a', {'href': re.compile(pattern)})))
             for url in urls:
-                urls_for_download.append(urllib.parse.urljoin(base_url ,re.search(pattern, url).group(1)))
+                urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
 
-    
     make_soup(urls_for_download)
 
     logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
+
 
 def init_project():
     """
@@ -350,7 +350,6 @@ def init_project():
                 os.makedirs(directory)
             except Exception as error:
                 logger.error(error)
-    
+
     os.makedirs(f'{config.dataset_dir}')
     os.makedirs(f'{config.download_page_dir}/others')
-    

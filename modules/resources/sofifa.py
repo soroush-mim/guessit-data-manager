@@ -8,11 +8,11 @@ res = {
         'base': 'https://sofifa.com',
 
         'footballPlayer_pattern': r'(\/player\/[0-9]*).*?$',
-        
+
     },
-    
+
     'footballTeam': {
-        
+
         'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 700, 60)],
 
         'footballTeam': 'https://sofifa.com/team/{data_id}',

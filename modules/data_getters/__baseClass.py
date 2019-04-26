@@ -3,9 +3,10 @@ from modules.config.config import logger
 
 class DataGetterBaseClass:
     """a parent class for all data getters classes that get page soup file for input"""
+
     def __init__(self, page):
         self.page = page
-    
+
     def get_all_data(self):
         """a function for getting all data of a player and put it in a dictionary"""
         data = {}
@@ -17,5 +18,5 @@ class DataGetterBaseClass:
             except Exception as error:
                 data[_property.replace('getter_', '')] = None
                 logger.error(error)
-                
-        return data    
+
+        return data

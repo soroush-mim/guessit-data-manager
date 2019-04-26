@@ -10,7 +10,7 @@ def arg_parse():
     '''
 
     parser = argparse.ArgumentParser(description='Process some integers.')
-    
+
     parser.add_argument(
         '-dr', '--dlres',
         dest='dlres', default=None,
@@ -43,15 +43,15 @@ def arg_parse():
 
     if args.finddb:
         dbManager.find_db(args.finddb[0])
-    
+
     if args.updatedb:
         dbManager.update_db(args.updatedb[0])
-    
+
     if args.initproject:
         dbManager.init_project()
 
     # if there is any arg, return True
-    if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] =='-log'):
+    if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] == '-log'):
         return False
     else:
         return True
