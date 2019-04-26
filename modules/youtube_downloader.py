@@ -2,15 +2,9 @@ from __future__ import unicode_literals
 from modules.tools import *
 from pprint import pprint
 
-
-
 import multiprocessing as mp
 import youtube_dl
 import re
-
-
-
-
 
 
 def my_hook(d):
@@ -50,7 +44,7 @@ def search(query, _type='video'):
                 'count': re.search('(.*?) .*', tag.select('span.formatted-video-count-label')[0].text).group(1)
             }
         
-        #pprint(item)
+        # pprint(item)
         
         items.append(item)
         
@@ -69,8 +63,7 @@ def search_music(name, mode='song', _type='video', count=1):
     
     if _type == 'playlist':
         pass
-    
-    
+
     return items[:count]
     
 
@@ -79,8 +72,7 @@ def download_music(page, output=None):
     if output:
         if output[-4:] != '.mp3':
             output += '.mp3'
-    else:
-        pass
+
     output = '%(title)s-%(id)s.%(ext)s'
 
     ydl_opts = {
@@ -96,20 +88,16 @@ def download_music(page, output=None):
     }
     
     ydl = youtube_dl.YoutubeDL(ydl_opts)
-    
     info_dict = ydl.extract_info(page, download=True)
     
     file_name = re.search('(.*)\..*', ydl.prepare_filename(info_dict)).group(1) + '.mp3'
-    
     print('/'*50, file_name)
 
     return file_name
     
-    
-        
+
 def download(**args):
-    pages = []
-    
+
     if args['mode'] in ['song', 'soundtrack']:
         pages = search_music(**args)
         
@@ -121,14 +109,9 @@ def download(**args):
         return musics
         
 
-
 if __name__ == '__main__':
-    
-    
     download_music('https://www.youtube.com/watch?v=lbjhxiI5V_E&index=2&t=0s&list=PLSbaCD6mVGhe0S9tSlClE3ZyMZEQDtAgV', 'kjn')
-    
     print('hh')
-    #music = download_music('https://www.youtube.com/watch?v=TAtORG6H-Z0')
-    
-    #download(name='rick and morty', mode='soundtrack', _type='playlist', count=1)
-    
+    # music = download_music('https://www.youtube.com/watch?v=TAtORG6H-Z0')
+    # download(name='rick and morty', mode='soundtrack', _type='playlist', count=1)
+
