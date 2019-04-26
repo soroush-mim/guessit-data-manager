@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import base64
 import os
 import re
@@ -156,14 +157,13 @@ def make_soup(urls):
     logger.debug(f'start make_soup for url = {urls}')
 
     if not isinstance(urls, list):
-
-        location = get_guessed_location(urls)
-        file_address = f"{location}/{base64.b64encode(urls.encode()).decode().replace('/', '-')}.html"
+        url = urls
+        file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
         if os.path.isfile(file_address):
             page_source = open(file_address, encoding='utf-8').read()
         else:
-            page_source = get_page(urls)
+            page_source = get_page(url)
             try:
                 open(file_address, 'w+', encoding='utf-8').write(page_source)
             except Exception as error:
@@ -250,7 +250,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
         save the page and return it as string
         """
 
-        file_address = f"{get_guessed_location(url)}/{base64.b64encode(url.encode()).decode().replace('/', '-')}.html"
+        file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
         try:
             return {url: open(file_address, 'r').read()}
@@ -295,6 +295,15 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
     loop.close()
 
     return response
+
+
+def md5_encode(text):
+    """
+    encode the text to the md5 hex
+    :param text: str
+    :return: str
+    """
+    return hashlib.md5(text.encode('utf-8')).hexdigest()
 
 
 # def wait_to_connect(timeout=10, delay=2):

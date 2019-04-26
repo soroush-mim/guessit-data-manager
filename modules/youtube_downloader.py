@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 import multiprocessing as mp
-import re
 from pprint import pprint
 
 import youtube_dl
@@ -36,7 +35,8 @@ def search(query, _type='video'):
             item = {
                 'title': tag.select('h3.yt-lockup-title')[0].find('a').text,
                 'url': 'https://www.youtube.com' + tag.find('a')['href'],
-                'length': sum([int(t) * (60 ** i) for i, t in enumerate(tag.select('span.video-time')[0].text.split(':'))])
+                'length': sum([int(t) * (60 ** i) for i, t in
+                               enumerate(tag.select('span.video-time')[0].text.split(':'))])
             }
 
         if _type == 'playlist':
@@ -91,7 +91,7 @@ def download_music(page, output=None):
     ydl = youtube_dl.YoutubeDL(ydl_opts)
     info_dict = ydl.extract_info(page, download=True)
 
-    file_name = re.search('(.*)\..*', ydl.prepare_filename(info_dict)).group(1) + '.mp3'
+    file_name = re.search(r'(.*)\..*', ydl.prepare_filename(info_dict)).group(1) + '.mp3'
     print('/' * 50, file_name)
 
     return file_name
@@ -110,7 +110,9 @@ def download(**args):
 
 
 if __name__ == '__main__':
-    download_music('https://www.youtube.com/watch?v=lbjhxiI5V_E&index=2&t=0s&list=PLSbaCD6mVGhe0S9tSlClE3ZyMZEQDtAgV', 'kjn')
+    download_music(
+        'https://www.youtube.com/watch?v=lbjhxiI5V_E&index=2&t=0s&list=PLSbaCD6mVGhe0S9tSlClE3ZyMZEQDtAgV',
+        'kjn')
     print('hh')
     # music = download_music('https://www.youtube.com/watch?v=TAtORG6H-Z0')
     # download(name='rick and morty', mode='soundtrack', _type='playlist', count=1)
