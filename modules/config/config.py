@@ -4,21 +4,22 @@ import logging
 # project data config
 # --------------------------------------------------------------------
 
-main_dir			= './..'
-project_dir			= f'{main_dir}/guessit-data-manager'
-dataset_dir			= f'{main_dir}/datasets'
-process_count	   	= 4
-updating_step	   	= 10
-finding_step	   	= 10
-expiration_time	 	= 60 * 60 * 10
-backup			  	= False
-debug			   	= False
-safe_mode		   	= False
+main_dir	        = './..'
+project_dir	        = f'{main_dir}/guessit-data-manager'
+dataset_dir	        = f'{main_dir}/datasets'
+download_page_dir   = f'{main_dir}/download/page'
+process_count       = 4
+updating_step       = 10
+finding_step        = 10
+expiration_time     = 60 * 60 * 10
+backup              = False
+debug               = False
+safe_mode           = False
 
-sftp 				= None
+sftp                = None
 
-local_save			= False
-save_page_local		= True
+local_save          = False
+save_page_local     = True
 
 
 # --------------------------------------------------------------------

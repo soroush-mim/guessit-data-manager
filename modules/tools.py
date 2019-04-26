@@ -12,8 +12,6 @@ import modules.config.config as config
 from modules.config.config import logger
 from modules.resources.__handler import Resources
 
-download_page_dir = f'{config.main_dir}/download/page'
-
 
 def collect_data_id_from_resource(pages, base, patterns):
     """
@@ -105,9 +103,9 @@ def get_guessed_location(url):
     db_name = get_db_name_from_url(url)
 
     if resource and db_name:
-        return f'{download_page_dir}/{resource}/{db_name}'
+        return f'{config.download_page_dir}/{resource}/{db_name}'
     else:
-        return f'{download_page_dir}/others'
+        return f'{config.download_page_dir}/others'
 
 
 def download(url, local_filename=None):
