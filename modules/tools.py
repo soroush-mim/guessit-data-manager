@@ -4,6 +4,7 @@ import base64
 import os
 import re
 import time
+import functools
 
 import aiohttp
 import requests
@@ -275,6 +276,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
                 await asyncio.sleep(delay)
                 logger.info(error)
 
+        # urls that not downloaded
+
     def split_list(input_list, step):
         return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
 
@@ -283,7 +286,13 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
         make tasks and run them in a queue
         :return dict of {url: html_page}
         """
+        logger.debug(f'input urls for download are: {len(url_list)}')
+        url_list = list(set(url_list))
+
+        logger.debug(f'len the url_list after delete duplicates = {len(url_list)}')
+
         urls_splited = split_list(url_list, workers)
+
         responses = {}
 
         for urls in urls_splited:
@@ -291,6 +300,9 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
             res_list = await asyncio.gather(*tasks)
             responses.update({list(res.keys())[0]: list(res.values())[0] for res in res_list})
 
+        logger.debug(
+            f'after run download_pages there are {len(responses)} Responses, '
+            f'we have lost {len(url_list)-len(responses)}')
         return responses
 
     loop = asyncio.get_event_loop()

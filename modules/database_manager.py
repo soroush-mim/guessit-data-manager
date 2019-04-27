@@ -239,7 +239,8 @@ def find_db(db_name):
         patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if
                     pattern.endswith('pattern')]
 
-        db += [{f'{resource}_id': _id} for _id in collect_data_id_from_resource(pages, base, patterns)]
+        id_list = list(set(collect_data_id_from_resource(pages, base, patterns)))
+        db += [{f'{resource}_id': _id} for _id in id_list]
 
         logger.critical(f'ids collected for {resource} resource')
 
