@@ -15,9 +15,10 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
         self.infoDiv = homepage_soup.select('div.info')[0]
 
-        get_player_table = lambda player: (
-            re.search('/[^/]*/[^/]*', player.select('td')[1].select('a')[1]['href'])[0],
-            player.select('td')[1].select('a')[1]['title'])
+        self.get_player_from_table = lambda player: {
+            'footballPlayer_id': re.search('/[^/]*/[^/]*', player.select('td')[1].select('a')[1]['href'])[0],
+            'name': player.select('td')[1].select('a')[1]['title']
+        }
 
         self.table_players_squad = homepage_soup.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')
 
@@ -104,8 +105,29 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
     def getter_defence(self):
         return self.rating_row[3].text.replace('Defence\xa0', '').strip()
 
-    
+    @property
+    def getter_team_name(self):
+        return re.sub(r'\(.*\)', '', self.infoDiv.find('h1').text).strip()
 
+    @property
+    def getter_team_id(self):
+        return re.search(r'.*?\(ID\: ([0-9]*?)\)', self.infoDiv.find('h1').text).group(1).strip()
+
+    @property
+    def getter_league_name(self):
+        return self.infoDiv.select('a')[1].text.strip()
+
+    @property
+    def getter_league_link(self):
+        return self.infoDiv.select('a')[1]['href']
+
+    @property
+    def getter_squad_players(self):
+        return [item for item in self.get_player_from_table(self.table_players_squad)]
+
+    @property
+    def getter_on_loan_players(self):
+        return [item for item in self.get_player_from_table(self.table_players_onLoan)]
 
 
 
