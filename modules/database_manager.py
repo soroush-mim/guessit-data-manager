@@ -11,6 +11,101 @@ from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
 
 
+def init_project():
+    """
+    create needed folders for project
+    and pages that will be downloaded
+
+    :return:
+    """
+
+    logger.critical('starting init_project')
+
+    for resource in get_resources():
+        for db_name in get_resources()[resource]:
+
+            directory = f'{config.main_dir}/download/page/{resource}/{db_name}/'
+            if os.path.exists(directory):
+                continue
+
+            try:
+                os.makedirs(directory)
+            except Exception as error:
+                logger.error(error)
+
+    os.makedirs(f'{config.dataset_dir}')
+    os.makedirs(f'{config.download_page_dir}/others')
+
+
+def download_resources(resource, db_name):
+    """
+    download all the data from web
+
+    downloading wanted pages for
+    a specific pair of resource and db
+    and saving them with make_soup
+
+    :param
+
+    resource (str): name of site.
+        - example: 'sofifa', 'imdb'
+
+    db_name (str): data name. example:
+        - example: 'footballdb', 'playerdb'
+
+    :returns
+    None: function has no return
+
+    """
+    logger.critical(f'downloading resources for {db_name} dataset from {resource} resource')
+
+    base_url = Resources[resource][db_name]['base']
+    page_queue_urls = Resources[resource][db_name][f'{db_name}_list']
+
+    patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
+                x.endswith('_pattern')]
+
+    urls_for_download = []
+    for page_url in page_queue_urls:
+        souped_page = make_soup(page_url)
+
+        for pattern in patterns:
+            urls = list(map(lambda tag: tag['href'],
+                            souped_page.find_all('a', {'href': re.compile(pattern)})))
+            for url in urls:
+                urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
+
+    make_soup(urls_for_download)
+
+    logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
+
+
+def update_db(db_name, begin=None, end=None, updating_step=1):
+    """
+    update all data of one db
+
+    :param db_name:
+    :param begin:
+    :param end:
+    :param updating_step:
+    :return:
+    """
+
+    db = load_db(db_name)
+
+    begin = begin if begin is not None else 0
+    end = end if end is not None else len(db)
+
+    for i in range(begin, end, updating_step):
+        logger.critical(f'updating data number {i} in {db_name} dataset')
+
+        db[i].update(update_data(db_name, db[i]))
+
+        logger.critical(f'data number {i} in {db_name} dataset updated successfully')
+
+    save_db(db, db_name)
+
+
 def update_data(db_name, data):
     """
     use dataGetters classes for collecting data
@@ -34,7 +129,7 @@ def update_data(db_name, data):
 
             page = make_soup(page_link)
 
-            getter_module = globals()[f'get_{db_name}_data_from_{resource}'](page)
+            getter_module = globals()[f'Getter_{db_name}_{resource}'](page)
 
         logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
@@ -113,32 +208,6 @@ def get_expired_data(db, begin, end):
     return old_data
 
 
-def update_db(db_name, begin=None, end=None, updating_step=1):
-    """
-    update all data of one db
-
-    :param db_name:
-    :param begin:
-    :param end:
-    :param updating_step:
-    :return:
-    """
-
-    db = load_db(db_name)
-
-    begin = begin if begin is not None else 0
-    end = end if end is not None else len(db)
-
-    for i in range(begin, end, updating_step):
-        logger.critical(f'updating data number {i} in {db_name} dataset')
-
-        db[i].update(update_data(db_name, db[i]))
-
-        logger.critical(f'data number {i} in {db_name} dataset updated successfully')
-
-    save_db(db, db_name)
-
-
 def find_db(db_name):
     """
     finding ids and saving them in a json file for each db
@@ -174,11 +243,6 @@ def init_db(db_name):
     open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
 
 
-def save_pages(url, patterns):
-    pass
-
-
-
 def check_get_function(data_name, resource, page_link):
     """
 
@@ -205,75 +269,6 @@ def check_get_function(data_name, resource, page_link):
             logger.warning(f'no "{module.__name__}" from "{page_link}" becuase {error}')
 
     pprint(new_data)
-
-
-def download_resources(resource, db_name):
-    """
-    download all the data from web
-
-    downloading wanted pages for
-    a specific pair of resource and db
-    and saving them with make_soup
-
-    :param
-
-    resource (str): name of site.
-        - example: 'sofifa', 'imdb'
-
-    db_name (str): data name. example:
-        - example: 'footballdb', 'playerdb'
-
-    :returns
-    None: function has no return
-
-    """
-    logger.critical(f'downloading resources for {db_name} dataset from {resource} resource')
-
-    base_url = Resources[resource][db_name]['base']
-    page_queue_urls = Resources[resource][db_name][f'{db_name}_list']
-
-    patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
-                x.endswith('_pattern')]
-
-    urls_for_download = []
-    for page_url in page_queue_urls:
-        souped_page = make_soup(page_url)
-
-        for pattern in patterns:
-            urls = list(map(lambda tag: tag['href'],
-                            souped_page.find_all('a', {'href': re.compile(pattern)})))
-            for url in urls:
-                urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
-
-    make_soup(urls_for_download)
-
-    logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
-
-
-def init_project():
-    """
-    create needed folders for project
-    and pages that will be downloaded
-
-    :return:
-    """
-
-    logger.critical('starting init_project')
-
-    for resource in get_resources():
-        for db_name in get_resources()[resource]:
-
-            directory = f'{config.main_dir}/download/page/{resource}/{db_name}/'
-            if os.path.exists(directory):
-                continue
-
-            try:
-                os.makedirs(directory)
-            except Exception as error:
-                logger.error(error)
-
-    os.makedirs(f'{config.dataset_dir}')
-    os.makedirs(f'{config.download_page_dir}/others')
 
 
 
