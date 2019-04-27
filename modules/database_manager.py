@@ -18,7 +18,7 @@ files = [re.search(r'.*?([A-Za-z_]*?).py', file).group(1) for file in
          glob.glob('./modules/data_getters/*.py') if not re.search(r'__[a-zA-Z_]*.py', file)]
 
 for file in files:
-    importlib.import_module(f'from modules.data_getters.{file}import *')
+    exec(f'from modules.data_getters.{file} import *')
 
 
 
