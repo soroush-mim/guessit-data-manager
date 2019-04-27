@@ -271,7 +271,6 @@ def check_get_function(data_name, resource, page_link):
     pprint(new_data)
 
 
-
 # def download_db_link(url):
 #     logger.critical(f'trying to download url : {url}')
 #

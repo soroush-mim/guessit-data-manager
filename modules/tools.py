@@ -154,10 +154,11 @@ def make_soup(urls):
     2. return page as soup object
 
     """
-    logger.debug(f'start make_soup for url = {urls}')
 
     if not isinstance(urls, list):
         url = urls
+        logger.debug(f'start make_soup for url = {url}')
+
         file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
         if os.path.isfile(file_address):
@@ -172,6 +173,8 @@ def make_soup(urls):
         return soup(page_source, 'html.parser')
 
     else:
+        logger.debug(f'start make_soup for url = {urls if len(urls)< 2 else str(urls[:2]).replace("]", ", ...]")} len={len(urls)}')
+
         download_pages(urls)
 
 
@@ -254,8 +257,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
 
         try:
             return {url: open(file_address, 'r').read()}
-        except Exception as error:
-            logger.debug(error)
+        except FileNotFoundError as error:
+            logger.debug(f'start downloading {url}')
 
         for i in range(try_count):
             try:
