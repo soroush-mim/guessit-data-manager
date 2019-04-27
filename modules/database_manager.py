@@ -14,8 +14,8 @@ import glob
 import importlib
 import re
 
-files = [re.search('.*?([A-Za-z]*?).py', file).group(1) for file in
-         glob.glob('./modules/data_getters/*.py') if not re.search('__[a-zA-Z]*.py', file)]
+files = [re.search(r'.*?([A-Za-z_]*?).py', file).group(1) for file in
+         glob.glob('./modules/data_getters/*.py') if not re.search(r'__[a-zA-Z_]*.py', file)]
 
 for file in files:
     importlib.import_module(f'modules.data_getters.{file}')
