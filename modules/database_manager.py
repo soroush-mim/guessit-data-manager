@@ -10,6 +10,17 @@ import modules.config.config as config
 from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
 
+import glob
+import importlib
+import re
+
+files = [re.search('.*?([A-Za-z]*?).py', file).group(1) for file in
+         glob.glob('./modules/data_getters/*.py') if not re.search('__[a-zA-Z]*.py', file)]
+
+for file in files:
+    importlib.import_module(f'modules.data_getters.{file}')
+
+
 
 def init_project():
     """
