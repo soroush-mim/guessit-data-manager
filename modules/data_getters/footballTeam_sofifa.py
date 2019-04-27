@@ -2,32 +2,36 @@ from modules.data_getters.__baseClass import DataGetterBaseClass
 import re
 from modules.data_getters.__tools import money_value
 
+
 class Getter_footballTeam_sofifa(DataGetterBaseClass):
     """
     a class for getting footballTeams data from sofifa 
     that get page soup file for input 
     """
 
-    def __init__(self, homepage_soup):
-        self.rightSide_page = homepage_soup.select('div.columns')[2].select('ul.pl')[0].findAll('li')
+    def __init__(self, page):
+        DataGetterBaseClass.__init__(self, page)
 
-        self.rating_row = homepage_soup.select('div.columns')[1].select('div')
+        self.rightSide_page = page.select('div.columns')[2].select('ul.pl')[0].findAll('li')
 
-        self.infoDiv = homepage_soup.select('div.info')[0]
+        self.rating_row = page.select('div.columns')[1].select('div')
+
+        self.infoDiv = page.select('div.info')[0]
 
         self.get_player_from_table = lambda player: {
             'footballPlayer_id': re.search('/[^/]*/[^/]*', player.select('td')[1].select('a')[1]['href'])[0],
             'name': player.select('td')[1].select('a')[1]['title']
         }
 
-        self.table_players_squad = homepage_soup.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')
+        self.table_players_squad = \
+            page.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')
 
-        self.table_players_onLoan = homepage_soup.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
+        self.table_players_onLoan = \
+            page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
 
     @property
     def getter_home_stadium(self):
         return self.rightSide_page[0].text.replace('Home Stadium', '').strip()
-
 
     @property
     def getter_rival_team(self):
@@ -40,10 +44,6 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
     @property
     def getter_domestic_prestige(self):
         return self.rightSide_page[3].text.replace('Domestic Prestige', '').strip()
-
-    @property
-    def getter_transfer_budget(self):
-        return self.rightSide_page[4].text.replace('Transfer Budget', '').strip()
 
     @property
     def getter_transfer_budget(self):
@@ -111,7 +111,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
     @property
     def getter_team_id(self):
-        return re.search(r'.*?\(ID\: ([0-9]*?)\)', self.infoDiv.find('h1').text).group(1).strip()
+        return re.search(r'.*?\(ID: ([0-9]*?)\)', self.infoDiv.find('h1').text).group(1).strip()
 
     @property
     def getter_league_name(self):
@@ -128,8 +128,3 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
     @property
     def getter_on_loan_players(self):
         return [item for item in self.get_player_from_table(self.table_players_onLoan)]
-
-
-
-
-
