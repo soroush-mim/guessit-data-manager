@@ -83,7 +83,7 @@ def download_resources(resource, db_name):
     urls_for_download = []
     for page_url in page_queue_urls:
         logger.debug(f'goes for {page_url}')
-        souped_page = soup(page_queue_htmls[page_url])
+        souped_page = soup(page_queue_htmls[page_url], features='html.parser')
         logger.debug(f'after getting soup from dict')
 
         for pattern in patterns:
