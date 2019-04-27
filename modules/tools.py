@@ -176,8 +176,8 @@ def make_soup(urls):
     else:
         logger.debug(f'start make_soup for url = '
                      f'{urls if len(urls)< 2 else str(urls[:2]).replace("]", ", ...]")} len={len(urls)}')
-        return download_pages(urls)
-        # return {key: soup(value, features="html.parser") for key, value in download_pages(urls).items()}
+        # return download_pages(urls)
+        return {key: soup(value, features="html.parser") for key, value in download_pages(urls).items()}
 
 
 def get_page(url, try_count=10, delay=0):
