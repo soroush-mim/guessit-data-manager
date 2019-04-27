@@ -12,43 +12,42 @@ def arg_parse():
     parser = argparse.ArgumentParser(description='Process some integers.')
 
     parser.add_argument(
-        '-dr', '--dlres',
-        dest='dlres', default=None,
-        type=str, nargs=2,
-        help='run the download resource function\n app.py -dr <resource> <db_name>',
-    )
-    parser.add_argument(
-        '-fd', '--finddb',
-        dest='finddb', default=None,
+        '-r', '--run',
+        dest='function', default=None,
         type=str, nargs=1,
-        help='Createss dataset with only id\n app.py -fd <db_name>',
+        help='name of function to run',
     )
+
     parser.add_argument(
-        '-ud', '--updatedb',
-        dest='updatedb', default=None,
+        '-db', '--db_name',
+        dest='db', default=None,
         type=str, nargs=1,
-        help='Update all fields of dataset using data getterds\n app.py -ud <db_name>',
+        help='name of dataset',
     )
+
     parser.add_argument(
-        '-inpr', '--initproject',
-        dest='initproject', default=None,
-        type=str, nargs='*',
-        help='initialize project and prepare folder structure\n app.py -inpr <db_name>',
+        '-res', '--resource',
+        dest='resource', default=None,
+        type=str, nargs=1,
+        help='name of resource',
     )
 
     args = parser.parse_args()
 
-    if args.dlres:
-        dbManager.download_resources(args.dlres[0], args.dlres[1])
-
-    if args.finddb:
-        dbManager.find_db(args.finddb[0])
-
-    if args.updatedb:
-        dbManager.update_db(args.updatedb[0])
-
-    if args.initproject:
-        dbManager.init_project()
+    if args.function:
+        
+        if args.function in ['dr', 'download_resource']:
+            dbManager.download_resources(db_name = args.db_name , resource = args.resource)
+        
+        elif args.function in ['ip', 'init_project']:
+            dbManager.init_project()
+        
+        elif args.function in ['fd', 'find_db']:
+            dbManager.find_db(db_name = args.db_name)
+        
+        elif args.function in ['ud', 'update_db']:
+            dbManager.update_db(db_name = args.db_name)
+        
 
     # if there is any arg, return True
     if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] == '-log'):
