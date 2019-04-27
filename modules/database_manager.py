@@ -78,12 +78,12 @@ def download_resources(resource, db_name):
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
                 x.endswith('_pattern')]
 
-    page_queue_soups = download_pages(page_queue_urls)
+    page_queue_htmls = download_pages(page_queue_urls)
 
     urls_for_download = []
     for page_url in page_queue_urls:
         logger.debug(f'goes for {page_url}')
-        souped_page = soup(page_queue_soups[page_url])
+        souped_page = soup(page_queue_htmls[page_url])
         logger.debug(f'after getting soup from dict')
 
         for pattern in patterns:
