@@ -33,8 +33,10 @@ def init_project():
             except Exception as error:
                 logger.error(error)
 
-    os.makedirs(f'{config.dataset_dir}')
-    os.makedirs(f'{config.download_page_dir}/others')
+    if not os.path.exists(f'{config.dataset_dir}'):
+        os.makedirs(f'{config.dataset_dir}')
+    if not os.path.exists(f'{config.download_page_dir}/others'):
+        os.makedirs(f'{config.download_page_dir}/others')
 
 
 def download_resources(resource, db_name):
@@ -90,6 +92,10 @@ def update_db(db_name, begin=None, end=None, updating_step=1):
     :param updating_step:
     :return:
     """
+    db_file_address = f'{config.dataset_dir}/{db_name}db.json'
+
+    if not os.path.isfile(db_file_address):
+        open(db_file_address, 'w+').write('[]')
 
     db = load_db(db_name)
 
