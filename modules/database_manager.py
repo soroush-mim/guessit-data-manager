@@ -78,9 +78,11 @@ def download_resources(resource, db_name):
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
                 x.endswith('_pattern')]
 
+    page_queue_soups = make_soup(page_queue_urls)
+
     urls_for_download = []
     for page_url in page_queue_urls:
-        souped_page = make_soup(page_url)
+        souped_page = page_queue_soups[page_url]
 
         for pattern in patterns:
             urls = list(map(lambda tag: tag['href'],
