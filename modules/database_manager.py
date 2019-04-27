@@ -82,7 +82,9 @@ def download_resources(resource, db_name):
 
     urls_for_download = []
     for page_url in page_queue_urls:
+        logger.debug(f'goes for {page_url}')
         souped_page = page_queue_soups[page_url]
+        logger.debug(f'after getting soup from dict')
 
         for pattern in patterns:
             urls = list(map(lambda tag: tag['href'],
