@@ -92,11 +92,6 @@ def update_db(db_name, begin=None, end=None, updating_step=1):
     :param updating_step:
     :return:
     """
-    db_file_address = f'{config.dataset_dir}/{db_name}db.json'
-
-    if not os.path.isfile(db_file_address):
-        open(db_file_address, 'w+').write('[]')
-
     db = load_db(db_name)
 
     begin = begin if begin is not None else 0
