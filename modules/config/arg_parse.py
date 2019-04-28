@@ -14,28 +14,28 @@ def arg_parse():
     parser.add_argument(
         '-r', '--run',
         dest='function', default=None,
-        type=str, nargs=1,
+        type=str,
         help='name of function to run',
     )
 
     parser.add_argument(
         '-db', '--db_name',
         dest='db', default=None,
-        type=str, nargs=1,
+        type=str,
         help='name of dataset',
     )
 
     parser.add_argument(
         '-res', '--resource',
         dest='resource', default=None,
-        type=str, nargs=1,
+        type=str,
         help='name of resource',
     )
 
     args = parser.parse_args()
 
     if args.function:
-        
+        logger.debug( f'args.function = {args.function}')
         if args.function in ['dr', 'download_resource']:
            logger.debug( f'[dr, download_resource] , db_name = {args.db_name} , resource = {args.resource}')
 
