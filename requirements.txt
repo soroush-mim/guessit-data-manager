@@ -5,3 +5,4 @@ pandas
 pprint
 flask
 bs4
+aiohttp
