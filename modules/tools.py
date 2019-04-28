@@ -274,8 +274,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                         return {url: site_html} if return_bool else None
 
             except Exception as error:
+                logger.error(f'try_time: {i}/{try_count}, when downloading {url}: {error}')
                 await asyncio.sleep(delay)
-                logger.info(error)
 
         # urls that not downloaded
 
