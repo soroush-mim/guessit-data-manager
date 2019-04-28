@@ -26,8 +26,11 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         self.table_players_squad = \
             page.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')
 
-        self.table_players_onLoan = \
-            page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
+        if len(page.select('table.table-hover.persist-area')) > 1 :
+            self.table_players_onLoan = \
+                page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
+        else:
+            self.table_players_onLoan = None
 
     @property
     def getter_home_stadium(self):
@@ -127,4 +130,6 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
     @property
     def getter_on_loan_players(self):
-        return [item for item in self.get_player_from_table(self.table_players_onLoan)]
+        if self.table_players_onLoan:
+            return [item for item in self.get_player_from_table(self.table_players_onLoan)]
+        else: return None
