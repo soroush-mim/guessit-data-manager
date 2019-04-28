@@ -35,18 +35,22 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.function:
-        logger.debug( f'args.function = {args.function}')
+        logger.debug( f'runing arg with args.function = {args.function}')
         if args.function in ['dr', 'download_resource']:
-           logger.debug( f'[dr, download_resource] , db_name = {args.db_name} , resource = {args.resource}')
+            dbManager.download_resources(db_name = args.db , resource = args.resource)
+            logger.debug( f'runing download_resources with db_name = {args.db} , resource = {args.resource}')
 
         elif args.function in ['ip', 'init_project']:
-            logger.debug( f'[ip, init_project] ')
+            dbManager.init_project()
+            logger.debug( f'runing init_project()')
         
         elif args.function in ['fd', 'find_db']:
-           logger.debug( f' [fd, find_db]  , db_name = {args.db_name} ')
+            dbManager.find_db(db_name = args.db)
+            logger.debug( f' runing find_db with db_name = {args.db} ')
         
         elif args.function in ['ud', 'update_db']:
-            logger.debug( f' [ud, update_db]  , db_name = {args.db_name} ')
+            dbManager.update_db(db_name = args.db )
+            logger.debug( f' runing update_db db_name = {args.db} ')
         
 
     # if there is any arg, return True
