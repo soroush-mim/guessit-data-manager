@@ -300,17 +300,17 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         for urls in urls_splited:
             tasks = [asyncio.ensure_future(webpage_downloader(url, try_count, delay)) for url in urls]
             res_list = await asyncio.gather(*tasks)
-            responses.update({list(res.keys())[0]: list(res.values())[0] for res in res_list})
+            if return_bool:
+                responses.update({list(res.keys())[0]: list(res.values())[0] for res in res_list})
 
-        logger.debug(
-            f'after run download_pages there are {len(responses)} Responses, '
-            f'we have lost {len(url_list)-len(responses)}')
+
         return responses if return_bool else None
 
     loop = asyncio.get_event_loop()
-    response = loop.run_until_complete(loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool)))
+    task = loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool))
+    response = loop.run_until_complete(task)
 
-    loop.close()
+    # loop.close()
 
     return response if return_bool else None
 
