@@ -78,6 +78,7 @@ def download_resources(resource, db_name):
     patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
                 x.endswith('_pattern')]
 
+    print('111')
     page_queue_htmls = download_pages(page_queue_urls)
 
     urls_for_download = []
@@ -91,7 +92,8 @@ def download_resources(resource, db_name):
             for url in urls:
                 urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
 
-    download_pages(urls_for_download, return_bool=False)
+    print('222')
+    download_pages(urls_for_download)
 
     logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
 

@@ -250,7 +250,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     :return: list of responses
     """
 
-    async def webpage_downloader(url, try_count, delay):
+    async def single_page_downloader(url, try_count, delay):
         """
         download one page by send get request to the url
         save the page and return it as string
@@ -259,7 +259,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
         try:
-            return {url: open(file_address, 'r').read()} if return_bool else None
+            output = {url: open(file_address, 'r').read()}
+            return output if return_bool else None
         except FileNotFoundError as error:
             logger.debug(f'start downloading {url}')
 
@@ -272,7 +273,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(site_html)
                         f.close()
-                        return {url: site_html} if return_bool else None
+                        output = {url: site_html}
+                        return output if return_bool else None
 
             except Exception as error:
                 logger.error(f'try_time: {i}/{try_count}, when downloading {url}: {error}')
@@ -298,18 +300,22 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         responses = {}
 
         for urls in urls_splited:
-            tasks = [asyncio.ensure_future(webpage_downloader(url, try_count, delay)) for url in urls]
+            tasks = [asyncio.ensure_future(single_page_downloader(url, try_count, delay)) for url in urls]
             res_list = await asyncio.gather(*tasks)
             if return_bool:
                 responses.update({list(res.keys())[0]: list(res.values())[0] for res in res_list})
 
-
         return responses if return_bool else None
 
-    loop = asyncio.new_event_loop()
-    task = loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool))
-    response = loop.run_until_complete(task)
+    logger.debug(f'start make_soup for url = '
+                 f'{url_list if len(url_list) < 2 else str(url_list[:2]).replace("]", ", ...]")} len={len(url_list)}')
 
+    loop = asyncio.new_event_loop()
+    print('333')
+    task = loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool))
+    print('444')
+    response = loop.run_until_complete(task)
+    print('555')
     loop.close()
 
     return response if return_bool else None
