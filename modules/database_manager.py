@@ -132,7 +132,7 @@ def update_data(db_name, data):
     """
 
     logger.info(f'update_data started with data_name={db_name},  data={data}')
-
+    data = {}
     for resource in get_resources(db_name):
         logger.info(f'starting to updating "{db_name}" data from "{resource}" resource')
 
@@ -146,9 +146,11 @@ def update_data(db_name, data):
 
             getter_module = globals()[f'Getter_{db_name}_{resource}'](page)
 
+            data.update(getter_module.get_all_data())
+
         logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
-    return getter_module.get_all_data()
+    return data
 
 
 def load_db(db_name):
