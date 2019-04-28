@@ -92,7 +92,7 @@ def download_resources(resource, db_name):
                 urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
 
     download_pages(urls_for_download, return_bool=False)
-    
+
     logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
 
 
