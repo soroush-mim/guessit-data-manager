@@ -246,6 +246,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     :param workers:
     :param try_count:
     :param delay:
+    :param return_bool:
     :return: list of responses
     """
 
@@ -282,7 +283,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     def split_list(input_list, step):
         return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
 
-    async def async_handler(url_list, workers, try_count, delay):
+    async def async_handler(url_list, workers, try_count, delay, return_bool):
         """
         make tasks and run them in a queue
         :return dict of {url: html_page}
@@ -307,10 +308,11 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         return responses if return_bool else None
 
     loop = asyncio.get_event_loop()
-    response = loop.run_until_complete(async_handler(url_list, workers, try_count, delay))
+    response = loop.run_until_complete(loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool)))
+
     loop.close()
 
-    return response
+    return response if return_bool else None
 
 
 def md5_encode(text):
