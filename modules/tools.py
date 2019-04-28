@@ -238,7 +238,7 @@ def get_resources(data_name=None):
         return [resource for resource in Resources.keys() if data_name in Resources[resource]]
 
 
-def download_pages(url_list, workers=50, try_count=10, delay=1):
+def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True):
     """
     download a list of the urls and save them if you want
 
@@ -258,7 +258,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
         file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
         try:
-            return {url: open(file_address, 'r').read()}
+            return {url: open(file_address, 'r').read()} if return_bool else None
         except FileNotFoundError as error:
             logger.debug(f'start downloading {url}')
 
@@ -271,7 +271,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(site_html)
                         f.close()
-                        return {url: site_html}
+                        return {url: site_html} if return_bool else None
 
             except Exception as error:
                 await asyncio.sleep(delay)
@@ -304,7 +304,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1):
         logger.debug(
             f'after run download_pages there are {len(responses)} Responses, '
             f'we have lost {len(url_list)-len(responses)}')
-        return responses
+        return responses if return_bool else None
 
     loop = asyncio.get_event_loop()
     response = loop.run_until_complete(async_handler(url_list, workers, try_count, delay))
