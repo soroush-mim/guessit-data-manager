@@ -134,12 +134,13 @@ def update_data(db_name, data):
     """
 
     logger.info(f'update_data started with data_name={db_name},  data={data}')
-    data = {}
+    new_data = {}
     for resource in get_resources(db_name):
         logger.info(f'starting to updating "{db_name}" data from "{resource}" resource')
 
         data_id_name = f'{resource}_id'
         if data_id_name in data:
+
             data_id = data[f'{data_id_name}']
 
             page_link = Resources[resource][db_name][db_name].format(data_id=data_id)
@@ -148,11 +149,11 @@ def update_data(db_name, data):
 
             getter_module = globals()[f'Getter_{db_name}_{resource}'](page)
 
-            data.update(getter_module.get_all_data())
+            new_data.update(getter_module.get_all_data())
 
         logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
-    return data
+    return new_data
 
 
 def load_db(db_name):
