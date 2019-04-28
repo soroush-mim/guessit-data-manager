@@ -28,11 +28,12 @@ def collect_data_id_from_resource(pages, base, patterns):
     logger.info(f'start collecting ids from {base}')
     new_ids = []
 
+    pages_html = download_pages(pages)
     for page in pages:
 
         logger.debug(f'collecting ids from {page}')
 
-        souped_page = make_soup(page)
+        souped_page = soup(pages_html[page], features='html.parser')
 
         for pattern in patterns:
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
