@@ -33,7 +33,7 @@ def collect_data_id_from_resource(pages, base, patterns):
 
         logger.debug(f'collecting ids from {page}')
 
-        souped_page = soup(pages_html[page], features='html.parser')
+        souped_page = soup(pages_html.pop(page), features='html.parser')
 
         for pattern in patterns:
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
@@ -154,29 +154,25 @@ def make_soup(urls):
     2. return page as soup object
 
     """
+    if isinstance(urls, list):
+        raise MemoryError('to avoid memory overflow please use download_pages function for download list of soups')
+        # return {key: soup(value, features="html.parser") for key, value in download_pages(urls).items()}
 
-    if not isinstance(urls, list):
-        url = urls
-        logger.debug(f'start make_soup for url = {url}')
+    url = urls
+    logger.debug(f'start make_soup for url = {url}')
 
-        file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
+    file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
-        if os.path.isfile(file_address):
-            page_source = open(file_address, encoding='utf-8').read()
-        else:
-            page_source = get_page(url)
-            try:
-                open(file_address, 'w+', encoding='utf-8').write(page_source)
-            except Exception as error:
-                logger.error(error)
-
-        return soup(page_source, 'html.parser')
-
+    if os.path.isfile(file_address):
+        page_source = open(file_address, encoding='utf-8').read()
     else:
-        logger.debug(f'start make_soup for url = '
-                     f'{urls if len(urls)< 2 else str(urls[:2]).replace("]", ", ...]")} len={len(urls)}')
-        # return download_pages(urls)
-        return {key: soup(value, features="html.parser") for key, value in download_pages(urls).items()}
+        page_source = get_page(url)
+        try:
+            open(file_address, 'w+', encoding='utf-8').write(page_source)
+        except Exception as error:
+            logger.error(error)
+
+    return soup(page_source, 'html.parser')
 
 
 def get_page(url, try_count=10, delay=0):
