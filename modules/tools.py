@@ -311,11 +311,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                  f'{url_list if len(url_list) < 2 else str(url_list[:2]).replace("]", ", ...]")} len={len(url_list)}')
 
     loop = asyncio.new_event_loop()
-    print('333')
     task = loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool))
-    print('444')
     response = loop.run_until_complete(task)
-    print('555')
     loop.close()
 
     return response if return_bool else None
