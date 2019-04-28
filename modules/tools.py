@@ -306,11 +306,11 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
         return responses if return_bool else None
 
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
     task = loop.create_task(async_handler(url_list, workers, try_count, delay, return_bool))
     response = loop.run_until_complete(task)
 
-    # loop.close()
+    loop.close()
 
     return response if return_bool else None
 
