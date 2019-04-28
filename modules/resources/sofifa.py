@@ -3,7 +3,7 @@ res = {
 
         'footballPlayer_list': [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)],
 
-        'footballPlayer': 'https://sofifa.com/player/{data_id}',
+        'footballPlayer': 'https://sofifa.com{data_id}',
 
         'base': 'https://sofifa.com',
 
@@ -15,7 +15,7 @@ res = {
 
         'footballTeam_list': [f'https://sofifa.com/teams?offset={i}' for i in range(0, 700, 60)],
 
-        'footballTeam': 'https://sofifa.com/team/{data_id}',
+        'footballTeam': 'https://sofifa.com{data_id}',
 
         'base': 'https://sofifa.com',
 

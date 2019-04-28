@@ -21,7 +21,6 @@ for file in files:
     exec(f'from modules.data_getters.{file} import *')
 
 
-
 def init_project():
     """
     create needed folders for project
