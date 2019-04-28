@@ -1,6 +1,6 @@
 import argparse
 import sys
-
+from modules.config.config import logger
 import modules.database_manager as dbManager
 
 
@@ -37,16 +37,16 @@ def arg_parse():
     if args.function:
         
         if args.function in ['dr', 'download_resource']:
-            dbManager.download_resources(db_name = args.db_name , resource = args.resource)
-        
+           logger.debug( f'[dr, download_resource] , db_name = {args.db_name} , resource = {args.resource}')
+
         elif args.function in ['ip', 'init_project']:
-            dbManager.init_project()
+            logger.debug( f'[ip, init_project] ')
         
         elif args.function in ['fd', 'find_db']:
-            dbManager.find_db(db_name = args.db_name)
+           logger.debug( f' [fd, find_db]  , db_name = {args.db_name} ')
         
         elif args.function in ['ud', 'update_db']:
-            dbManager.update_db(db_name = args.db_name)
+            logger.debug( f' [ud, update_db]  , db_name = {args.db_name} ')
         
 
     # if there is any arg, return True
