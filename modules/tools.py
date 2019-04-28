@@ -323,7 +323,6 @@ def md5_encode(text):
     :param text: str
     :return: str
     """
-    logger.debug(f'url to md5 : {text}')
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
 
