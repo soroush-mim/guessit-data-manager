@@ -49,8 +49,6 @@ def collect_data_id_from_resource(pages, base, patterns):
     return new_ids
 
 
-
-
 def get_resource_from_url(url):
     """
     getting resource of a url
@@ -325,6 +323,7 @@ def md5_encode(text):
     :param text: str
     :return: str
     """
+    logger.debug(f'url to md5 : {text}')
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
 
