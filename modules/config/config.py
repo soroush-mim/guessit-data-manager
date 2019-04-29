@@ -6,7 +6,7 @@ from attrdict import AttrDict
 # project data config
 # --------------------------------------------------------------------
 
-with open("config.yaml" , 'r') as yamlfileobj:
+with open("./modules/config/config.yaml" , 'r') as yamlfileobj:
     config = AttrDict(yaml.safe_load(yamlfileobj))
 
 
