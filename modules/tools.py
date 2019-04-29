@@ -160,10 +160,10 @@ def make_soup(url):
     file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
     if os.path.isfile(file_address):
-        logger.info(f'already downloaded {url}')
+        logger.debug(f'already downloaded {url}')
         page_source = open(file_address, encoding='utf-8').read()
     else:
-        logger.info(f'start downloading {url}')
+        logger.debug(f'start downloading {url}')
         page_source = get_page(url)
         try:
             open(file_address, 'w+', encoding='utf-8').write(page_source)

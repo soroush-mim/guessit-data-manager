@@ -132,7 +132,7 @@ def update_data(db_name, data):
     new_data = {}
     for resource in get_resources(db_name):
         data_id_name = f'{resource}_id'
-        logger.info(f'updating data => db_name:"{db_name}" resouce:"{resource}" {data_id_name}="{data[data_id_name]}" data_record_len="{len(data)}"')
+        logger.info(f'updating data => db_name:"{db_name}" {data_id_name}="{data[data_id_name]}" data_record_len="{len(data)}"')
 
         if data_id_name in data:
 
