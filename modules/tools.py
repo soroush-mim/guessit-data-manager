@@ -33,7 +33,7 @@ def collect_data_id_from_resource(pages, base, patterns):
 
         logger.debug(f'collecting ids from {page}')
 
-        souped_page = soup(pages_html.pop(page), features='html.parser')
+        souped_page = soup(pages_html.pop(page), features='lxml')
 
         for pattern in patterns:
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
@@ -156,7 +156,7 @@ def make_soup(urls):
     """
     if isinstance(urls, list):
         raise MemoryError('to avoid memory overflow please use download_pages function for download list of soups')
-        # return {key: soup(value, features="html.parser") for key, value in download_pages(urls).items()}
+        # return {key: soup(value, features="lxml") for key, value in download_pages(urls).items()}
 
     url = urls
     logger.debug(f'start make_soup for url = {url}')
@@ -172,7 +172,7 @@ def make_soup(urls):
         except Exception as error:
             logger.error(error)
 
-    return soup(page_source, 'html.parser')
+    return soup(page_source, features='lxml')
 
 
 def get_page(url, try_count=10, delay=0):
