@@ -10,4 +10,4 @@ indentation | Space
 
 Field | Regex | Descereption
 ----- |-------|--------------
-name  | .*    | نام بازیکنان
+name  | .*    | mamaaad hastam az vaqti ke code mizanam kamaram dard mikone o shaba moqeye khaaab nemidunam kodum vari bekhabam
