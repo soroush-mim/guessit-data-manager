@@ -22,7 +22,10 @@ class Getter_footballPlayer_sofifa(DataGetterBaseClass):
 
         self.left_column_elements = self.columns[0].find_all('li')
 
-        self.third_column = self.columns[2].find_all('li')
+        self.third_column = []
+        
+        if len(self.columns) > 2:
+            self.third_column = self.columns[2].find_all('li')
 
         self.forth_column = []
 
