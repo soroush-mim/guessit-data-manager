@@ -56,12 +56,7 @@ def get_guessed_file_address(url):
     """
 
     def get_db_name_from_url(_url, _resource):
-        """
-        getting db_name of a url
 
-        :param _url:
-        :return:
-        """
         if not _resource:
             return None
 
@@ -75,12 +70,6 @@ def get_guessed_file_address(url):
         return _db_name[0] if len(_db_name) > 0 else None
 
     def get_resource_from_url(_url):
-        """
-        getting resource of a url
-
-        :param _url:
-        :return:
-        """
 
         resources = []
         for _resource in get_resources().keys():
@@ -92,12 +81,6 @@ def get_guessed_file_address(url):
         return resources[0] if len(resources) > 0 else None
 
     def get_guessed_directory(_url):
-        """
-            getting guessed_location of file that we can find them
-
-            :param _url:
-            :return:
-            """
 
         resource = get_resource_from_url(_url)
         db_name = get_db_name_from_url(_url, resource)
@@ -108,11 +91,6 @@ def get_guessed_file_address(url):
             return f'{config.download_page_dir}/others'
 
     def md5_encode(text):
-        """
-        encode the text to the md5 hex
-        :param text: str
-        :return: str
-        """
         return hashlib.md5(text.encode('utf-8')).hexdigest()
 
     # main function
@@ -218,6 +196,9 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     :return: list of responses
     """
 
+    def split_list(input_list, step):
+        return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
+
     async def single_page_downloader(url, try_count, delay):
         """
         download one page by send get request to the url
@@ -252,9 +233,6 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         # urls that not downloaded
         # comes to here
         logger.error(f'download FAILED! , could not get the page after {try_count} times of trying!')
-
-    def split_list(input_list, step):
-        return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
 
     async def async_handler(url_list, workers, try_count, delay, return_bool):
         """
