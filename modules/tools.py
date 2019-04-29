@@ -1,10 +1,8 @@
 import asyncio
 import hashlib
-import base64
 import os
 import re
 import time
-import functools
 
 import aiohttp
 import requests
@@ -49,52 +47,7 @@ def collect_data_id_from_resource(pages, base, patterns):
     return new_ids
 
 
-def get_resource_from_url(url):
-    """
-    getting resource of a url
-
-    :param url:
-    :return:
-    """
-
-    resources = []
-    for resource in get_resources().keys():
-        for db in list(get_resources()[resource].keys()):
-            if 'base' in get_resources()[resource][db]:
-                if any([get_resources()[resource][db]['base'] in url]):
-                    resources.append(resource)
-    if len(resources) > 0:
-        return resources[0]
-    else:
-        return None
-
-
-def get_db_name_from_url(url):
-    """
-    getting db_name of a url
-
-    :param url:
-    :return:
-    """
-
-    db_name = []
-    resource = get_resource_from_url(url)
-    if not resource:
-        return None
-        
-    for db in get_resources()[resource].keys():
-        for key, pattern in get_resources()[resource][db].items():
-            if 'pattern' in key:
-                if any([re.search(pattern, url)]):
-                    db_name.append(db)
-
-    if len(db_name) > 0:
-        return db_name[0]
-    else:
-        return None
-
-
-def get_guessed_location(url):
+def get_guessed_file_address(url):
     """
     getting guessed_location of file that we can find them
 
@@ -102,35 +55,46 @@ def get_guessed_location(url):
     :return:
     """
 
-    resource = get_resource_from_url(url)
-    db_name = get_db_name_from_url(url)
+    def get_db_name_from_url(_url, _resource):
 
-    if resource and db_name:
-        return f'{config.download_page_dir}/{resource}/{db_name}'
-    else:
-        return f'{config.download_page_dir}/others'
+        if not _resource:
+            return None
 
+        _db_name = []
+        for db in get_resources()[_resource].keys():
+            for key, pattern in get_resources()[_resource][db].items():
+                if 'pattern' in key:
+                    if any([re.search(pattern, _url)]):
+                        _db_name.append(db)
 
-def download(url, local_filename=None):
-    """
+        return _db_name[0] if len(_db_name) > 0 else None
 
-    :param url:
-    :param local_filename:
-    :return:
-    """
+    def get_resource_from_url(_url):
 
-    if local_filename is None:
-        local_filename = url.split('/')[-1]
-    else:
-        local_filename += '/' + url.split('/')[-1]
+        resources = []
+        for _resource in get_resources().keys():
+            for db in list(get_resources()[_resource].keys()):
+                if 'base' in get_resources()[_resource][db]:
+                    if any([get_resources()[_resource][db]['base'] in _url]):
+                        resources.append(_resource)
 
-    r = requests.get(url, stream=True)
-    with open(local_filename, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
+        return resources[0] if len(resources) > 0 else None
 
-    return local_filename
+    def get_guessed_directory(_url):
+
+        resource = get_resource_from_url(_url)
+        db_name = get_db_name_from_url(_url, resource)
+
+        if resource and db_name:
+            return f'{config.download_page_dir}/{resource}/{db_name}'
+        else:
+            return f'{config.download_page_dir}/others'
+
+    def md5_encode(text):
+        return hashlib.md5(text.encode('utf-8')).hexdigest()
+
+    # main function
+    return f"{get_guessed_directory(url)}/{md5_encode(url)}.html"
 
 
 def make_soup(url):
@@ -154,10 +118,11 @@ def make_soup(url):
     2. return page as soup object
 
     """
-    if isinstance(url, list):
-        raise MemoryError('to avoid memory overflow please use download_pages function for download list of soups')
 
-    file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
+    if isinstance(url, list):
+        raise MemoryError('to avoid memory overflow please use download_pages function for download list of pages')
+
+    file_address = get_guessed_file_address(url)
 
     if os.path.isfile(file_address):
         logger.debug(f'already downloaded {url}')
@@ -185,6 +150,8 @@ def get_page(url, try_count=10, delay=0):
     :returns
     str: html content of page
     """
+    logger.critical(f'some page is not downloaded before here. url= {url}')
+
     proxies = [{
         "http": None,
         "https": None,
@@ -200,7 +167,7 @@ def get_page(url, try_count=10, delay=0):
             time.sleep(delay)
 
     if not content:
-        logger.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
+        logger.error(f'download FAILED! , could not get the page after {try_count} times of trying!')
 
     return content
 
@@ -229,13 +196,16 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     :return: list of responses
     """
 
+    def split_list(input_list, step):
+        return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
+
     async def single_page_downloader(url, try_count, delay):
         """
         download one page by send get request to the url
         save the page and return it as string
         """
 
-        file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
+        file_address = get_guessed_file_address(url)
 
         try:
             output = {url: open(file_address, 'r').read()}
@@ -261,9 +231,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                 await asyncio.sleep(delay)
 
         # urls that not downloaded
-
-    def split_list(input_list, step):
-        return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
+        # comes to here
+        logger.error(f'download FAILED! , could not get the page after {try_count} times of trying!')
 
     async def async_handler(url_list, workers, try_count, delay, return_bool):
         """
@@ -287,6 +256,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
         return responses if return_bool else None
 
+    # main function
+
     logger.debug(f'start make_soup for url = '
                  f'{url_list if len(url_list) < 2 else str(url_list[:2]).replace("]", ", ...]")} len={len(url_list)}')
 
@@ -296,24 +267,3 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     loop.close()
 
     return response if return_bool else None
-
-
-def md5_encode(text):
-    """
-    encode the text to the md5 hex
-    :param text: str
-    :return: str
-    """
-    return hashlib.md5(text.encode('utf-8')).hexdigest()
-
-
-# def wait_to_connect(timeout=10, delay=2):
-#     connected = False
-#     while not connected:
-#         try:
-#             getPage('https://www.google.com', timeout=timeout)
-#             connected = True
-#         except:
-#             connected = False
-#             time.sleep(delay)
-#             print('no internet connection')
