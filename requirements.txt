@@ -8,3 +8,4 @@ bs4
 aiohttp
 lxml
 attrdict
+yaml
