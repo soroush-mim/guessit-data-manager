@@ -1,7 +1,7 @@
 main_dir: ./..
-project_dir: f'{main_dir}/guessit-data-manager'
-dataset_dir: f'{main_dir}/datasets'
-download_page_dir: f'{main_dir}/download/page'
+project_dir: ./../guessit-data-manager
+dataset_dir: ./../datasets
+download_page_dir: ./../download/page
 process_count: 4
 updating_step: 10
 finding_step: 10
