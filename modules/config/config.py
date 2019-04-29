@@ -29,7 +29,7 @@ save_page_local     = True
 logging.basicConfig(
     # datefmt='%y-%b-%d %H:%M:%S',
     datefmt='%H:%M:%S',
-    format='%(levelname)8s:[%(asctime)s][%(funcName)20s()]: %(message)s',
+    format='%(levelname)8s:[%(asctime)s][%(funcName)20s()][%(lineno)4s]: %(message)s',
 
     level=logging.DEBUG,
     handlers=[
