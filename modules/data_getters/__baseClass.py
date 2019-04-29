@@ -17,6 +17,6 @@ class DataGetterBaseClass:
 
             except Exception as error:
                 data[_property.replace('getter_', '')] = None
-                logger.error(f'for {_property} : {error}')
+                logger.error(f'{_property} : {error}')
 
         return data

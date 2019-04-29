@@ -18,17 +18,17 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
         self.infoDiv = page.select('div.info')[0]
 
-        self.get_player_from_table = lambda player: {
-            'footballPlayer_id': re.search('/[^/]*/[^/]*', player.select('td')[1].select('a')[1]['href'])[0],
-            'name': player.select('td')[1].select('a')[1]['title']
+        self.get_player_from_table = lambda table: {
+            'footballPlayer_id': re.search('/[^/]*/[^/]*', table.select('td')[1].select('a')[1]['href'])[0],
+            'name': table.select('td')[1].select('a')[1]['title']
         }
 
         self.table_players_squad = \
-            page.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')
+            page.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')[0]
 
         if len(page.select('table.table-hover.persist-area')) > 1 :
             self.table_players_onLoan = \
-                page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
+                page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')[0]
         else:
             self.table_players_onLoan = None
 
