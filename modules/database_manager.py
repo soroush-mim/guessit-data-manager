@@ -5,8 +5,7 @@ import re
 import time
 import urllib
 from pprint import pprint
-
-import modules.config.config as config
+from modules.config.config import config
 from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
 

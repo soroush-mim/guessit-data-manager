@@ -8,7 +8,7 @@ import aiohttp
 import requests
 from bs4 import BeautifulSoup as soup
 
-import modules.config.config as config
+from modules.config.config import config
 from modules.config.config import logger
 from modules.resources.__handler import Resources
 
