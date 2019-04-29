@@ -6,3 +6,4 @@ pprint
 flask
 bs4
 aiohttp
+lxml
