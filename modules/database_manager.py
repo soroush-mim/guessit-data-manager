@@ -161,12 +161,11 @@ def load_db(db_name):
     :return:
     """
 
-    try:
-        logger.info(f'trying to load {db_name} dataset from hard disk...')
+    logger.info(f'trying to load {db_name} dataset from hard disk...')
 
-        db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+    db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
 
-        logger.info(f'loading {db_name} dataset from hard disk is done.')
+    logger.info(f'loading {db_name} dataset from hard disk is done.')
 
     # except Exception as error:
 
