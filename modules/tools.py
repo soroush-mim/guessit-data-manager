@@ -47,52 +47,7 @@ def collect_data_id_from_resource(pages, base, patterns):
     return new_ids
 
 
-def get_resource_from_url(url):
-    """
-    getting resource of a url
-
-    :param url:
-    :return:
-    """
-
-    resources = []
-    for resource in get_resources().keys():
-        for db in list(get_resources()[resource].keys()):
-            if 'base' in get_resources()[resource][db]:
-                if any([get_resources()[resource][db]['base'] in url]):
-                    resources.append(resource)
-    if len(resources) > 0:
-        return resources[0]
-    else:
-        return None
-
-
-def get_db_name_from_url(url):
-    """
-    getting db_name of a url
-
-    :param url:
-    :return:
-    """
-
-    db_name = []
-    resource = get_resource_from_url(url)
-    if not resource:
-        return None
-        
-    for db in get_resources()[resource].keys():
-        for key, pattern in get_resources()[resource][db].items():
-            if 'pattern' in key:
-                if any([re.search(pattern, url)]):
-                    db_name.append(db)
-
-    if len(db_name) > 0:
-        return db_name[0]
-    else:
-        return None
-
-
-def get_guessed_location(url):
+def get_guessed_file_address(url):
     """
     getting guessed_location of file that we can find them
 
@@ -100,35 +55,68 @@ def get_guessed_location(url):
     :return:
     """
 
-    resource = get_resource_from_url(url)
-    db_name = get_db_name_from_url(url)
+    def get_db_name_from_url(_url, _resource):
+        """
+        getting db_name of a url
 
-    if resource and db_name:
-        return f'{config.download_page_dir}/{resource}/{db_name}'
-    else:
-        return f'{config.download_page_dir}/others'
+        :param _url:
+        :return:
+        """
+        if not _resource:
+            return None
 
+        _db_name = []
+        for db in get_resources()[_resource].keys():
+            for key, pattern in get_resources()[_resource][db].items():
+                if 'pattern' in key:
+                    if any([re.search(pattern, _url)]):
+                        _db_name.append(db)
 
-def download(url, local_filename=None):
-    """
+        return _db_name[0] if len(_db_name) > 0 else None
 
-    :param url:
-    :param local_filename:
-    :return:
-    """
+    def get_resource_from_url(_url):
+        """
+        getting resource of a url
 
-    if local_filename is None:
-        local_filename = url.split('/')[-1]
-    else:
-        local_filename += '/' + url.split('/')[-1]
+        :param _url:
+        :return:
+        """
 
-    r = requests.get(url, stream=True)
-    with open(local_filename, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
+        resources = []
+        for _resource in get_resources().keys():
+            for db in list(get_resources()[_resource].keys()):
+                if 'base' in get_resources()[_resource][db]:
+                    if any([get_resources()[_resource][db]['base'] in _url]):
+                        resources.append(_resource)
 
-    return local_filename
+        return resources[0] if len(resources) > 0 else None
+
+    def get_guessed_directory(_url):
+        """
+            getting guessed_location of file that we can find them
+
+            :param _url:
+            :return:
+            """
+
+        resource = get_resource_from_url(_url)
+        db_name = get_db_name_from_url(_url, resource)
+
+        if resource and db_name:
+            return f'{config.download_page_dir}/{resource}/{db_name}'
+        else:
+            return f'{config.download_page_dir}/others'
+
+    def md5_encode(text):
+        """
+        encode the text to the md5 hex
+        :param text: str
+        :return: str
+        """
+        return hashlib.md5(text.encode('utf-8')).hexdigest()
+
+    # main function
+    return f"{get_guessed_directory(url)}/{md5_encode(url)}.html"
 
 
 def make_soup(url):
@@ -156,7 +144,7 @@ def make_soup(url):
     if isinstance(url, list):
         raise MemoryError('to avoid memory overflow please use download_pages function for download list of pages')
 
-    file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
+    file_address = get_guessed_file_address(url)
 
     if os.path.isfile(file_address):
         logger.debug(f'already downloaded {url}')
@@ -236,7 +224,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         save the page and return it as string
         """
 
-        file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
+        file_address = get_guessed_file_address(url)
 
         try:
             output = {url: open(file_address, 'r').read()}
@@ -265,7 +253,6 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         # comes to here
         logger.error(f'download FAILED! , could not get the page after {try_count} times of trying!')
 
-
     def split_list(input_list, step):
         return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
 
@@ -291,6 +278,8 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
         return responses if return_bool else None
 
+    # main function
+
     logger.debug(f'start make_soup for url = '
                  f'{url_list if len(url_list) < 2 else str(url_list[:2]).replace("]", ", ...]")} len={len(url_list)}')
 
@@ -300,12 +289,3 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     loop.close()
 
     return response if return_bool else None
-
-
-def md5_encode(text):
-    """
-    encode the text to the md5 hex
-    :param text: str
-    :return: str
-    """
-    return hashlib.md5(text.encode('utf-8')).hexdigest()
