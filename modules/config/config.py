@@ -1,6 +1,6 @@
 import logging
 import yaml
-
+from attrdict import Attrdict
 
 # --------------------------------------------------------------------
 # project data config
@@ -10,8 +10,8 @@ with open("config.yaml" , 'r') as init_data:
     try:
         config = yaml.load(init_data)
         
-    exept yaml.YAMLERROR as exc:
-        logger.error(exc)
+    except yaml.YAMLERROR as exc:
+        logger.error(f'{exc}')
 
 
 # --------------------------------------------------------------------
