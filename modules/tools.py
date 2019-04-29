@@ -1,10 +1,8 @@
 import asyncio
 import hashlib
-import base64
 import os
 import re
 import time
-import functools
 
 import aiohttp
 import requests
@@ -185,6 +183,8 @@ def get_page(url, try_count=10, delay=0):
     :returns
     str: html content of page
     """
+    logger.critical(f'some page is not downloaded before here. url= {url}')
+
     proxies = [{
         "http": None,
         "https": None,
@@ -200,7 +200,7 @@ def get_page(url, try_count=10, delay=0):
             time.sleep(delay)
 
     if not content:
-        logger.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
+        logger.error(f'download FAILED! , could not get the page after {try_count} times of trying!')
 
     return content
 
@@ -261,6 +261,9 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                 await asyncio.sleep(delay)
 
         # urls that not downloaded
+        # comes to here
+        logger.error(f'download FAILED! , could not get the page after {try_count} times of trying!')
+
 
     def split_list(input_list, step):
         return [input_list[i - step:i] for i in range(step, len(input_list) + step, step)]
@@ -305,15 +308,3 @@ def md5_encode(text):
     :return: str
     """
     return hashlib.md5(text.encode('utf-8')).hexdigest()
-
-
-# def wait_to_connect(timeout=10, delay=2):
-#     connected = False
-#     while not connected:
-#         try:
-#             getPage('https://www.google.com', timeout=timeout)
-#             connected = True
-#         except:
-#             connected = False
-#             time.sleep(delay)
-#             print('no internet connection')
