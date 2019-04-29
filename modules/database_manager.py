@@ -105,18 +105,17 @@ def update_db(db_name, begin=None, end=None, updating_step=1):
     :param updating_step:
     :return:
     """
+    logger.critical(f'update db for db_name={db_name} started.')
     db = load_db(db_name)
 
     begin = begin if begin is not None else 0
     end = end if end is not None else len(db)
 
     for i in range(begin, end, updating_step):
-        logger.critical(f'updating data number {i} in {db_name} dataset')
-
         db[i].update(update_data(db_name, db[i]))
 
-        logger.critical(f'data number {i} in {db_name} dataset updated successfully')
 
+    logger.critical(f'update db for db_name={db_name} finished.')
     save_db(db, db_name)
 
 
@@ -130,25 +129,21 @@ def update_data(db_name, data):
     :return:
     """
 
-    logger.info(f'update_data started with data_name={db_name},  data={data}')
     new_data = {}
     for resource in get_resources(db_name):
-        logger.info(f'starting to updating "{db_name}" data from "{resource}" resource')
+        logger.info(f'updating data => db_name:"{db_name}" resouce:"{resource}" data={data}')
 
         data_id_name = f'{resource}_id'
         if data_id_name in data:
 
             data_id = data[f'{data_id_name}']
-
             page_link = Resources[resource][db_name][db_name].format(data_id=data_id)
-
             page = make_soup(page_link)
 
-            getter_module = globals()[f'Getter_{db_name}_{resource}'](page)
+            getter_obj = globals()[f'Getter_{db_name}_{resource}'](page)
+            new_data.update(getter_obj.get_all_data())
 
-            new_data.update(getter_module.get_all_data())
-
-        logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
+        # logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
 
     return new_data
 
