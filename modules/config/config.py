@@ -1,6 +1,6 @@
 import logging
 import yaml
-from attrdict import Attrdict
+from attrdict import AttrDict
 
 # --------------------------------------------------------------------
 # project data config
