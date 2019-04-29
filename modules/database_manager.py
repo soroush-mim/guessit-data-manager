@@ -19,6 +19,194 @@ files = [re.search(r'.*?([A-Za-z_]*?).py', file).group(1) for file in
 for file in files:
     exec(f'from modules.data_getters.{file} import *')
 
+class dataset():
+
+
+    def __init__(self , resource , db_name):
+
+        self.resource = resource
+        self.db_name = db_name
+
+    def download_resources(self):
+        """
+        download all the data from web
+
+        downloading wanted pages for
+        a specific pair of resource and db
+        and saving them with make_soup
+
+        :param
+
+        resource (str): name of site.
+            - example: 'sofifa', 'imdb'
+
+        db_name (str): data name. example:
+            - example: 'footballdb', 'playerdb'
+
+        :returns
+        None: function has no return
+
+        """
+        logger.critical(f'downloading resources for {self.db_name} dataset from {self.resource} resource')
+
+        base_url = Resources[self.resource][self.db_name]['base']
+        page_queue_urls = Resources[self.resource][self.db_name][f'{self.db_name}_list']
+
+        patterns = [Resources[self.resource][self.db_name][x] for x in Resources[self.resource][self.db_name] if
+                    x.endswith('_pattern')]
+
+        page_queue_htmls = download_pages(page_queue_urls)
+
+        urls_for_download = []
+        for page_url in page_queue_urls:
+            logger.debug(f'go for find links in {page_url}')
+            souped_page = soup(page_queue_htmls.pop(page_url), features='lxml')
+
+            for pattern in patterns:
+                urls = list(map(lambda tag: tag['href'],
+                                souped_page.find_all('a', {'href': re.compile(pattern)})))
+                for url in urls:
+                    urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
+
+        download_pages(urls_for_download, return_bool=False)
+
+        logger.critical(f'resources for {self.db_name} dataset from {self.resource} resource downloaded')
+
+    def update_db(self, begin=None, end=None, updating_step=1):
+        """
+        update all data of one db
+
+        :param db_name:
+        :param begin:
+        :param end:
+        :param updating_step:
+        :return:
+        """
+        logger.critical(f'update db for db_name={self.db_name} started.')
+        try:
+            db = load_db(self)
+
+        except Exception as error:
+            raise FileExistsError(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
+            
+        begin = begin if begin is not None else 0
+        end = end if end is not None else len(db)
+
+        for i in range(begin, end, updating_step):
+            db[i].update(update_data(self , db[i]))
+
+
+        logger.critical(f'update db for db_name={self.db_name} finished.')
+        save_db(self , db)
+
+    def update_data(self, data):
+        """
+        use dataGetters classes for collecting data
+        using it's resource_id
+
+        :param db_name:
+        :param data:
+        :return:
+        """
+
+        new_data = {}
+        for resource in get_resources(self.db_name):
+            data_id_name = f'{resource}_id'
+            logger.info(f'updating data => db_name:"{self.db_name}" {data_id_name}="{data[data_id_name]}" fields_len="{len(data)}"')
+
+            if data_id_name in data:
+
+                data_id = data[f'{data_id_name}']
+                page_link = Resources[resource][self.db_name][self.db_name].format(data_id=data_id)
+                page = make_soup(page_link)
+
+                getter_obj = globals()[f'Getter_{self.db_name}_{resource}'](page)
+                new_data.update(getter_obj.get_all_data())
+
+            # logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
+
+        return new_data
+
+    def load_db(self):
+        """
+        open the json file if that is created already
+        else create it and open it for find db
+
+        :param db_name:
+        :return:
+        """
+
+        logger.info(f'trying to load {self.db_name} dataset from hard disk...')
+
+        db = json.load(open(f'{config.dataset_dir}/{self.db_name}db.json', 'r'), encoding='utf-8')
+
+        logger.info(f'loading {self.db_name} dataset from hard disk is done.')
+
+        # except Exception as error:
+
+        #     logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
+        #     logger.info(f'opening a new json file for {db_name} dataset')
+
+        #     open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
+        #     db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+
+        return db
+    
+    def save_db(self , db):
+        """
+        save objects on a json file for find db
+
+        :param db:
+        :param db_name:
+        :return:
+        """
+
+        logger.info('Writing to file ...')
+
+        json.dump(db, open(f'{config.dataset_dir}/{self.db_name}db.json', 'w'), indent=4)
+
+        logger.info('Writing to file is done.')
+        return True
+
+    def find_db(self):
+        """
+        finding ids and saving them in a json file for each db
+
+        :param db_name:
+        :return:
+        """
+
+        try:
+            db = load_db(self)
+        except:
+            logger.debug(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
+            logger.info(f'crating a new json file for {self.db_name} dataset')
+
+            open(f'{config.dataset_dir}/{self.db_name}db.json', 'w+').write('[]')
+            db = json.load(open(f'{config.dataset_dir}/{self.db_name}db.json', 'r'), encoding='utf-8')
+
+
+        for resource in get_resources(self.db_name):
+            logger.critical(f'getting ids for {resource} resource')
+
+            pages = get_resources()[resource][self.db_name][f'{self.db_name}_list']
+            base = get_resources()[resource][self.db_name]['base']
+
+            patterns = [get_resources()[resource][self.db_name][pattern] for pattern in get_resources()[resource][self.db_name] if
+                        pattern.endswith('pattern')]
+
+            id_list = list(set(collect_data_id_from_resource(pages, base, patterns)))
+            db += [{f'{resource}_id': _id} for _id in id_list]
+
+            logger.critical(f'ids collected for {resource} resource')
+
+        save_db(self , db)
+
+
+            
+
+
+
 
 def init_project():
     """
@@ -48,152 +236,6 @@ def init_project():
         os.makedirs(f'{config.download_page_dir}/others')
 
 
-def download_resources(resource, db_name):
-    """
-    download all the data from web
-
-    downloading wanted pages for
-    a specific pair of resource and db
-    and saving them with make_soup
-
-    :param
-
-    resource (str): name of site.
-        - example: 'sofifa', 'imdb'
-
-    db_name (str): data name. example:
-        - example: 'footballdb', 'playerdb'
-
-    :returns
-    None: function has no return
-
-    """
-    logger.critical(f'downloading resources for {db_name} dataset from {resource} resource')
-
-    base_url = Resources[resource][db_name]['base']
-    page_queue_urls = Resources[resource][db_name][f'{db_name}_list']
-
-    patterns = [get_resources()[resource][db_name][x] for x in get_resources()[resource][db_name] if
-                x.endswith('_pattern')]
-
-    page_queue_htmls = download_pages(page_queue_urls)
-
-    urls_for_download = []
-    for page_url in page_queue_urls:
-        logger.debug(f'go for find links in {page_url}')
-        souped_page = soup(page_queue_htmls.pop(page_url), features='lxml')
-
-        for pattern in patterns:
-            urls = list(map(lambda tag: tag['href'],
-                            souped_page.find_all('a', {'href': re.compile(pattern)})))
-            for url in urls:
-                urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
-
-    download_pages(urls_for_download, return_bool=False)
-
-    logger.critical(f'resources for {db_name} dataset from {resource} resource downloaded')
-
-
-def update_db(db_name, begin=None, end=None, updating_step=1):
-    """
-    update all data of one db
-
-    :param db_name:
-    :param begin:
-    :param end:
-    :param updating_step:
-    :return:
-    """
-    logger.critical(f'update db for db_name={db_name} started.')
-    try:
-        db = load_db(db_name)
-
-    except Exception as error:
-        raise FileExistsError(f'there is no {db_name} file in dataset directory, please first run "python app.py -r fd -db {db_name}"')
-        
-    begin = begin if begin is not None else 0
-    end = end if end is not None else len(db)
-
-    for i in range(begin, end, updating_step):
-        db[i].update(update_data(db_name, db[i]))
-
-
-    logger.critical(f'update db for db_name={db_name} finished.')
-    save_db(db, db_name)
-
-
-def update_data(db_name, data):
-    """
-    use dataGetters classes for collecting data
-    using it's resource_id
-
-    :param db_name:
-    :param data:
-    :return:
-    """
-
-    new_data = {}
-    for resource in get_resources(db_name):
-        data_id_name = f'{resource}_id'
-        logger.info(f'updating data => db_name:"{db_name}" {data_id_name}="{data[data_id_name]}" fields_len="{len(data)}"')
-
-        if data_id_name in data:
-
-            data_id = data[f'{data_id_name}']
-            page_link = Resources[resource][db_name][db_name].format(data_id=data_id)
-            page = make_soup(page_link)
-
-            getter_obj = globals()[f'Getter_{db_name}_{resource}'](page)
-            new_data.update(getter_obj.get_all_data())
-
-        # logger.info(f'"{db_name}" data from "{resource}" resource updated successfully')
-
-    return new_data
-
-
-def load_db(db_name):
-    """
-    open the json file if that is created already
-    else create it and open it for find db
-
-    :param db_name:
-    :return:
-    """
-
-    logger.info(f'trying to load {db_name} dataset from hard disk...')
-
-    db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
-
-    logger.info(f'loading {db_name} dataset from hard disk is done.')
-
-    # except Exception as error:
-
-    #     logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
-    #     logger.info(f'opening a new json file for {db_name} dataset')
-
-    #     open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
-    #     db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
-
-    return db
-
-
-def save_db(db, db_name):
-    """
-    save objects on a json file for find db
-
-    :param db:
-    :param db_name:
-    :return:
-    """
-
-    logger.info('Writing to file ...')
-
-    json.dump(db, open(f'{config.dataset_dir}/{db_name}db.json', 'w'), indent=4)
-
-    logger.info('Writing to file is done.')
-    return True
-
-
 def get_expired_data(db, begin, end):
     """
     getting expired data from begin to end
@@ -220,41 +262,6 @@ def get_expired_data(db, begin, end):
     return old_data
 
 
-def find_db(db_name):
-    """
-    finding ids and saving them in a json file for each db
-
-    :param db_name:
-    :return:
-    """
-
-    try:
-        db = load_db(db_name)
-    except:
-        logger.debug(f'there is no {db_name} file in dataset directory, please first run "python app.py -r fd -db {db_name}"')
-        logger.info(f'crating a new json file for {db_name} dataset')
-
-        open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
-        db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
-
-
-    for resource in get_resources(db_name):
-        logger.critical(f'getting ids for {resource} resource')
-
-        pages = get_resources()[resource][db_name][f'{db_name}_list']
-        base = get_resources()[resource][db_name]['base']
-
-        patterns = [get_resources()[resource][db_name][pattern] for pattern in get_resources()[resource][db_name] if
-                    pattern.endswith('pattern')]
-
-        id_list = list(set(collect_data_id_from_resource(pages, base, patterns)))
-        db += [{f'{resource}_id': _id} for _id in id_list]
-
-        logger.critical(f'ids collected for {resource} resource')
-
-    save_db(db, db_name)
-
-
 def init_db(db_name):
     """
 
@@ -264,14 +271,14 @@ def init_db(db_name):
     open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
 
 
-def check_get_function(data_name, resource, page_link):
-    """
-
+"""def check_get_function(data_name, resource, page_link):
+    
+    "
     :param data_name:
     :param resource:
     :param page_link:
     :return:
-    """
+    "
 
     page = make_soup(page_link)
 
@@ -289,7 +296,7 @@ def check_get_function(data_name, resource, page_link):
         except Exception as error:
             logger.warning(f'no "{module.__name__}" from "{page_link}" becuase {error}')
 
-    pprint(new_data)
+    pprint(new_data)"""
 
 
 # def download_db_link(url):
