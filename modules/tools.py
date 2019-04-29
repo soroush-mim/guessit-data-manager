@@ -255,6 +255,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
         try:
             output = {url: open(file_address, 'r').read()}
+            logger.debug(f'already downloaded {url}')
             return output if return_bool else None
         except FileNotFoundError as error:
             logger.debug(f'start downloading {url}')
