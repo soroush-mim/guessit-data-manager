@@ -133,7 +133,7 @@ def download(url, local_filename=None):
     return local_filename
 
 
-def make_soup(urls):
+def make_soup(url):
     """
     get the BeautifulSoup object of this page
 
@@ -154,11 +154,8 @@ def make_soup(urls):
     2. return page as soup object
 
     """
-    if isinstance(urls, list):
+    if isinstance(url, list):
         raise MemoryError('to avoid memory overflow please use download_pages function for download list of soups')
-        # return {key: soup(value, features="lxml") for key, value in download_pages(urls).items()}
-
-    url = urls
 
     file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
@@ -188,8 +185,6 @@ def get_page(url, try_count=10, delay=0):
     :returns
     str: html content of page
     """
-
-
     proxies = [{
         "http": None,
         "https": None,
@@ -208,16 +203,6 @@ def get_page(url, try_count=10, delay=0):
         logger.error(f'get_page FAILED! , could not get the page at last after {try_count} times of trying!')
 
     return content
-
-
-def make_id(data_id):
-    """
-    make id from url
-
-    :param data_id:
-    :return:
-    """
-    return base64.b32encode(str(data_id).encode()).decode()
 
 
 def get_resources(data_name=None):
