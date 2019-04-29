@@ -152,8 +152,9 @@ def make_soup(url):
     2. return page as soup object
 
     """
+
     if isinstance(url, list):
-        raise MemoryError('to avoid memory overflow please use download_pages function for download list of soups')
+        raise MemoryError('to avoid memory overflow please use download_pages function for download list of pages')
 
     file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
