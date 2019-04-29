@@ -106,8 +106,12 @@ def update_db(db_name, begin=None, end=None, updating_step=1):
     :return:
     """
     logger.critical(f'update db for db_name={db_name} started.')
-    db = load_db(db_name)
+    try:
+        db = load_db(db_name)
 
+    except Exception as error:
+        raise FileExistsError(f'there is no {db_name} file in dataset directory, please first run "python app.py -r fd -db {db_name}"')
+        
     begin = begin if begin is not None else 0
     end = end if end is not None else len(db)
 
@@ -164,15 +168,13 @@ def load_db(db_name):
 
         logger.info(f'loading {db_name} dataset from hard disk is done.')
 
-    except Exception as error:
+    # except Exception as error:
 
-        logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
+    #     logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
+    #     logger.info(f'opening a new json file for {db_name} dataset')
 
-        logger.info(f'opening a new json file for {db_name} dataset')
-
-        open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
-
-        db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+    #     open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
+    #     db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
 
     return db
 
@@ -228,7 +230,15 @@ def find_db(db_name):
     :return:
     """
 
-    db = load_db(db_name)
+    try:
+        db = load_db(db_name)
+    except:
+        logger.debug(f'there is no {db_name} file in dataset directory, please first run "python app.py -r fd -db {db_name}"')
+        logger.info(f'crating a new json file for {db_name} dataset')
+
+        open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
+        db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+
 
     for resource in get_resources(db_name):
         logger.critical(f'getting ids for {resource} resource')
