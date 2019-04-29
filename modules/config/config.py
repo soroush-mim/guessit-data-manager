@@ -6,12 +6,8 @@ from attrdict import Attrdict
 # project data config
 # --------------------------------------------------------------------
 
-with open("config.yaml" , 'r') as init_data:
-    try:
-        config = yaml.load(init_data)
-        
-    except yaml.YAMLERROR as exc:
-        logger.error(f'{exc}')
+with open("config.yaml" , 'r') as yamlfileobj:
+    config = AttrDict(yaml.safe_load(yamlfileobj))
 
 
 # --------------------------------------------------------------------
