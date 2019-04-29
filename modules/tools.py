@@ -159,13 +159,14 @@ def make_soup(urls):
         # return {key: soup(value, features="lxml") for key, value in download_pages(urls).items()}
 
     url = urls
-    logger.debug(f'start make_soup for url = {url}')
 
     file_address = f"{get_guessed_location(url)}/{md5_encode(url)}.html"
 
     if os.path.isfile(file_address):
+        logger.info(f'already downloaded {url}')
         page_source = open(file_address, encoding='utf-8').read()
     else:
+        logger.info(f'start downloading {url}')
         page_source = get_page(url)
         try:
             open(file_address, 'w+', encoding='utf-8').write(page_source)
@@ -188,7 +189,6 @@ def get_page(url, try_count=10, delay=0):
     str: html content of page
     """
 
-    logger.debug(f'get_page started with url={url}, try_count={try_count}, delay={delay}')
 
     proxies = [{
         "http": None,
@@ -201,8 +201,7 @@ def get_page(url, try_count=10, delay=0):
             content = requests.get(url, proxies=proxies[i % len(proxies)]).text
             break
         except Exception as error:
-            logger.error(f'{url} : {error}')
-            logger.info(f'could not get the page. trying again for {i}th time...')
+            logger.error(f'error in downloading {url} : {error}')
             time.sleep(delay)
 
     if not content:
@@ -255,10 +254,10 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
         try:
             output = {url: open(file_address, 'r').read()}
-            logger.debug(f'already downloaded {url}')
+            logger.info(f'already downloaded {url}')
             return output if return_bool else None
         except FileNotFoundError as error:
-            logger.debug(f'start downloading {url}')
+            logger.info(f'start downloading {url}')
 
         for i in range(try_count):
             try:
