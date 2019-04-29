@@ -21,7 +21,7 @@ logging.basicConfig(
 
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(f'{project_dir}/log.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(f'{config.project_dir}/log.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),
     ]
 )
