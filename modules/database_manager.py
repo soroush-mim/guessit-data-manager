@@ -22,7 +22,7 @@ for file in files:
 class dataset():
 
 
-    def __init__(self , resource , db_name):
+    def __init__(self , db_name):
         
         
         self.db_name = db_name

@@ -25,24 +25,18 @@ def arg_parse():
         help='name of dataset',
     )
 
-    parser.add_argument(
-        '-res', '--resource',
-        dest='resource', default=None,
-        type=str,
-        help='name of resource',
-    )
 
     args = parser.parse_args()
 
     if args.function:
-        dataset = dbManager.dataset(args.resource , args.db)
+        dataset = dbManager.dataset(args.db)
         logger.debug( f'runing arg with args.function = {args.function}')
 
         if args.function in ['st', 'start']:
             dataset.start()
 
         if args.function in ['dr', 'download_resource']:
-            dataset.download_resources(db_name = args.db , resource = args.resource)
+            dataset.download_resources(db_name = args.db )
 
         elif args.function in ['ip', 'init_project']:
             dbManager.init_project()
