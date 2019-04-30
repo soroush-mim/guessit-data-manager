@@ -23,9 +23,10 @@ class dataset():
 
 
     def __init__(self , resource , db_name):
-
+        
         self.resource = resource
         self.db_name = db_name
+        logger.debug(f'an instance from dataset class with resource = {resource} and db_name = {db_name} has been created')
 
     def download_resources(self):
         """
