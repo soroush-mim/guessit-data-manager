@@ -36,16 +36,16 @@ def arg_parse():
             dataset.start()
 
         if args.function in ['dr', 'download_resource']:
-            dataset.download_resources(db_name = args.db )
+            dataset.download_resources()
 
         elif args.function in ['ip', 'init_project']:
             dbManager.init_project()
         
         elif args.function in ['fd', 'find_db']:
-            dataset.find_db(db_name = args.db)
+            dataset.find_db()
         
         elif args.function in ['ud', 'update_db']:
-            datasest.update_db(db_name = args.db )
+            datasest.update_db()
         
 
     # if there is any arg, return True
