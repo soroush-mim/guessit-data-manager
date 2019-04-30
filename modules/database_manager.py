@@ -48,7 +48,7 @@ class dataset():
         None: function has no return
 
         """
-        for resource in [resource for resource in Resources.keys() if self.db_name in Resources[i]]:
+        for resource in [resource for resource in Resources.keys() if self.db_name in Resources[resource]]:
             logger.critical(f'downloading resources for {self.db_name} dataset from {resource} resource')
 
             base_url = Resources[resource][self.db_name]['base']
