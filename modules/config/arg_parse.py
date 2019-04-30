@@ -35,18 +35,23 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.function:
+        dataset = dbManager.dataset(args.resource , args.db)
         logger.debug( f'runing arg with args.function = {args.function}')
+
+        if args.function in ['st', 'start']:
+            dataset.start()
+
         if args.function in ['dr', 'download_resource']:
-            dbManager.download_resources(db_name = args.db , resource = args.resource)
+            dataset.download_resources(db_name = args.db , resource = args.resource)
 
         elif args.function in ['ip', 'init_project']:
             dbManager.init_project()
         
         elif args.function in ['fd', 'find_db']:
-            dbManager.find_db(db_name = args.db)
+            dataset.find_db(db_name = args.db)
         
         elif args.function in ['ud', 'update_db']:
-            dbManager.update_db(db_name = args.db )
+            datasest.update_db(db_name = args.db )
         
 
     # if there is any arg, return True

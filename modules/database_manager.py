@@ -203,13 +203,11 @@ class dataset():
         self.__save(db)
 
     def start(self):
+
+        logger.debug(f'starting start func from class dataset with resource = {self.resource} and db_name = {self.db_name}')
         self.download_resources()
         self.find_ids()
         self.update()
-
-
-            
-
 
 
 
