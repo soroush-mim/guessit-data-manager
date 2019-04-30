@@ -42,7 +42,7 @@ def arg_parse():
             dbManager.init_project()
         
         elif args.function in ['fd', 'find_db']:
-            dataset.find()
+            dataset.find_ids()
         
         elif args.function in ['ud', 'update_db']:
             datasest.update()
