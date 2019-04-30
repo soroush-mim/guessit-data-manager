@@ -45,7 +45,7 @@ def arg_parse():
             dataset.find_ids()
         
         elif args.function in ['ud', 'update_db']:
-            datasest.update()
+            dataset.update()
         
 
     # if there is any arg, return True
