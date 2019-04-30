@@ -24,9 +24,9 @@ class dataset():
 
     def __init__(self , resource , db_name):
         
-        self.resource = resource
+        
         self.db_name = db_name
-        logger.debug(f'an instance from dataset class with resource = {resource} and db_name = {db_name} has been created')
+        logger.debug(f'an instance from dataset class with db_name = {db_name} has been created')
 
     def download_resources(self):
         """
@@ -48,30 +48,31 @@ class dataset():
         None: function has no return
 
         """
-        logger.critical(f'downloading resources for {self.db_name} dataset from {self.resource} resource')
+        for resource in [resource for resource in Resources.keys() if self.db_name in Resources[i]]:
+            logger.critical(f'downloading resources for {self.db_name} dataset from {resource} resource')
 
-        base_url = Resources[self.resource][self.db_name]['base']
-        page_queue_urls = Resources[self.resource][self.db_name][f'{self.db_name}_list']
+            base_url = Resources[resource][self.db_name]['base']
+            page_queue_urls = Resources[resource][self.db_name][f'{self.db_name}_list']
 
-        patterns = [Resources[self.resource][self.db_name][x] for x in Resources[self.resource][self.db_name] if
-                    x.endswith('_pattern')]
+            patterns = [Resources[resource][self.db_name][x] for x in Resources[resource][self.db_name] if
+                        x.endswith('_pattern')]
 
-        page_queue_htmls = download_pages(page_queue_urls)
+            page_queue_htmls = download_pages(page_queue_urls)
 
-        urls_for_download = []
-        for page_url in page_queue_urls:
-            logger.debug(f'go for find links in {page_url}')
-            souped_page = soup(page_queue_htmls.pop(page_url), features='lxml')
+            urls_for_download = []
+            for page_url in page_queue_urls:
+                logger.debug(f'go for find links in {page_url}')
+                souped_page = soup(page_queue_htmls.pop(page_url), features='lxml')
 
-            for pattern in patterns:
-                urls = list(map(lambda tag: tag['href'],
-                                souped_page.find_all('a', {'href': re.compile(pattern)})))
-                for url in urls:
-                    urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
+                for pattern in patterns:
+                    urls = list(map(lambda tag: tag['href'],
+                                    souped_page.find_all('a', {'href': re.compile(pattern)})))
+                    for url in urls:
+                        urls_for_download.append(urllib.parse.urljoin(base_url, re.search(pattern, url).group(1)))
 
-        download_pages(urls_for_download, return_bool=False)
+            download_pages(urls_for_download, return_bool=False)
 
-        logger.critical(f'resources for {self.db_name} dataset from {self.resource} resource downloaded')
+            logger.critical(f'resources for {self.db_name} dataset from {resource} resource downloaded')
 
     def update(self, begin=None, end=None, updating_step=1):
         """
@@ -205,7 +206,7 @@ class dataset():
 
     def start(self):
 
-        logger.debug(f'starting start func from class dataset with resource = {self.resource} and db_name = {self.db_name}')
+        logger.debug(f'starting start func from class dataset with db_name = {self.db_name}')
         self.download_resources()
         self.find_ids()
         self.update()
