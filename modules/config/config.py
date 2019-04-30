@@ -12,7 +12,7 @@ logging.basicConfig(
     datefmt='%H:%M:%S',
     format='%(levelname)8s:[%(asctime)s][%(funcName)20s()][%(lineno)4s]: %(message)s',
 
-    level=logging.DEBUG,
+    level=config.log_level,
     handlers=[
         logging.FileHandler(f'{config.project_dir}/log.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),

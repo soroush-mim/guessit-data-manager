@@ -42,10 +42,10 @@ def arg_parse():
             dbManager.init_project()
         
         elif args.function in ['fd', 'find_db']:
-            dataset.find_db()
+            dataset.find()
         
         elif args.function in ['ud', 'update_db']:
-            datasest.update_db()
+            datasest.update()
         
 
     # if there is any arg, return True
