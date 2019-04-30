@@ -1,18 +1,11 @@
 import logging
 import yaml
-from attrdict import AttrDict
+import attrdict
 
-# --------------------------------------------------------------------
-# project data config
-# --------------------------------------------------------------------
 
 with open("./modules/config/config.yml" , 'r') as yamlfileobj:
-    config = AttrDict(yaml.safe_load(yamlfileobj))
+    config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
-
-# --------------------------------------------------------------------
-# logger config
-# --------------------------------------------------------------------
 
 logging.basicConfig(
     # datefmt='%y-%b-%d %H:%M:%S',
