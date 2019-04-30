@@ -27,7 +27,7 @@ class dataset():
         self.resource = resource
         self.db_name = db_name
 
-    def download_resources(self):
+    def __download_resources(self):
         """
         download all the data from web
 
@@ -72,7 +72,7 @@ class dataset():
 
         logger.critical(f'resources for {self.db_name} dataset from {self.resource} resource downloaded')
 
-    def update_db(self, begin=None, end=None, updating_step=1):
+    def __update_db(self, begin=None, end=None, updating_step=1):
         """
         update all data of one db
 
@@ -84,7 +84,7 @@ class dataset():
         """
         logger.critical(f'update db for db_name={self.db_name} started.')
         try:
-            db = load_db(self)
+            db = self.__load_db()
 
         except Exception as error:
             raise FileExistsError(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
@@ -93,13 +93,13 @@ class dataset():
         end = end if end is not None else len(db)
 
         for i in range(begin, end, updating_step):
-            db[i].update(update_data(self , db[i]))
+            db[i].update(self.__update_data(db[i]))
 
 
         logger.critical(f'update db for db_name={self.db_name} finished.')
-        save_db(self , db)
+        self.__save_db(db)
 
-    def update_data(self, data):
+    def __update_data(self, data):
         """
         use dataGetters classes for collecting data
         using it's resource_id
@@ -127,7 +127,7 @@ class dataset():
 
         return new_data
 
-    def load_db(self):
+    def __load_db(self):
         """
         open the json file if that is created already
         else create it and open it for find db
@@ -152,7 +152,7 @@ class dataset():
 
         return db
     
-    def save_db(self , db):
+    def __save_db(self , db):
         """
         save objects on a json file for find db
 
@@ -168,7 +168,7 @@ class dataset():
         logger.info('Writing to file is done.')
         return True
 
-    def find_db(self):
+    def __find_db(self):
         """
         finding ids and saving them in a json file for each db
 
@@ -177,7 +177,7 @@ class dataset():
         """
 
         try:
-            db = load_db(self)
+            db = self.__load_db()
         except:
             logger.debug(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
             logger.info(f'crating a new json file for {self.db_name} dataset')
@@ -200,7 +200,7 @@ class dataset():
 
             logger.critical(f'ids collected for {resource} resource')
 
-        save_db(self , db)
+        self.__save_db(db)
 
 
             
