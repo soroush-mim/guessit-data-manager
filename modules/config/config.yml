@@ -9,7 +9,6 @@ expiration_time: 36000 # 60 * 60 * 10
 backup: False
 debug: False
 safe_mode: False
-log_level: logging.DEBUG
 
 sftp: None
 
