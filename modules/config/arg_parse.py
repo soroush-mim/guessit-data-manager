@@ -1,5 +1,6 @@
 import argparse
 import sys
+import logging
 from modules.config.config import logger
 import modules.database_manager as dbManager
 
@@ -25,12 +26,39 @@ def arg_parse():
         help='name of dataset',
     )
 
+    parser.add_argument(
+        '-log', '--log_level',
+        dest='log_level', default=None,
+        type=str,
+        help='level of log',
+    )
+
+
 
     args = parser.parse_args()
 
     if args.function:
         dataset = dbManager.dataset(args.db)
         logger.debug( f'runing arg with args.function = {args.function}')
+
+        if args.log_level:
+            log_level = args.log_level
+            if log_level == 'debug':
+                logger.setLevel(logging.DEBUG)
+
+            elif log_level == 'info':
+                logger.setLevel(logging.INFO)
+
+            elif log_level == 'error':
+                logger.setLevel(logging.ERROR)
+            
+            elif log_level == 'critical':
+                logger.setLevel(logging.CRITICAL)
+            
+            else:
+                logger.setLevel(logging.WARNING)
+
+            
 
         if args.function in ['st', 'start']:
             dataset.start()
