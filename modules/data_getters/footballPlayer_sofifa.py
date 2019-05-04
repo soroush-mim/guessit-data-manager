@@ -7,7 +7,7 @@ from modules.data_getters.__tools import date_value, money_value
 class Getter_footballPlayer_sofifa(DataGetterBaseClass):
     """
     a class for getting footballPlayers data from sofifa 
-    that get page soup file for input with 38 property
+    that get page soup file for input with 39 property
     """
 
     def __init__(self, page):
@@ -235,3 +235,7 @@ class Getter_footballPlayer_sofifa(DataGetterBaseClass):
     @property
     def getter_dislikes_num(self):
         return int(self.like_table.find('a', class_="dislike-btn btn").find('span').text.strip())
+    
+    @property
+    def getter_popularity(self):
+        return self.getter_International_Reputation * 100 + self.getter_likes_num * 10 + self.getter_value_in_euro / 1000
