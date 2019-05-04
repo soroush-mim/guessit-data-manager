@@ -18,19 +18,23 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
         self.infoDiv = page.select('div.info')[0]
 
-        self.get_player_from_table = lambda table: {
-            'footballPlayer_id': re.search('/[^/]*/[^/]*', table.select('td')[1].select('a')[1]['href'])[0],
-            'name': table.select('td')[1].select('a')[1]['title']
-        }
-
         self.table_players_squad = \
-            page.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')[0]
+            page.select('table.table-hover.persist-area')[0].select('tbody')[0].select('tr')
 
         if len(page.select('table.table-hover.persist-area')) > 1 :
             self.table_players_onLoan = \
-                page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')[0]
+                page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
         else:
             self.table_players_onLoan = None
+
+
+    def get_name_id_from_table(self,item):
+
+        name = item.find_all('a' , {'href' : re.compile(r'\/player/\?*')})[0].text
+        link = item.find_all('a' , {'href' : re.compile(r'\/player/\?*')})[0]['href']
+        sofifa_id = int(re.search('r/\\d*' , link).group()[2:])
+        return name , sofifa_id
+
 
     @property
     def getter_home_stadium(self):
@@ -126,10 +130,16 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
     @property
     def getter_squad_players(self):
-        return [item for item in self.get_player_from_table(self.table_players_squad)]
+        players = []
+        for item in self.table_players_squad:
+            players.append(self.get_name_id_from_table(item))
+        return players
 
     @property
     def getter_on_loan_players(self):
         if self.table_players_onLoan:
-            return [item for item in self.get_player_from_table(self.table_players_onLoan)]
+            players = []  
+            for item in self.table_players_onLoan:
+                players.append(self.get_name_id_from_table(item))
+            return players
         else: return None
