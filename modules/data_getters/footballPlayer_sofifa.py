@@ -238,4 +238,4 @@ class Getter_footballPlayer_sofifa(DataGetterBaseClass):
     
     @property
     def getter_popularity(self):
-        return self.getter_International_Reputation * 100 + self.getter_likes_num * 10 + self.getter_value_in_euro / 1000
+        return self.getter_International_Reputation * 100 + self.getter_likes_num * 10 + self.getter_value_in_euro / (1000*1000)
