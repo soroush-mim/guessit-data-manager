@@ -85,7 +85,7 @@ class Getter_footballPlayer_sofifa(DataGetterBaseClass):
         return self.getter_weight_in_pond * 0.453592
 
     @property
-    def getter_height_in_cnm(self):
+    def getter_height_in_cm(self):
         dirty_height = re.search(r'\d\d?.\d\d?\"', self.top_row.text.strip()).group().strip()
         return int(dirty_height[0]) * 30.28 + int(re.search(r'\'.*"', dirty_height).group().strip()[1:-1]) * 2.54
 
@@ -181,7 +181,7 @@ class Getter_footballPlayer_sofifa(DataGetterBaseClass):
         return date[:-1]
 
     @property
-    def getter_Contract_Valid_Until(self):
+    def getter_contract_valid_until(self):
         return int(self.third_column[5].text.strip()[-4:])
 
     @property
