@@ -216,18 +216,23 @@ class dataset():
 
     def schema_test(self):
         db = self.__load()
-        for data in db:
-            items = {}
-            with open(f'\\root\\guessit\\guessit-question-manager\\data_catalogs\\{self.db_name}.md', "r") as reg_file :
-                reg_soup = BeautifulSoup( mistune.markdown(reg_file.read()) , 'lxml')
-                rows = reg_soup.find_all('tr')
+        items = {}
+        logger.info(f'reading data catalog for db = {self.db_name}')
+        with open(f'\\root\\guessit\\guessit-question-manager\\data_catalogs\\{self.db_name}.md', "r") as reg_file :
+            reg_soup = BeautifulSoup( mistune.markdown(reg_file.read()) , 'lxml')
+            rows = reg_soup.find_all('tr')
                 
-                for item in rows[1:]:
-                    temp = item.find_all('td')
-                    item = temp[0].text
-                    typee = temp[1].text
-                    reg = temp[2].text
-                    items[item] = (typee , reg)
+            for item in rows[1:]:
+                temp = item.find_all('td')
+                item = temp[0].text
+                typee = temp[1].text
+                reg = temp[2].text
+                items[item] = (typee , reg)
+        
+        logger.info(f'reading data catalog for db = {self.db_name} is done')
+
+        logger.info(f'cheking formats for db = {self.db_name}')
+        for data in db:
 
                 data['validation'] = True
 
@@ -238,7 +243,7 @@ class dataset():
                         else:
                             data[f'__{key}'] = False
                             data['validation'] = False
-
+        logger.info(f'cheking formats for db = {self.db_name} is done')
 
 
 

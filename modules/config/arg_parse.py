@@ -75,7 +75,7 @@ def arg_parse():
         elif args.function in ['ud', 'update_db']:
             dataset.update()
         
-        elif args.function in ['st', 'schema_test']:
+        elif args.function in ['sct', 'schema_test']:
             dataset.schema_test()
         
 
