@@ -9,3 +9,4 @@ aiohttp
 lxml
 attrdict
 pyyaml
+mistune
