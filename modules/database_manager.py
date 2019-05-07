@@ -236,7 +236,7 @@ class dataset():
 
                 data['validation'] = True
 
-                for key in data:
+                for key in data.keys()[:]:
                     if key in items.keys():
                         if ((items[key][0] == 'int' and type(data[key]) == type(1)) or (items[key][0] == 'string' and type(data[key]) == type('aa'))) and bool(re.compile(items[key][1]).match(str(data[key]))):
                             data[f'__{key}'] = True
@@ -244,6 +244,7 @@ class dataset():
                             data[f'__{key}'] = False
                             data['validation'] = False
         logger.info(f'cheking formats for db = {self.db_name} is done')
+        self.__save(db)
 
 
 
