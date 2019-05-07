@@ -238,7 +238,7 @@ class dataset():
 
                 for key in data:
                     if key in items.keys():
-                        if (items[key][0] == 'int' and type(data[key]) == type(1) or items[key][0] == 'string' and type(data[key]) == type('aa')) and bool(re.compile(items[key][1]).match(data[key])):
+                        if ((items[key][0] == 'int' and type(data[key]) == type(1)) or (items[key][0] == 'string' and type(data[key]) == type('aa'))) and bool(re.compile(items[key][1]).match(str(data[key]))):
                             data[f'__{key}'] = True
                         else:
                             data[f'__{key}'] = False
