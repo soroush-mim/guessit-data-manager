@@ -75,6 +75,9 @@ def arg_parse():
         elif args.function in ['ud', 'update_db']:
             dataset.update()
         
+        elif args.function in ['st', 'schema_test']:
+            dataset.schema_test()
+        
 
     # if there is any arg, return True
     if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] == '-log'):

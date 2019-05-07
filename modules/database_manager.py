@@ -2,9 +2,11 @@ import importlib
 import json
 import os
 import re
+import mistune
 import time
 import urllib
 from pprint import pprint
+from bs4 import BeautifulSoup
 from modules.config.config import config
 from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
@@ -210,6 +212,38 @@ class dataset():
         self.download_resources()
         self.find_ids()
         self.update()
+        self.schema_test()
+
+    def schema_test(self):
+        db = self.__load()
+        for data in db:
+            items = {}
+            with open(f'\\root\\guessit\\guessit-question-manager\\data_catalogs\\{self.db_name}.md', "r") as reg_file :
+                reg_soup = BeautifulSoup( mistune.markdown(reg_file.read()) , 'lxml')
+                rows = reg_soup.find_all('tr')
+                
+                for item in rows[1:]:
+                    temp = item.find_all('td')
+                    item = temp[0].text
+                    typee = temp[1].text
+                    reg = temp[2].text
+                    items[item] = (typee , reg)
+
+                data['validation'] = True
+
+                for key in data:
+                    if key in items.keys():
+                        if (items[key][0] == 'int' and type(data[key]) == type(1) or items[key][0] == 'string' and type(data[key]) == type('aa')) and bool(re.compile(items[key][1]).match(data[key])):
+                            data[f'__{key}'] = True
+                        else:
+                            data[f'__{key}'] = False
+                            data['validation'] = False
+
+
+
+
+
+
 
 
 
