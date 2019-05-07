@@ -218,7 +218,7 @@ class dataset():
         db = self.__load()
         items = {}
         logger.info(f'reading data catalog for db = {self.db_name}')
-        with open(f'\\root\\guessit\\guessit-question-manager\\data_catalogs\\{self.db_name}.md', "r") as reg_file :
+        with open(f'/root/guessit/guessit-question-manager/data_catalogs/{self.db_name}.md', "r") as reg_file :
             reg_soup = BeautifulSoup( mistune.markdown(reg_file.read()) , 'lxml')
             rows = reg_soup.find_all('tr')
                 
