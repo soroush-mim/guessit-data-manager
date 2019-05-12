@@ -250,11 +250,6 @@ class dataset():
 
 
 
-
-
-
-
-
 def init_project():
     """
     create needed folders for project
