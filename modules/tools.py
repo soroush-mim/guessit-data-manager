@@ -32,7 +32,7 @@ def collect_data_id_from_resource(pages, base, patterns):
 
         logger.debug(f'collecting ids from {page}')
 
-        souped_page = soup(pages_html.pop(page), features='lxml')
+        souped_page = soup(zlib.decompress(pages_html.pop(page)), features='lxml')
 
         for pattern in patterns:
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
@@ -136,7 +136,7 @@ def make_soup(url):
         except Exception as error:
             logger.error(error)
 
-    return soup(zlib(page_source), features='lxml')
+    return soup(zlib.decompress(page_source), features='lxml')
 
 
 def get_page(url, try_count=10, delay=0):
@@ -161,7 +161,7 @@ def get_page(url, try_count=10, delay=0):
     content = ''
     for i in range(try_count):
         try:
-            content = requests.get(url, proxies=proxies[i % len(proxies)]).text
+            content = zlib.compress(requests.get(url, proxies=proxies[i % len(proxies)]).text)
             break
         except Exception as error:
             logger.error(f'error in downloading {url} : {error}')
