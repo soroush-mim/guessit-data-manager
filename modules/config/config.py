@@ -21,8 +21,6 @@ logging.basicConfig(
         MongoHandler(host=config.mongo.ip, port=config.mongo.port,
                      username=config.mongo.username, password=config.mongo.password,
                      authentication_db='admin', database_name='DataManager', collection='log')
-
-
     ]
 )
 
