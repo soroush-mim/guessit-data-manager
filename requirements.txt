@@ -10,3 +10,4 @@ lxml
 attrdict
 pyyaml
 mistune
+log4mongo
