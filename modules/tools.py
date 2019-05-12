@@ -87,9 +87,9 @@ def get_guessed_file_address(url):
         db_name = get_db_name_from_url(_url, resource)
 
         if resource and db_name:
-            return f'{config.download_page_dir}/{resource}/{db_name}'
+            return f'{config.dir.download_page}/{resource}/{db_name}'
         else:
-            return f'{config.download_page_dir}/others'
+            return f'{config.dir.download_page}/others'
 
     def md5_encode(text):
         return hashlib.md5(text.encode('utf-8')).hexdigest()

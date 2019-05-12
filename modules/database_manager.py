@@ -143,7 +143,7 @@ class dataset():
 
         logger.info(f'trying to load {self.db_name} dataset from hard disk...')
 
-        db = json.load(open(f'{config.dataset_dir}/{self.db_name}db.json', 'r'), encoding='utf-8')
+        db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
 
         logger.info(f'loading {self.db_name} dataset from hard disk is done.')
 
@@ -152,8 +152,8 @@ class dataset():
         #     logger.error(f'cant load {db_name}dataset from hard disk , error = {error}')
         #     logger.info(f'opening a new json file for {db_name} dataset')
 
-        #     open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
-        #     db = json.load(open(f'{config.dataset_dir}/{db_name}db.json', 'r'), encoding='utf-8')
+        #     open(f'{config.dir.dataset}/{db_name}db.json', 'w+').write('[]')
+        #     db = json.load(open(f'{config.dir.dataset}/{db_name}db.json', 'r'), encoding='utf-8')
 
         return db
     
@@ -168,7 +168,7 @@ class dataset():
 
         logger.info('Writing to file ...')
 
-        json.dump(db, open(f'{config.dataset_dir}/{self.db_name}db.json', 'w'), indent=4)
+        json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
 
         logger.info('Writing to file is done.')
         return True
@@ -187,8 +187,8 @@ class dataset():
             logger.debug(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
             logger.info(f'crating a new json file for {self.db_name} dataset')
 
-            open(f'{config.dataset_dir}/{self.db_name}db.json', 'w+').write('[]')
-            db = json.load(open(f'{config.dataset_dir}/{self.db_name}db.json', 'r'), encoding='utf-8')
+            open(f'{config.dir.dataset}/{self.db_name}db.json', 'w+').write('[]')
+            db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
 
 
         for resource in get_resources(self.db_name):
@@ -268,7 +268,7 @@ def init_project():
     for resource in get_resources():
         for db_name in get_resources()[resource]:
 
-            directory = f'{config.main_dir}/download/page/{resource}/{db_name}/'
+            directory = f'{config.dir.main}/download/page/{resource}/{db_name}/'
             if os.path.exists(directory):
                 continue
 
@@ -277,10 +277,10 @@ def init_project():
             except Exception as error:
                 logger.error(error)
 
-    if not os.path.exists(f'{config.dataset_dir}'):
-        os.makedirs(f'{config.dataset_dir}')
-    if not os.path.exists(f'{config.download_page_dir}/others'):
-        os.makedirs(f'{config.download_page_dir}/others')
+    if not os.path.exists(f'{config.dir.dataset}'):
+        os.makedirs(f'{config.dir.dataset}')
+    if not os.path.exists(f'{config.dir.download_page}/others'):
+        os.makedirs(f'{config.dir.download_page}/others')
 
 
 def get_expired_data(db, begin, end):
@@ -315,7 +315,7 @@ def init_db(db_name):
     :param db_name:
     :return:
     """
-    open(f'{config.dataset_dir}/{db_name}db.json', 'w+').write('[]')
+    open(f'{config.dir.dataset}/{db_name}db.json', 'w+').write('[]')
 
 
 """def check_get_function(data_name, resource, page_link):
