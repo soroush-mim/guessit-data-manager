@@ -3,6 +3,7 @@ import hashlib
 import os
 import re
 import time
+import zlib
 
 import aiohttp
 import requests
@@ -135,7 +136,7 @@ def make_soup(url):
         except Exception as error:
             logger.error(error)
 
-    return soup(page_source, features='lxml')
+    return soup(zlib(page_source), features='lxml')
 
 
 def get_page(url, try_count=10, delay=0):
@@ -218,7 +219,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url) as resp:
-                        site_html = await resp.text()
+                        site_html = zlib.compress(await resp.text())
 
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(site_html)

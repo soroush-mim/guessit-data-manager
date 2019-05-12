@@ -14,6 +14,7 @@ from modules.resources.__handler import Resources
 import glob
 import importlib
 import re
+import zlib
 
 files = [re.search(r'.*?([A-Za-z_]*?).py', file).group(1) for file in
          glob.glob('./modules/data_getters/*.py') if not re.search(r'__[a-zA-Z_]*.py', file)]
@@ -64,7 +65,7 @@ class dataset():
             urls_for_download = []
             for page_url in page_queue_urls:
                 logger.debug(f'go for find links in {page_url}')
-                souped_page = soup(page_queue_htmls.pop(page_url), features='lxml')
+                souped_page = soup(zlib.decompress(page_queue_htmls.pop(page_url)), features='lxml')
 
                 for pattern in patterns:
                     urls = list(map(lambda tag: tag['href'],
