@@ -1,7 +1,3 @@
-main_dir: ./..
-project_dir: ./../guessit-data-manager
-dataset_dir: ./../datasets
-download_page_dir: ./../download/page
 process_count: 4
 updating_step: 10
 finding_step: 10
@@ -14,3 +10,16 @@ sftp: None
 
 local_save: False
 save_page_local: True
+
+mongo:
+  ip: 198.143.179.211
+  port: 27017
+  username: admin
+  password: parishadbg18
+  authentication_db: admin
+
+dir:
+  main: ./..
+  project: ./../guessit-data-manager
+  dataset: ./../datasets
+  download_page: ./../download/page

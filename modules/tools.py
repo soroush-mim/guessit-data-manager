@@ -3,6 +3,7 @@ import hashlib
 import os
 import re
 import time
+import zlib
 
 import aiohttp
 import requests
@@ -31,7 +32,7 @@ def collect_data_id_from_resource(pages, base, patterns):
 
         logger.debug(f'collecting ids from {page}')
 
-        souped_page = soup(pages_html.pop(page), features='lxml')
+        souped_page = soup(zlib.decompress(pages_html.pop(page)), features='lxml')
 
         for pattern in patterns:
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
@@ -86,9 +87,9 @@ def get_guessed_file_address(url):
         db_name = get_db_name_from_url(_url, resource)
 
         if resource and db_name:
-            return f'{config.download_page_dir}/{resource}/{db_name}'
+            return f'{config.dir.download_page}/{resource}/{db_name}'
         else:
-            return f'{config.download_page_dir}/others'
+            return f'{config.dir.download_page}/others'
 
     def md5_encode(text):
         return hashlib.md5(text.encode('utf-8')).hexdigest()
@@ -135,7 +136,7 @@ def make_soup(url):
         except Exception as error:
             logger.error(error)
 
-    return soup(page_source, features='lxml')
+    return soup(zlib.decompress(page_source), features='lxml')
 
 
 def get_page(url, try_count=10, delay=0):
@@ -160,7 +161,7 @@ def get_page(url, try_count=10, delay=0):
     content = ''
     for i in range(try_count):
         try:
-            content = requests.get(url, proxies=proxies[i % len(proxies)]).text
+            content = zlib.compress(requests.get(url, proxies=proxies[i % len(proxies)]).text)
             break
         except Exception as error:
             logger.error(f'error in downloading {url} : {error}')
@@ -218,7 +219,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url) as resp:
-                        site_html = await resp.text()
+                        site_html = zlib.compress(await resp.text())
 
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(site_html)
