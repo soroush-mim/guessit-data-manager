@@ -6,7 +6,7 @@ res = {
 
         'base' : 'https://us.soccerway.com',
 
-        'footballLeague_pattern': r''
-    }
+        'footballLeague_pattern': r'(\/natioanl\/[a-z]*\/[a-z0-9]*).*?$',
+    },
 
 }
