@@ -2,7 +2,7 @@ import re
 import requests
 from modules.data_getters.__baseClass import DataGetterBaseClass
 from bs4 import BeautifulSoup
-from modules.config.config import config
+
 
 class Getter_footballLeague_soccerway(DataGetterBaseClass):
     """
@@ -82,7 +82,6 @@ class Getter_footballLeague_soccerway(DataGetterBaseClass):
     @property
     def getter_league_archive(self):
         link = 'https://us.soccerway.com' + self.archive_link
-        logger.info(f'sending request for link = {link}')
 
         r = requests.get(link)
         archive_soup = BeautifulSoup( r.text , 'lxml')
