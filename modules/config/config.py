@@ -20,11 +20,12 @@ logging.basicConfig(
         logging.StreamHandler(),
         MongoHandler(host=config.mongo.ip, port=config.mongo.port,
                      username=config.mongo.username, password=config.mongo.password,
-                     authentication_db='admin', database_name='DataManager', collection='log')
+                     authentication_db=config.mongo.authentication_db, database_name='DataManager', collection='log')
     ]
 )
 
 logger = logging.getLogger('DataGeters')
 
 mongo_client = MongoClient(
-    f'mongodb://{config.mongo.username}:{config.mongo.password}@{config.mongo.ip}:{config.mongo.port}/')
+    f'mongodb://{config.mongo.username}:{config.mongo.password}@{config.mongo.ip}:{config.mongo.port}'
+    f'/?authSource={config.mongo.authentication_db}')
