@@ -211,7 +211,9 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         try:
             output = {url: open(file_address, 'r').read()}
             logger.info(f'already downloaded {url}')
+
             return output if return_bool else None
+        
         except FileNotFoundError as error:
             logger.info(f'start downloading {url}')
 
@@ -221,7 +223,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                     async with session.get(url) as resp:
                         text = await resp.text()
                         text = text.encode('utf-8')
-                        site_html = zlib.compress(text)
+                        site_html = str(zlib.compress(text))
 
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(str(site_html))
