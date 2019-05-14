@@ -224,7 +224,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                         site_html = zlib.compress(text)
 
                         f = open(file_address, 'w+', encoding='utf8')
-                        f.write(site_html)
+                        f.write(str(site_html))
                         f.close()
                         output = {url: site_html}
                         return output if return_bool else None
