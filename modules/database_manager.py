@@ -65,7 +65,7 @@ class dataset():
             urls_for_download = []
             for page_url in page_queue_urls:
                 logger.debug(f'go for find links in {page_url}')
-                souped_page = soup(zlib.decompress(page_queue_htmls.pop(page_url)), features='lxml')
+                souped_page = soup(zlib.decompress(page_queue_htmls.pop(page_url).encoding('utf-8')), features='lxml')
 
                 for pattern in patterns:
                     urls = list(map(lambda tag: tag['href'],
