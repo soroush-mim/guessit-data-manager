@@ -161,7 +161,7 @@ def get_page(url, try_count=10, delay=0):
     content = ''
     for i in range(try_count):
         try:
-            content = zlib.compress(requests.get(url, proxies=proxies[i % len(proxies)]).text)
+            content = zlib.compress(requests.get(url, proxies=proxies[i % len(proxies)]).text.encode('utf-8'))
             break
         except Exception as error:
             logger.error(f'error in downloading {url} : {error}')
@@ -219,7 +219,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url) as resp:
-                        site_html = zlib.compress(await resp.text())
+                        site_html = zlib.compress(await resp.text().encode('utf-8'))
 
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(site_html)
