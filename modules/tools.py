@@ -219,7 +219,9 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url) as resp:
-                        site_html = zlib.compress(await resp.text().encode('utf-8'))
+                        text = await resp.text()
+                        text = text.encode('utf-8')
+                        site_html = zlib.compress(text)
 
                         f = open(file_address, 'w+', encoding='utf8')
                         f.write(site_html)
