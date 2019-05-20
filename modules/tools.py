@@ -204,7 +204,7 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
         file_address = get_guessed_file_address(url)
 
         try:
-            output = {url: open(file_address, 'r').read()}
+            output = {url: load_compressed_object(file_address)}
             logger.info(f'already downloaded {url}')
 
             return output if return_bool else None
