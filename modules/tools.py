@@ -9,8 +9,7 @@ import aiohttp
 import requests
 from bs4 import BeautifulSoup as soup
 
-from modules.config.config import config
-from modules.config.config import logger
+from modules.config.config import config, logger
 from modules.resources.__handler import Resources
 
 
@@ -27,12 +26,11 @@ def collect_data_id_from_resource(pages, base, patterns):
     logger.info(f'start collecting ids from {base}')
     new_ids = []
 
-    pages_html = download_pages(pages)
+    pages_compressed_html = download_pages(pages)
     for page in pages:
-
         logger.debug(f'collecting ids from {page}')
 
-        souped_page = soup(zlib.decompress(pages_html.pop(page)), features='lxml')
+        souped_page = soup(compressed_to_str(pages_compressed_html.pop(page)), features='lxml')
 
         for pattern in patterns:
             new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
@@ -127,16 +125,13 @@ def make_soup(url):
 
     if os.path.isfile(file_address):
         logger.debug(f'already downloaded {url}')
-        page_source = open(file_address, encoding='utf-8').read()
+        page_html = compressed_to_str(load_compressed_object(file_address))
     else:
         logger.debug(f'start downloading {url}')
-        page_source = get_page(url)
-        try:
-            open(file_address, 'w+', encoding='utf-8').write(page_source)
-        except Exception as error:
-            logger.error(error)
+        page_html = get_page(url)
+        save_compressed_object(str_to_compressed(page_html))
 
-    return soup(zlib.decompress(page_source), features='lxml')
+    return soup(page_html, features='lxml')
 
 
 def get_page(url, try_count=10, delay=0):
@@ -161,7 +156,7 @@ def get_page(url, try_count=10, delay=0):
     content = ''
     for i in range(try_count):
         try:
-            content = zlib.compress(requests.get(url, proxies=proxies[i % len(proxies)]).text.encode('utf-8'))
+            content = requests.get(url, proxies=proxies[i % len(proxies)]).text.encode('utf-8')
             break
         except Exception as error:
             logger.error(f'error in downloading {url} : {error}')
@@ -221,13 +216,12 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
             try:
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url) as resp:
-                        text = await resp.text()
-                        site_html = zlib.compress(text.encoding)
+                        site_html = await resp.text()
+                        
+                        compressed_html = str_to_compressed(site_html)
+                        save_compressed_object(file_address, compressed_html)
 
-                        f = open(file_address, 'w+', encoding='utf8')
-                        f.write(site_html)
-                        f.close()
-                        output = {url: site_html}
+                        output = {url: compressed_html}
                         return output if return_bool else None
 
             except Exception as error:

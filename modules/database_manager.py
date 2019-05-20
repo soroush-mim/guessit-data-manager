@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 from modules.config.config import config
 from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
+from modules import tools
 
 import glob
 import importlib
@@ -60,11 +61,11 @@ class dataset():
             patterns = [Resources[resource][self.db_name][x] for x in Resources[resource][self.db_name] if
                         x.endswith('_pattern')]
 
-            page_queue_htmls = download_pages(page_queue_urls)
+            page_queue_compressed_htmls = download_pages(page_queue_urls)
             urls_for_download = []
             for page_url in page_queue_urls:
                 logger.debug(f'go for find links in {page_url}')
-                souped_page = soup(zlib.decompress(page_queue_htmls.pop(page_url).encode('utf-8')), features='lxml')
+                souped_page = soup(tools.compressed_to_str(page_queue_compressed_htmls.pop(page_url)), features='lxml')
 
                 for pattern in patterns:
                     urls = list(map(lambda tag: tag['href'],
