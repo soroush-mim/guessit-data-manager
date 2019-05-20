@@ -222,11 +222,10 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
                 async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
                     async with session.get(url) as resp:
                         text = await resp.text()
-                        text = text.encode('utf-8')
-                        site_html = str(zlib.compress(text))
+                        site_html = zlib.compress(text.encoding)
 
                         f = open(file_address, 'w+', encoding='utf8')
-                        f.write(str(site_html))
+                        f.write(site_html)
                         f.close()
                         output = {url: site_html}
                         return output if return_bool else None
@@ -272,3 +271,30 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
     loop.close()
 
     return response if return_bool else None
+
+
+def str_to_compressed(string):
+    return zlib.compress(string.encode('utf-8'))
+
+
+def compressed_to_str(byte_object):
+    return zlib.decompress(byte_object).decode('utf-8')
+
+
+def save_compressed_object(address, byte_object, file_mode="wb+"):
+    try:
+        f = open(address, file_mode)
+        f.write(byte_object)
+        f.close()
+        return True
+    except Exception as e:
+        logger.error(e)
+        return False
+
+
+def load_compressed_object(address):
+    f = open(address, "rb")
+    data = f.read()
+    f.close()
+    return data
+
