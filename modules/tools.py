@@ -205,12 +205,12 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
         try:
             output = {url: load_compressed_object(file_address)}
-            logger.info(f'already downloaded {url}')
+            logger.debug(f'already downloaded {url}')
 
             return output if return_bool else None
         
         except FileNotFoundError as error:
-            logger.info(f'start downloading {url}')
+            logger.debug(f'start downloading {url}')
 
         for i in range(try_count):
             try:
