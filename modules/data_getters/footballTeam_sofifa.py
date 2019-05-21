@@ -113,7 +113,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.rating_row[3].text.replace('Defence\xa0', '').strip()
 
     @property
-    def getter_team_name(self):
+    def getter_name(self):
         return re.sub(r'\(.*\)', '', self.infoDiv.find('h1').text).strip()
 
     @property
@@ -121,7 +121,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return re.search(r'.*?\(ID: ([0-9]*?)\)', self.infoDiv.find('h1').text).group(1).strip()
 
     @property
-    def getter_league_name(self):
+    def getter_league(self):
         return self.infoDiv.select('a')[1].text.strip()
 
     @property
@@ -129,7 +129,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.infoDiv.select('a')[1]['href']
 
     @property
-    def getter_squad_players(self):
+    def getter_players(self):
         players = []
         for item in self.table_players_squad:
             players.append(self.get_name_id_from_table(item))
