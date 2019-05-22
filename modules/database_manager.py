@@ -226,11 +226,11 @@ class dataset():
 
             logger.critical(f'ids collected for {resource} resource')
 
-        logger.info(f'saving {self.db_name} to mongo ...')
-        mongo_client['datasets'][self.db_name].insert_many(db)
-        logger.info(f'saving {self.db_name}: done.')
+        # logger.info(f'saving {self.db_name} to mongo ...')
+        # mongo_client['datasets'][self.db_name].insert_many(db)
+        # logger.info(f'saving {self.db_name}: done.')
         
-        # self.__save(db)
+        self.__save(db)
 
     def start(self):
 
