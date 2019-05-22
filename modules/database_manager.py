@@ -162,8 +162,8 @@ class dataset():
         """
 
         logger.info(f'trying to load {self.db_name} dataset from hard disk...')
-        db = list(mongo_client['datasets'][self.db_name].find())
-        # db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
+        # db = list(mongo_client['datasets'][self.db_name].find())
+        db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
 
         logger.info(f'loading {self.db_name} dataset from hard disk is done.')
 
