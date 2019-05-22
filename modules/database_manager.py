@@ -7,7 +7,7 @@ import time
 import urllib
 from pprint import pprint
 from bs4 import BeautifulSoup
-from modules.config.config import config
+from modules.config.config import config, mongo_client
 from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
 from modules import tools
@@ -168,7 +168,8 @@ class dataset():
 
         logger.info('Writing to file ...')
 
-        json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
+        mongo_client.datasets[self.db_name].update({}, db, upsert=True, multi=True)
+        # json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
 
         logger.info('Writing to file is done.')
         return True
