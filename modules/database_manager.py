@@ -113,7 +113,7 @@ class dataset():
 
         except Exception as error:
             raise FileExistsError(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
-            
+        
         begin = begin if begin is not None else 0
         end = end if end is not None else len(db)
 
@@ -162,8 +162,8 @@ class dataset():
         """
 
         logger.info(f'trying to load {self.db_name} dataset from hard disk...')
-
-        db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
+        db = list(mongo_client['datasets'][self.db_name].find())
+        # db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
 
         logger.info(f'loading {self.db_name} dataset from hard disk is done.')
 
