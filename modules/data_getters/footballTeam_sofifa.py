@@ -26,6 +26,8 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
                 page.select('table.table-hover.persist-area')[1].select('tbody')[0].select('tr')
         else:
             self.table_players_onLoan = None
+        
+        self.kit_links = [i['src'] for i in soup.find('aside').find_all('div' ,  {'class' : re.compile(r'card-body')})[-1].find_all('img')]
 
 
     def get_name_id_from_table(self,item):
@@ -37,11 +39,11 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
 
 
     @property
-    def getter_home_stadium(self):
+    def getter_stadium(self):
         return self.rightSide_page[0].text.replace('Home Stadium', '').strip()
 
     @property
-    def getter_rival_team(self):
+    def getter_rival(self):
         return self.rightSide_page[1].text.replace('Rival Team', '').strip()
 
     @property
@@ -65,7 +67,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.rightSide_page[6].text.replace('Whole Team Average Age', '').strip()
 
     @property
-    def getter_captain(self):
+    def getter_capitan(self):
         return self.rightSide_page[7].find('a')['data-tooltip']
 
     @property
@@ -101,7 +103,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.rating_row[0].text.replace('Overall\xa0', '').strip()
 
     @property
-    def getter_atack(self):
+    def getter_attack(self):
         return self.rating_row[1].text.replace('Attack\xa0', '').strip()
 
     @property
@@ -113,7 +115,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.rating_row[3].text.replace('Defence\xa0', '').strip()
 
     @property
-    def getter_team_name(self):
+    def getter_name(self):
         return re.sub(r'\(.*\)', '', self.infoDiv.find('h1').text).strip()
 
     @property
@@ -121,7 +123,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return re.search(r'.*?\(ID: ([0-9]*?)\)', self.infoDiv.find('h1').text).group(1).strip()
 
     @property
-    def getter_league_name(self):
+    def getter_league(self):
         return self.infoDiv.select('a')[1].text.strip()
 
     @property
@@ -143,3 +145,23 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
                 players.append(self.get_name_id_from_table(item))
             return players
         else: return None
+
+    @property
+    def getter_logo(self):
+        return self.page.find('div' , {'class' : re.compile(r'card card-border player fixed-width')} ).find('img')['data-src'].strip()
+
+    @property
+    def getter_homekit(self):
+        return self.kit_links[0]
+
+    @property
+    def getter_awaykit(self):
+        return self.kit_links[1]
+
+    @property
+    def getter_thirdkit(self):
+        return self.kit_links[2]
+
+    @property
+    def getter_gkkit(self):
+        return self.kit_links[3]

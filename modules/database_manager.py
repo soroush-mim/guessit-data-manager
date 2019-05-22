@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 from modules.config.config import config
 from modules.data_getters.__data_getters import *
 from modules.resources.__handler import Resources
-
 import glob
 import importlib
 import re
@@ -21,6 +20,26 @@ files = [re.search(r'.*?([A-Za-z_]*?).py', file).group(1) for file in
 
 for file in files:
     exec(f'from modules.data_getters.{file} import *')
+
+
+class Resource():
+
+    def __init__(self,collection,resource):
+        self.collection = collection
+        self.resource = resource
+
+
+class webpage_resource(Resource):
+
+    def __init__(self,collection,resource):
+        resource.__init__(self,collection,resource)
+
+    def find_ids(self):
+        pass
+
+
+
+
 
 class dataset():
 
