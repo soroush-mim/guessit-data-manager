@@ -188,8 +188,8 @@ class dataset():
 
         logger.info('Writing to file ...')
 
-        mongo_client.datasets[self.db_name].update({}, {'$set': db}, upsert=True, multi=True)
-        # json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
+        # mongo_client.datasets[self.db_name].update({}, {'$set': db}, upsert=True, multi=True)
+        json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
 
         logger.info('Writing to file is done.')
         return True
