@@ -27,7 +27,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         else:
             self.table_players_onLoan = None
         
-        self.kit_links = [i['src'] for i in soup.find('aside').find_all('div' ,  {'class' : re.compile(r'card-body')})[-1].find_all('img')]
+        self.kit_links = [i['src'] for i in page.find('aside').find_all('div' ,  {'class' : re.compile(r'card-body')})[-1].find_all('img')]
 
 
     def get_name_id_from_table(self,item):
