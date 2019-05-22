@@ -113,7 +113,7 @@ class dataset():
 
         except Exception as error:
             raise FileExistsError(f'there is no {self.db_name} file in dataset directory, please first run "python app.py -r fd -db {self.db_name}"')
-            
+        
         begin = begin if begin is not None else 0
         end = end if end is not None else len(db)
 
@@ -162,8 +162,8 @@ class dataset():
         """
 
         logger.info(f'trying to load {self.db_name} dataset from hard disk...')
-
-        db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
+        db = list(mongo_client['datasets'][self.db_name].find())
+        # db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
 
         logger.info(f'loading {self.db_name} dataset from hard disk is done.')
 
@@ -188,8 +188,8 @@ class dataset():
 
         logger.info('Writing to file ...')
 
-        mongo_client.datasets[self.db_name].update({}, {'$set': db}, upsert=True, multi=True)
-        # json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
+        # mongo_client.datasets[self.db_name].update({}, {'$set': db}, upsert=True, multi=True)
+        json.dump(db, open(f'{config.dir.dataset}/{self.db_name}db.json', 'w'), indent=4)
 
         logger.info('Writing to file is done.')
         return True
@@ -226,7 +226,11 @@ class dataset():
 
             logger.critical(f'ids collected for {resource} resource')
 
-        self.__save(db)
+        logger.info(f'saving {self.db_name} to mongo ...')
+        mongo_client['datasets'][self.db_name].insert_many(db)
+        logger.info(f'saving {self.db_name}: done.')
+        
+        # self.__save(db)
 
     def start(self):
 

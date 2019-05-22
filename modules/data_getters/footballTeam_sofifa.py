@@ -67,7 +67,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.rightSide_page[6].text.replace('Whole Team Average Age', '').strip()
 
     @property
-    def getter_capitan(self):
+    def getter_captain(self):
         return self.rightSide_page[7].find('a')['data-tooltip']
 
     @property
