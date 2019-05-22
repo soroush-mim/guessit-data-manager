@@ -138,7 +138,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return players
 
     @property
-    def getter_on_loan_players(self):
+    def getter_players_on_loan(self):
         if self.table_players_onLoan:
             players = []  
             for item in self.table_players_onLoan:
