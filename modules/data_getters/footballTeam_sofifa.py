@@ -131,7 +131,7 @@ class Getter_footballTeam_sofifa(DataGetterBaseClass):
         return self.infoDiv.select('a')[1]['href']
 
     @property
-    def getter_squad_players(self):
+    def getter_players(self):
         players = []
         for item in self.table_players_squad:
             players.append(self.get_name_id_from_table(item))
