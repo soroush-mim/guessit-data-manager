@@ -14,37 +14,7 @@ from modules.config.config import config, logger
 from modules.resources.__handler import Resources
 
 
-def collect_data_id_from_resource(pages, base, patterns):
-    """
-    general finding ids from list pages
 
-    :param pages:
-    :param base:
-    :param patterns:
-    :return:
-    """
-
-    logger.info(f'start collecting ids from {base}')
-    new_ids = []
-
-    pages_compressed_html = download_pages(pages)
-    for page in pages:
-        logger.debug(f'collecting ids from {page}')
-
-        souped_page = soup(compressed_to_str(pages_compressed_html.pop(page)), features='lxml')
-
-        for pattern in patterns:
-            new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
-
-            new_pages = [base + page if page.find('http') == -1 else page for page in new_pages]
-
-            new_pages = [page for page in new_pages if page[5:].find('http') == -1]
-
-            new_pages = [re.sub(r'/?\?.*', '', page) for page in new_pages]
-
-            new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
-
-    return new_ids
 
 
 def get_guessed_file_address(url):
