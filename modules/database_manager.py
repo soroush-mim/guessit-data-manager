@@ -187,8 +187,8 @@ class dataset():
         """
 
         logger.info(f'trying to load {self.db_name} dataset from hard disk...')
-        db = list(mongo_client['datasets'][self.db_name].find())
-        # db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
+        # db = list(mongo_client['datasets'][self.db_name].find())
+        db = json.load(open(f'{config.dir.dataset}/{self.db_name}db.json', 'r'), encoding='utf-8')
 
         logger.info(f'loading {self.db_name} dataset from hard disk is done.')
 
@@ -251,11 +251,11 @@ class dataset():
 
             logger.critical(f'ids collected for {resource} resource')
 
-        logger.info(f'saving {self.db_name} to mongo ...')
-        mongo_client['datasets'][self.db_name].insert_many(db)
-        logger.info(f'saving {self.db_name}: done.')
+        # logger.info(f'saving {self.db_name} to mongo ...')
+        # mongo_client['datasets'][self.db_name].insert_many(db)
+        # logger.info(f'saving {self.db_name}: done.')
         
-        # self.__save(db)
+        self.__save(db)
 
     def start(self):
 

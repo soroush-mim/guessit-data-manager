@@ -8,6 +8,7 @@ import zlib
 import aiohttp
 import requests
 from bs4 import BeautifulSoup as soup
+import base64
 
 from modules.config.config import config, logger
 from modules.resources.__handler import Resources
@@ -268,17 +269,17 @@ def download_pages(url_list, workers=50, try_count=10, delay=1, return_bool=True
 
 
 def str_to_compressed(string):
-    return zlib.compress(string.encode('utf-8'))
+    return base64.b64encode(zlib.compress(string.encode('utf-8'))).decode('utf-8')
 
 
-def compressed_to_str(byte_object):
-    return zlib.decompress(byte_object).decode('utf-8')
+def compressed_to_str(compressed_str):
+    return zlib.decompress(base64.b64decode(compressed_str)).decode('utf8')
 
 
-def save_compressed_object(address, byte_object, file_mode="wb+"):
+def save_compressed_object(address, compressed_str, file_mode="w+"):
     try:
         f = open(address, file_mode)
-        f.write(byte_object)
+        f.write(compressed_str)
         f.close()
         return True
     except Exception as e:
@@ -287,7 +288,7 @@ def save_compressed_object(address, byte_object, file_mode="wb+"):
 
 
 def load_compressed_object(address):
-    f = open(address, "rb")
+    f = open(address, "r")
     data = f.read()
     f.close()
     return data
