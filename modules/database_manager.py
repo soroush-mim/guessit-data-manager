@@ -29,18 +29,43 @@ class Resource():
     def __init__(self,collection,resource):
         self.collection = collection
         self.resource = resource
+        self.base = ''
 
-
-class webpage_resource(Resource):
-
-    def __init__(self,collection,resource):
-        resource.__init__(self,collection,resource)
 
     def find_ids(self):
         pass
 
 
 
+
+class footballPlayer_sofifa(Resource):
+
+    def __init__(self):
+        self.base = 'https://sofifa.com'
+        self.list = [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
+        self.type = 'wabpage'
+
+
+
+    def get_data(self):
+        pass
+
+
+class footballPlayer():
+    def __init__(self):
+        self.resources = ['sofifa']
+
+    def find_new_data(self):
+        pass
+
+    def update(self):
+        pass
+
+    def merge(self):
+        pass
+    
+    def schema_test(self):
+        pass
 
 
 class dataset():
