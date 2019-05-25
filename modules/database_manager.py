@@ -28,7 +28,7 @@ class Resource():
 
         
 
-    def __collect_data_id_from_resource(self , pages , base , patterns):
+    def __collect_data_id_from_resource(self , pages , base , pattern):
         """
         general finding ids from list pages
 
@@ -47,16 +47,15 @@ class Resource():
 
             souped_page = soup(compressed_to_str(pages_compressed_html.pop(page)), features='lxml')
 
-            for pattern in patterns:
-                new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
+            new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
 
-                new_pages = [base + page if page.find('http') == -1 else page for page in new_pages]
+            new_pages = [base + page if page.find('http') == -1 else page for page in new_pages]
 
-                new_pages = [page for page in new_pages if page[5:].find('http') == -1]
+            new_pages = [page for page in new_pages if page[5:].find('http') == -1]
 
-                new_pages = [re.sub(r'/?\?.*', '', page) for page in new_pages]
+            new_pages = [re.sub(r'/?\?.*', '', page) for page in new_pages]
 
-                new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
+            new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
 
         return new_ids
 
@@ -89,10 +88,13 @@ class Resource():
 class footballPlayer_sofifa(Resource):
 
     def __init__(self):
-        self.base = 'https://sofifa.com'
-        self.list = [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
         self.type = 'wabpage'
 
+    def find_ids(self):
+        base = "https://sofifa.com"
+        id_pages  = [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
+        pattern = r'(\/player\/[0-9]*).*?$'
+        super(footballPlayer_sofifa , self ).find_ids( pages , base , pattern)
 
 
     def get_data(self):
