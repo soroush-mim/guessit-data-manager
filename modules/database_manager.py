@@ -94,7 +94,7 @@ class footballPlayer_sofifa(Resource):
         base = "https://sofifa.com"
         id_pages  = [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
         pattern = r'(\/player\/[0-9]*).*?$'
-        super(footballPlayer_sofifa , self ).find_ids( pages , base , pattern)
+        super(footballPlayer_sofifa , self ).find_ids( id_pages , base , pattern)
 
 
     def get_data(self):
