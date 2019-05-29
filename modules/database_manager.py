@@ -26,9 +26,29 @@ for file in files:
 
 class Resource():
 
-        
+    class DataGetterBaseClass:
+        """ a parent class for all data getters classes that get page soup file for input """
 
-    def __collect_data_id_from_resource(self , pages , base , pattern):
+        def __init__(self, page):
+            self.page = page
+
+        def get_all_data(self):
+            """ a function for getting all data of a player and put it in a dictionary """
+            data = {}
+            for _property in [x for x in dir(self) if x.startswith('getter_')]:
+
+                try:
+                    data[_property.replace('getter_', '')] = getattr(self, _property)
+
+                except Exception as error:
+                    data[_property.replace('getter_', '')] = None
+                    logger.error(f'{_property} : {error}')
+
+            return data
+
+
+        
+    def __collect_data_id_from_resource(self , pages , pattern):
         """
         general finding ids from list pages
 
@@ -38,16 +58,14 @@ class Resource():
         :return:
         """
 
-        logger.info(f'start collecting ids from {base}')
-        new_ids = []
-
+        base = re.search(r'.*?\((.*?)\).*',pattern).group(1)
         pages_compressed_html = download_pages(pages)
         for page in pages:
             logger.debug(f'collecting ids from {page}')
 
             souped_page = soup(compressed_to_str(pages_compressed_html.pop(page)), features='lxml')
 
-            new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'({base})?{pattern}')})]
+            new_pages = [tag['href'] for tag in souped_page.find_all('a', {'href': re.compile(f'{pattern}')})]
 
             new_pages = [base + page if page.find('http') == -1 else page for page in new_pages]
 
@@ -55,23 +73,17 @@ class Resource():
 
             new_pages = [re.sub(r'/?\?.*', '', page) for page in new_pages]
 
-            new_ids += [re.search(f'{base}{pattern}', page).group(1) for page in new_pages]
 
-        return new_ids
-
+        return new_pages
 
 
-
-    def find_ids(self , pages , base , patterns):
+    def find_ids(self , pages , pattern):
 
         resource = self.__class__.__name__.split('_')[1]
-        dataset = self.__class__.__name__.split('_')[0]
 
         logger.critical(f'getting ids for {resource} resource')
         
-        db = []
-        id_list = list(set(self.collect_data_id_from_resource(pages, base, patterns)))
-        db += [{f'{resource}_id': _id} for _id in id_list]
+        id_list = list(set(self.__collect_data_id_from_resource(pages, pattern)))
 
         logger.critical(f'ids collected for {resource} resource')
 
@@ -79,10 +91,7 @@ class Resource():
         # mongo_client['datasets'][self.db_name].insert_many(db)
         # logger.info(f'saving {self.db_name}: done.')
         
-        return db
-
-
-
+        return id_list
 
 
 class footballPlayer_sofifa(Resource):
@@ -91,25 +100,327 @@ class footballPlayer_sofifa(Resource):
         self.type = 'wabpage'
 
     def find_ids(self):
-        base = "https://sofifa.com"
         id_pages  = [f'https://sofifa.com/players?offset={i}' for i in range(0, 15000, 60)]
-        pattern = r'(\/player\/[0-9]*).*?$'
-        super(footballPlayer_sofifa , self ).find_ids( id_pages , base , pattern)
+        pattern = f"({re.escape('https://sofifa.com')})?"+ r'(\/player\/[0-9]*).*?$'
+        super(footballPlayer_sofifa , self ).find_ids(id_pages , pattern)
+
+    class Getter_footballPlayer_sofifa(super.DataGetterBaseClass):
+        """
+        a class for getting footballPlayers data from sofifa 
+        that get page soup file for input with 39 property
+        """
+
+        def __init__(self, page):
+
+            super.DataGetterBaseClass.__init__(self, page)
+
+            self.main_table = page.find('div', class_='card card-border player fixed-width')
+
+            self.top_row = self.main_table.find('div', class_='meta')
+
+            self.columns = self.main_table.find_all('div', class_='columns')[1].find_all('div', class_='column col-4')
+
+            self.left_column_elements = self.columns[0].find_all('li')
+
+            self.third_column = []
+            
+            if len(self.columns) > 2:
+                self.third_column = self.columns[2].find_all('li')
+
+            self.forth_column = []
+
+            self.hashtags_table = self.main_table.find('div', class_='mt-2').find_all('a')
+
+            self.like_table = self.main_table.find('div', class_='operation mt-2')
+
+            if len(self.columns) > 3:
+                self.forth_column = self.columns[3].find_all('li')
+
+            if len(self.third_column) < 5:
+                self.third_column, self.forth_column = self.forth_column, self.third_column
+
+        @property
+        def getter_shirt_name(self):
+            return re.search(r'.*\(', self.main_table.find('div', class_='info').text.strip()).group()[:-1]
+
+        @property
+        def getter_name(self):
+            return re.search(r'((.*?)  )', self.top_row.text.strip()).group()[:-2].strip()
+
+        @property
+        def getter_age(self):
+            return int(re.search(r'\d\d\d?', self.top_row.text.strip()).group().strip())
+
+        @property
+        def getter_nationality(self):
+            return self.top_row.find('a', {'href': re.compile(r'\/players\?na.*')})['title']
+
+        @property
+        def getter_photo_link(self):
+            return self.main_table.find('img')['data-src']
+
+        @property
+        def getter_id(self):
+            return int(re.search(r'\d+', self.main_table.find('div', class_='info').find('h1').text.strip()).group())
+
+        @property
+        def getter_positions(self):
+            positions_str = re.search(r'  .*A', self.top_row.text.strip()).group()[2:-1].strip()
+            return positions_str.split()
+
+        @property
+        def getter_birth_date(self):
+            birth_date = re.search(r'\d \(.*, \d\d\d\d\)', self.top_row.text.strip()).group()[3:-1]
+            date = ''
+            for item in date_value(birth_date):
+                date += str(item) + '/'
+            return date[:-1]
+
+        @property
+        def getter_weight_in_pond(self):
+            return int(re.search(r'\d?\d\d\dlbs', self.top_row.text.strip()).group().strip()[:-3])
+
+        @property
+        def getter_weight_in_kg(self):
+            return self.getter_weight_in_pond * 0.453592
+
+        @property
+        def getter_height_in_cm(self):
+            dirty_height = re.search(r'\d\d?.\d\d?\"', self.top_row.text.strip()).group().strip()
+            return int(dirty_height[0]) * 30.28 + int(re.search(r'\'.*"', dirty_height).group().strip()[1:-1]) * 2.54
+
+        @property
+        def getter_value_in_euro(self):
+            value = \
+                self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
+                    2].find('span').text.strip()
+            return money_value(value)
+
+        @property
+        def getter_wage(self):
+            value = \
+                self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
+                    3].find('span').text.strip()
+            return money_value(value)
+
+        @property
+        def getter_overall_rating(self):
+            return int(
+                self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
+                    0].find('span').text.strip())
+
+        @property
+        def getter_potential(self):
+            return int(
+                self.main_table.find('div', class_='card-body stats').find_all('div', class_='column col-4 text-center')[
+                    1].find('span').text.strip())
+
+        @property
+        def getter_foot(self):
+            return re.search(r'(Left)|(Right)', self.left_column_elements[0].text).group().strip()
+
+        @property
+        def getter_International_Reputation(self):
+            return int(self.left_column_elements[1].text.strip()[-1])
+
+        @property
+        def getter_weak_foot_star(self):
+            return int(self.left_column_elements[2].text.strip()[-1])
+
+        @property
+        def getter_skill_moves(self):
+            return int(self.left_column_elements[3].text.strip()[-1])
+
+        @property
+        def getter_work_rate(self):
+            return self.left_column_elements[4].text.strip()[9:]
+
+        @property
+        def getter_body_type(self):
+            return self.left_column_elements[5].text.strip()[9:]
+
+        @property
+        def getter_real_face(self):
+            return self.left_column_elements[6].text.strip()[9:]
+
+        @property
+        def getter_release_clause(self):
+            try:
+                release_clause = self.left_column_elements[7].text.strip()[14:]
+            except Exception as error:
+                return None
+            return money_value(release_clause)
+
+        @property
+        def getter_club_team(self):
+            return self.third_column[0].text.strip()
+
+        @property
+        def getter_club_team_id_sofifa(self):
+            return int(re.search(r'\/\d*\/', self.third_column[0].find('a', {'href': re.compile(r'\/team\/.*')})[
+                'href']).group().strip()[1:-1])
+
+        @property
+        def getter_power_in_club(self):
+            return int(self.third_column[1].text.strip())
+
+        @property
+        def getter_Position_in_club(self):
+            return self.third_column[2].text.strip()[-2:]
+
+        @property
+        def getter_Jersey_Number_in_club(self):
+            return int(self.third_column[3].text.strip()[13:])
+
+        @property
+        def getter_club_join_date(self):
+            join_date = self.third_column[4].text.strip()[6:]
+            date = ''
+            for item in date_value(join_date):
+                date += str(item) + '/'
+            return date[:-1]
+
+        @property
+        def getter_contract_valid_until(self):
+            return int(self.third_column[5].text.strip()[-4:])
+
+        @property
+        def getter_national_team(self):
+            if len(self.forth_column) > 0:
+                return self.forth_column[0].text.strip()
+            else:
+                return None
+
+        @property
+        def getter_national_team_id(self):
+            if len(self.forth_column) > 0:
+                return int(re.search(r'\/\d*\/', self.forth_column[0].find('a', {'href': re.compile(r'\/team\/.*')})[
+                    'href']).group().strip()[1:-1])
+            else:
+                return None
+
+        @property
+        def getter_power_in_national(self):
+            if len(self.forth_column) > 0:
+                return int(self.forth_column[1].text.strip())
+            else:
+                return None
+
+        @property
+        def getter_Position_in_national(self):
+            if len(self.forth_column) > 0:
+                return self.forth_column[2].text.strip()[-2:]
+            else:
+                return None
+
+        @property
+        def getter_Jersey_Number_in_national(self):
+            if len(self.forth_column) > 0:
+                return int(self.forth_column[3].text.strip()[13:])
+            else:
+                return None
+
+        @property
+        def getter_abilities_hashtags(self):
+            return [i.text for i in self.hashtags_table]
+
+        @property
+        def getter_followers_num(self):
+            return int(self.like_table.find('a', class_="follow-btn btn").find('span').text.strip())
+
+        @property
+        def getter_likes_num(self):
+            return int(self.like_table.find('a', class_="like-btn btn").find('span').text.strip())
+
+        @property
+        def getter_dislikes_num(self):
+            return int(self.like_table.find('a', class_="dislike-btn btn").find('span').text.strip())
+        
+        @property
+        def getter_popularity(self):
+            return self.getter_International_Reputation * 10 + self.getter_likes_num  + self.getter_value_in_euro / (1000*1000)
 
 
-    def get_data(self):
+    
+    def get_data(self , id):
+            getter = Getter_footballPlayer_sofifa(make_soup(id))
+            return getter.get_all_data()
+
+
+
+class Dataset():
+
+    def __init__(self):
         pass
 
+    def load(self):
+        """
+        open the json file if that is created already
+        else create it and open it for find db
 
-class footballPlayer():
+        :param db_name:
+        :return:
+        """
+        dataset_name = self.__class__.__name__
+        logger.info(f'trying to load {dataset_name} dataset from hard disk...')
+        # db = list(mongo_client['datasets'][self.db_name].find())
+        try:
+            db = json.load(open(f'{config.dir.dataset}/{data}db.json', 'r'), encoding='utf-8')
+        except:
+            logger.debug(f'there is no {dataset_name} file in dataset directory')
+            logger.info(f'crating a new json file for {dataset_name} dataset')
+
+            open(f'{config.dir.dataset}/{dataset_name}db.json', 'w+').write('[]')
+            db = json.load(open(f'{config.dir.dataset}/{dataset_name}db.json', 'r'), encoding='utf-8')
+
+
+        logger.info(f'loading {dataset_name} dataset from hard disk is done.')
+
+        return db
+    
+    def save(self , db):
+        """
+        save objects on a json file for find db
+
+        :param db:
+        :param db_name:
+        :return:
+        """
+        dataset_name = self.__class__.__name__
+        logger.info('Writing to file ...')
+
+        # mongo_client.datasets[self.db_name].update({}, {'$set': db}, upsert=True, multi=True)
+        json.dump(db, open(f'{config.dir.dataset}/{dataset_name}db.json', 'w'), indent=4)
+
+        logger.info('Writing to file is done.')
+        return True
+
+
+class footballPlayer(Dataset):
     def __init__(self):
         self.resources = ['sofifa']
 
+    
+
+
     def find_new_data(self):
-        pass
+        dataset = []
+        for resource in self.resources:
+            res = globals()[f'footballPlayer_{resource}']()
+            ids = res.find_ids()
+            dataset += [{f'{resource}_id': _id} for _id in ids]
+            Dataset.save(self , dataset)
+
+
+
+
 
     def update(self):
-        pass
+        dataset = Dataset.load(self )
+        for item in dataset:
+            res_name = [i.replace('_id' , '') for i in item.keys() if i.endswith('_id')][0]
+            res = globals()[f'footballPlayer_{res_name}']()
+            item.update(res.get_data(item[f'{res_name}_id']))
 
     def merge(self):
         pass
